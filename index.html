@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="assets/stylesheets/main.css">
         <title> SE02_Projekt </title>
+        <script src="scripts/parallax.js"></script>
     </head>
     <body>
         <header class="wrapper" id="navigation">
@@ -14,10 +15,21 @@
         </header>
         <section class="wrapper">
             <!-- Titel og parallax scrolling baggrund. -->
-            <div class="parallax" style="margin-top: -125px; background-image: url(assets/images/ws_Spring_Plants_1920x1080.jpg);">
+            <!--<div class="parallax" style="margin-top: -125px; height: 1000px; background-image: url(assets/images/ws_Spring_Plants_1920x1080.jpg);">
                 <div class="box-center" style="top: 40%;">
-                    <p id="introduction">Serviox</p>
-                    <p id="undertext">And other stuff too...</p>
+                    <p id="introduction">- Asservio -</p>
+                    <p id="undertext">For those in need</p>
+                </div>
+            </div>-->
+
+            <div id="parallax-container">
+                <div>Hello</div>
+                <div style="background-image: url(assets/images/ws_Spring_Plants_1920x1080.jpg)"></div>
+                <div style="top: 30%;">
+                    <section class="box-center">
+                        <h3 id="introduction">&mdash; Asservio &mdash;</h3>
+                        <h3 id="undertext">For those in need</h3>
+                    </section>
                 </div>
             </div>
 
