@@ -106,6 +106,7 @@ body {
 }
 
 .parallax {
+    background-repeat: no-repeat;
     position: relative;
 
     /* Set a specific height */
@@ -143,7 +144,7 @@ body {
 
 #parallax-container {
    display: block;
-   height: 1000px;
+   height: 2000px;
 }
 
 #parallax-container div {
@@ -151,7 +152,7 @@ body {
    top: 0;
    background-position: center !important;
    transform: translateY(0px);
-   height: 1000px;
+   height: 2000px;
    width: 100%;
 }
 
