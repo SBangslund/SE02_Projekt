@@ -144,7 +144,7 @@ body {
 
 #parallax-container {
    display: block;
-   height: 2000px;
+   height: 7447px;
 }
 
 #parallax-container div {
@@ -152,7 +152,7 @@ body {
    top: 0;
    background-position: center !important;
    transform: translateY(0px);
-   height: 2000px;
+   height: 7447px;
    width: 100%;
 }
 
