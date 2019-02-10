@@ -143,21 +143,25 @@ body {
 }
 
 #parallax-container {
-   display: block;
-   height: 7447px;
+    display: block;
+    background-repeat: round;
+    height: 6904px;
+    width: auto;
 }
 
 #parallax-container div {
-   position: fixed;
-   top: 0;
-   background-position: center !important;
-   transform: translateY(0px);
-   height: 7447px;
-   width: 100%;
+    position: fixed;
+    top: 0;
+    background-position: center !important;
+    -ms-transform: translate(0px); /* IE 9 */
+    -webkit-transform: translate(0px); /* Safari */
+    transform: translate(0px);
+    height: 6904px;
+    width: 100%;
 }
 
 #content {
-   position: relative;
+    position: relative;
 }
 
 #navigation {
