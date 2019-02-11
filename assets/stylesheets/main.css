@@ -145,18 +145,19 @@ body {
 #parallax-container {
     display: block;
     background-repeat: round;
-    height: 6904px;
+    height: 1616px;
     width: auto;
 }
 
 #parallax-container div {
     position: fixed;
     top: 0;
-    background-position: center !important;
+    background-position: center;
+    background-size: cover;
     -ms-transform: translate(0px); /* IE 9 */
     -webkit-transform: translate(0px); /* Safari */
     transform: translate(0px);
-    height: 6904px;
+    height: 1616px;
     width: 100%;
 }
 
