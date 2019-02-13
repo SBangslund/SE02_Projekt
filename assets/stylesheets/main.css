@@ -58,8 +58,8 @@ html {
 }
 
 body {
-    font-family: "Verdana";
-    font-size: 18px;
+    font-family: "Myriad Pro";
+    font-size: 20px;
     color: white;
     background-color: #006666;
 }
@@ -78,11 +78,12 @@ body {
 }
 
 .two-article {
-    width:40%;
+    position: relative;
+    width:46%;
     float: left;
-    margin: 2%;
-    margin-right: 5%;
-    margin-left: 5%;
+    margin: 4%;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 
 .box-image {
@@ -108,6 +109,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
+    font-size: 22px;
+    line-height: 28px;
 }
 
 .button-nav {
@@ -160,12 +163,28 @@ body {
     z-index: 1;
 }
 
+#quote {
+    background-image: url("../icons/brackets.png");
+    background-size: contain;                      /* <------ */
+    background-repeat: no-repeat;
+    font-style: italic;
+    font-weight: bold;
+}
+
+#planning {
+
+}
+
+#diary {
+
+}
+
 #introduction {
-    
+
 }
 
 #downloads {
-    
+
 }
 
 #foot {
