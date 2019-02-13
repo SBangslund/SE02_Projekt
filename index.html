@@ -3,17 +3,20 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="assets/stylesheets/main.css">
-        <title> SE02_Projekt </title>
+        <link rel="icon" href="assets/icons/LogoIcon.png">
+        <title> Aservio </title>
         <script src="scripts/parallax.js"></script>
     </head>
     <body>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
         <header class="wrapper" id="navigation">
-            <a href="pages/changelog.html" class="button-nav">Changelog</a>
-            <a href="pages/about.html" class="button-nav">About</a>
-            <a href="pages/download.html" class="button-nav">Downloads</a>
-            <p class="box-image" style="margin-left: 10%;">LOGO</p>
+            <a href="#about-center" class="button-nav">About</a>
+            <a href="#changelog-center" class="button-nav">Changelog</a>
+            <a href="#downloads-center" class="button-nav">Downloads</a>
+            <a href="#parallax-container" class="button-nav" style="float:left;">Top</a>
         </header>
-        
+
         <div id="parallax-container">
             <div style="background-image: url(assets/images/parallax/layer01.png)"></div>
             <div style="background-image: url(assets/images/parallax/layer02.png)"></div>
@@ -22,48 +25,29 @@
             <div style="background-image: url(assets/images/parallax/layer05.png)"></div>
             <div style="background-image: url(assets/images/parallax/layer06.png)"></div>
         </div>
-        
-        <!--<section class="wrapper">
-        <!-- Titel og parallax scrolling baggrund. -->
-        <!--<div class="parallax" style="margin-top: -125px; height: 1000px; background-image: url(assets/images/ws_Spring_Plants_1920x1080.jpg);">
-            <div class="box-center" style="top: 40%;">
-                <p id="introduction">- Asservio -</p>
-                <p id="undertext">For those in need</p>
-            </div>
-        </div>-->
-        <!--
-        <section class="wrapper" id="content_01" style="float:left;">
-            <div class="three-article">
-                <img src="assets/icons/computer.png" alt="Computer icon" class="box-image">
-                <h3 class="box-text">Beskrivelse af én funktion. Der kan ske samtlige spændende
-                    ting her inde i en sådan beskrivelse.</h3>
-            </div>
-            <div class="three-article">
-                <img src="assets/icons/graph.png" alt="Graph icon" class="box-image">
-                <h3 class="box-text">Beskrivelse af én funktion. Der kan ske samtlige spændende
-                    ting her inde i en sådan beskrivelse.</h3>
-            </div>
-            <div class="three-article">
-                <img src="assets/icons/delivery.png" alt="Delivery icon" class="box-image">
-                <h3 class="box-text">Beskrivelse af én funktion. Der kan ske samtlige spændende
-                    ting her inde i en sådan beskrivelse.</h3>
-            </div>
-        </section>
-        <div class="clearfix"></div>
-        <div class="parallax" style="height: 300px; background-image: url(assets/images/ws_Spring_Plants_1920x1080.jpg)"></div>
-        <section class="wrapper" id="content_02" style="float: left;">
-            <div class="two-article">
-                <img src="assets/icons/stadistics.png" alt="Statistics icon" class="box-image" style="width: 250px; height: 250px; margin-bottom: 0;">
-            </div>
-            <div class="two-article" style="margin-left: 0px;">
-                <h3 class="box-text">Beskrivelse af én funktion. Der kan ske samtlige spændende
-                    ting her inde i en sådan beskrivelse.</h3>
-            </div>
-        </section>
-        <div class="clearfix"></div>
-        <div class="parallax" style="margin-bottom: -75px; background-image: url(assets/images/ws_Spring_Plants_1920x1080.jpg)"></div>
-    </section>-->
+
+        <div class="box-center" id="introduction" style="border: 6px dotted rgba(204, 51, 51, 0.8); margin-top: -500px; height: 300px;"></div>
+        <script>
+            document.getElementById('introduction').innerHTML =
+                    marked("## This is in markdown");
+        </script>
+
+        <div class="box-center" id="downloads" style="border: 6px dotted rgba(204, 51, 51, 0.8); margin-top: 400px; height: 300px;">
+            <p>Downloads</p>
+            <div id="downloads-center" style="margin-top: -400px;"></div>
+        </div>
+
+        <div class="box-center" id="changelog" style="border: 6px dotted rgba(204, 51, 51, 0.8); margin-top: 400px; height: 300px;">
+            <p>Changelog</p>
+            <div id="changelog-center" style="margin-top: -400px;"></div>
+        </div>
+
+        <div class="box-center" id="about" style="border: 6px dotted rgba(204, 51, 51, 0.8); margin-top: 400px; height: 300px;">
+            <p>About</p>
+            <div id="about-center" style="margin-top: -400px;"></div>
+        </div>
+
         <footer id="foot">
-            <p class="box-center" style="padding-top: 15px;">&copy;SE02 SDU, Odense Serviox</p>
+            <p class="box-center" style="padding-top: 15px;">&copy;SE02 SDU, Odense Aservio</p>
         </footer>
 </html>

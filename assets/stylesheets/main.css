@@ -1,7 +1,7 @@
 /* Hard reset to allow for more 
     compatiblity across platforms.
 */
-
+/*
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,10 +24,14 @@ time, mark, audio, video {
 }
 
 /* HTML5 display-role reset for older browsers */
+/*
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+
+
+
 
 body {
     line-height: 1;
@@ -51,12 +55,18 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-
+*/
 /*----------CSS-------------*/
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: "Verdana";
     font-size: 18px;
+    color: white;
+    background-color: #006666;
 }
 
 .wrapper {
@@ -98,28 +108,11 @@ body {
 
 .box-center {
     position: relative;
-    width:20%;
+    width:60%;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
-}
-
-.parallax {
-    background-repeat: no-repeat;
-    position: relative;
-
-    /* Set a specific height */
-    height: 500px; 
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.clearfix {
-    clear: both;
+    text-align: left;
 }
 
 .button-nav {
@@ -139,7 +132,7 @@ body {
 .button-nav:hover {
     background-color: rgba(255, 255, 255, 0.3);
     color: darkslategray;
-    border: 2px solid #cc4700;
+    border: 2px solid #cc3333;
 }
 
 #parallax-container {
@@ -166,54 +159,24 @@ body {
 }
 
 #navigation {
-    /*position: fixed;
-    top: 0;*/
+    position: fixed;
+    top: 0;
     height: 125px;
     z-index: 1;
 }
 
 #introduction {
-    position:relative;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #cc4700;
-    font-size: 28px;
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 10px;
+    
 }
 
-#undertext {
-    position: relative;
-    width:fit-content;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-
-    color: white;
-    top: 20px;
-}
-
-#content_01 {
-    margin: 0%;
-    margin-top: -250px;
-    background: linear-gradient(to right, #71c4be 0%,#0d9196 50%,#71c4be 100%);
-
-}
-
-#content_02 {
-    margin: 0%;
-    background: -webkit-linear-gradient(left, rgba(226,180,142,1) 0%,rgba(229,138,59,1) 50%,rgba(226,180,142,1) 100%);
-}
-
-#content_03 {
-    margin: 0%;
-    background-color: aquamarine;
+#downloads {
+    
 }
 
 #foot {
     position: relative;
     height: 75px;
-    background: linear-gradient(to top, rgba(255,255,255,0.65) 50%,rgba(0,0,0,0) 100%);
-    color: #cc4700;
+    color: white;
+    font-weight: bold;
 }
 
