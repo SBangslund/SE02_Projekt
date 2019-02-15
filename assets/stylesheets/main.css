@@ -130,14 +130,14 @@ body {
 .button-nav:hover {
     background-color: rgba(255, 255, 255, 0.3);
     color: darkslategray;
-    border: 2px solid #cc3333;
+    border: 2px solid #ff9933;
 }
 
 #parallax-container {
     display: block;
-    background-repeat: round;
     height: 1616px;
     width: auto;
+    margin-bottom: -450px;
 }
 
 #parallax-container div {
@@ -161,30 +161,75 @@ body {
     top: 0;
     height: 125px;
     z-index: 1;
+
+    min-width: 650px;
 }
 
 #quote {
     background-image: url("../icons/brackets.png");
-    background-size: contain;                      /* <------ */
+    background-size: 100% 100%;                      /* <------ */
     background-repeat: no-repeat;
     font-style: italic;
     font-weight: bold;
+    margin-bottom: 5%;
+
+    min-width: 500px;
+    max-width: 1250px;
+}
+
+#introduction-management {
+    margin-top: 30%;
+    margin-bottom: 15%;
+
+    min-width: 200px;
+}
+
+#introduction-diary {
+    margin-top: 30%;
+    margin-bottom: 15%;
+
+    min-width: 200px;
 }
 
 #planning {
+    clear:left;
+    margin-top: 25%;
+    height: 300px;
 
+    min-width: 500px;
+    max-width: 1250px;
 }
 
 #diary {
+    margin-top: 25%; 
+    height: 300px;
 
-}
-
-#introduction {
-
+    min-width: 500px;
+    max-width: 1250px;
 }
 
 #downloads {
+    margin-top: 25%; 
+    height: 300px;
 
+    min-width: 500px;
+    max-width: 1250px;
+}
+
+#changelog {
+    margin-top: 25%; 
+    height: 300px;
+
+    min-width: 500px;
+    max-width: 1250px;
+}
+
+#about {
+    margin-top: 25%; 
+    height: 300px;
+
+    min-width: 500px;
+    max-width: 1250px;
 }
 
 #foot {

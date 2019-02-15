@@ -6,6 +6,7 @@
         <link rel="icon" href="assets/icons/LogoIcon.png">
         <title> Aservio </title>
         <script src="scripts/parallax.js"></script>
+        <script src="scripts/diashow-Management.js"></script>
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -26,55 +27,59 @@
             <div style="background-image: url(assets/images/parallax/layer06.png)"></div>
         </div>
 
-        <div class="box-center" id="quote" style="margin-top: -500px; height: 230px;">
-            <p style="padding: 15px;">" Vi vil vha. et loginsystem begrænse tilgangen til persondata og samtidigt bibeholde et brugervenligt og visualiserende system for pårørende, ansatte og hertil omhandlende borgere. Endvidere vil vi diskutere om systemet overholder persondataloven og tilhørende krav. "</p>
+        <!-- Quote information -->
+        <div class="box-center" id="quote">
+            <p style="padding: 15px;">" Aservio er en platform fokuseret på brugervenlighed og hjælpende visualiserende elementer til de daglige udfordringer. Ved brug af Aservio kan din dagligdag tilpasses efter behov udfra de selvvalgte moduler.  "</p>
             <div id="quote-center" style="margin-top: -25%;"></div>
         </div>
 
-        <div class="box-center" id="introduction" style="height: 300px;">
-            <div class="two-article">
+        <!-- Management and Diary introduction -->
+        <div class="box-center">
+            <div class="two-article" id="introduction-management">
                 <a href="#planning-center">                
                     <img class="box-image" src="assets/icons/OrganiserIcon.png" alt="Planner" style="width: 300px; height: 200px;">
                 </a>
                 <p class="box-text">Nulla facilisi. Suspendisse lorem justo, varius eu tortor in, vehicula venenatis nisi. Proin congue orci eget lorem congue tempus. Sed orci purus, condimentum vel gravida ac, pharetra vel turpis. Nam porttitor nulla elit, ut consequat metus sagittis sed. Ut erat leo, tempor at turpis vitae, venenatis mattis mi. Phasellus condimentum risus sapien, eget venenatis leo vestibulum ac. Aliquam a orci.</p>
             </div>
-            <div class="two-article">
+            <div class="two-article" id="introduction-diary">
                 <a href="#diary-center">
                     <img class="box-image" src="assets/icons/DiaryIcon.png" alt="Diary" style="width: 177px; height: 200px;">
                 </a>
                 <p class="box-text">Maecenas tortor dui, lobortis in vulputate eget, accumsan quis lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus fringilla lacus id mi luctus molestie. Nullam blandit vitae sapien sodales volutpat. Quisque faucibus ultricies consectetur. Quisque non augue metus. Phasellus ut sollicitudin quam, eget pretium mauris. Nam congue massa. </p>
             </div>
         </div>
-        <!--<script>
-            document.getElementById('introduction').innerHTML =
-                    marked("## This is in markdown");
-        </script>-->
 
-        <div class="box-center" id="planning" style="border: 6px dotted rgba(204, 51, 51, 0.8); margin-top: 25%; height: 300px;">
-            <p>Planning</p>
+        <!-- Management information -->
+        <div class="box-center" id="planning" style="border: 6px dotted #ff9933;">
+            <p>Management</p>
             <div id="planning-center" style="margin-top: -25%;"></div>
         </div>
 
-        <div class="box-center" id="diary" style="border: 6px dotted rgba(204, 51, 51, 0.8); margin-top: 25%; height: 300px;">
+        <!-- Diary information -->
+        <div class="box-center" id="diary" style="border: 6px dotted #ff9933;">
             <p>Diary</p>
             <div id="diary-center" style="margin-top: -25%;"></div>
         </div>
 
-        <div class="box-center" id="downloads" style="border: 6px dotted rgba(204, 51, 51, 0.8); margin-top: 25%; height: 300px;">
+        <!-- Downloads -->
+        <div class="box-center" id="downloads" style="border: 6px dotted #ff9933; ">
             <p>Downloads</p>
             <div id="downloads-center" style="margin-top: -25%;"></div>
         </div>
 
-        <div class="box-center" id="changelog" style="border: 6px dotted rgba(204, 51, 51, 0.8); margin-top: 25%; height: 300px;">
+        <!-- Changelog -->
+        <div class="box-center" id="changelog" style="border: 6px dotted #ff9933; ">
             <p>Changelog</p>
             <div id="changelog-center" style="margin-top: -25%;"></div>
         </div>
 
-        <div class="box-center" id="about" style="border: 6px dotted rgba(204, 51, 51, 0.8); margin-top: 25%; height: 300px;">
+        <!-- About -->
+        <div class="box-center" id="about" style="border: 6px dotted #ff9933; ">
             <p>About</p>
             <div id="about-center" style="margin-top: -25%;"></div>
         </div>
 
+        <!-- Footer -->
         <footer id="foot">
             <p class="box-center" style="padding-top: 15px;">&copy;SE02 SDU, Odense Aservio</p>
         </footer>
