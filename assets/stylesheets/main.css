@@ -64,6 +64,14 @@ body {
     background-color: #006666;
 }
 
+hr {
+    border: 1px solid white;
+}
+
+h3 {
+    font-weight: bold;
+}
+
 .wrapper {
     position: relative;
     width: 100%;
@@ -133,6 +141,46 @@ body {
     border: 2px solid #ff9933;
 }
 
+.button-intro {
+    float: left;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 4px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.0);
+    border: 2px solid #009999;
+}
+
+.button-intro:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: darkslategray;
+    border: 2px solid #ff9933;
+}
+
+.button-downloads {
+    float: right;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 4px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #ff9933;
+    border: 2px solid #ff9933;
+}
+
+.button-downloads:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: darkslategray;
+    border: 2px solid #ff9933;
+}
+
 #parallax-container {
     display: block;
     height: 1616px;
@@ -165,54 +213,59 @@ body {
     min-width: 650px;
 }
 
-#quote {
-    background-image: url("../icons/brackets.png");
-    background-size: 100% 100%;                      /* <------ */
-    background-repeat: no-repeat;
-    font-style: italic;
-    font-weight: bold;
-    margin-bottom: 5%;
+#introduction-wrapper {
+    margin-top: 10%; 
+    height: 550px;
+    background-color: rgba(34, 125, 116, 0.3); 
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
 
+#introduction {
     min-width: 500px;
     max-width: 1250px;
+    height: 300px;
 }
 
 #introduction-management {
-    margin-top: 30%;
-    margin-bottom: 15%;
-
     min-width: 200px;
 }
 
 #introduction-diary {
-    margin-top: 30%;
-    margin-bottom: 15%;
-
     min-width: 200px;
+}
+
+#planning-wrapper {
+    margin-top: 10%;
+    height: 800px;
 }
 
 #planning {
     clear:left;
-    margin-top: 25%;
-    height: 300px;
+    height: fit-content;
 
-    min-width: 500px;
+    min-width: 1200px;
     max-width: 1250px;
+}
+
+#diary-wrapper {
+    margin-top: 2%;
+    height: 800px;
 }
 
 #diary {
-    margin-top: 25%; 
-    height: 300px;
-
-    min-width: 500px;
+    min-width: 1200px;
     max-width: 1250px;
 }
 
-#downloads {
-    margin-top: 25%; 
-    height: 300px;
+#downloads-wrapper {
+    height: 850px;
+    margin-top: 8%; 
+    background-color: rgba(0, 190, 172, 0.8);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
 
-    min-width: 500px;
+#downloads {
+    min-width: 1200px;
     max-width: 1250px;
 }
 
