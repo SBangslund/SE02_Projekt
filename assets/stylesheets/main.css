@@ -279,10 +279,30 @@ h3 {
 
 #about {
     margin-top: 25%; 
-    height: 300px;
+    height: fit-content;
 
     min-width: 500px;
     max-width: 1250px;
+}
+
+#purpose {
+    border: 2px solid red;
+    margin-bottom: 50px;
+}
+
+#problem {
+    border: 2px solid blue;
+    margin-bottom: 50px;
+}
+
+#pictures {
+    border: 2px solid red;
+    margin-bottom: 50px;
+}
+
+#aboutUs {
+    border: 2px solid red;
+    margin-bottom: 50px;
 }
 
 #foot {
@@ -291,4 +311,6 @@ h3 {
     color: white;
     font-weight: bold;
 }
+
+
 
