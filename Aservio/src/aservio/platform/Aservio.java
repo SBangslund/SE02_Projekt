@@ -1,7 +1,7 @@
 /*
  * Created by Samuel Bangslund, Odense SDU Software Engineering 1. semester.
  */
-package aservio;
+package aservio.platform;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,10 +17,11 @@ public class Aservio extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("management/FXMLManager.fxml"));
         
         Scene scene = new Scene(root);
-        
+
+        stage.setTitle("Aservio");
         stage.setScene(scene);
         stage.show();
     }
