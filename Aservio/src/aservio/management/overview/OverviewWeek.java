@@ -1,15 +1,14 @@
 package aservio.management.overview;
 
-import javafx.scene.Parent;
-
 public class OverviewWeek extends Overview {
 
-    protected OverviewWeek(Parent view) {
-        super(view);
+    public OverviewWeek() {
+        this.initialize();
     }
 
     @Override
-    public void initialize() {
-
+    protected void initialize() {
+        // TODO create week overview
+        System.out.println("Created overview week");
     }
 }
