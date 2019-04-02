@@ -52,9 +52,7 @@ public class OverviewDay extends Overview implements Initializable{
         hourContentPanes = new ArrayList<>();
         gridPane.add(new Label("something"), 1, 1);
         fillGrid(gridPane);
-        gridPane.setGridLinesVisible(true);
-
-    }
+        gridPane.setGridLinesVisible(true); }
 
     public void fillGrid(GridPane pane){
         fillTime(pane);
