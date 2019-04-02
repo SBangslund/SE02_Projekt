@@ -8,10 +8,6 @@ import javafx.scene.layout.Pane;
 
 public class OverviewMonth extends Overview {
 
-    public OverviewMonth() {
-        this.initialize();
-    }
-
     @Override
     protected void initialize() {
         // TODO create month overview
