@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<<<<<<< HEAD
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -81,5 +82,12 @@
             <Label text="23" GridPane.rowIndex="24" />
          </children>
       </GridPane>
+=======
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.overview.OverviewWeek">
+   <children>
+      <Label layoutX="105.0" layoutY="75.0" text="Label" />
+>>>>>>> feature.SePlanlægning
    </children>
 </AnchorPane>

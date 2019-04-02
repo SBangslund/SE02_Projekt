@@ -3,19 +3,19 @@
  */
 package aservio.management;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import aservio.management.overview.Overview;
-import aservio.management.overview.OverviewDay;
-import aservio.management.overview.OverviewMonth;
-import aservio.management.overview.OverviewWeek;
+import aservio.management.overview.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -49,10 +49,12 @@ public class Management implements Initializable {
     private static Management instance; // Singleton reference
 
     private List<Overview> views = new ArrayList<>();
+    private OverviewManager overviewManager;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         instance = this;
+        overviewManager = new OverviewManager();
     }
 
     public void setCenterView(Node node) {
@@ -73,19 +75,16 @@ public class Management implements Initializable {
 
     @FXML
     public void handleShowMonth(ActionEvent actionEvent) {
-        Overview view = new OverviewMonth();
-        view.show();
+        overviewManager.showMonth();
     }
 
     @FXML
     public void handleShowWeek(ActionEvent actionEvent) {
-        Overview view = new OverviewWeek();
-        view.show();
+        overviewManager.showWeek();
     }
 
     @FXML
     public void handleShowDay(ActionEvent actionEvent) {
-        Overview view = new OverviewDay();
-        view.show();
+        overviewManager.showDay();
     }
 }

@@ -26,7 +26,7 @@ public abstract class Overview {
      * Set the view for the {@link Overview} to visualize.
      * @param view to set.
      */
-    protected void setView(Parent view) {
+    public void setView(Parent view) {
         this.view = view;
     }
 

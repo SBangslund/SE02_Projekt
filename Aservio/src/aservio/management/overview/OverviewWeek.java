@@ -12,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
+<<<<<<< HEAD
 public class OverviewWeek extends Overview implements CalenderInterface {
 
     private int[] days;
@@ -31,5 +32,11 @@ public class OverviewWeek extends Overview implements CalenderInterface {
             System.out.println("Could not find file");
         }
         super.setView(root);
+=======
+    @Override
+    public void initialize() {
+        // TODO create week overview
+        System.out.println("Created overview week");
+>>>>>>> feature.SePlanlægning
     }
 }
