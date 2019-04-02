@@ -23,11 +23,11 @@ public interface CalenderInterface {
     int SUNDAY = 8;
     
     // Constatns names for days
-    String MONDAY_NAME = "monday";
-    String TUESDAY_NAME = "tuesday";
-    String WEDNESDAY_NAME = "wednesday";
-    String THURSDAY_NAME = "thursday";
-    String FRIDAY_NAME = "friday";
-    String SATURDAY_NAME = "saturday";
-    String SUNDAY_NAME = "sunday";
+    String MONDAY_NAME = "Mandag";
+    String TUESDAY_NAME = "Tirsdag";
+    String WEDNESDAY_NAME = "Onsdag";
+    String THURSDAY_NAME = "Torsdag";
+    String FRIDAY_NAME = "Fredag";
+    String SATURDAY_NAME = "Lørdag";
+    String SUNDAY_NAME = "Søndag";
 }
