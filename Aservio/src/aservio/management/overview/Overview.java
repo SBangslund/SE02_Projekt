@@ -1,13 +1,15 @@
 package aservio.management.overview;
 
 import aservio.management.Management;
+import aservio.management.interfaces.Pageable;
+import aservio.management.interfaces.ShowableActivity;
 import javafx.scene.Parent;
 import java.util.Date;
 
 /**
  * An abstraction of an overview for the {@link Management} class. This is needed to display months, weeks and days.
  */
-public abstract class Overview {
+public abstract class Overview implements ShowableActivity, Pageable {
 
     private Parent view;
     protected Date date;

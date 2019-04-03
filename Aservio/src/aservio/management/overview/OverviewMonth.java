@@ -1,16 +1,16 @@
 package aservio.management.overview;
 
+import aservio.management.activities.ActivityList;
+import aservio.management.interfaces.Pageable;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
 import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.*;
 
-public class OverviewMonth extends Overview implements Initializable {
+public class OverviewMonth extends Overview implements Initializable, Pageable {
 
     @FXML
     private GridPane gridPane;
@@ -38,13 +38,31 @@ public class OverviewMonth extends Overview implements Initializable {
                 days.add(day);
             }
         }
+
+        populateDays();
     }
 
     public void populateDays() {
         GregorianCalendar calender = new GregorianCalendar();
         calender.setTimeZone(TimeZone.getTimeZone("GMT+2"));
+
         for (Pane day: days) {
             Label name = (Label)day.getChildren().get(0);
         }
+    }
+
+    @Override
+    public void next() {
+
+    }
+
+    @Override
+    public void previous() {
+
+    }
+
+    @Override
+    public void showActivities(ActivityList activities) {
+
     }
 }

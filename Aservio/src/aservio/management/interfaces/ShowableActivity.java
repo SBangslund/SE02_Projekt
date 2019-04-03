@@ -1,5 +1,7 @@
 package aservio.management.interfaces;
 
+import aservio.management.activities.ActivityList;
+
 public interface ShowableActivity {
-    void show();
+    void showActivities(ActivityList activities);
 }

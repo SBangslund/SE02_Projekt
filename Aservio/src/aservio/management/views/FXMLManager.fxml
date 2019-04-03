@@ -82,7 +82,7 @@
                               <MenuItem mnemonicParsing="false" onAction="#handleShowDay" text="Day" />
                           </items>
                         </SplitMenuButton>
-                        <Label text="April" HBox.hgrow="ALWAYS">
+                        <Label fx:id="overviewTitle" text="April" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="Verdana" size="18.0" />
                            </font>
