@@ -3,11 +3,13 @@
 .label_weekDay {
     -fx-font-size: 40;
     -fx-text-fill: grey;
+    -fx-padding: 10 10 0 10;
 }
 
 .label_moreInformation {
     -fx-font-size: 20;
     -fx-text-fill: teal;
+    -fx-padding: 0 10 10 10;
 }
 
 .cell {
@@ -18,3 +20,5 @@
 .scoll-pane{
     -fx-background-color: transparent;
 }
+
+.text
