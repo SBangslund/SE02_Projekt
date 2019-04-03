@@ -2,6 +2,7 @@ package aservio.management.overview;
 
 import aservio.management.Management;
 import javafx.scene.Parent;
+import java.util.Date;
 
 /**
  * An abstraction of an overview for the {@link Management} class. This is needed to display months, weeks and days.
@@ -9,9 +10,14 @@ import javafx.scene.Parent;
 public abstract class Overview {
 
     private Parent view;
+    protected Date date;
+
+    protected Overview(Date date) {
+        this.date = date;
+    }
 
     /**
-     * Initilizes all the necessary nodes for this view. This needs to be implemented by inherited classes.
+     * Initializes all the necessary nodes for this view. This needs to be implemented by inherited classes.
      */
     protected abstract void initialize();
 
@@ -32,5 +38,9 @@ public abstract class Overview {
 
     public Parent getView() {
         return view;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

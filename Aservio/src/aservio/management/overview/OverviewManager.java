@@ -3,10 +3,16 @@ package aservio.management.overview;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
-
 import java.io.IOException;
+import java.util.Date;
 
 public class OverviewManager {
+
+    private Date currentDate;
+
+    public OverviewManager() {
+        currentDate = new Date();
+    }
 
     public void showMonth() {
         Overview view = new OverviewMonth();

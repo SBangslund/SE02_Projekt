@@ -1,37 +1,50 @@
 package aservio.management.overview;
 
-import javafx.geometry.Insets;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import java.net.URL;
+import java.util.*;
 
-public class OverviewMonth extends Overview {
+public class OverviewMonth extends Overview implements Initializable {
+
+    @FXML
+    private GridPane gridPane;
+
+    private List<Pane> days = new ArrayList<>();
+
+    public OverviewMonth() {
+        super(new Date());
+    }
 
     @Override
     protected void initialize() {
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         // TODO create month overview
-
-        // Merely testing how the view could be created.
         System.out.println("Created overview month");
-        AnchorPane root = new AnchorPane();
-        GridPane grid = new GridPane();
-        grid.setVgap(1);
-        grid.setHgap(1);
-        grid.setGridLinesVisible(true);
-
-        // TODO Populate GridPane automatically based on node width and number of days in month.
-        // Keep it to 7x5?
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 5; j++) {
-                Pane pane = new Pane();
-                pane.setPrefWidth(50);
-                pane.setPrefHeight(50);
-                grid.add(pane, i, j);
+                Pane day = new Pane();
+                day.getChildren().add(new Label(i + ":" + j));
+                gridPane.add(day, i, j);
+                days.add(day);
             }
         }
+    }
 
-        root.getChildren().add(grid);
-        super.setView(root);
+    public void populateDays() {
+        GregorianCalendar calender = new GregorianCalendar();
+        calender.setTimeZone(TimeZone.getTimeZone("GMT+2"));
+        for (Pane day: days) {
+            Label name = (Label)day.getChildren().get(0);
+        }
     }
 }
