@@ -1,15 +1,32 @@
 package aservio.management.overview;
 
-import java.io.IOException;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Label;
+import aservio.management.activities.ActivityList;
 
-public class OverviewWeek extends Overview implements CalenderInterface {
+import java.util.Date;
 
+public class OverviewWeek extends Overview {
+
+    protected OverviewWeek() {
+        super(new Date());
+    }
 
     @Override
     protected void initialize() {
      
+    }
+
+    @Override
+    public void next() {
+
+    }
+
+    @Override
+    public void previous() {
+
+    }
+
+    @Override
+    public void showActivities(ActivityList activities) {
+
     }
 }

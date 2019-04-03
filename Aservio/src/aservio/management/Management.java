@@ -26,6 +26,8 @@ import javafx.scene.layout.*;
  */
 public class Management implements Initializable {
     @FXML
+    private Label overviewTitle;
+    @FXML
     private VBox wrapper;
     @FXML
     private MenuBar menubar;
@@ -55,6 +57,7 @@ public class Management implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         instance = this;
         overviewManager = new OverviewManager();
+        overviewManager.showMonth();
     }
 
     public void setCenterView(Node node) {
@@ -86,5 +89,9 @@ public class Management implements Initializable {
     @FXML
     public void handleShowDay(ActionEvent actionEvent) {
         overviewManager.showDay();
+    }
+
+    public void setOverviewTitle(String title) {
+        overviewTitle.setText(title);
     }
 }

@@ -9,7 +9,6 @@
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -46,9 +45,6 @@
          <VBox.margin>
             <Insets />
          </VBox.margin>
-         <left>
-            <AnchorPane prefWidth="100.0" BorderPane.alignment="CENTER" />
-         </left>
          <top>
             <HBox spacing="10.0" BorderPane.alignment="CENTER">
                <children>
@@ -86,7 +82,7 @@
                               <MenuItem mnemonicParsing="false" onAction="#handleShowDay" text="Day" />
                           </items>
                         </SplitMenuButton>
-                        <Label text="April" HBox.hgrow="ALWAYS">
+                        <Label fx:id="overviewTitle" text="April" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="Verdana" size="18.0" />
                            </font>
