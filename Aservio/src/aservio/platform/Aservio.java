@@ -21,6 +21,8 @@ public class Aservio extends Application {
         
         Scene scene = new Scene(root);
 
+        stage.setMinWidth(500);
+        stage.setMinHeight(500);
         stage.setTitle("Aservio");
         stage.setScene(scene);
         stage.show();
