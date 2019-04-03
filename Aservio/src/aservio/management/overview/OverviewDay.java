@@ -5,18 +5,14 @@ import aservio.management.Management;
 import aservio.management.activities.Activity;
 import aservio.management.activities.ActivityList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.text.Text;
 
-import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
@@ -39,12 +35,12 @@ public class OverviewDay extends Overview implements Initializable{
     ActivityList activitieList;
     Map<Integer, List<Activity>> activitiesMap;
 
-
     public OverviewDay(ActivityList activitiesList) {
         this(new Date(), activitiesList);
     }
 
     public OverviewDay(Date date, ActivityList activityList){
+        super(date);
         this.date = date;
         this.initialize();
     }
@@ -59,7 +55,7 @@ public class OverviewDay extends Overview implements Initializable{
 
         hourPanes = new ArrayList<>();
         hourContentPanes = new ArrayList<>();
-        fillGrid(gridPane);
+        fillGrid(gridPane, activitieList.getActivities());
     }
 
     public void fillGrid(GridPane pane, List<Activity> activities){
@@ -89,7 +85,11 @@ public class OverviewDay extends Overview implements Initializable{
         }
     }
 
-    public void sortActivities()
+    public void sortActivities(ActivityList activityList){
+        for (Activity act : activityList.getActivities()) {
+
+        }
+    }
 
     @Override
     protected void initialize() {
@@ -126,6 +126,7 @@ public class OverviewDay extends Overview implements Initializable{
 
     @Override
     public void showActivities(ActivityList activities) {
+
 
     }
 }

@@ -1,6 +1,7 @@
 package aservio.management.overview;
 
 import aservio.management.Management;
+import aservio.management.activities.ActivityList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -28,7 +29,7 @@ public class OverviewManager {
     }
 
     public void showDay() {
-        Overview view = new OverviewDay();
+        Overview view = new OverviewDay(new ActivityList());
         view.setView(getFXML("../views/FXMLOverviewDay.fxml"));
         view.show();
     }
@@ -37,7 +38,7 @@ public class OverviewManager {
         Management.getInstance().setOverviewTitle(title);
     }
 
-    private Parent getFXML(String url) {
+    public Parent getFXML(String url) {
         try {
             return FXMLLoader.load(getClass().getResource(url));
         } catch (IOException e) {
