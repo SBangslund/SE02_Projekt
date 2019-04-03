@@ -2,16 +2,23 @@ package aservio.management.overview;
 
 import aservio.management.activities.ActivityList;
 
+import java.net.URL;
 import java.util.Date;
+import java.util.ResourceBundle;
 
 public class OverviewDay extends Overview {
 
-    protected OverviewDay() {
+    public OverviewDay() {
         super(new Date());
     }
 
     @Override
     protected void initialize() {
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         // TODO create day overview
         System.out.println("Created overview day");
     }

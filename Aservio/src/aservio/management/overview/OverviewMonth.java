@@ -7,7 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.MonthDay;
 import java.util.*;
 
 public class OverviewMonth extends Overview implements Initializable, Pageable {
@@ -23,42 +26,44 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
 
     @Override
     protected void initialize() {
-
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // TODO create month overview
         System.out.println("Created overview month");
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 5; j++) {
-                Pane day = new Pane();
-                day.getChildren().add(new Label(i + ":" + j));
-                gridPane.add(day, i, j);
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 7; j++) {
+                VBox day = new VBox();
+                day.getChildren().add(new Label(j + ":" + i));
+                gridPane.add(day, j, i);
                 days.add(day);
             }
         }
 
-        populateDays();
+        populateDays(2);
     }
 
-    public void populateDays() {
+    public void populateDays(int month) {
+        days.clear();
         GregorianCalendar calender = new GregorianCalendar();
+        GregorianCalendar monthCalender = new GregorianCalendar(calender.get(Calendar.YEAR), month, 1);
         calender.setTimeZone(TimeZone.getTimeZone("GMT+2"));
-
-        for (Pane day: days) {
-            Label name = (Label)day.getChildren().get(0);
+        for (int i = 0; i < MonthDay.of(monthCalender.get(Calendar.MONTH), monthCalender.get(Calendar.DAY_OF_MONTH)).getMonth().length(monthCalender.isLeapYear(0)); i++) {
+            Date date = new GregorianCalendar(monthCalender.get(Calendar.YEAR), monthCalender.get(Calendar.MONTH), i).getTime();
+            days.get(i).getChildren().add(new Label((new SimpleDateFormat("EEEE").format(date))));
+            days.get(i).getChildren().add(new Label(MonthDay.of(monthCalender.get(Calendar.MONTH), i + 1).toString()));
         }
     }
 
     @Override
     public void next() {
-
+        populateDays(3);
     }
 
     @Override
     public void previous() {
-
+        populateDays(1);
     }
 
     @Override
