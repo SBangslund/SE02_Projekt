@@ -113,4 +113,19 @@ public class OverviewDay extends Overview implements Initializable{
         return dateFormatSymbols;
 
     }
+
+    @Override
+    public void next() {
+
+    }
+
+    @Override
+    public void previous() {
+
+    }
+
+    @Override
+    public void showActivities(ActivityList activities) {
+
+    }
 }

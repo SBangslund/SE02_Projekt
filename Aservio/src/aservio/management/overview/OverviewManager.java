@@ -1,12 +1,19 @@
 package aservio.management.overview;
 
+import aservio.management.Management;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
-
 import java.io.IOException;
+import java.util.Date;
 
 public class OverviewManager {
+
+    private Date currentDate;
+
+    public OverviewManager() {
+        currentDate = new Date();
+    }
 
     public void showMonth() {
         Overview view = new OverviewMonth();
@@ -24,6 +31,10 @@ public class OverviewManager {
         Overview view = new OverviewDay();
         view.setView(getFXML("../views/FXMLOverviewDay.fxml"));
         view.show();
+    }
+
+    private void setTitle(String title) {
+        Management.getInstance().setOverviewTitle(title);
     }
 
     private Parent getFXML(String url) {
