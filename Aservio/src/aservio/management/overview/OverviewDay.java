@@ -2,6 +2,8 @@ package aservio.management.overview;
 
 
 import aservio.management.Management;
+import aservio.management.activities.Activity;
+import aservio.management.activities.ActivityList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,27 +18,33 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class OverviewDay extends Overview implements Initializable{
 
     @FXML
     public GridPane gridPane;
-    public Label labelTid;
-    public Label labelDate;
     public ScrollPane scrollPane;
+    public Label DayOfWeekLabel;
+    public Label moreInformationLabel;
 
     Date date;
     Parent root;
     ArrayList<Pane> hourPanes;
     ArrayList<Pane> hourContentPanes;
 
-    public OverviewDay() {
-        this(new Date());
+    ActivityList activitieList;
+    Map<Integer, List<Activity>> activitiesMap;
+
+
+    public OverviewDay(ActivityList activitiesList) {
+        this(new Date(), activitiesList);
     }
 
-    public OverviewDay(Date date){
+    public OverviewDay(Date date, ActivityList activityList){
         this.date = date;
         this.initialize();
     }
@@ -44,43 +52,65 @@ public class OverviewDay extends Overview implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        scrollPane.setFitToHeight(true);
         scrollPane.setFitToWidth(true);
-        System.out.println("Created overview day");
-        labelDate.setText(String.format("%s, den %tD", new SimpleDateFormat("EEE", new Locale("da", "DK")).format(date.getTime()), Calendar.getInstance().getTime()));
+
+        DayOfWeekLabel.setText(String.format("%s", new SimpleDateFormat("EEEEE",defineLocaleDate()).format(date.getTime())));
+        moreInformationLabel.setText(String.format("den %tD", Calendar.getInstance().getTime()));
+
         hourPanes = new ArrayList<>();
         hourContentPanes = new ArrayList<>();
-        gridPane.add(new Label("something"), 1, 1);
         fillGrid(gridPane);
-        gridPane.setGridLinesVisible(true); }
+    }
 
-    public void fillGrid(GridPane pane){
+    public void fillGrid(GridPane pane, List<Activity> activities){
         fillTime(pane);
-        fillTimeContent(pane, new ArrayList<String>());
+        fillTimeContent(pane, activities);
     }
     
-    public void fillTime(GridPane pane){
-        for (int i = 1; i < 23; i++) {
+    public void fillTime(GridPane pane) {
+        for (int i = 0; i < 24; i++) {
             Pane hour = new Pane();
-            pane.setMinHeight(30);
+            hour.setMinHeight(30);
+            hour.getStyleClass().add("cell");
             hour.getChildren().add(new Text(i < 10 ? "0" + Integer.toString(i) : Integer.toString(i)));
             pane.add(hour, 0, i);
             hourPanes.add(hour);
         }
     }
 
-    public void fillTimeContent(GridPane pane, ArrayList<String> activities){
-        for (int i = 1; i < 23; i++) {
+    public void fillTimeContent(GridPane pane, List<Activity> activities){
+        for (int i = 0; i < 24; i++) {
             Pane content = new Pane();
-            pane.setMinHeight(30);
+            content.setMinHeight(30);
+            content.getStyleClass().add("cell");
             content.getChildren().add(new Text("Activitynumber: " +  Math.random() * i));
             pane.add(content, 1, i);
             hourPanes.add(content);
         }
     }
 
+    public void sortActivities()
+
     @Override
     protected void initialize() {
         
+    }
+
+    private DateFormatSymbols defineLocaleDate(){
+        Locale locale = new Locale("da", "DK");
+        DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
+        dateFormatSymbols.setWeekdays(new String[]{
+                "Unused",
+                "Søndag",
+                "Mandag",
+                "Tirsdag",
+                "Onsdag",
+                "Torsdag",
+                "Fredag",
+                "Lørdag"
+        });
+
+        return dateFormatSymbols;
+
     }
 }

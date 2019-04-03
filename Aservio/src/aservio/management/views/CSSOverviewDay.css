@@ -1,0 +1,20 @@
+
+
+.label_weekDay {
+    -fx-font-size: 40;
+    -fx-text-fill: grey;
+}
+
+.label_moreInformation {
+    -fx-font-size: 20;
+    -fx-text-fill: teal;
+}
+
+.cell {
+    -fx-border-color: silver;
+    -fx-border-width: 0 0 1 0;
+}
+
+.scoll-pane{
+    -fx-background-color: transparent;
+}
