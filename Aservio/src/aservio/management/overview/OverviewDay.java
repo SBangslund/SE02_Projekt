@@ -66,6 +66,8 @@ public class OverviewDay extends Overview implements Initializable {
 
         //adding test activities;
         activityList.getActivities().add(new Activity("Løbe", new Date(), standartEndDate(new Date())));
+        activityList.getActivities().add(new Activity("Tournament", new Date(), standartEndDate(new Date())));
+
         activityList.getActivities().add(new Activity("Meeting", new GregorianCalendar(2019, Calendar.APRIL, 2, 12, 20).getTime(), standartEndDate(new Date())));
 
 
@@ -85,6 +87,7 @@ public class OverviewDay extends Overview implements Initializable {
             hour.getStyleClass().add("cell");
             hour.getChildren().add(new Text(i < 10 ? "0" + Integer.toString(i) : Integer.toString(i)));
             gridPane.add(hour, 0, i);
+            //gridPane.add(hour, 1, i);
             hourPanes.add(hour);
         }
     }
@@ -97,42 +100,38 @@ public class OverviewDay extends Overview implements Initializable {
 
     //Test, Creating stardart ending dates for testpurposes
     public Date standartEndDate(Date date) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.HOUR_OF_DAY, 5);
-        return cal.getTime();
+        Calendar c = getCalendarWithSetTime(date);
+        c.add(Calendar.HOUR_OF_DAY, 5);
+        return c.getTime();
     }
 
     public void showActivity(Activity activity) {
-        Calendar c = Calendar.getInstance();
-        c.setTime(activity.getStartDate());
-        int startHour = c.get(Calendar.HOUR_OF_DAY);
-        int startMin = c.get(Calendar.MINUTE);
+        int eventButtonWidth = 100;
 
-        c.setTime(activity.getEndDate());
-        int endHour = c.get(Calendar.HOUR_OF_DAY);
-        int endMin = c.get(Calendar.MINUTE);
-        System.out.println(startHour +" " + startMin + " " +endHour + " " +endMin);
+        int startHour = getCalendarWithSetTime(activity.getStartDate()).get(Calendar.HOUR_OF_DAY);
+        int startMin = getCalendarWithSetTime(activity.getStartDate()).get(Calendar.MINUTE);
 
-        Text description = new Text(activity.getDescription());
-        description.getStyleClass().add("buttonContent");
-        Text timeSlot = new Text(activity.getTimeSlotString());
-        timeSlot.getStyleClass().add("buttonContent");
+        int endHour = getCalendarWithSetTime(activity.getEndDate()).get(Calendar.HOUR_OF_DAY);
+        int endMin = getCalendarWithSetTime(activity.getEndDate()).get(Calendar.MINUTE);
 
-        VBox buttonContent = new VBox();
-        buttonContent.getChildren().add(description);
-        buttonContent.getChildren().add(timeSlot);
+/**
+ * Use this in case there has to be shown more on the button, than only description and timeslot
+ */
+//        Text buttonContentText = new Text(String.format("%s\n%s", activity.getDescription(), activity.getTimeSlotString()));
+//        buttonContentText.getStyleClass().add("buttonContent");
+//
+//        VBox buttonContent = new VBox();
+//        buttonContent.getChildren().add(buttonContentText);
 
-        Button eventButton = new Button("", buttonContent);
+//        Button eventButton = new Button("", buttonContent);
+
+        Button eventButton = new Button();
+        eventButton.setText(String.format("%s\n%s", activity.getDescription(), activity.getTimeSlotString()));
 
         //Calculating the position of the event, y relative to the height of the node
         int yStart = (((startHour * 60) + startMin) * hourPanes.size() * 30) / 1440;
         int yEnd = (((endHour * 60) + endMin) * hourPanes.size() * 30) / 1440;
-        int xStart = spaceUsed(yStart, yEnd) ? 120 : 60;
-
-        System.out.println(spaceUsed(yStart, yEnd));
-
-        System.out.println("yStart " + yStart + " yEnd: " + yEnd);
+        int xStart = spaceUsed(yStart, yEnd) == 1 ? eventButtonWidth : eventButtonWidth * spaceUsed(yStart, yEnd);
 
 
         eventButton.setLayoutX(xStart);
@@ -140,12 +139,17 @@ public class OverviewDay extends Overview implements Initializable {
         //eventButton.getStyleClass().add("button");
 
         eventButton.setPrefHeight(yEnd - yStart);
-        eventButton.setPrefWidth(60);
+        eventButton.setPrefWidth(eventButtonWidth);
 
-        System.out.println(eventButton.getPrefHeight() + " " + eventButton.getLayoutY());
         eventButtonList.add(eventButton);
         normalPane.getChildren().add(eventButton);
 
+    }
+
+    public Calendar getCalendarWithSetTime(Date date){
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        return c;
     }
 
     @Override
@@ -153,14 +157,15 @@ public class OverviewDay extends Overview implements Initializable {
 
     }
 
-    public boolean spaceUsed(double yStart, double yEnd) {
+    public int spaceUsed(double yStart, double yEnd) {
+        int countActivitiesInTimeslot = 1;
         for (Button b : eventButtonList) {
-            System.out.println(String.format("b1 start: %f, b1.end: %f, b2.start: %f, b2.end: %f", b.getLayoutY(), b.getLayoutY() + b.getPrefHeight(), yStart, yStart +  (yEnd - yStart)));
-            if ((yStart > b.getLayoutY() && yStart < b.getLayoutY() + b.getPrefHeight()) || yEnd > b.getLayoutY() && ) {
-                return true;
+
+            if ((yStart >= b.getLayoutY() && yStart <= b.getLayoutY() + b.getPrefHeight()) || yEnd >= b.getLayoutY() && yEnd <= b.getLayoutY() + b.getPrefHeight() || yStart <= b.getLayoutY() && yEnd >= b.getLayoutY() + b.getPrefHeight()) {
+                countActivitiesInTimeslot++;
             }
         }
-        return false;
+        return countActivitiesInTimeslot;
     }
 
     private DateFormatSymbols defineLocaleDate() {
@@ -183,7 +188,6 @@ public class OverviewDay extends Overview implements Initializable {
 
     @Override
     public void next() {
-
     }
 
     @Override
@@ -193,7 +197,7 @@ public class OverviewDay extends Overview implements Initializable {
 
     @Override
     public void showActivities(ActivityList activities) {
-
+        fillPane(normalPane, activities.getActivities());
 
     }
 }

@@ -23,11 +23,12 @@
 
 .button {
     -fx-background-color: Green;
-
+    -fx-text-fill: white;
+    -fx-alignment: TOP-LEFT;
 }
 
 .button:hover{
-
+    -fx-text-fill: black;
     -fx-background-color: lime;
 }
 

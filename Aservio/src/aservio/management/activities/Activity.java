@@ -47,7 +47,6 @@ public class Activity {
 
     public String getTimeSlotString(){
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
-        System.out.println(formatter.format(getStartDate()));
         return String.format("%s - %s", formatter.format(getStartDate()), formatter.format(getEndDate()));
     }
 }
