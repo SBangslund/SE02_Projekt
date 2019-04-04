@@ -2,48 +2,51 @@ package aservio.management.overview;
 
 import aservio.management.Management;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+
 import java.io.IOException;
-import java.util.Date;
 
 public class OverviewManager {
 
-    private Date currentDate;
-
-    public OverviewManager() {
-        currentDate = new Date();
-    }
+    private Overview currentOverview;
 
     public void showMonth() {
-        Overview view = new OverviewMonth();
-        view.setView(getFXML("../views/FXMLOverviewMonth.fxml"));
-        view.show();
+        updateCurrentOverview(OverviewType.MONTH.getURL());
     }
 
     public void showWeek() {
-        Overview view = new OverviewWeek();
-        view.setView(getFXML("../views/FXMLOverviewWeek.fxml"));
-        view.show();
+        updateCurrentOverview(OverviewType.WEEK.getURL());
     }
 
     public void showDay() {
-        Overview view = new OverviewDay();
-        view.setView(getFXML("../views/FXMLOverviewDay.fxml"));
-        view.show();
+        updateCurrentOverview(OverviewType.DAY.getURL());
     }
 
-    private void setTitle(String title) {
+    public void showNext() {
+        currentOverview.next();
+    }
+
+    public void showPrevious() {
+        currentOverview.previous();
+    }
+
+    private void updateCurrentOverview(String url) {
+        FXMLLoader loader = new FXMLLoader();
+        try {
+            Pane p = loader.load(getClass().getResource(url).openStream());
+            currentOverview = loader.getController();
+            currentOverview.setView(p);
+            currentOverview.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateTitle(String title) {
         Management.getInstance().setOverviewTitle(title);
     }
 
-    private Parent getFXML(String url) {
-        try {
-            return FXMLLoader.load(getClass().getResource(url));
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("Wrong url: " + url);
-        }
-        return new Label("Null");
+    public Overview getCurrentOverview() {
+        return this.currentOverview;
     }
 }
