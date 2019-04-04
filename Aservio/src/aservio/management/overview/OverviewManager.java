@@ -22,7 +22,7 @@ public class OverviewManager {
     }
 
     public void showWeek() {
-        Overview view = new OverviewWeek();
+        Overview view = new OverviewWeek(null);
         view.setView(getFXML("../views/FXMLOverviewWeek.fxml"));
         view.show();
     }
