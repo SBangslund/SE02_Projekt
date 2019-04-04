@@ -94,4 +94,12 @@ public class Management implements Initializable {
     public void setOverviewTitle(String title) {
         overviewTitle.setText(title);
     }
+
+    public void handlePrevious(ActionEvent actionEvent) {
+        overviewManager.showPrevious();
+    }
+
+    public void handleNext(ActionEvent actionEvent) {
+        overviewManager.showNext();
+    }
 }
