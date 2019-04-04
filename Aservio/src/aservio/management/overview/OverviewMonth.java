@@ -11,13 +11,18 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
+import java.time.Month;
 import java.time.MonthDay;
 import java.util.*;
 
 public class OverviewMonth extends Overview implements Initializable, Pageable {
 
     @FXML
-    private GridPane gridPane;
+    private Label labelMonthTitle;
+    @FXML
+    private GridPane gridPaneDays;
+    @FXML
+    private GridPane gridPaneMonth;
 
     private List<Pane> days = new ArrayList<>();
     private int currentMonth;
@@ -40,7 +45,7 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
             for (int j = 0; j < 7; j++) {
                 VBox day = new VBox();
                 day.getChildren().add(new Label(j + ":" + i));
-                gridPane.add(day, j, i);
+                gridPaneMonth.add(day, j, i);
                 days.add(day);
             }
         }
@@ -52,10 +57,11 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
         GregorianCalendar calender = new GregorianCalendar();
         GregorianCalendar monthCalender = new GregorianCalendar(calender.get(Calendar.YEAR), month, 1);
         calender.setTimeZone(TimeZone.getTimeZone("GMT+2"));
+        labelMonthTitle.setText(Month.of(monthCalender.get(Calendar.MONTH)).toString());
 //        System.out.println("First day of the month: " + DayOfWeek.of(monthCalender.get(Calendar.DAY_OF_WEEK) - 1));
         for (int i = 0; i < MonthDay.of(monthCalender.get(Calendar.MONTH), monthCalender.get(Calendar.DAY_OF_MONTH)).getMonth().length(monthCalender.isLeapYear(monthCalender.get(Calendar.YEAR))); i++) {
-            Date date = new GregorianCalendar(monthCalender.get(Calendar.YEAR), monthCalender.get(Calendar.MONTH), i + 1).getTime();
-            days.get(i).getChildren().add(new Label((new SimpleDateFormat("EEEE").format(date))));
+            Date date = new GregorianCalendar(monthCalender.get(Calendar.YEAR), monthCalender.get(Calendar.MONTH), i).getTime();
+            //days.get(i).getChildren().add(new Label((new SimpleDateFormat("EEEE").format(date))));
             days.get(i).getChildren().add(new Label(MonthDay.of(monthCalender.get(Calendar.MONTH), i + 1).toString()));
         }
     }
@@ -69,8 +75,8 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
     @Override
     public void next() {
         if (!days.isEmpty()) {
-            System.out.println((currentMonth % 12) + 1);
-            populateDays((++currentMonth % 12) + 1);
+            System.out.println((currentMonth % 12));
+            populateDays((++currentMonth % 12));
         } else {
             System.err.println("[WARNING][OverviewMonth] has yet to be initialized. populateDays() did not compute.");
         }
@@ -79,8 +85,8 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
     @Override
     public void previous() {
         if (!days.isEmpty()) {
-            System.out.println((currentMonth % 12) + 1);
-            populateDays((--currentMonth % 12) + 1);
+            System.out.println((currentMonth % 12));
+            populateDays((--currentMonth % 12));
         } else {
             System.err.println("[WARNING][OverviewMonth] has yet to be initialized. populateDays() did not compute.");
         }
