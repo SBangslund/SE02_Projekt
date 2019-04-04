@@ -5,15 +5,13 @@ import aservio.management.activities.Activity;
 import aservio.management.activities.ActivityList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import java.net.URL;
@@ -65,6 +63,12 @@ public class OverviewDay extends Overview implements Initializable{
         hourPanes = new ArrayList<>();
         hourContentPanes = new ArrayList<>();
         normalPane.setStyle("-fx-border-color: black");
+
+        //adding test activities;
+        activityList.getActivities().add(new Activity("Løbe", new Date(), standartEndDate(new Date())));
+        activityList.getActivities().add(new Activity("Meeting", new GregorianCalendar(2019, Calendar.APRIL, 2, 8, 20).getTime(), standartEndDate(new Date())));
+
+
         fillPane(normalPane, activityList.getActivities());
 
     }
@@ -86,44 +90,71 @@ public class OverviewDay extends Overview implements Initializable{
     }
 
     public void fillTimeContent(Pane pane, List<Activity> activities){
-        showActivity(new Activity(new Date(), "test11111111111111111111111111"));
-        showActivity(new Activity(new GregorianCalendar(2019, Calendar.APRIL, 2, 8, 20).getTime(), "test2"));
+        activities.stream().forEach(e -> System.out.println(e));
+        activities.stream().forEach(e -> showActivity(e));
 
 
+    }
+
+    //Test, Creating stardart ending dates for testpurposes
+    public Date standartEndDate(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.HOUR_OF_DAY, 5);
+        return cal.getTime();
     }
 
     public void showActivity(Activity activity){
+        System.out.println("numbe2");
         Calendar c = Calendar.getInstance();
+        c.setTime(activity.getStartDate());
+        int startHour = c.get(Calendar.HOUR_OF_DAY);
+        int startMin = c.get(Calendar.MINUTE);
 
-        c.setTime(activity.getDate());
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        System.out.println(hour);
-        int min = c.get(Calendar.MINUTE);
-        System.out.println(min);
+        c.setTime(activity.getEndDate());
+        int endHour = c.get(Calendar.HOUR_OF_DAY);
+        int endMin = c.get(Calendar.MINUTE);
 
-        Pane eventRectangle = new Pane();
+        Text description = new Text(activity.getDescription());
+        description.getStyleClass().add("buttonContent");
+        Text timeSlot = new Text(activity.getTimeSlotString());
+        timeSlot.getStyleClass().add("buttonContent");
+
+        VBox buttonContent = new VBox();
+        buttonContent.getChildren().add(description);
+        buttonContent.getChildren().add(timeSlot);
+
+        Button eventButton = new Button("", buttonContent);
+
         //Calculating the position of the event, y relative to the height of the node
-        int y = (((hour * 60) + min)*hourPanes.size() * 30)/1440;
-        int x = 60;
-        Rectangle rect = new Rectangle(x, y, 60, 30);
-        rect.setArcWidth(10);
-        rect.setArcHeight(10);
-        rect.setFill(Color.web("#ed4b00"));
-        Text text = new Text(activity.getDescription());
-        text.setY(y);
-        text.setX(x);
-        normalPane.getChildren().add(rect);
-        normalPane.getChildren().add(text);
+        int yStart = (((startHour * 60) + startMin)*hourPanes.size() * 30)/1440;
+        int xStart = spaceUsed(activity) ? 200 : 60;
+        int yEnd = (((endHour * 60) + endMin)*hourPanes.size() * 30)/1440;
 
-    }
+        eventButton.setLayoutX(xStart);
+        eventButton.setLayoutY(yStart);
+        eventButton.setStyle("-fx-background-color: blue");
+        //eventButton.getStyleClass().add("button");
 
-    public final float map(float value, float istart, float istop, float ostart, float ostop) {
-        return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+        eventButton.setPrefHeight(yEnd-yStart);
+        eventButton.setPrefWidth(60);
+
+        normalPane.getChildren().add(eventButton);
+
     }
 
     @Override
     protected void initialize() {
         
+    }
+
+    public boolean spaceUsed(Activity activity){
+        for (Activity act : activityList.getActivities()) {
+            if(activity.getStartDate().compareTo(act.getStartDate()) > 0 && activity.getEndDate().compareTo(act.getEndDate()) < 0){
+                return true;
+            }
+        }
+        return false;
     }
 
     private DateFormatSymbols defineLocaleDate(){

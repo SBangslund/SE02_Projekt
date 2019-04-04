@@ -21,4 +21,19 @@
     -fx-background-color: transparent;
 }
 
-.text
+.button {
+    -fx-background-color: Green;
+
+}
+
+.button:hover{
+
+    -fx-background-color: lime;
+}
+
+.buttonContent{
+    -fx-text-fill: white;
+}
+.buttonContent:hover{
+    -fx-text-fill: black;
+}

@@ -15,7 +15,7 @@
       <Label fx:id="moreInformationLabel" styleClass="label_moreInformation" stylesheets="@CSSOverviewDay.css" text="Label" />
       <ScrollPane fx:id="scrollPane" styleClass="scoll-pane" stylesheets="@CSSOverviewDay.css">
          <content>
-            <Pane fx:id="normalPane">
+            <Pane fx:id="normalPane" stylesheets="@CSSOverviewDay.css">
                <children>
                   <GridPane fx:id="gridPane" prefHeight="720.0" prefWidth="590.0">
                      <columnConstraints>
