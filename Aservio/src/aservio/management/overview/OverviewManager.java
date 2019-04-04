@@ -42,10 +42,6 @@ public class OverviewManager {
         }
     }
 
-    private void updateTitle(String title) {
-        Management.getInstance().setOverviewTitle(title);
-    }
-
     public Overview getCurrentOverview() {
         return this.currentOverview;
     }
