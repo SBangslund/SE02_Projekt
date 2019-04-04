@@ -1,0 +1,40 @@
+
+
+.label_weekDay {
+    -fx-font-size: 40;
+    -fx-text-fill: grey;
+    -fx-padding: 10 10 0 10;
+}
+
+.label_moreInformation {
+    -fx-font-size: 20;
+    -fx-text-fill: teal;
+    -fx-padding: 0 10 10 10;
+}
+
+.cell {
+    -fx-border-color: silver;
+    -fx-border-width: 0 0 1 0;
+}
+
+.scoll-pane{
+    -fx-background-color: transparent;
+}
+
+.button {
+    -fx-background-color: Green;
+    -fx-text-fill: white;
+    -fx-alignment: TOP-LEFT;
+}
+
+.button:hover{
+    -fx-text-fill: black;
+    -fx-background-color: lime;
+}
+
+.buttonContent{
+    -fx-text-fill: white;
+}
+.buttonContent:hover{
+    -fx-text-fill: black;
+}

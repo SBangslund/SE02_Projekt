@@ -1,6 +1,7 @@
 package aservio.management.overview;
 
 import aservio.management.Management;
+import aservio.management.activities.ActivityList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 
