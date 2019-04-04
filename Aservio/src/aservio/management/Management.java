@@ -55,7 +55,7 @@ public class Management implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         instance = this;
         overviewManager = new OverviewManager();
-        overviewManager.showMonth();
+        overviewManager.showDay();
     }
 
     public void setCenterView(Node node) {
