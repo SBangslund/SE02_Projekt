@@ -50,4 +50,8 @@ public class Activity {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
         return String.format("%s - %s", formatter.format(getStartDate()), formatter.format(getEndDate()));
     }
+
+    public ActivityType getActivityType(){
+        return activityType;
+    }
 }
