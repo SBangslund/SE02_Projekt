@@ -15,7 +15,7 @@ public class Activity {
 
     public Activity(ActivityType activityType, Date startDate){
         this(activityType, startDate, new Date());
-        setEndDate(standartEndDate(startDate));
+        setEndDate(setStandartEndDate(startDate));
     }
 
     public Activity(ActivityType activityType, Date startDate, Date endDate){
@@ -27,7 +27,7 @@ public class Activity {
     public String getDescription(){ return description;}
 
     //Create a date an hour from the specified date
-    public Date standartEndDate(Date date){
+    public Date setStandartEndDate(Date date){
         Calendar cal = Calendar.getInstance();
         cal.setTime(startDate);
         cal.add(Calendar.HOUR_OF_DAY, 1);

@@ -18,7 +18,7 @@ public enum ActivityType {
     EAT("Eating", "Activity related to eating", "src/aservio/management/icons/iconEating.jpg", Color.BLUE),
     RUN("Running", "Activity related to running", "src/aservio/management/icons/iconRunning.png", Color.CORAL),
     WALK("Walking", "Activity related to walking", "src/aservio/management/icons/iconWalking.svg", Color.CRIMSON),
-    VOLLEY("Vollay", "Activity related to playing volley", "src/aservio/management/icons/iconVolleyball.png", Color.DARKGREEN),
+    VOLLEY("Volley", "Activity related to playing volley", "src/aservio/management/icons/iconVolleyball.png", Color.DARKGREEN),
     TENNIS("Tennis", "Activity related to playing tennis", "src/aservio/management/icons/iconTennis.png", Color.YELLOW);
 
 

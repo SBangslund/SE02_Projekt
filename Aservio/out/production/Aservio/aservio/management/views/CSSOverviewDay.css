@@ -25,22 +25,22 @@
     -fx-text-fill: white;
     -fx-alignment: TOP-LEFT;
 
-    -fx-fill: white;
-    -fx-stroke-width: 2;
+
 }
 
 .button:hover {
     -fx-text-fill: black;
     -fx-background-color: lime;
+
+}
+
+.text_button {
+    -fx-fill: white;
+    -fx-stroke-width: 2;
+}
+
+.text_button:hover {
     -fx-fill: black;
-}
-
-.text {
-
-}
-
-.text:hover {
-
 }
 
 .ImageView {

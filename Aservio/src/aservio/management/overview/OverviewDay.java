@@ -1,12 +1,15 @@
 package aservio.management.overview;
 
 
+import aservio.management.Management;
 import aservio.management.activities.Activity;
 import aservio.management.activities.ActivityList;
 import aservio.management.activities.ActivityType;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -16,31 +19,30 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.net.URL;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class OverviewDay extends Overview implements Initializable {
 
     @FXML
-    public GridPane gridPane;
     public ScrollPane scrollPane;
     public Label DayOfWeekLabel;
     public Label moreInformationLabel;
-    public Pane normalPane;
-    public ImageView imageViewTest;
+    public Pane activityPane;
 
-    Date date;
-    ArrayList<Pane> hourPanes;
+    private Date currentDate;
+    private ArrayList<Pane> hourPanes;
 
-    ActivityList activityList;
+    private ActivityList activityList;
 
-    ArrayList<Button> eventButtonList;
+    private ArrayList<Button> eventButtonList;
 
     public OverviewDay() {
         this(new Date());
@@ -48,97 +50,93 @@ public class OverviewDay extends Overview implements Initializable {
 
     public OverviewDay(Date date) {
         super(date);
-        this.date = date;
-        this.initialize();
+        this.currentDate = date;
         eventButtonList = new ArrayList<>();
+        hourPanes = new ArrayList<>();
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         scrollPane.setFitToWidth(true);
+    }
 
-        DayOfWeekLabel.setText(String.format("%s", new SimpleDateFormat("EEEEE", defineLocaleDate()).format(date.getTime())));
-        moreInformationLabel.setText(String.format("den %tD", Calendar.getInstance().getTime()));
+    private void createBackgroundGrid() {
+        File file = new File("src/aservio/management/icons/OverViewDayTimeTable.png");
+        Image image = new Image(file.toURI().toString());
+        ImageView backgroundImage = new ImageView(image);
+        backgroundImage.setFitHeight(1200);
+        backgroundImage.setPreserveRatio(true);
+        activityPane.getChildren().add(backgroundImage);
+    }
 
-        hourPanes = new ArrayList<>();
+    private void showActivity(Activity activity) {
+        int standartButtonWidth = 100;
+        Button eventButton = createRightSizedButton(activity, standartButtonWidth);
+
+        VBox buttonContent = new VBox();
+        buttonContent.setPrefWidth(standartButtonWidth);
+
+        ImageView imageView = new ImageView(activity.getActivityType().getIcon());
+        imageView.setFitWidth(standartButtonWidth);
+        imageView.setPreserveRatio(true);
+
+        Text buttonContentText = new Text(String.format("%s\n%s", activity.getActivityType().getName(), activity.getTimeSlotString()));
+        buttonContentText.getStyleClass().add("text_button");
+
+        buttonContent.getChildren().add(buttonContentText);
+        buttonContent.getChildren().add(imageView);
+        eventButton.setGraphic(buttonContent);
+        eventButton.setUserData(activity);
+
+        eventButton.setOnAction(
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        final Stage dialog = new Stage();
+                        dialog.initModality(Modality.APPLICATION_MODAL);
+                        dialog.initOwner(activityPane.getScene().getWindow());
+                        VBox dialogVbox = new VBox(20);
+                        ImageView imageView = new ImageView(activity.getActivityType().getIcon());
+                        imageView.setFitWidth(standartButtonWidth);
+                        imageView.setPreserveRatio(true);
+
+                        Text buttonContentText = new Text(String.format("%s\n%s", activity.getActivityType().getName(), activity.getTimeSlotString()));
+                        buttonContentText.getStyleClass().add("text_button");
+                        dialogVbox.getChildren().add(buttonContentText);
+                        dialogVbox.getChildren().add(imageView);
+                        Scene dialogScene = new Scene(dialogVbox, 300, 200);
+                        dialog.setScene(dialogScene);
+                        dialog.show();
+                    }
+                });
+
+        eventButtonList.add(eventButton);
+        activityPane.getChildren().add(eventButton);
 
     }
 
-    public void fillPane(Pane pane, List<Activity> activities) {
-        fillTime(pane);
-        fillTimeContent(pane, activities);
-    }
-
-    public void fillTime(Pane pane) {
-        for (int i = 0; i < 24; i++) {
-            Pane hour = new Pane();
-            hour.setMinHeight(30);
-            hour.getStyleClass().add("cell");
-            hour.getChildren().add(new Text(i < 10 ? "0" + Integer.toString(i) : Integer.toString(i)));
-            gridPane.add(hour, 0, i);
-            //gridPane.add(hour, 1, i);
-            hourPanes.add(hour);
-        }
-    }
-
-    public void fillTimeContent(Pane pane, List<Activity> activities) {
-        activities.stream().forEach(e -> showActivity(e));
-
-
-    }
-
-    //Test, Creating stardart ending dates for testpurposes
-    public Date standartEndDate(Date date) {
-        Calendar c = getCalendarWithSetTime(date);
-        c.add(Calendar.HOUR_OF_DAY, 5);
-        return c.getTime();
-    }
-
-    public void showActivity(Activity activity) {
-        Button eventButton = new Button();
-
-        int eventButtonWidth = 100;
+    private Button createRightSizedButton(Activity activity, int standartButtonWidth) {
 
         int startHour = getCalendarWithSetTime(activity.getStartDate()).get(Calendar.HOUR_OF_DAY);
         int startMin = getCalendarWithSetTime(activity.getStartDate()).get(Calendar.MINUTE);
         int endHour = getCalendarWithSetTime(activity.getEndDate()).get(Calendar.HOUR_OF_DAY);
         int endMin = getCalendarWithSetTime(activity.getEndDate()).get(Calendar.MINUTE);
 
-        VBox buttonContent = new VBox();
-        buttonContent.setPrefWidth(eventButtonWidth);
-        ImageView imageView = new ImageView(activity.getActivityType().getIcon());
-        imageView.setFitWidth(eventButtonWidth);
-        imageView.setPreserveRatio(true);
+        int yStartPosition = 30 + (((startHour * 60) + startMin) * 1200) / 1440;
+        int yEndPosition = 30 + (((endHour * 60) + endMin) * 1200) / 1440;
+        int xStartPosition = spaceUsed(yStartPosition, yEndPosition) == 1 ? standartButtonWidth : standartButtonWidth * spaceUsed(yStartPosition, yEndPosition);
 
-        Text buttonContentText = new Text(String.format("%s\n%s", activity.getActivityType().getName(), activity.getTimeSlotString()));
-        buttonContentText.getStyleClass().add("button");
+        Button eventButton = new Button();
+        eventButton.setLayoutX(xStartPosition);
+        eventButton.setLayoutY(yStartPosition);
+        eventButton.setPrefHeight(yEndPosition - yStartPosition);
+        eventButton.setMaxWidth(standartButtonWidth);
 
-        buttonContent.getChildren().add(buttonContentText);
-        buttonContent.getChildren().add(imageView);
-
-        eventButton.setGraphic(buttonContent);
-
-        eventButton.setUserData(activity);
-
-        //Calculating the position of the event, y relative to the height of the node
-        int yStart = (((startHour * 60) + startMin) * hourPanes.size() * 30) / 1440;
-        int yEnd = (((endHour * 60) + endMin) * hourPanes.size() * 30) / 1440;
-        int xStart = spaceUsed(yStart, yEnd) == 1 ? eventButtonWidth : eventButtonWidth * spaceUsed(yStart, yEnd);
-
-
-        eventButton.setLayoutX(xStart);
-        eventButton.setLayoutY(yStart);
-
-        eventButton.setPrefHeight(yEnd - yStart);
-        eventButton.setMaxWidth(eventButtonWidth);
-
-        eventButtonList.add(eventButton);
-        normalPane.getChildren().add(eventButton);
-
+        return eventButton;
     }
 
-    public Calendar getCalendarWithSetTime(Date date){
+    private Calendar getCalendarWithSetTime(Date date) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         return c;
@@ -149,10 +147,9 @@ public class OverviewDay extends Overview implements Initializable {
 
     }
 
-    public int spaceUsed(double yStart, double yEnd) {
+    private int spaceUsed(double yStart, double yEnd) {
         int countActivitiesInTimeslot = 1;
         for (Button b : eventButtonList) {
-
             if ((yStart >= b.getLayoutY() && yStart <= b.getLayoutY() + b.getPrefHeight()) || yEnd >= b.getLayoutY() && yEnd <= b.getLayoutY() + b.getPrefHeight() || yStart <= b.getLayoutY() && yEnd >= b.getLayoutY() + b.getPrefHeight()) {
                 countActivitiesInTimeslot++;
             }
@@ -160,7 +157,7 @@ public class OverviewDay extends Overview implements Initializable {
         return countActivitiesInTimeslot;
     }
 
-    private DateFormatSymbols defineLocaleDate() {
+    private DateFormatSymbols setLocaleToDanish() {
         Locale locale = new Locale("da", "DK");
         DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
         dateFormatSymbols.setWeekdays(new String[]{
@@ -178,23 +175,54 @@ public class OverviewDay extends Overview implements Initializable {
 
     }
 
+    private void createVisualDay(ActivityList activities, Date date) {
+        createBackgroundGrid();
+        DayOfWeekLabel.setText(String.format("%s", new SimpleDateFormat("EEEEE", setLocaleToDanish()).format(date.getTime())));
+        moreInformationLabel.setText(String.format("den %s", new SimpleDateFormat("dd/MM/yyyy", setLocaleToDanish()).format(date.getTime())));
+        List<Activity> activitiesForCurrentDay = activities.getActivities().stream().filter(e -> isActivityOnDay(e, date)).collect(Collectors.toList());
+
+        activitiesForCurrentDay.stream().forEach(e -> showActivity(e));
+    }
+
+    private boolean isActivityOnDay(Activity activity, Date date) {
+        return new SimpleDateFormat("dd.MM.yyyy", setLocaleToDanish()).format(activity.getStartDate().getTime())
+                .equals(new SimpleDateFormat("dd.MM.yyyy", setLocaleToDanish()).format(date.getTime()));
+    }
+
+    private void resetVisualDay() {
+        eventButtonList.clear();
+        activityPane.getChildren().clear();
+
+    }
+
     @Override
     public void next() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(currentDate);
+        cal.add(Calendar.DAY_OF_YEAR, 1);
+        currentDate = cal.getTime();
+
+        resetVisualDay();
+        createVisualDay(activityList, currentDate);
     }
 
     @Override
     public void previous() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(currentDate);
+        cal.add(Calendar.DAY_OF_YEAR, -1);
+        currentDate = cal.getTime();
 
+        resetVisualDay();
+        createVisualDay(activityList, currentDate);
     }
 
     @Override
     public void showActivities(ActivityList activities) {
-        activities.add(new Activity(ActivityType.EAT, new Date(), standartEndDate(new Date())));
-        activities.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 5, 4, 8, 20).getTime(), standartEndDate(new Date())));
-        activities.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 5, 4, 9, 20).getTime(), standartEndDate(new Date())));
-        activities.add(new Activity(ActivityType.TENNIS, new Date(), standartEndDate(new Date())));
+        resetVisualDay();
+        this.activityList = activities;
+        createVisualDay(activityList, currentDate);
 
-        fillPane(normalPane, activities.getActivities());
 
     }
 }

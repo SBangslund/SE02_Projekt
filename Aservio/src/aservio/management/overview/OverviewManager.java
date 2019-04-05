@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class OverviewManager {
 
@@ -38,7 +39,6 @@ public class OverviewManager {
         FXMLLoader loader = new FXMLLoader();
         try {
             Pane p = loader.load(getClass().getResource(url).openStream());
-            p.getStylesheets().add(getClass().getResource("/aservio/management/views/CSSOverviewDay.css").toExternalForm());
             currentOverview = loader.getController();
             currentOverview.setView(p);
             currentOverview.show();
@@ -50,6 +50,13 @@ public class OverviewManager {
 
     private void updateActivities() {
         ActivityList list = new ActivityList();
+        list.add(new Activity(ActivityType.TENNIS, new Date()));
+        list.add(new Activity(ActivityType.EAT, new Date()));
+        list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 3, 4, 8, 20).getTime()));
+        list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 3, 5, 8, 20).getTime()));
+        list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 3, 6, 8, 20).getTime()));
+        list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 3, 7, 10, 20).getTime()));
+        list.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 3, 8, 9, 20).getTime()));
         list.add(new Activity(ActivityType.TENNIS, new Date()));
         currentOverview.showActivities(list);
     }
