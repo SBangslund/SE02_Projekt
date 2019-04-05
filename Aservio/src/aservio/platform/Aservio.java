@@ -15,8 +15,12 @@ import javafx.stage.Stage;
  */
 public class Aservio extends Application {
     
+    private static Aservio instance;
+    private Stage stage;
+    
     @Override
     public void start(Stage stage) throws Exception {
+        instance = this;
 //        Parent root = FXMLLoader.load(getClass().getResource("../Management/views/FXMLManager.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("FXMLLogin.fxml"));
         Scene scene = new Scene(root);
@@ -24,6 +28,8 @@ public class Aservio extends Application {
         stage.setTitle("Aservio");
         stage.setScene(scene);
         stage.show();
+        
+        this.stage = stage;
     }
 
     /**
@@ -31,6 +37,14 @@ public class Aservio extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    public static Aservio getInstance() {
+        return instance;
+    }
+    
+    public Stage getStage() {
+        return stage;
     }
     
 }

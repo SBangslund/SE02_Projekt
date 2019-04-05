@@ -17,6 +17,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -59,15 +61,19 @@ public class FXMLLoginController implements Initializable {
             Overview view = new OverviewMonth();
 
             try {
-                view.setView(FXMLLoader.load(new URL("aservio/management/views/FXMLOverviewMonth.fxml")));
+                Parent p = FXMLLoader.load(getClass().getResource("../management/views/FXMLManager.fxml"));
+                Aservio.getInstance().getStage().setScene(new Scene(p));
+                //view.setView(p);
 //                FXMLLoader.load(getClass().getResource("../management/views/FXMLManager.fxml"));
 //                System.out.println("akjsda");
 //                System.out.println(FXMLLoader.load(getClass().getResource("FXMLLogin.fxml")).toString());
 //                view.setView(FXMLLoader.load(getClass().getResource("../management/views/FXMLManager.fxml")));
+                //view.show();
             } catch (IOException ex) {
                 Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(getClass().getResource("FXMLOverviewMonth.fxml"));
             }
-                view.show();
+                
         }
     }
 
