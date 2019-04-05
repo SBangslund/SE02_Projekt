@@ -29,7 +29,7 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
 
     public OverviewMonth() {
         super(new Date());
-        currentMonth = new GregorianCalendar().get(Calendar.MONTH);
+        currentMonth = new GregorianCalendar().get(Calendar.MONTH) + 1;
         System.out.println("Called OverviewMonth constructor: " + this);
     }
 
@@ -41,7 +41,7 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
     public void initialize(URL location, ResourceBundle resources) {
         // TODO create month overview
         System.out.println("Created overview month");
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 VBox day = new VBox();
                 day.getChildren().add(new Label(j + ":" + i));
@@ -55,14 +55,13 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
     public void populateDays(int month) {
         resetDays();
         GregorianCalendar calender = new GregorianCalendar();
-        GregorianCalendar monthCalender = new GregorianCalendar(calender.get(Calendar.YEAR), month, 1);
-        calender.setTimeZone(TimeZone.getTimeZone("GMT+2"));
-        labelMonthTitle.setText(Month.of(monthCalender.get(Calendar.MONTH)).toString());
-//        System.out.println("First day of the month: " + DayOfWeek.of(monthCalender.get(Calendar.DAY_OF_WEEK) - 1));
-        for (int i = 0; i < MonthDay.of(monthCalender.get(Calendar.MONTH), monthCalender.get(Calendar.DAY_OF_MONTH)).getMonth().length(monthCalender.isLeapYear(monthCalender.get(Calendar.YEAR))); i++) {
-            Date date = new GregorianCalendar(monthCalender.get(Calendar.YEAR), monthCalender.get(Calendar.MONTH), i).getTime();
-            //days.get(i).getChildren().add(new Label((new SimpleDateFormat("EEEE").format(date))));
-            days.get(i).getChildren().add(new Label(MonthDay.of(monthCalender.get(Calendar.MONTH), i + 1).toString()));
+        GregorianCalendar monthCalender = new GregorianCalendar(calender.get(Calendar.YEAR), month - 1, 1);   // Creates new calender based on inserted month
+        calender.setTimeZone(TimeZone.getTimeZone("GMT+2"));                                                            // Corrects timezone to DK
+        labelMonthTitle.setText(Month.of(month).toString().toLowerCase());
+        int firstDayOfWeek = monthCalender.get(Calendar.DAY_OF_WEEK) - 1;
+        int numberOfDaysInMonth = MonthDay.of(monthCalender.get(Calendar.MONTH), monthCalender.get(Calendar.DAY_OF_MONTH)).getMonth().length(monthCalender.isLeapYear(monthCalender.get(Calendar.YEAR))) - 1;
+        for (int i = firstDayOfWeek; i < numberOfDaysInMonth + firstDayOfWeek; i++) {
+            days.get(i - 1).getChildren().add(new Label(MonthDay.of(monthCalender.get(Calendar.MONTH), i - firstDayOfWeek + 1).toString()));
         }
     }
 
@@ -75,8 +74,7 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
     @Override
     public void next() {
         if (!days.isEmpty()) {
-            System.out.println((currentMonth % 12));
-            populateDays((++currentMonth % 12));
+            populateDays(Math.abs(++currentMonth % 12 + 1));
         } else {
             System.err.println("[WARNING][OverviewMonth] has yet to be initialized. populateDays() did not compute.");
         }
@@ -85,8 +83,7 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
     @Override
     public void previous() {
         if (!days.isEmpty()) {
-            System.out.println((currentMonth % 12));
-            populateDays((--currentMonth % 12));
+            populateDays(Math.abs(--currentMonth % 12 + 1));
         } else {
             System.err.println("[WARNING][OverviewMonth] has yet to be initialized. populateDays() did not compute.");
         }
