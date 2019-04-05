@@ -17,6 +17,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
@@ -33,9 +36,7 @@ public class OverviewDay extends Overview implements Initializable {
     public ImageView imageViewTest;
 
     Date date;
-    Parent root;
     ArrayList<Pane> hourPanes;
-    ArrayList<Pane> hourContentPanes;
 
     ActivityList activityList;
 
@@ -61,9 +62,6 @@ public class OverviewDay extends Overview implements Initializable {
         moreInformationLabel.setText(String.format("den %tD", Calendar.getInstance().getTime()));
 
         hourPanes = new ArrayList<>();
-        hourContentPanes = new ArrayList<>();
-
-        //adding test activities;
 
     }
 
@@ -98,30 +96,30 @@ public class OverviewDay extends Overview implements Initializable {
     }
 
     public void showActivity(Activity activity) {
+        Button eventButton = new Button();
+
         int eventButtonWidth = 100;
 
         int startHour = getCalendarWithSetTime(activity.getStartDate()).get(Calendar.HOUR_OF_DAY);
         int startMin = getCalendarWithSetTime(activity.getStartDate()).get(Calendar.MINUTE);
-
         int endHour = getCalendarWithSetTime(activity.getEndDate()).get(Calendar.HOUR_OF_DAY);
         int endMin = getCalendarWithSetTime(activity.getEndDate()).get(Calendar.MINUTE);
 
-/**
- * Use this in case there has to be shown more on the button, than only description and timeslot
- */
-        Text buttonContentText = new Text(String.format("%s\n%s", activity.getActivityType().getName(), activity.getTimeSlotString()));
-        buttonContentText.getStyleClass().add("buttonContent");
-        ImageView image = new ImageView(activity.getActivityType().getIcon());
-
         VBox buttonContent = new VBox();
-        buttonContent.getChildren().add(buttonContentText);
-        buttonContent.getChildren().add(image);
+        buttonContent.setPrefWidth(eventButtonWidth);
+        ImageView imageView = new ImageView(activity.getActivityType().getIcon());
+        imageView.setFitWidth(eventButtonWidth);
+        imageView.setPreserveRatio(true);
 
-        Button eventButton = new Button("", buttonContent);
-        eventButton.setGraphic(new ImageView(activity.getActivityType().getIcon()));
-        imageViewTest.setImage(activity.getActivityType().getIcon());
-//        Button eventButton = new Button();
-//        eventButton.setText(String.format("%s\n%s", activity.getActivityType(), activity.getTimeSlotString()));
+        Text buttonContentText = new Text(String.format("%s\n%s", activity.getActivityType().getName(), activity.getTimeSlotString()));
+        buttonContentText.getStyleClass().add("button");
+
+        buttonContent.getChildren().add(buttonContentText);
+        buttonContent.getChildren().add(imageView);
+
+        eventButton.setGraphic(buttonContent);
+
+        eventButton.setUserData(activity);
 
         //Calculating the position of the event, y relative to the height of the node
         int yStart = (((startHour * 60) + startMin) * hourPanes.size() * 30) / 1440;
@@ -131,10 +129,9 @@ public class OverviewDay extends Overview implements Initializable {
 
         eventButton.setLayoutX(xStart);
         eventButton.setLayoutY(yStart);
-        //eventButton.getStyleClass().add("button");
 
         eventButton.setPrefHeight(yEnd - yStart);
-        eventButton.setPrefWidth(eventButtonWidth);
+        eventButton.setMaxWidth(eventButtonWidth);
 
         eventButtonList.add(eventButton);
         normalPane.getChildren().add(eventButton);
@@ -192,14 +189,11 @@ public class OverviewDay extends Overview implements Initializable {
 
     @Override
     public void showActivities(ActivityList activities) {
-        activityList.add(new Activity(ActivityType.EAT, new Date(), standartEndDate(new Date())));
-        activityList.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 5, 4, 8, 20).getTime(), standartEndDate(new Date())));
-        activityList.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 5, 4, 9, 20).getTime(), standartEndDate(new Date())));
-        activityList.add(new Activity(ActivityType.TENNIS, new Date(), standartEndDate(new Date())));
+        activities.add(new Activity(ActivityType.EAT, new Date(), standartEndDate(new Date())));
+        activities.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 5, 4, 8, 20).getTime(), standartEndDate(new Date())));
+        activities.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 5, 4, 9, 20).getTime(), standartEndDate(new Date())));
+        activities.add(new Activity(ActivityType.TENNIS, new Date(), standartEndDate(new Date())));
 
-        //imageViewTest.setImage(activityList.getActivities().get(1).getActivityType().getIcon());
-        imageViewTest.setImage(new Image("file:..\\icons\\iconEating.png"));
-        System.out.println(imageViewTest.getImage());
         fillPane(normalPane, activities.getActivities());
 
     }

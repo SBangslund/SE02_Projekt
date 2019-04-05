@@ -1,5 +1,4 @@
 
-
 .label_weekDay {
     -fx-font-size: 40;
     -fx-text-fill: grey;
@@ -17,7 +16,7 @@
     -fx-border-width: 0 0 1 0;
 }
 
-.scoll-pane{
+.scoll-pane {
     -fx-background-color: transparent;
 }
 
@@ -25,16 +24,26 @@
     -fx-background-color: Green;
     -fx-text-fill: white;
     -fx-alignment: TOP-LEFT;
+
+    -fx-fill: white;
+    -fx-stroke-width: 2;
 }
 
-.button:hover{
+.button:hover {
     -fx-text-fill: black;
     -fx-background-color: lime;
+    -fx-fill: black;
 }
 
-.buttonContent{
-    -fx-text-fill: white;
+.text {
+
 }
-.buttonContent:hover{
-    -fx-text-fill: black;
+
+.text:hover {
+
+}
+
+.ImageView {
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
 }
