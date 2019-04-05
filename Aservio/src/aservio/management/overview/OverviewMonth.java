@@ -91,6 +91,6 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
 
     @Override
     public void showActivities(ActivityList activities) {
-
+        System.out.println(activities);
     }
 }

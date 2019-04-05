@@ -1,11 +1,14 @@
 package aservio.management.overview;
 
 import aservio.management.Management;
+import aservio.management.activities.Activity;
 import aservio.management.activities.ActivityList;
+import aservio.management.activities.ActivityType;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class OverviewManager {
 
@@ -42,6 +45,13 @@ public class OverviewManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        updateActivities();
+    }
+
+    private void updateActivities() {
+        ActivityList list = new ActivityList();
+        list.add(new Activity(ActivityType.TENNIS, new Date()));
+        currentOverview.showActivities(list);
     }
 
     public Overview getCurrentOverview() {
