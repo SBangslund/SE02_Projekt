@@ -13,7 +13,7 @@
 <VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.overview.OverviewDay">
    <children>
       <Label fx:id="DayOfWeekLabel" styleClass="label_weekDay" stylesheets="/aservio/management/views/CSSOverviewDay.css" text="Label" />
-      <ImageView fx:id="imageViewTest" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageViewTest" fitHeight="300.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="moreInformationLabel" styleClass="label_moreInformation" stylesheets="/aservio/management/views/CSSOverviewDay.css" text="Label" />
       <ScrollPane fx:id="scrollPane" styleClass="scoll-pane" stylesheets="/aservio/management/views/CSSOverviewDay.css">
          <content>

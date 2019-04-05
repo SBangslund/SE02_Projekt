@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
  */
 public enum ActivityType {
 
-    EAT("Eating", "Activity related to eating", "/aservio/management/icons/iconEating.png", Color.BLUE),
+    EAT("Eating", "Activity related to eating", "/aservio/management/icons/iconEating.jpg", Color.BLUE),
     RUN("Running", "Activity related to running", "/aservio/management/icons/iconRunning.png", Color.CORAL),
     WALK("Walking", "Activity related to walking", "/aservio/management/icons/iconTennis.png", Color.CRIMSON),
     VOLLEY("Vollay", "Activity related to playing volley", "/aservio/management/icons/iconVolleyball.png", Color.DARKGREEN),

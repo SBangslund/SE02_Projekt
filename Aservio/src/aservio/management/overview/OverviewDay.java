@@ -42,17 +42,12 @@ public class OverviewDay extends Overview implements Initializable {
     ArrayList<Button> eventButtonList;
 
     public OverviewDay() {
-        this(new Date(), new ActivityList());
+        this(new Date());
     }
 
-    public OverviewDay(ActivityList activitiesList) {
-        this(new Date(), activitiesList);
-    }
-
-    public OverviewDay(Date date, ActivityList activityList) {
+    public OverviewDay(Date date) {
         super(date);
         this.date = date;
-        this.activityList = activityList;
         this.initialize();
         eventButtonList = new ArrayList<>();
     }
@@ -69,14 +64,6 @@ public class OverviewDay extends Overview implements Initializable {
         hourContentPanes = new ArrayList<>();
 
         //adding test activities;
-        activityList.add(new Activity(ActivityType.EAT, new Date(), standartEndDate(new Date())));
-        activityList.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 5, 4, 8, 20).getTime(), standartEndDate(new Date())));
-        activityList.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 5, 4, 9, 20).getTime(), standartEndDate(new Date())));
-        activityList.add(new Activity(ActivityType.TENNIS, new Date(), standartEndDate(new Date())));
-
-        //imageViewTest.setImage(activityList.getActivities().get(1).getActivityType().getIcon());
-        imageViewTest.setImage(new Image("/aservio/management/icons/iconEating.png"));
-        fillPane(normalPane, activityList.getActivities());
 
     }
 
@@ -205,6 +192,14 @@ public class OverviewDay extends Overview implements Initializable {
 
     @Override
     public void showActivities(ActivityList activities) {
+        activityList.add(new Activity(ActivityType.EAT, new Date(), standartEndDate(new Date())));
+        activityList.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 5, 4, 8, 20).getTime(), standartEndDate(new Date())));
+        activityList.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 5, 4, 9, 20).getTime(), standartEndDate(new Date())));
+        activityList.add(new Activity(ActivityType.TENNIS, new Date(), standartEndDate(new Date())));
+
+        //imageViewTest.setImage(activityList.getActivities().get(1).getActivityType().getIcon());
+        imageViewTest.setImage(new Image("file:..\\icons\\iconEating.png"));
+        System.out.println(imageViewTest.getImage());
         fillPane(normalPane, activities.getActivities());
 
     }
