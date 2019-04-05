@@ -11,5 +11,13 @@ public class ActivityManager {
 
     public void add(Activity activity, List<User> users) {
         // TODO add the activity to all the users ActivityLists
+        for (User user : users) {
+            user.getActivityList().add(activity);
+        }
+    }
+    public void remove(Activity activity, List<User> users){
+        for (User user : users) {
+            user.getActivityList().remove(activity);
+        }
     }
 }

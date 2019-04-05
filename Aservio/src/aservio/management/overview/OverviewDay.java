@@ -3,12 +3,15 @@ package aservio.management.overview;
 
 import aservio.management.activities.Activity;
 import aservio.management.activities.ActivityList;
+import aservio.management.activities.ActivityType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -27,6 +30,7 @@ public class OverviewDay extends Overview implements Initializable {
     public Label DayOfWeekLabel;
     public Label moreInformationLabel;
     public Pane normalPane;
+    public ImageView imageViewTest;
 
     Date date;
     Parent root;
@@ -65,12 +69,13 @@ public class OverviewDay extends Overview implements Initializable {
         hourContentPanes = new ArrayList<>();
 
         //adding test activities;
-        activityList.getActivities().add(new Activity("Løbe", new Date(), standartEndDate(new Date())));
-        activityList.getActivities().add(new Activity("Tournament", new Date(), standartEndDate(new Date())));
+        activityList.add(new Activity(ActivityType.EAT, new Date(), standartEndDate(new Date())));
+        activityList.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 5, 4, 8, 20).getTime(), standartEndDate(new Date())));
+        activityList.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 5, 4, 9, 20).getTime(), standartEndDate(new Date())));
+        activityList.add(new Activity(ActivityType.TENNIS, new Date(), standartEndDate(new Date())));
 
-        activityList.getActivities().add(new Activity("Meeting", new GregorianCalendar(2019, Calendar.APRIL, 2, 12, 20).getTime(), standartEndDate(new Date())));
-
-
+        //imageViewTest.setImage(activityList.getActivities().get(1).getActivityType().getIcon());
+        imageViewTest.setImage(new Image("/aservio/management/icons/iconEating.png"));
         fillPane(normalPane, activityList.getActivities());
 
     }
@@ -117,16 +122,19 @@ public class OverviewDay extends Overview implements Initializable {
 /**
  * Use this in case there has to be shown more on the button, than only description and timeslot
  */
-//        Text buttonContentText = new Text(String.format("%s\n%s", activity.getDescription(), activity.getTimeSlotString()));
-//        buttonContentText.getStyleClass().add("buttonContent");
-//
-//        VBox buttonContent = new VBox();
-//        buttonContent.getChildren().add(buttonContentText);
+        Text buttonContentText = new Text(String.format("%s\n%s", activity.getActivityType().getName(), activity.getTimeSlotString()));
+        buttonContentText.getStyleClass().add("buttonContent");
+        ImageView image = new ImageView(activity.getActivityType().getIcon());
 
-//        Button eventButton = new Button("", buttonContent);
+        VBox buttonContent = new VBox();
+        buttonContent.getChildren().add(buttonContentText);
+        buttonContent.getChildren().add(image);
 
-        Button eventButton = new Button();
-        eventButton.setText(String.format("%s\n%s", activity.getDescription(), activity.getTimeSlotString()));
+        Button eventButton = new Button("", buttonContent);
+        eventButton.setGraphic(new ImageView(activity.getActivityType().getIcon()));
+        imageViewTest.setImage(activity.getActivityType().getIcon());
+//        Button eventButton = new Button();
+//        eventButton.setText(String.format("%s\n%s", activity.getActivityType(), activity.getTimeSlotString()));
 
         //Calculating the position of the event, y relative to the height of the node
         int yStart = (((startHour * 60) + startMin) * hourPanes.size() * 30) / 1440;

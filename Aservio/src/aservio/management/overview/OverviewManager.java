@@ -35,6 +35,7 @@ public class OverviewManager {
         FXMLLoader loader = new FXMLLoader();
         try {
             Pane p = loader.load(getClass().getResource(url).openStream());
+            p.getStylesheets().add(getClass().getResource("/aservio/management/views/CSSOverviewDay.css").toExternalForm());
             currentOverview = loader.getController();
             currentOverview.setView(p);
             currentOverview.show();
