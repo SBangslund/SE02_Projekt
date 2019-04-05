@@ -65,10 +65,7 @@ public class OverviewDay extends Overview implements Initializable {
         hourContentPanes = new ArrayList<>();
 
         //adding test activities;
-        activityList.getActivities().add(new Activity("Løbe", new Date(), standartEndDate(new Date())));
-        activityList.getActivities().add(new Activity("Tournament", new Date(), standartEndDate(new Date())));
-
-        activityList.getActivities().add(new Activity("Meeting", new GregorianCalendar(2019, Calendar.APRIL, 2, 12, 20).getTime(), standartEndDate(new Date())));
+      
 
 
         fillPane(normalPane, activityList.getActivities());
@@ -126,7 +123,7 @@ public class OverviewDay extends Overview implements Initializable {
 //        Button eventButton = new Button("", buttonContent);
 
         Button eventButton = new Button();
-        eventButton.setText(String.format("%s\n%s", activity.getDescription(), activity.getTimeSlotString()));
+        eventButton.setText(String.format("%s\n%s", activity.getActivityType(), activity.getTimeSlotString()));
 
         //Calculating the position of the event, y relative to the height of the node
         int yStart = (((startHour * 60) + startMin) * hourPanes.size() * 30) / 1440;
