@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -73,7 +74,8 @@ public class OverviewDay extends Overview implements Initializable {
         activityList.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 5, 4, 9, 20).getTime(), standartEndDate(new Date())));
         activityList.add(new Activity(ActivityType.TENNIS, new Date(), standartEndDate(new Date())));
 
-        imageViewTest.setImage(activityList.getActivities().get(1).getActivityType().getIcon());
+        //imageViewTest.setImage(activityList.getActivities().get(1).getActivityType().getIcon());
+        imageViewTest.setImage(new Image("/aservio/management/icons/iconEating.png"));
         fillPane(normalPane, activityList.getActivities());
 
     }
