@@ -6,21 +6,22 @@ import java.util.Date;
 
 public class Activity {
     private String description;
+    private ActivityType activityType;
 
 
 
     private Date startDate;
     private Date endDate;
 
-    public Activity(String description, Date startDate){
-        this(description, startDate, new Date());
+    public Activity(ActivityType activityType, Date startDate){
+        this(activityType, startDate, new Date());
         setEndDate(standartEndDate(startDate));
     }
 
-    public Activity(String description, Date startDate, Date endDate){
+    public Activity(ActivityType activityType, Date startDate, Date endDate){
         this.startDate = startDate;
         this.endDate = endDate;
-        this.description = description;
+        this.activityType = activityType;
     }
 
     public String getDescription(){ return description;}
@@ -48,5 +49,9 @@ public class Activity {
     public String getTimeSlotString(){
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
         return String.format("%s - %s", formatter.format(getStartDate()), formatter.format(getEndDate()));
+    }
+
+    public ActivityType getActivityType(){
+        return activityType;
     }
 }
