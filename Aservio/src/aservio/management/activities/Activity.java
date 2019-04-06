@@ -30,7 +30,7 @@ public class Activity {
     public Date setStandartEndDate(Date date){
         Calendar cal = Calendar.getInstance();
         cal.setTime(startDate);
-        cal.add(Calendar.HOUR_OF_DAY, 1);
+        cal.add(Calendar.HOUR_OF_DAY, 3);
         return cal.getTime();
     }
 
