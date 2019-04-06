@@ -245,9 +245,5 @@ public class OverviewDay extends Overview implements Initializable {
     }
 
     @Override
-    protected void initialize() {
-
-    }
-
-
+    protected void initialize() {}
 }
