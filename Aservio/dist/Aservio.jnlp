@@ -8,7 +8,11 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< Updated upstream
     <jar href="Aservio.jar" size="16748" download="eager" />
+=======
+    <jar href="Aservio.jar" size="15423" download="eager" />
+>>>>>>> Stashed changes
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Aservio" >
     <param name="requiredFXVersion" value="8.0+"/>
