@@ -112,8 +112,6 @@ public class OverviewDay extends Overview implements Initializable {
     private void showLineAtCurrentTime(Date date){
         int hour = getCalendarWithSetTime(date).get(Calendar.HOUR_OF_DAY);
         int min = getCalendarWithSetTime(date).get(Calendar.MINUTE);
-
-        System.out.println(String.format("%d, %d", hour, min));
         int minPerDay = 1440;
 
         int currentY = backgroundHeight/25 + (((hour * 60) + min) * (backgroundHeight - backgroundHeight/25)) / minPerDay;
