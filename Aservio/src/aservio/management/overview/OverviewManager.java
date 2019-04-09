@@ -13,19 +13,19 @@ public class OverviewManager {
     public void showMonth() {
         Overview view = new OverviewMonth();
        
-        view.setView(getFXML("src/aservio/management/view/FXMLOverviewMonth.fxml"));
+        view.setView(getFXML("src/aservio/management/views/FXMLOverviewMonth.fxml"));
         view.show();
     }
 
     public void showWeek() {
         Overview view = new OverviewWeek();
-        view.setView(getFXML("src/aservio/management//view/FXMLOverviewWeek.fxml"));
+        view.setView(getFXML("src/aservio/management/views/FXMLOverviewWeek.fxml"));
         view.show();
     }
 
     public void showDay() {
         Overview view = new OverviewDay();
-        view.setView(getFXML("src/aservio/management/view/FXMLOverviewDay.fxml"));
+        view.setView(getFXML("src/aservio/management/views/FXMLOverviewDay.fxml"));
         view.show();
     }
 

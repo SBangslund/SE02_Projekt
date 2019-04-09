@@ -62,18 +62,11 @@ public class FXMLLoginController implements Initializable {
         if (allowableInput()) {
             //load next scene
             System.out.println("hey you made it");
-            Overview view = new OverviewMonth();
 
             try {
                 URL file = new File("src/aservio/management/views/FXMLManager.fxml").toURI().toURL();
                 Parent p = FXMLLoader.load(file);
                 Aservio.getInstance().getStage().setScene(new Scene(p));
-                //view.setView(p);
-//                FXMLLoader.load(getClass().getResource("../management/views/FXMLManager.fxml"));
-//                System.out.println("akjsda");
-//                System.out.println(FXMLLoader.load(getClass().getResource("FXMLLogin.fxml")).toString());
-//                view.setView(FXMLLoader.load(getClass().getResource("../management/views/FXMLManager.fxml")));
-                //view.show();
             } catch (IOException ex) {
                 Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println(getClass().getResource("FXMLOverviewMonth.fxml"));
