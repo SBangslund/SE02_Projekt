@@ -17,24 +17,30 @@
     -fx-border-width: 0 0 1 0;
 }
 
-.scoll-pane{
+.scoll-pane {
     -fx-background-color: transparent;
 }
 
 .button {
-    -fx-background-color: Green;
-    -fx-text-fill: white;
+    -fx-background-radius: 10, 10, 0, 10;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
     -fx-alignment: TOP-LEFT;
+    -fx-effect: dropshadow( gaussian , lightgrey , 5,0,1,1 );
 }
 
-.button:hover{
+.button:hover {
     -fx-text-fill: black;
-    -fx-background-color: lime;
+    -fx-effect: dropshadow( gaussian , dimgrey , 5,0,2,2 );
 }
 
-.buttonContent{
-    -fx-text-fill: white;
+.hbox {
+    -fx-background-radius: 10, 10, 0, 10;
 }
-.buttonContent:hover{
-    -fx-text-fill: black;
+
+
+
+.ImageView {
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
 }
