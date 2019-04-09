@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -43,6 +44,8 @@ public class FXMLLoginController implements Initializable {
 
     private String correctUsername = "qwerty";
     private String correctPassword = "qwerty";
+    @FXML
+    private Label wrongPasswordLabel;
 
     /**
      * Initializes the controller class.
@@ -73,7 +76,7 @@ public class FXMLLoginController implements Initializable {
                 Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println(getClass().getResource("FXMLOverviewMonth.fxml"));
             }
-                
+
         }
     }
 
@@ -82,23 +85,27 @@ public class FXMLLoginController implements Initializable {
         String tempPassword = passwordField.getText();
 
         //Is Input empty?
-        if (tempUser.isEmpty() && tempPassword.isEmpty()) {
+        if (tempUser.isEmpty() || tempPassword.isEmpty()) {
+            wrongPasswordLabel.setText("Write your username and password to log in");
             return false;
         }
         //Is Input in username ILLEGALCHARACTER?
         for (char J : ILLEGALCHARACTERS) {
             if (tempUser.contains(Character.toString(J))) {
+                wrongPasswordLabel.setText("Username or password contains special characters: ; / \\ , . % &");
                 return false;
             }
         }
         //Is Input in password ILLEGALCHARACTER?
         for (char J : ILLEGALCHARACTERS) {
             if (tempPassword.contains(Character.toString(J))) {
+                wrongPasswordLabel.setText("Username or password contains special characters: ; / \\ , . % &");
                 return false;
             }
         }
         //Is Input a user?
         if (!usernameField.getText().equals(correctUsername) && !passwordField.getText().equals(correctPassword)) {
+            wrongPasswordLabel.setText("Wrong username or password");
             return false;
         }
         //All constraints are followed.
