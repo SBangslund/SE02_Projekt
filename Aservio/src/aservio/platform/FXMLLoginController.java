@@ -43,8 +43,8 @@ public class FXMLLoginController implements Initializable {
         ';', '"', '\\'
     };
 
-    private String correctUsername = "qwerty";
-    private String correctPassword = "qwerty";
+    private String correctUsername = "q";
+    private String correctPassword = "q";
     @FXML
     private Label wrongPasswordLabel;
 
@@ -65,9 +65,8 @@ public class FXMLLoginController implements Initializable {
             Overview view = new OverviewMonth();
 
             try {
-                File file = new File("src/aservio/management/views/FXMLManager.fxml");
-                System.out.println(file.exists());
-                Parent p = FXMLLoader.load(getClass().getResource("FXMLManager.fxml"));
+                URL file = new File("src/aservio/management/views/FXMLManager.fxml").toURI().toURL();
+                Parent p = FXMLLoader.load(file);
                 Aservio.getInstance().getStage().setScene(new Scene(p));
                 //view.setView(p);
 //                FXMLLoader.load(getClass().getResource("../management/views/FXMLManager.fxml"));
