@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class OverviewWeek extends Overview implements Pageable, ShowableActivity, Initializable{
@@ -26,26 +27,24 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
     private Label labelWeekNumber;
     @FXML
     private GridPane gridePaneWeek;
-    @FXML
-    private VBox vBoxMonday;
-    @FXML
-    private VBox vBoxTuesday;
-    @FXML
-    private VBox vBoxWednesday;
-    @FXML
-    private VBox vBoxThursday;
-    @FXML
-    private VBox vBoxFriday;
-    @FXML
-    private VBox vBoxSaturday;
-    @FXML
-    private VBox vBoxSunday;
-    @FXML
-    private Button badminton;
 
     private LocalDate localDate = LocalDate.now();
     private WeekFields weekFields = WeekFields.of(Locale.ENGLISH);
     private int weekNumber = localDate.get(weekFields.weekOfWeekBasedYear());
+    @FXML
+    private Pane paneMonday;
+    @FXML
+    private Pane paneTuersday;
+    @FXML
+    private Pane paneWednesday;
+    @FXML
+    private Pane paneThursday;
+    @FXML
+    private Pane paneFriday;
+    @FXML
+    private Pane paneSatuday;
+    @FXML
+    private Pane paneSunday;
 
     public OverviewWeek(){
         super(new Date());
@@ -76,7 +75,4 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
         labelWeekNumber.setText(String.valueOf("Uge " +weekNumber));
     }
 
-    @FXML
-    private void ActivityBadminton(ActionEvent event) {
-    }
 }
