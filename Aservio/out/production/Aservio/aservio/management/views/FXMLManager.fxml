@@ -9,12 +9,10 @@
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <VBox fx:id="wrapper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.Management">
    <children>
@@ -46,9 +44,6 @@
          <VBox.margin>
             <Insets />
          </VBox.margin>
-         <left>
-            <AnchorPane prefWidth="100.0" BorderPane.alignment="CENTER" />
-         </left>
          <top>
             <HBox spacing="10.0" BorderPane.alignment="CENTER">
                <children>
@@ -86,16 +81,8 @@
                               <MenuItem mnemonicParsing="false" onAction="#handleShowDay" text="Day" />
                           </items>
                         </SplitMenuButton>
-                        <Label text="April" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="Verdana" size="18.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                      <Button mnemonicParsing="false" text="&lt;" />
-                        <Button mnemonicParsing="false" text="&gt;" />
+                      <Button mnemonicParsing="false" onAction="#handlePrevious" text="&lt;" />
+                        <Button mnemonicParsing="false" onAction="#handleNext" text="&gt;" />
                      </children>
                   </HBox>
                </children>

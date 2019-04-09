@@ -55,6 +55,7 @@ public class Management implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         instance = this;
         overviewManager = new OverviewManager();
+        overviewManager.showDay();
     }
 
     public void setCenterView(Node node) {
@@ -86,5 +87,13 @@ public class Management implements Initializable {
     @FXML
     public void handleShowDay(ActionEvent actionEvent) {
         overviewManager.showDay();
+    }
+
+    public void handlePrevious(ActionEvent actionEvent) {
+        overviewManager.showPrevious();
+    }
+
+    public void handleNext(ActionEvent actionEvent) {
+        overviewManager.showNext();
     }
 }
