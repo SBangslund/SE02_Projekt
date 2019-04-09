@@ -1,6 +1,5 @@
 package aservio.management.overview;
 
-import java.io.File;
 import aservio.management.Management;
 import aservio.management.activities.Activity;
 import aservio.management.activities.ActivityList;
@@ -9,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -44,8 +42,6 @@ public class OverviewManager {
             currentOverview = loader.getController();
             currentOverview.setView(p);
             currentOverview.show();
-            URL file = new File(url).toURI().toURL();
-            return FXMLLoader.load(file);
         } catch (IOException e) {
             e.printStackTrace();
         }
