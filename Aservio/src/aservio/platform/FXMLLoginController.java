@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.platform;
 
-import aservio.management.overview.Overview;
-import aservio.management.overview.OverviewMonth;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,11 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- * @author victo
- */
 public class FXMLLoginController implements Initializable {
 
     @FXML
@@ -48,21 +35,17 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private Label wrongPasswordLabel;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
-    //Checks whether the inputs from the user are correct
+    //If input is correct, hitting enter og clicking the loginbutton logs the user in.
     @FXML
-    private void checkUserInput(ActionEvent event) {
-        if (allowableInput()) {
+    private void tryLogin(ActionEvent event) {
+        if (checkForNoIllegalInput()) {
             //load next scene
             System.out.println("hey you made it");
-
             try {
                 URL file = new File("src/aservio/management/views/FXMLManager.fxml").toURI().toURL();
                 Parent p = FXMLLoader.load(file);
@@ -71,11 +54,11 @@ public class FXMLLoginController implements Initializable {
                 Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println(getClass().getResource("FXMLOverviewMonth.fxml"));
             }
-
         }
     }
 
-    private boolean allowableInput() {
+    //Controls the logininput for errors like illegal characters, spaces, and correct account identifikation.
+    private boolean checkForNoIllegalInput() {
         String tempUser = usernameField.getText();
         String tempPassword = passwordField.getText();
 
