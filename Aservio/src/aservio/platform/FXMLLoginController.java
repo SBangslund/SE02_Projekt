@@ -89,4 +89,8 @@ public class FXMLLoginController implements Initializable {
         //All constraints are followed.
         return true;
     }
+
+    @FXML
+    private void checkUserInput(ActionEvent event) {
+    }
 }
