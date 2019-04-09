@@ -7,6 +7,7 @@ package aservio.platform;
 
 import aservio.management.overview.Overview;
 import aservio.management.overview.OverviewMonth;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -64,7 +65,9 @@ public class FXMLLoginController implements Initializable {
             Overview view = new OverviewMonth();
 
             try {
-                Parent p = FXMLLoader.load(getClass().getResource("../management/views/FXMLManager.fxml"));
+                File file = new File("src/aservio/management/views/FXMLManager.fxml");
+                System.out.println(file.exists());
+                Parent p = FXMLLoader.load(getClass().getResource("FXMLManager.fxml"));
                 Aservio.getInstance().getStage().setScene(new Scene(p));
                 //view.setView(p);
 //                FXMLLoader.load(getClass().getResource("../management/views/FXMLManager.fxml"));

@@ -21,7 +21,7 @@ public class Aservio extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         instance = this;
-//        Parent root = FXMLLoader.load(getClass().getResource("../Management/views/FXMLManager.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("FXMLManager.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("FXMLLogin.fxml"));
         Scene scene = new Scene(root);
 
