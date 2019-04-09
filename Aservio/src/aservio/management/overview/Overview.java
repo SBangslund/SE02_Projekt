@@ -29,6 +29,7 @@ public abstract class Overview implements ShowableActivity, Pageable, Initializa
      */
     public void show() {
         Management.getInstance().setCenterView(view);
+        initialize();
     }
 
     /**
