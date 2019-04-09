@@ -1,6 +1,9 @@
 package aservio.management.activities;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
@@ -12,12 +15,12 @@ import javafx.scene.paint.Color;
  */
 public enum ActivityType {
 
-    EAT("Eating", "Activity related to eating", "/aservio/management/icons/iconEating.jpg", Color.BLUE),
-    RUN("Running", "Activity related to running", "/aservio/management/icons/iconRunning.png", Color.CORAL),
-    WALK("Walking", "Activity related to walking", "/aservio/management/icons/iconTennis.png", Color.CRIMSON),
-    VOLLEY("Vollay", "Activity related to playing volley", "/aservio/management/icons/iconVolleyball.png", Color.DARKGREEN),
-    TENNIS("Tennis", "Activity related to playing tennis", "/aservio/management/icons/iconWalking.svg", Color.YELLOW);
-    
+    EAT("Eating", "Activity related to eating", "src/aservio/management/icons/iconEating.jpg", Color.hsb(194, 0.8, 1)),
+    RUN("Running", "Activity related to running", "src/aservio/management/icons/iconRunning.png", Color.hsb(120, 0.39, 1)),
+    WALK("Walking", "Activity related to walking", "src/aservio/management/icons/iconWalking.svg", Color.hsb(59, 0.39, 1)),
+    VOLLEY("Volley", "Activity related to playing volley", "src/aservio/management/icons/iconVolleyball.png", Color.hsb(29, 0.39, 1)),
+    TENNIS("Tennis", "Activity related to playing tennis", "src/aservio/management/icons/iconTennis.png", Color.hsb(328, 0.39, 1));
+
 
     /**
      * Name of the activity type.
@@ -34,7 +37,8 @@ public enum ActivityType {
      */
     private Image icon;
     private Color color;
-    
+    private String iconURL;
+
     /**
      * The type of a specific {@link Activity}. This includes a name, a description and an icon. The icon is not initially set
      * and needs to be set at system initialization.
@@ -43,6 +47,7 @@ public enum ActivityType {
      * @param description The description of the activity.
      */
     ActivityType(String name, String description, String iconLink, Color color) {
+        this.iconURL = iconLink;
         this.name = name;
         this.description = description;
         this.icon = new Image(new File(iconLink).toURI().toString());
@@ -67,6 +72,12 @@ public enum ActivityType {
     }
 
     public Image getIcon() {
-        return this.icon;
+        File file = new File(iconURL);
+        Image image = new Image(file.toURI().toString());
+        return image;
+    }
+
+    public Color getColor(){
+        return color;
     }
 }
