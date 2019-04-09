@@ -2,12 +2,16 @@
 
 import aservio.management.activities.ActivityList;
 import aservio.management.interfaces.Pageable;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
+
 import java.net.URL;
 import java.time.*;
 import java.util.*;
@@ -27,7 +31,7 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
 
     public OverviewMonth() {
         super(new Date());
-        currentMonth = new GregorianCalendar().get(Calendar.MONTH) + 1;
+        currentMonth = new GregorianCalendar().get(Calendar.MONTH);
         System.out.println("Called OverviewMonth constructor: " + this);
     }
 
@@ -41,7 +45,6 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 VBox day = new VBox();
-                day.getChildren().add(new Label(j + ":" + i));
                 gridPaneMonth.add(day, j, i);
                 daysObjects.add(day);
             }
@@ -51,24 +54,22 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
 
     public void populateDays(int month) {
         resetDays();
-        GregorianCalendar calender = new GregorianCalendar();
-        GregorianCalendar monthCalender = new GregorianCalendar(calender.get(Calendar.YEAR), month, 1);   // Creates new calender based on inserted month
+        GregorianCalendar monthCalender = new GregorianCalendar(new GregorianCalendar().get(Calendar.YEAR), month, 1);   // Creates new calender based on inserted month
         monthCalender.setTimeZone(TimeZone.getTimeZone("GMT+2"));                                                            // Corrects timezone to DK
-        labelMonthTitle.setText(Month.of(month).toString().toLowerCase());
-        int firstDayOfWeek = new GregorianCalendar(calender.get(Calendar.YEAR), month - 1, 1).get(Calendar.DAY_OF_WEEK);
-        System.out.println(firstDayOfWeek);
-        int numberOfDaysInMonth = MonthDay.of(monthCalender.get(Calendar.MONTH), monthCalender.get(Calendar.DAY_OF_MONTH)).getMonth().length(monthCalender.isLeapYear(monthCalender.get(Calendar.YEAR)));
-        for (int i = firstDayOfWeek - 1; i < numberOfDaysInMonth + firstDayOfWeek - 1; i++) {
-            LocalDate locale = MonthDay.of(monthCalender.get(Calendar.MONTH), i - firstDayOfWeek + 2).atYear(monthCalender.get(Calendar.YEAR));
+        labelMonthTitle.setText(Month.of(month + 1).toString().toLowerCase());
+        int firstDayOfWeek = new GregorianCalendar(monthCalender.get(Calendar.YEAR), month, 1).get(Calendar.DAY_OF_WEEK) - 1;
+        int numberOfDaysInMonth = MonthDay.of(monthCalender.get(Calendar.MONTH) + 1, monthCalender.get(Calendar.DAY_OF_MONTH)).getMonth().length(monthCalender.isLeapYear(monthCalender.get(Calendar.YEAR)));
+        for (int i = firstDayOfWeek; i < numberOfDaysInMonth + firstDayOfWeek; i++) {
+            LocalDate locale = MonthDay.of(monthCalender.get(Calendar.MONTH) + 1, i - firstDayOfWeek + 1).atYear(monthCalender.get(Calendar.YEAR));
             Date date = Date.from(locale.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
             daysDates.add(date);
-            daysObjects.get(i - 1).getChildren().add(new Label(date.toString()));
+            daysObjects.get(i).getChildren().add(new Label(locale.getDayOfMonth() + ""));
         }
     }
 
     public void resetDays() {
         daysObjects.forEach(e -> {
-            e.getChildren().remove(1, e.getChildren().size());
+            e.getChildren().clear();
         });
         daysDates.clear();
     }
@@ -93,10 +94,50 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
 
     @Override
     public void showActivities(ActivityList activities) {
-        activities.getActivities().forEach(e -> {
-            if(daysDates.contains(e.getStartDate())) {
-                System.out.println(e);
-            }
+        activities.getActivities().forEach(activity -> {
+            LocalDate activityDate = activity.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            daysDates.forEach(date -> {
+                LocalDate currentDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                int firstDayOfWeek = new GregorianCalendar(currentDate.getYear(), currentDate.getMonthValue() - 1, 1).get(Calendar.DAY_OF_WEEK);
+                if(activityDate.getDayOfMonth() == currentDate.getDayOfMonth() && activityDate.getMonth() == currentDate.getMonth()) {
+                    String defaultColor = String.format( "#%02X%02X%02X",
+                            (int)( activity.getActivityType().getColor().getRed() * 255 ),
+                            (int)( activity.getActivityType().getColor().getGreen() * 255 ),
+                            (int)( activity.getActivityType().getColor().getBlue() * 255 ) );
+
+                    HBox box = new HBox();
+                    box.getStyleClass().add("HBox");
+                    box.setStyle("-fx-background-color: " + defaultColor);
+                    box.setOnMouseClicked(event -> {
+                        // Whenever clicked.
+                        System.out.println(event);
+                    });
+                    box.setOnMouseEntered(event -> {
+                        box.setStyle("-fx-background-color: red");
+                    });
+                    box.setOnMouseExited(event -> {
+
+                        box.setStyle("-fx-background-color: " + defaultColor);
+                    });
+                    box.setSpacing(20);
+                    box.setPadding(new Insets(2, 2, 2, 2));
+
+                    Label button = new Label(activity.getActivityType().getName());
+                    Pane buffer = new Pane();
+                    ImageView icon = new ImageView(activity.getActivityType().getIcon());
+
+                    buffer.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                    icon.setFitWidth(25);
+                    icon.setFitHeight(25);
+
+                    box.getChildren().add(button);
+                    box.getChildren().add(buffer);
+                    box.getChildren().add(icon);
+                    HBox.setHgrow(buffer, Priority.ALWAYS);
+
+                    daysObjects.get(activityDate.getDayOfMonth() - 2 + firstDayOfWeek).getChildren().add(box);
+                }
+            });
         });
     }
 }
