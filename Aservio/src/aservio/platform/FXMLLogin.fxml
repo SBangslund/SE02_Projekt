@@ -24,8 +24,8 @@
                </font>
             </Label>
             <PasswordField fx:id="passwordField" onAction="#checkUserInput" prefWidth="200.0" />
-            <Label fx:id="wrongPasswordLabel" prefHeight="17.0" textFill="RED" />
-            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#tryLogin" text="Login" />
+            <Label fx:id="inputWarningLabel" prefHeight="17.0" textFill="RED" />
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#attemptLogin" text="Login" />
          </children>
       </VBox>
    </children>

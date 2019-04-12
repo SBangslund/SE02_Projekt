@@ -33,7 +33,7 @@ public class FXMLLoginController implements Initializable {
     private String correctUsername = "q";
     private String correctPassword = "q";
     @FXML
-    private Label wrongPasswordLabel;
+    private Label inputWarningLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -42,11 +42,11 @@ public class FXMLLoginController implements Initializable {
 
     //If input is correct, hitting enter og clicking the loginbutton logs the user in.
     @FXML
-    private void tryLogin(ActionEvent event) {
+    private void attemptLogin(ActionEvent event) {
         if (checkForNoIllegalInput()) {
             //load next scene
             System.out.println("hey you made it");
-            try {
+            try { //flyttes ned i persistens data laget
                 URL file = new File("src/aservio/management/views/FXMLManager.fxml").toURI().toURL();
                 Parent p = FXMLLoader.load(file);
                 Aservio.getInstance().getStage().setScene(new Scene(p));
@@ -64,26 +64,27 @@ public class FXMLLoginController implements Initializable {
 
         //Is Input empty?
         if (tempUser.isEmpty() || tempPassword.isEmpty()) {
-            wrongPasswordLabel.setText("Write your username and password to log in");
+            inputWarningLabel.setText("Write your username and password to log in");
             return false;
         }
         //Is Input in username ILLEGALCHARACTER?
         for (char J : ILLEGALCHARACTERS) {
             if (tempUser.contains(Character.toString(J))) {
-                wrongPasswordLabel.setText("Username or password contains special characters: ; / \\ , . % &");
+                inputWarningLabel.setText("Username or password contains special characters: ; / \\ , . % &");
                 return false;
             }
         }
         //Is Input in password ILLEGALCHARACTER?
         for (char J : ILLEGALCHARACTERS) {
             if (tempPassword.contains(Character.toString(J))) {
-                wrongPasswordLabel.setText("Username or password contains special characters: ; / \\ , . % &");
+                inputWarningLabel.setText("Username or password contains special characters: ; / \\ , . % &");
                 return false;
             }
         }
         //Is Input a user?
+        //I en senere udgave skal der oprettes en loginAuthentiocation som tager brugernavn og kode i constructoren.
         if (!usernameField.getText().equals(correctUsername) && !passwordField.getText().equals(correctPassword)) {
-            wrongPasswordLabel.setText("Wrong username or password");
+            inputWarningLabel.setText("Wrong username or password");
             return false;
         }
         //All constraints are followed.
