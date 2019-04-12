@@ -1,5 +1,6 @@
 package aservio.platform;
 
+import aservio.platform.user.User;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -26,7 +27,7 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private Button loginButton;
 
-    private static final char[] ILLEGALCHARACTERS = new char[]{
+    private static final char[] ILLEGALCHARACTERS = new char[]{ //use legal characters instead a-å
         ';', '"', '\\'
     };
 
@@ -44,6 +45,12 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private void attemptLogin(ActionEvent event) {
         if (checkForNoIllegalInput()) {
+            //Log in username password - returns ID
+            //get object via object inputstream
+            //set singleton user reference to inputstream
+            //User.setCurrentUser(objectstreamreference);
+            
+            //singleton (overvejes)
             //load next scene
             System.out.println("hey you made it");
             try { //flyttes ned i persistens data laget
