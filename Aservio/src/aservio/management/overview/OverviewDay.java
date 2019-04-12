@@ -12,10 +12,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -24,7 +25,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.File;
 import java.net.URL;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
@@ -38,6 +38,8 @@ public class OverviewDay extends Overview implements Initializable {
     public Label DayOfWeekLabel;
     public Label moreInformationLabel;
     public Pane activityPane;
+    public VBox backgroundVbox;
+    public StackPane stackPane;
 
     private Date currentDate;
 
@@ -46,6 +48,7 @@ public class OverviewDay extends Overview implements Initializable {
     private ArrayList<Button> eventButtonList;
 
     private int backgroundHeight = 1200;
+    private HBox visualHour;
 
     public OverviewDay() {
         this(new Date());
@@ -67,7 +70,6 @@ public class OverviewDay extends Overview implements Initializable {
         resetVisualDay();
         this.activityList = activities;
         createVisualDay(activityList, currentDate);
-
 
     }
 
@@ -109,12 +111,12 @@ public class OverviewDay extends Overview implements Initializable {
                 .equals(new SimpleDateFormat("dd.MM.yyyy", setLocaleToDanish()).format(date.getTime()));
     }
 
-    private void showLineAtCurrentTime(Date date){
+    private void showLineAtCurrentTime(Date date) {
         int hour = getCalendarWithSetTime(date).get(Calendar.HOUR_OF_DAY);
         int min = getCalendarWithSetTime(date).get(Calendar.MINUTE);
         int minPerDay = 1440;
 
-        int currentY = backgroundHeight/25 + (((hour * 60) + min) * (backgroundHeight - backgroundHeight/25)) / minPerDay;
+        int currentY = backgroundHeight / 25 + (((hour * 60) + min) * (backgroundHeight - backgroundHeight / 25)) / minPerDay;
         Line line = new Line(50, currentY, 1200, currentY);
         line.setStroke(Color.RED);
         line.setStrokeWidth(2);
@@ -125,12 +127,30 @@ public class OverviewDay extends Overview implements Initializable {
     }
 
     private void setBackgroundImage() {
-        File file = new File("src/aservio/management/icons/OverViewDayTimeTable.png");
-        Image image = new Image(file.toURI().toString());
-        ImageView backgroundImage = new ImageView(image);
-        backgroundImage.setFitHeight(backgroundHeight);
-        backgroundImage.setPreserveRatio(true);
-        activityPane.getChildren().add(backgroundImage);
+        backgroundVbox.getChildren().clear();
+        for (int i = 0; i < 24; i++) {
+            HBox visualHour = new HBox();
+            System.out.println(stackPane.getWidth());
+            visualHour.prefWidthProperty().bind(stackPane.widthProperty());
+            visualHour.setPrefHeight(30);
+            visualHour.setMinHeight(30);
+            visualHour.setMaxHeight(30);
+            Label time = new Label(i < 10 ? "0" + i : Integer.toString(i));
+            time.setMinWidth(30);
+            Line line = new Line(15, 15, stackPane.widthProperty().get(), 15);
+            line.setStrokeWidth(2);
+            visualHour.getChildren().add(time);
+            visualHour.getChildren().add(line);
+
+            backgroundVbox.getChildren().add(visualHour);
+        }
+
+//        File file = new File("src/aservio/management/icons/OverViewDayTimeTable.png");
+//        Image image = new Image(file.toURI().toString());
+//        ImageView backgroundImage = new ImageView(image);
+//        backgroundImage.setFitHeight(backgroundHeight);
+//        backgroundImage.setPreserveRatio(true);
+//        activityPane.getChildren().add(backgroundImage);
     }
 
 
@@ -141,10 +161,10 @@ public class OverviewDay extends Overview implements Initializable {
         HBox buttonContent = new HBox(10);
         buttonContent.getStyleClass().add("hbox");
         buttonContent.setPadding(new Insets(5, 0, 0, 5));
-        String color = String.format( "#%02X%02X%02X",
-                (int)( activity.getActivityType().getColor().getRed() * 255 ),
-                (int)( activity.getActivityType().getColor().getGreen() * 255 ),
-                (int)( activity.getActivityType().getColor().getBlue() * 255 ) );
+        String color = String.format("#%02X%02X%02X",
+                (int) (activity.getActivityType().getColor().getRed() * 255),
+                (int) (activity.getActivityType().getColor().getGreen() * 255),
+                (int) (activity.getActivityType().getColor().getBlue() * 255));
 
         buttonContent.setPrefWidth(standartButtonWidth);
 
@@ -183,7 +203,7 @@ public class OverviewDay extends Overview implements Initializable {
         int endHour = getCalendarWithSetTime(activity.getEndDate()).get(Calendar.HOUR_OF_DAY);
         int endMin = getCalendarWithSetTime(activity.getEndDate()).get(Calendar.MINUTE);
 
-        int topBackgroundPadding = backgroundHeight/25;
+        int topBackgroundPadding = backgroundHeight / 25;
         int leftBackgroundPadding = 50;
         int minPerDay = 1440;
 
@@ -200,7 +220,7 @@ public class OverviewDay extends Overview implements Initializable {
         return eventButton;
     }
 
-    private Scene createActivityPopUp(Activity activity){
+    private Scene createActivityPopUp(Activity activity) {
         HBox dialogVbox = new HBox(20);
         ImageView imageView = new ImageView(activity.getActivityType().getIcon());
         imageView.setFitWidth(50);
@@ -243,5 +263,9 @@ public class OverviewDay extends Overview implements Initializable {
     }
 
     @Override
-    protected void initialize() {}
+    protected void initialize() {
+        stackPane.widthProperty().addListener((obs, oldValue, newValue) -> {
+            setBackgroundImage();
+        });
+    }
 }

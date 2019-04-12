@@ -160,10 +160,10 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
                         icon.setFitHeight(25);
                         icon.setPreserveRatio(true);
 
-                        box.getChildren().add(label);
-                        box.getChildren().add(buffer);
-                        box.getChildren().add(icon);
-                        HBox.setHgrow(buffer, Priority.ALWAYS);
+                        box.getChildren().add(label);                   // Add the label to activity element.
+                        box.getChildren().add(buffer);                  // Add buffer to activity element.
+                        box.getChildren().add(icon);                    // Add icon to activity element.
+                            HBox.setHgrow(buffer, Priority.ALWAYS);         // Make the buffer always expand if possible.
 
                         p.getChildren().add(box);
                     } else {
