@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cefc65ca-ca20-485c-9761-f498581290a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/aservio/management/overview/OverviewDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/management/overview/OverviewDay.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -82,8 +81,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/aservio/management/overview/OverviewDay.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="205">
-                  <caret line="210" column="31" lean-forward="true" selection-start-line="210" selection-start-column="31" selection-end-line="210" selection-end-column="31" />
+                <state relative-caret-position="273">
+                  <caret line="208" column="59" lean-forward="true" selection-start-line="208" selection-start-column="59" selection-end-line="208" selection-end-column="59" />
                   <folding>
                     <element signature="e#7509#8022#0" expanded="true" />
                     <element signature="e#8021#8022#0" expanded="true" />
@@ -224,7 +223,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555357528821" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555357604477" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -276,12 +275,12 @@
       <workItem from="1554445407663" duration="8046000" />
       <workItem from="1554714091849" duration="4374000" />
       <workItem from="1555070552083" duration="1403000" />
-      <workItem from="1555342399516" duration="10885000" />
+      <workItem from="1555342399516" duration="10960000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49868000" />
+    <option name="totallyTimeSpent" value="49943000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -530,8 +529,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/aservio/management/overview/OverviewDay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="210" column="31" lean-forward="true" selection-start-line="210" selection-start-column="31" selection-end-line="210" selection-end-column="31" />
+        <state relative-caret-position="273">
+          <caret line="208" column="59" lean-forward="true" selection-start-line="208" selection-start-column="59" selection-end-line="208" selection-end-column="59" />
           <folding>
             <element signature="e#7509#8022#0" expanded="true" />
             <element signature="e#8021#8022#0" expanded="true" />

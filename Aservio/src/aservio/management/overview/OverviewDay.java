@@ -196,7 +196,7 @@ public class OverviewDay extends Overview implements Initializable {
 
         eventButton.setGraphic(buttonContent);
         eventButton.setUserData(activity);
-        eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px 0px, " + color + " 99%, white);");
+        eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px 10px, " + color + " 99%, white);");
         AtomicInteger colorWidth = new AtomicInteger(10);
 
         eventButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
