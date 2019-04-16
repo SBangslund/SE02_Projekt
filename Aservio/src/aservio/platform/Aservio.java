@@ -14,11 +14,18 @@ import javafx.stage.Stage;
  * @author sbang
  */
 public class Aservio extends Application {
-    
+
+    private static Aservio instance;
+    private Stage primaryStage;
+
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../Management/views/FXMLManager.fxml"));
-        
+        instance = this;
+        primaryStage = stage;
+
+        //Parent root = FXMLLoader.load(getClass().getResource("../Management/views/FXMLManager.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLLogin.fxml"));
+
         Scene scene = new Scene(root);
 
         stage.setMinWidth(500);
@@ -34,5 +41,13 @@ public class Aservio extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public static Aservio getInstance() {
+        return instance;
+    }
+
 }
