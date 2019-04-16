@@ -129,7 +129,6 @@ public class OverviewDay extends Overview implements Initializable {
         int minPerDay = 1440;
 
         int timeShift = ((backgroundHeight / 24) / 2);
-        System.out.println(timeShift);
 
         int currentY = timeShift + (((hour * 60) + min) * (backgroundHeight)) / minPerDay;
         Line line = new Line(30, currentY, 1200, currentY);
@@ -145,8 +144,8 @@ public class OverviewDay extends Overview implements Initializable {
         backgroundVbox.getChildren().clear();
         for (int i = 0; i < 24; i++) {
             HBox visualHour = new HBox();
-            System.out.println(stackPane.getWidth());
-            System.out.println(stackPane.getHeight());
+            //System.out.println(stackPane.getWidth());
+            //System.out.println(stackPane.getHeight());
             visualHour.prefWidthProperty().bind(stackPane.widthProperty());
             visualHour.setPrefHeight(backgroundHeight / 24);
             visualHour.setMinHeight(backgroundHeight / 24);
