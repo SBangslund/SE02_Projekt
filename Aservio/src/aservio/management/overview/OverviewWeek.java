@@ -4,21 +4,15 @@ import aservio.management.activities.Activity;
 import aservio.management.activities.ActivityList;
 import aservio.management.interfaces.Pageable;
 import aservio.management.interfaces.ShowableActivity;
-import java.net.URL;
-import java.time.LocalDate;
-import java.time.temporal.WeekFields;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -27,7 +21,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 
 public class OverviewWeek extends Overview implements Pageable, ShowableActivity, Initializable {
 
@@ -74,7 +67,8 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
     protected void initialize() {
 
     }
-
+    // First currentday set. When 'next' has been pressed, the calendar get reset.
+    // After currentDate + 7 been set and the acticities as well
     @Override
     public void next() {
         Calendar cal = Calendar.getInstance();
@@ -86,7 +80,7 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
         createVisualWeek(activityList, currentDate);
 
     }
-
+    // Same as next(), only different is that currentDay - 7 i called instead  
     @Override
     public void previous() {
         Calendar cal = Calendar.getInstance();
@@ -97,20 +91,16 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
         System.out.println(cal.getTime());
         createVisualWeek(activityList, currentDate);
     }
-
+    
     @Override
     public void showActivities(ActivityList activities) {
         activityList = activities;
         createVisualWeek(activityList, currentDate);
     }
-
+    // Panes for every day at the time 00 to 23
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
         paneArray = new Pane[]{paneSunday, paneMonday, paneTuersday, paneWednesday, paneThursday, paneFriday, paneSatuday};
-        
-        
-
     }
 
     private void createVisualWeek(ActivityList activities, Date date) {
@@ -125,7 +115,8 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
             }
         }
     }
-
+    // A currentDay is set. The method loop throw the activityList and get the startDate for the activities(activityDay).
+    // If curentDay is equal activtyDay, the activity is add to the array returnActivitiesForDay 
     private ArrayList<Activity> getActivitiesForDay(ActivityList activityList, Date date) {
         Calendar currentDay = Calendar.getInstance();
         currentDay.setTime(date);
@@ -144,15 +135,16 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
     private void showActivity(Activity activity, Pane pane) {
         Calendar c = Calendar.getInstance();
         c.setTime(activity.getStartDate());
-
+        
+        // These parametre show where the activities are in the panes
+        // It works like a system of coodinates with x and y
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int min = c.get(Calendar.MINUTE);
-        int minPerDay = 1440;
+        int minPerDay = 1440; // 24*60
         int minPast = (hour * 60) + min;
         c.setTime(activity.getEndDate());
         int endHour = c.get(Calendar.HOUR_OF_DAY);
         int endMin = c.get(Calendar.MINUTE);
-
         int x = 0;
         int yStart = (minPast * minPerDay) / (24 * 60);
         int yEnd = (((endHour * 60) + endMin) * minPerDay) / (24 * 60);
@@ -210,7 +202,7 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
         pane.getChildren().add(box);                    // Add activity element to GridPane cell.
 
     }
-
+    // This method is used in prex() and next() to clear the calendar before adding an new page
     public void resetVisualWeek() {
         for (Pane pane : paneArray) {
             pane.getChildren().clear();
