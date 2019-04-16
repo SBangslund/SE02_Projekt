@@ -3,23 +3,16 @@ package aservio.management.overview;
 import aservio.management.activities.Activity;
 import aservio.management.activities.ActivityList;
 import aservio.management.interfaces.Pageable;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-
 import java.net.URL;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class OverviewMonth extends Overview implements Initializable, Pageable {
 
@@ -36,12 +29,11 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
     private List<Date> daysDates = new ArrayList<>();
     private int currentMonth;
     private ActivityList activities;
-    private Number[] height = new Number[1];
+    private AtomicInteger windowHeight = new AtomicInteger();
 
     public OverviewMonth() {
         super(new Date());
         currentMonth = new GregorianCalendar().get(Calendar.MONTH);
-        System.out.println("Called OverviewMonth constructor: " + this);
     }
 
     /**
@@ -50,11 +42,11 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
     @Override
     protected void initialize() {
         // This is needed to setup event handlers AFTER the scene has been initialized.
-        height[0] = 40;                             // This is set to 40 because of the start size.
+        windowHeight.set(40);                       // This is set to 40 because of the start size.
         gridPaneMonth.getScene().heightProperty().addListener((obs, oldVal, newVal) -> {
             int temp = (int) ((double) newVal / 8); // The calender has 6 rows (roughly) so this fits the height correctly.
-            if (temp != height[0].intValue()) {     // If it wasn't the same as before, then do...
-            height[0] = temp;                       // Update the global value
+            if (Math.abs(temp - windowHeight.get()) >= 25) {     // If it wasn't the same as before, then do...
+                windowHeight.set(temp);             // Update the global value
                 showActivities(activities);         // Show activities.
             }
         });
@@ -182,7 +174,7 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
                     Pane cell = daysObjects.get(activityDate.getDayOfMonth() - 2 + firstDayOfWeek);
 
                     // Check to see if the activity can fit within the GridPane cell.
-                    if (height[0].intValue() / 35 >= cell.getChildren().size()) {
+                    if (windowHeight.get() / 35 >= cell.getChildren().size()) {
                         // Create hexadecimal color from the current activity type.
                         String defaultColor = String.format("#%02X%02X%02X",
                                 (int) (activity.getActivityType().getColor().getRed() * 255),
