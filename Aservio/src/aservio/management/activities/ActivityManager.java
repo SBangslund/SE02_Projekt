@@ -1,6 +1,6 @@
 package aservio.management.activities;
 
-import aservio.platform.User;
+import aservio.platform.user.User;
 
 import java.util.HashMap;
 import java.util.List;
