@@ -3,32 +3,44 @@ package aservio.management.overview;
 
 import aservio.management.activities.Activity;
 import aservio.management.activities.ActivityList;
+import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.WritableIntegerValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
-import java.io.File;
 import java.net.URL;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class OverviewDay extends Overview implements Initializable {
@@ -38,6 +50,8 @@ public class OverviewDay extends Overview implements Initializable {
     public Label DayOfWeekLabel;
     public Label moreInformationLabel;
     public Pane activityPane;
+    public VBox backgroundVbox;
+    public StackPane stackPane;
 
     private Date currentDate;
 
@@ -45,7 +59,8 @@ public class OverviewDay extends Overview implements Initializable {
 
     private ArrayList<Button> eventButtonList;
 
-    private int backgroundHeight = 1200;
+    private int backgroundHeight = 1440;
+    private HBox visualHour;
 
     public OverviewDay() {
         this(new Date());
@@ -67,7 +82,6 @@ public class OverviewDay extends Overview implements Initializable {
         resetVisualDay();
         this.activityList = activities;
         createVisualDay(activityList, currentDate);
-
 
     }
 
@@ -109,28 +123,46 @@ public class OverviewDay extends Overview implements Initializable {
                 .equals(new SimpleDateFormat("dd.MM.yyyy", setLocaleToDanish()).format(date.getTime()));
     }
 
-    private void showLineAtCurrentTime(Date date){
+    private void showLineAtCurrentTime(Date date) {
         int hour = getCalendarWithSetTime(date).get(Calendar.HOUR_OF_DAY);
         int min = getCalendarWithSetTime(date).get(Calendar.MINUTE);
         int minPerDay = 1440;
 
-        int currentY = backgroundHeight/25 + (((hour * 60) + min) * (backgroundHeight - backgroundHeight/25)) / minPerDay;
-        Line line = new Line(50, currentY, 1200, currentY);
+        int timeShift = ((backgroundHeight / 24) / 2);
+
+        int currentY = timeShift + (((hour * 60) + min) * (backgroundHeight)) / minPerDay;
+        Line line = new Line(30, currentY, 1200, currentY);
         line.setStroke(Color.RED);
         line.setStrokeWidth(2);
-        Circle c = new Circle(50, currentY, 5, Color.RED);
+        Circle c = new Circle(30, currentY, 5, Color.RED);
 
         activityPane.getChildren().add(line);
         activityPane.getChildren().add(c);
     }
 
     private void setBackgroundImage() {
-        File file = new File("src/aservio/management/icons/OverViewDayTimeTable.png");
-        Image image = new Image(file.toURI().toString());
-        ImageView backgroundImage = new ImageView(image);
-        backgroundImage.setFitHeight(backgroundHeight);
-        backgroundImage.setPreserveRatio(true);
-        activityPane.getChildren().add(backgroundImage);
+        backgroundVbox.getChildren().clear();
+        for (int i = 0; i < 24; i++) {
+            HBox visualHour = new HBox();
+            //System.out.println(stackPane.getWidth());
+            //System.out.println(stackPane.getHeight());
+            visualHour.prefWidthProperty().bind(stackPane.widthProperty());
+            visualHour.setPrefHeight(backgroundHeight / 24);
+            visualHour.setMinHeight(backgroundHeight / 24);
+            visualHour.setMaxHeight(backgroundHeight / 24);
+            Label time = new Label(i < 10 ? "0" + i : Integer.toString(i));
+            visualHour.setAlignment(Pos.CENTER_LEFT);
+            time.setMinWidth(30);
+
+            int linePos = (backgroundHeight / 24) / 2;
+            Line line = new Line(linePos, linePos, stackPane.widthProperty().get() - linePos, linePos);
+            line.setStrokeWidth(0.5);
+            visualHour.getChildren().add(time);
+            visualHour.getChildren().add(line);
+
+            backgroundVbox.getChildren().add(visualHour);
+        }
+
     }
 
 
@@ -141,12 +173,16 @@ public class OverviewDay extends Overview implements Initializable {
         HBox buttonContent = new HBox(10);
         buttonContent.getStyleClass().add("hbox");
         buttonContent.setPadding(new Insets(5, 0, 0, 5));
-        String color = String.format( "#%02X%02X%02X",
-                (int)( activity.getActivityType().getColor().getRed() * 255 ),
-                (int)( activity.getActivityType().getColor().getGreen() * 255 ),
-                (int)( activity.getActivityType().getColor().getBlue() * 255 ) );
+        String color = String.format("#%02X%02X%02X",
+                (int) (activity.getActivityType().getColor().getRed() * 255),
+                (int) (activity.getActivityType().getColor().getGreen() * 255),
+                (int) (activity.getActivityType().getColor().getBlue() * 255));
 
         buttonContent.setPrefWidth(standartButtonWidth);
+
+        Rectangle colorRect = new Rectangle(10, eventButton.getPrefHeight());
+        colorRect.setFill(Color.BLUE);
+        buttonContent.getChildren().add(colorRect);
 
         Text buttonContentText = new Text(String.format("%s\n%s", activity.getActivityType().getName(), activity.getTimeSlotString()));
         buttonContentText.getStyleClass().add("text_button");
@@ -159,8 +195,46 @@ public class OverviewDay extends Overview implements Initializable {
 
         eventButton.setGraphic(buttonContent);
         eventButton.setUserData(activity);
-        eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px 0px, " + color + " 99%, white);");
+        eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px 10px, " + color + " 99%, white);");
+        AtomicInteger colorWidth = new AtomicInteger(10);
 
+        eventButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                new AnimationTimer() {
+                    @Override
+                    public void handle(long now) {
+                        if (colorWidth.get() >= 0) {
+                            eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px" + colorWidth + "px, " + color + " 99%, white);");
+                            colorWidth.decrementAndGet();
+                        } else{
+                            this.stop();
+                        }
+                    }
+                }.start();
+
+            }
+        });
+
+        eventButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                new AnimationTimer() {
+                    @Override
+                    public void handle(long now) {
+                        if (colorWidth.get() < 10) {
+                            eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px " + colorWidth + "px, " + color + " 99%, white);");
+                            colorWidth.addAndGet(1);
+                        } else {
+                            this.stop();
+                        }
+                    }
+                }.start();
+
+
+
+            }
+        });
         eventButton.setOnAction(
                 new EventHandler<ActionEvent>() {
                     @Override
@@ -176,6 +250,7 @@ public class OverviewDay extends Overview implements Initializable {
         activityPane.getChildren().add(eventButton);
     }
 
+
     private Button createRightSizedButton(Activity activity, int standartButtonWidth) {
 
         int startHour = getCalendarWithSetTime(activity.getStartDate()).get(Calendar.HOUR_OF_DAY);
@@ -183,13 +258,13 @@ public class OverviewDay extends Overview implements Initializable {
         int endHour = getCalendarWithSetTime(activity.getEndDate()).get(Calendar.HOUR_OF_DAY);
         int endMin = getCalendarWithSetTime(activity.getEndDate()).get(Calendar.MINUTE);
 
-        int topBackgroundPadding = backgroundHeight/25;
         int leftBackgroundPadding = 50;
         int minPerDay = 1440;
+        int timeShift = ((backgroundHeight / 24) / 2);
 
-        int yStartPosition = topBackgroundPadding + (((startHour * 60) + startMin) * (backgroundHeight - topBackgroundPadding)) / minPerDay;
-        int yEndPosition = topBackgroundPadding + (((endHour * 60) + endMin) * (backgroundHeight - topBackgroundPadding)) / minPerDay;
-        int xStartPosition = standartButtonWidth * getColumnNotUsed(yStartPosition, yEndPosition) - leftBackgroundPadding;
+        int yStartPosition = timeShift + (((startHour * 60) + startMin) * (backgroundHeight)) / minPerDay;
+        int yEndPosition = timeShift + (((endHour * 60) + endMin) * (backgroundHeight)) / minPerDay;
+        int xStartPosition = (standartButtonWidth * getColumnNotUsed(yStartPosition, yEndPosition)) + leftBackgroundPadding;
 
         Button eventButton = new Button();
         eventButton.setLayoutX(xStartPosition);
@@ -200,7 +275,7 @@ public class OverviewDay extends Overview implements Initializable {
         return eventButton;
     }
 
-    private Scene createActivityPopUp(Activity activity){
+    private Scene createActivityPopUp(Activity activity) {
         HBox dialogVbox = new HBox(20);
         ImageView imageView = new ImageView(activity.getActivityType().getIcon());
         imageView.setFitWidth(50);
@@ -215,7 +290,7 @@ public class OverviewDay extends Overview implements Initializable {
     }
 
     private int getColumnNotUsed(double yStart, double yEnd) {
-        int countActivitiesInTimeslot = 1;
+        int countActivitiesInTimeslot = 0;
         for (Button b : eventButtonList) {
             if ((yStart >= b.getLayoutY() && yStart <= b.getLayoutY() + b.getPrefHeight()) || yEnd >= b.getLayoutY() && yEnd <= b.getLayoutY() + b.getPrefHeight() || yStart <= b.getLayoutY() && yEnd >= b.getLayoutY() + b.getPrefHeight()) {
                 countActivitiesInTimeslot++;
@@ -243,5 +318,13 @@ public class OverviewDay extends Overview implements Initializable {
     }
 
     @Override
-    protected void initialize() {}
+    protected void initialize() {
+        stackPane.widthProperty().addListener((obs, oldValue, newValue) -> {
+            setBackgroundImage();
+        });
+        stackPane.heightProperty().addListener((obs, oldValue, newValue) -> {
+            setBackgroundImage();
+        });
+
+    }
 }

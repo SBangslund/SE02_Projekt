@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="362.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.overview.OverviewMonth">
+<AnchorPane prefHeight="362.0" fx:id="anchor" prefWidth="639.0" stylesheets="@/aservio/management/views/CSSOverviewMonth.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.overview.OverviewMonth">
    <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -38,7 +38,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="Monday">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Søndag">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
@@ -46,32 +46,32 @@
                               <Font name="Verdana" size="14.0" />
                            </font>
                         </Label>
-                        <Label text="Tuesday" GridPane.columnIndex="1">
+                        <Label text="Mandag" GridPane.columnIndex="1">
                            <font>
                               <Font name="Verdana" size="14.0" />
                            </font>
                         </Label>
-                        <Label text="Wednesday" GridPane.columnIndex="2">
+                        <Label text="Tirsdag" GridPane.columnIndex="2">
                            <font>
                               <Font name="Verdana" size="14.0" />
                            </font>
                         </Label>
-                        <Label text="Thursday" GridPane.columnIndex="3">
+                        <Label text="Onsdag" GridPane.columnIndex="3">
                            <font>
                               <Font name="Verdana" size="14.0" />
                            </font>
                         </Label>
-                        <Label text="Friday" GridPane.columnIndex="4">
+                        <Label text="Torsdag" GridPane.columnIndex="4">
                            <font>
                               <Font name="Verdana" size="14.0" />
                            </font>
                         </Label>
-                        <Label text="Saturday" GridPane.columnIndex="5">
+                        <Label text="Fredag" GridPane.columnIndex="5">
                            <font>
                               <Font name="Verdana" size="14.0" />
                            </font>
                         </Label>
-                        <Label text="Sunday" GridPane.columnIndex="6">
+                        <Label text="Lørdag" GridPane.columnIndex="6">
                            <font>
                               <Font name="Verdana" size="14.0" />
                            </font>

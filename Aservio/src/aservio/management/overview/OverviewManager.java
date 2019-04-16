@@ -29,10 +29,12 @@ public class OverviewManager {
 
     public void showNext() {
         currentOverview.next();
+        updateActivities();
     }
 
     public void showPrevious() {
         currentOverview.previous();
+        updateActivities();
     }
 
     private void updateCurrentOverview(String url) {
@@ -57,6 +59,10 @@ public class OverviewManager {
         list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 3, 6, 8, 20).getTime()));
         list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 3, 7, 10, 20).getTime()));
         list.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 3, 8, 9, 20).getTime()));
+        list.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 4, 8, 9, 20).getTime()));
+        for (int i = 0; i < 100; i++) {
+            list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, (int)(Math.random() * 12), (int)(Math.random() * 25), 9, 20).getTime()));
+        }
         list.add(new Activity(ActivityType.TENNIS, new Date()));
         currentOverview.showActivities(list);
     }
