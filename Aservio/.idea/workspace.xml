@@ -2,24 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cefc65ca-ca20-485c-9761-f498581290a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/build/built-jar.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/built-jar.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/activities/ActivityManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/activities/ActivityManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/overview/Overview.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/overview/Overview.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/overview/OverviewDay$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/overview/OverviewDay$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/overview/OverviewDay.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/overview/OverviewDay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/overview/OverviewManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/overview/OverviewManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/overview/OverviewMonth.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/overview/OverviewMonth.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/overview/OverviewType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/overview/OverviewType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/overview/OverviewWeek.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/overview/OverviewWeek.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLOverviewDay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLOverviewDay.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLOverviewMonth.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLOverviewMonth.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/platform/Aservio.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/platform/Aservio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/platform/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Aservio.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Aservio.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Aservio.jar" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Aservio.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Aservio.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Aservio.jnlp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/web-files/dtjava.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/web-files/dtjava.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/overview/OverviewType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/management/overview/OverviewType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/management/sideview/SideView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/management/sideview/SideViewActivity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/management/views/FXMLActivityView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/aservio/management/sideview/SideView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/aservio/management/sideview/SideViewActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/aservio/management/views/FXMLActivityView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/Management.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/management/Management.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/activities/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/management/activities/Activity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/activities/ActivityManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/management/activities/ActivityManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewMonth.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewMonth.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/management/Management.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/management/Management.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/management/activities/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/management/activities/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/management/activities/ActivityManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/management/activities/ActivityManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/management/overview/OverviewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/management/overview/OverviewManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/management/overview/OverviewMonth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/management/overview/OverviewMonth.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,112 +29,108 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/aservio/management/overview/OverviewManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#477#478#0" expanded="true" />
-                <element signature="e#543#544#0" expanded="true" />
-                <element signature="e#573#574#0" expanded="true" />
-                <element signature="e#638#639#0" expanded="true" />
-                <element signature="e#667#668#0" expanded="true" />
-                <element signature="e#731#732#0" expanded="true" />
-                <element signature="e#2556#2557#0" expanded="true" />
-                <element signature="e#2599#2600#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/aservio/management/activities/ActivityManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/aservio/platform/user/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-              <folding>
-                <element signature="e#1205#1206#0" expanded="true" />
-                <element signature="e#1240#1241#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/aservio/management/overview/OverviewMonth.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/aservio/management/views/FXMLOverviewMonth.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/aservio/management/overview/OverviewDay.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6072">
-              <caret line="320" column="33" selection-start-line="320" selection-start-column="33" selection-end-line="320" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/aservio/platform/Aservio.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
-              <folding>
-                <element signature="e#1022#1023#0" expanded="true" />
-                <element signature="e#1050#1051#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/aservio/platform/FXMLLoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="82" column="9" lean-forward="true" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/aservio/management/overview/OverviewWeek.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1716">
-              <caret line="100" column="13" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/aservio/management/activities/ActivityManager.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="321">
+                  <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#441#442#0" expanded="true" />
+                    <element signature="e#474#475#0" expanded="true" />
+                    <element signature="e#1308#1309#0" expanded="true" />
+                    <element signature="e#1362#1363#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/aservio/management/sideview/SideViewActivity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="282">
+                  <caret line="48" column="33" lean-forward="true" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/aservio/management/activities/Activity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="506">
+                  <caret line="27" selection-start-line="27" selection-end-line="27" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/aservio/management/Management.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1210">
+                  <caret line="63" column="5" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/aservio/platform/Aservio.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="418">
+                  <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/aservio/management/overview/Overview.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="198">
+                  <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+                  <folding>
+                    <element signature="e#561#562#0" expanded="true" />
+                    <element signature="e#593#594#0" expanded="true" />
+                    <element signature="e#1111#1112#0" expanded="true" />
+                    <element signature="e#1143#1144#0" expanded="true" />
+                    <element signature="e#1174#1175#0" expanded="true" />
+                    <element signature="e#1201#1202#0" expanded="true" />
+                    <element signature="e#1230#1231#0" expanded="true" />
+                    <element signature="e#1257#1258#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/aservio/management/overview/OverviewManager.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="393">
+                  <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#477#478#0" expanded="true" />
+                    <element signature="e#543#544#0" expanded="true" />
+                    <element signature="e#573#574#0" expanded="true" />
+                    <element signature="e#638#639#0" expanded="true" />
+                    <element signature="e#667#668#0" expanded="true" />
+                    <element signature="e#731#732#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -142,11 +138,6 @@
         <option value="CSS File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>User</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -165,14 +156,10 @@
         <option value="$PROJECT_DIR$/src/aservio/platform/FXMLLoginController.java" />
         <option value="$PROJECT_DIR$/src/aservio/platform/user/User.java" />
         <option value="$PROJECT_DIR$/src/aservio/platform/Aservio.java" />
+        <option value="$PROJECT_DIR$/src/aservio/management/activities/ActivityManager.java" />
+        <option value="$PROJECT_DIR$/src/aservio/management/sideview/SideViewActivity.java" />
       </list>
     </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="498" />
-    <option name="y" value="213" />
-    <option name="width" value="2100" />
-    <option name="height" value="1500" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -182,7 +169,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -194,6 +180,17 @@
               <item name="Aservio" type="b2602c69:ProjectViewProjectNode" />
               <item name="Aservio" type="462c0819:PsiDirectoryNode" />
               <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aservio" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aservio" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aservio" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aservio" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Aservio" type="b2602c69:ProjectViewProjectNode" />
@@ -234,7 +231,8 @@
               <item name="Aservio" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="aservio" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="management" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Aservio" type="b2602c69:ProjectViewProjectNode" />
@@ -242,19 +240,17 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="aservio" type="462c0819:PsiDirectoryNode" />
               <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555409291635" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555528195138" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -310,13 +306,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="736000" />
+    <option name="totallyTimeSpent" value="93000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13859275" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15724947" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -326,7 +322,7 @@
       <window_info id="DB Browser" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32368702" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32368702" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -382,98 +378,31 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout-to-restore>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/platform/User.java" />
-    <entry file="file://$PROJECT_DIR$/src/aservio/management/overview/OverviewManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#477#478#0" expanded="true" />
-            <element signature="e#543#544#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-            <element signature="e#638#639#0" expanded="true" />
-            <element signature="e#667#668#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
-            <element signature="e#2556#2557#0" expanded="true" />
-            <element signature="e#2599#2600#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/aservio/management/activities/ActivityManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/platform/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+        <state relative-caret-position="321">
+          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
           <folding>
-            <element signature="e#1205#1206#0" expanded="true" />
-            <element signature="e#1240#1241#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#441#442#0" expanded="true" />
+            <element signature="e#474#475#0" expanded="true" />
+            <element signature="e#1308#1309#0" expanded="true" />
+            <element signature="e#1362#1363#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/management/overview/OverviewMonth.java">
+    <entry file="file://$PROJECT_DIR$/src/aservio/management/sideview/SideViewActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/management/views/FXMLOverviewMonth.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/management/overview/OverviewDay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6072">
-          <caret line="320" column="33" selection-start-line="320" selection-start-column="33" selection-end-line="320" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/platform/Aservio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#825#826#0" expanded="true" />
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1041#1042#0" expanded="true" />
-            <element signature="e#1022#1023#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/management/overview/OverviewWeek.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1716">
-          <caret line="100" column="13" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/platform/FXMLLoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="82" column="9" lean-forward="true" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+        <state relative-caret-position="282">
+          <caret line="48" column="33" lean-forward="true" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
