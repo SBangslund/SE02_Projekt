@@ -1,76 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.platform;
 
-import aservio.platform.user.User;
-import aservio.platform.user.UserInfo;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.Event;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
-/**
- * FXML Controller class
- *
- * @author victo
- */
 public class FXMLPlatformController implements Initializable {
+    @FXML
+    private MenuBar menuBar;
+    @FXML
+    private BorderPane borderPane;
+    @FXML
+    private TabPane tabPane;
 
-    @FXML
-    private ImageView imagePerson;
-    @FXML
-    private Label labelFirstName;
-    @FXML
-    private Label labelLastName;
-    @FXML
-    private Label labelAddress;
-    @FXML
-    private Label labelCity;
-    @FXML
-    private Label labelPostcode;
-    @FXML
-    private Label labelPhoneNumber;
-    @FXML
-    private Label labelMail;
-    @FXML
-    private Label labelInstitution;
-
-    /**
-     * Initializes the controller class.
-     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        showUser();
-    }    
-    
-    public void showUser() {
-        setUserInfo(User.getCurrentUser().getUserInfo());
-        
-    }
-    
-    public void showUser(User user) {
-        setUserInfo(user.getUserInfo());
-    }
-    
-    public void setUserInfo(UserInfo info) {
-        labelFirstName.setText(info.getFirstName());
-        labelLastName.setText(info.getLastName());
-        labelAddress.setText(info.getAddress().getRoad() + " " + info.getAddress().getHouseNumber()+ ", " + info.getAddress().getLevel());
-        labelCity.setText(info.getAddress().getCity());
-        labelPostcode.setText(Integer.toString(info.getAddress().getPostcode()));
-        labelPhoneNumber.setText(Integer.toString(info.getMobileNumber()));
-        labelMail.setText(info.getMail());
-        labelInstitution.setText(info.getInstitution());
-    }
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            borderPane.setLeft(FXMLLoader.load(getClass().getResource("/aservio/platform/views/FXMLProfile.fxml")));
+            tabPane.getTabs().get(0).setContent(FXMLLoader.load(getClass().getResource("/aservio/management/views/FXMLManager.fxml")));
 
-    
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

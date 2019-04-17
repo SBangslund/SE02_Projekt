@@ -1,5 +1,6 @@
 package aservio.management.overview;
 
+import aservio.management.Management;
 import aservio.management.activities.Activity;
 import aservio.management.activities.ActivityList;
 import aservio.management.interfaces.Pageable;
@@ -42,13 +43,14 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
     @Override
     protected void initialize() {
         // This is needed to setup event handlers AFTER the scene has been initialized.
-        windowHeight.set(40);                       // This is set to 40 because of the start size.
+        windowHeight.set(200);                      // This is set to 40 because of the start size.
         gridPaneMonth.getScene().heightProperty().addListener((obs, oldVal, newVal) -> {
             int temp = (int) ((double) newVal / 8); // The calender has 6 rows (roughly) so this fits the height correctly.
             if (Math.abs(temp - windowHeight.get()) >= 25) {     // If it wasn't the same as before, then do...
                 windowHeight.set(temp);             // Update the global value
                 showActivities(activities);         // Show activities.
             }
+            System.out.println("Size changed!");
         });
     }
 
@@ -191,7 +193,9 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
 
                         // Setting up the different events necessary for the activity.
                         // Prints the event to console. (Temporary)
-                        box.setOnMouseClicked(System.out::println);
+                        box.setOnMouseClicked(e -> {
+                            Management.getInstance().getActivityManager().updateSideView(activity);
+                        });
 
                         // Whenever the mouse enters the element. (Hover)
                         // Fill in the original activity color for a "select" effect.
