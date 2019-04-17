@@ -1,5 +1,6 @@
 package aservio.management.overview;
 
+import aservio.management.Management;
 import aservio.management.activities.Activity;
 import aservio.management.activities.ActivityList;
 import aservio.management.interfaces.Pageable;
@@ -191,7 +192,9 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
 
                         // Setting up the different events necessary for the activity.
                         // Prints the event to console. (Temporary)
-                        box.setOnMouseClicked(System.out::println);
+                        box.setOnMouseClicked(e -> {
+                            Management.getInstance().getActivityManager().updateSideView(activity);
+                        });
 
                         // Whenever the mouse enters the element. (Hover)
                         // Fill in the original activity color for a "select" effect.
