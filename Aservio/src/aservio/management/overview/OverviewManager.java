@@ -61,7 +61,9 @@ public class OverviewManager {
         list.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 3, 8, 9, 20).getTime()));
         list.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 4, 8, 9, 20).getTime()));
         for (int i = 0; i < 100; i++) {
-            list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, (int)(Math.random() * 12), (int)(Math.random() * 25), 9, 20).getTime()));
+            Activity activity = new Activity(ActivityType.RUN, new GregorianCalendar(2019, (int)(Math.random() * 12), (int)(Math.random() * 25), 9, 20).getTime());
+            activity.setDescription("Der skal løbes så svedet drypper og fødderne bløder!");
+            list.add(activity);
         }
         list.add(new Activity(ActivityType.TENNIS, new Date()));
         currentOverview.showActivities(list);
