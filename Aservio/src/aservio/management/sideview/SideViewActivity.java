@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.text.Text;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -63,7 +64,6 @@ public class SideViewActivity extends SideView implements Initializable {
         activityName.setText(activity.getActivityType().getName());
         activityBox.getChildren().add(createActivityLabel(activity.getActivityType()));
         activityDescription.setText(activity.getDescription());
-        System.out.println(activity.getDescription());
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String dateString = dateFormat.format(activity.getStartDate());
@@ -80,19 +80,23 @@ public class SideViewActivity extends SideView implements Initializable {
     }
 
     private Pane createActivityLabel(ActivityType activityType) {
-        Pane pane = new Pane();
+        HBox box = new HBox();
+        Pane buffer = new Pane();
         String defaultColor = String.format("#%02X%02X%02X",
                 (int) (activityType.getColor().getRed() * 255),
                 (int) (activityType.getColor().getGreen() * 255),
                 (int) (activityType.getColor().getBlue() * 255));
-        pane.setStyle("-fx-background-color: " + defaultColor);
+        buffer.setStyle("-fx-background-color: " + defaultColor);
+        buffer.setPrefHeight(50);
+        buffer.setPrefWidth(20);
 
         ImageView icon = new ImageView(activityType.getIcon());
         icon.setPreserveRatio(true);
         icon.setFitHeight(50);
 
-        pane.getChildren().add(icon);
-        return pane;
+        box.getChildren().add(buffer);
+        box.getChildren().add(icon);
+        return box;
     }
 
     @FXML
