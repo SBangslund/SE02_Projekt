@@ -64,7 +64,12 @@ public class Management implements Initializable {
     }
 
     public void setCenterView(Node node) {
-        borderPane.setCenter(node);
+        List<Node> children = ((VBox)borderPane.getCenter()).getChildren();
+        if(children.size() > 1) {
+            children.remove(1);
+        }
+        VBox.setVgrow(node, Priority.ALWAYS);
+        children.add(1, node);
     }
 
     public void setLeftView(Node node) {
