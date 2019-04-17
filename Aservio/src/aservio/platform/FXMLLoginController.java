@@ -54,7 +54,7 @@ public class FXMLLoginController implements Initializable {
             //load next scene
             System.out.println("hey you made it");
             try { //flyttes ned i persistens data laget
-                URL file = new File("src/aservio/platform/views/FXMLProfile.fxml").toURI().toURL();
+                URL file = new File("src/aservio/platform/views/FXMLSeeProfile.fxml").toURI().toURL();
                 Parent p = FXMLLoader.load(file);
                 Aservio.getInstance().getPrimaryStage().setScene(new Scene(p));
             } catch (IOException ex) {
