@@ -193,7 +193,7 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
                         // Setting up the different events necessary for the activity.
                         // Prints the event to console. (Temporary)
                         box.setOnMouseClicked(e -> {
-                            Management.getInstance().getActivityManager().updateSideView(activity);
+                            super.uponClick(activity);
                         });
 
                         // Whenever the mouse enters the element. (Hover)
