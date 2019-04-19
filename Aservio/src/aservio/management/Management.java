@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 
 import aservio.management.activities.ActivityManager;
 import aservio.management.overview.*;
+import aservio.platform.Aservio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -60,11 +61,16 @@ public class Management implements Initializable {
         overviewManager = new OverviewManager();
         activityManager = new ActivityManager("/aservio/management/views/FXMLActivityView.fxml");
 
-        overviewManager.showDay();
+        overviewManager.showMonth();
     }
 
     public void setCenterView(Node node) {
-        borderPane.setCenter(node);
+        List<Node> children = ((VBox)borderPane.getCenter()).getChildren();
+        if(children.size() > 1) {
+            children.remove(1);
+        }
+        VBox.setVgrow(node, Priority.ALWAYS);
+        children.add(1, node);
     }
 
     public void setLeftView(Node node) {
