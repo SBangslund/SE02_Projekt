@@ -79,7 +79,9 @@ public class SideViewActivity extends SideView implements Initializable {
     }
 
     private Pane createActivityLabel(ActivityType activityType) {
+        HBox box = new HBox();
         Pane pane = new Pane();
+        pane.setPrefWidth(10);
         String defaultColor = String.format("#%02X%02X%02X",
                 (int) (activityType.getColor().getRed() * 255),
                 (int) (activityType.getColor().getGreen() * 255),
@@ -90,8 +92,9 @@ public class SideViewActivity extends SideView implements Initializable {
         icon.setPreserveRatio(true);
         icon.setFitHeight(50);
 
-        pane.getChildren().add(icon);
-        return pane;
+        box.getChildren().add(icon);
+        box.getChildren().add(pane);
+        return box;
     }
 
     @FXML
