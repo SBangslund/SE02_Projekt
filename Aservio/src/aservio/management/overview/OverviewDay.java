@@ -180,10 +180,6 @@ public class OverviewDay extends Overview implements Initializable {
 
         buttonContent.setPrefWidth(standartButtonWidth);
 
-        Rectangle colorRect = new Rectangle(10, eventButton.getPrefHeight());
-        colorRect.setFill(Color.BLUE);
-        buttonContent.getChildren().add(colorRect);
-
         Text buttonContentText = new Text(String.format("%s\n%s", activity.getActivityType().getName(), activity.getTimeSlotString()));
         buttonContentText.getStyleClass().add("text_button");
         buttonContent.getChildren().add(buttonContentText);
@@ -239,11 +235,7 @@ public class OverviewDay extends Overview implements Initializable {
                 new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        final Stage dialog = new Stage(StageStyle.DECORATED);
-                        dialog.initModality(Modality.APPLICATION_MODAL);
-                        dialog.initOwner(activityPane.getScene().getWindow());
-                        dialog.setScene(createActivityPopUp(activity));
-                        dialog.show();
+                        OverviewDay.super.uponClick(activity);
                     }
                 });
         eventButtonList.add(eventButton);

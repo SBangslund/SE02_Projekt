@@ -22,6 +22,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 
+@SuppressWarnings("Duplicates")
 public class OverviewWeek extends Overview implements Pageable, ShowableActivity, Initializable {
 
     Date currentDate;
@@ -165,7 +166,9 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
 
         // Setting up the different events necessary for the activity.
         // Prints the event to console. (Temporary)
-        box.setOnMouseClicked(System.out::println);
+        box.setOnMouseClicked(e -> {
+            super.uponClick(activity);
+        });
 
         // Whenever the mouse enters the element. (Hover)
         // Fill in the original activity color for a "select" effect.
