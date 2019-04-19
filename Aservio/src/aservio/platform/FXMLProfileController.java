@@ -1,75 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.platform;
 
 import aservio.platform.user.User;
-import aservio.platform.user.UserInfo;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.Event;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+import javafx.scene.layout.AnchorPane;
 
-/**
- * FXML Controller class
- *
- * @author victo
- */
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class FXMLProfileController implements Initializable {
 
     @FXML
-    private ImageView imagePerson;
+    private Label labelName;
     @FXML
-    private Label labelFirstName;
+    private ImageView userImage;
     @FXML
-    private Label labelLastName;
-    @FXML
-    private Label labelAddress;
-    @FXML
-    private Label labelCity;
-    @FXML
-    private Label labelPostcode;
-    @FXML
-    private Label labelPhoneNumber;
-    @FXML
-    private Label labelMail;
-    @FXML
-    private Label labelInstitution;
+    private AnchorPane profileView;
 
-    /**
-     * Initializes the controller class.
-     */
+
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        showUser();
-    }    
-    
-    public void showUser() {
-        setUserInfo(User.getCurrentUser().getUserInfo());
-    }
-    
-    public void showUser(User user) {
-        setUserInfo(user.getUserInfo());
-    }
-    
-    public void setUserInfo(UserInfo info) {
-        labelFirstName.setText(info.getFirstName());
-        labelLastName.setText(info.getLastName());
-        labelAddress.setText(info.getAddress().getRoad() + " " + info.getAddress().getHouseNumber()+ ", " + info.getAddress().getLevel());
-        labelCity.setText(info.getAddress().getCity());
-        labelPostcode.setText(Integer.toString(info.getAddress().getPostcode()));
-        labelPhoneNumber.setText(Integer.toString(info.getMobileNumber()));
-        labelMail.setText(info.getMail());
-        labelInstitution.setText(info.getInstitution());
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            labelName.setText(User.getCurrentUser().getUserInfo().getFirstName() + " " + User.getCurrentUser().getUserInfo().getLastName());
+            profileView.getChildren().add(FXMLLoader.load(getClass().getResource("/aservio/platform/views/FXMLSeeProfile.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    
+    @FXML
+    public void handleHide(ActionEvent actionEvent) {
+    }
 }
