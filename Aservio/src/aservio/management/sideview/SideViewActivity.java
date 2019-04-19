@@ -63,7 +63,6 @@ public class SideViewActivity extends SideView implements Initializable {
         activityName.setText(activity.getActivityType().getName());
         activityBox.getChildren().add(createActivityLabel(activity.getActivityType()));
         activityDescription.setText(activity.getDescription());
-        System.out.println(activity.getDescription());
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String dateString = dateFormat.format(activity.getStartDate());

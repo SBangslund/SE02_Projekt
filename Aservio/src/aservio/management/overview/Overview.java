@@ -1,10 +1,14 @@
 package aservio.management.overview;
 
 import aservio.management.Management;
+import aservio.management.activities.Activity;
 import aservio.management.interfaces.Pageable;
 import aservio.management.interfaces.ShowableActivity;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
+
+import java.awt.event.ActionEvent;
 import java.util.Date;
 
 /**
@@ -30,6 +34,10 @@ public abstract class Overview implements ShowableActivity, Pageable, Initializa
     public void show() {
         Management.getInstance().setCenterView(view);
         initialize();
+    }
+
+    protected void uponClick(Activity activity) {
+        Management.getInstance().getActivityManager().updateSideView(activity);
     }
 
     /**
