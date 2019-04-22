@@ -1,11 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.overview.OverviewWeek">
+<AnchorPane id="AnchorPane" stylesheets="@aservioc/management/views/cssOverviewWeek.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.overview.OverviewWeek">
    <children>
-      <Label layoutX="105.0" layoutY="75.0" text="Label" />
+      <VBox prefHeight="1507.0" prefWidth="762.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="labelWeekNumber" prefHeight="35.0" prefWidth="76.0" text="Label">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <GridPane fx:id="daysGridpane" gridLinesVisible="true" prefHeight="30.0" prefWidth="679.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="60.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="10.0" prefWidth="20.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Søndag" GridPane.columnIndex="7" GridPane.halignment="CENTER" />
+                  <Label text="Lørdag" GridPane.columnIndex="6" GridPane.halignment="CENTER" />
+                  <Label text="Fredag" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
+                  <Label text="Torsdag" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
+                  <Label text="Onsdag" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+                  <Label text="Tirsdag" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                  <Label alignment="TOP_LEFT" text="Mandag" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+               </children>
+            </GridPane>
+            <ScrollPane fx:id="scrollPaneHours" fitToWidth="true" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
+               <content>
+                  <GridPane fx:id="gridePaneHours" gridLinesVisible="true" maxHeight="1.7976931348623157E308" minHeight="-Infinity">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="60.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+                     <children>
+                        <Label text="00" GridPane.halignment="CENTER" />
+                        <Label text="01" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Label text="02" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label text="07" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+                        <Label text="06" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                        <Label text="05" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                        <Label text="04" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <Label text="03" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Label text="14" GridPane.halignment="CENTER" GridPane.rowIndex="14" />
+                        <Label text="13" GridPane.halignment="CENTER" GridPane.rowIndex="13" />
+                        <Label text="12" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
+                        <Label text="11" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
+                        <Label text="10" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
+                        <Label text="09" GridPane.halignment="CENTER" GridPane.rowIndex="9" />
+                        <Label text="08" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+                        <Label text="22" GridPane.halignment="CENTER" GridPane.rowIndex="22" />
+                        <Label text="21" GridPane.halignment="CENTER" GridPane.rowIndex="21" />
+                        <Label text="20" GridPane.halignment="CENTER" GridPane.rowIndex="20" />
+                        <Label text="19" GridPane.halignment="CENTER" GridPane.rowIndex="19" />
+                        <Label text="18" GridPane.halignment="CENTER" GridPane.rowIndex="18" />
+                        <Label text="17" GridPane.halignment="CENTER" GridPane.rowIndex="17" />
+                        <Label text="16" GridPane.halignment="CENTER" GridPane.rowIndex="16" />
+                        <Label text="15" GridPane.halignment="CENTER" GridPane.rowIndex="15" />
+                        <Label text="23" GridPane.halignment="CENTER" GridPane.rowIndex="23" />
+                        <Pane fx:id="paneMonday" prefHeight="53.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowSpan="24" />
+                        <Pane fx:id="paneTuersday" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowSpan="24" />
+                        <Pane fx:id="paneWednesday" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowSpan="24" />
+                        <Pane fx:id="paneThursday" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowSpan="24" />
+                        <Pane fx:id="paneFriday" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowSpan="24" />
+                        <Pane fx:id="paneSatuday" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3" GridPane.rowSpan="24" />
+                        <Pane fx:id="paneSunday" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowSpan="24" />
+                     </children>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

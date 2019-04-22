@@ -1,5 +1,6 @@
 package aservio.platform.user;
 
+import aservio.management.activities.ActivityList;
 import aservio.platform.user.roles.Role;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,16 +16,18 @@ public class User implements Serializable {
     private String password;
     private List<Role> roles = new ArrayList<>();
     private static User currentUser;
-    
+    private ActivityList activityList = new ActivityList();
+    private UserInfo userInfo;
     /**
      * upon creation of a user, the username, password and role is constructed.
      * @param username
      * @param password
      * @param preselectedRole 
      */
-    public User (String username, String password, Role preselectedRole){
+    public User (String username, String password, Role preselectedRole, UserInfo userInfo){
         this.username = username;
         this.password = password;
+        this.userInfo = userInfo;
         this.roles.add(preselectedRole);
         id = UUID.randomUUID();
         //Create ID
@@ -41,12 +44,23 @@ public class User implements Serializable {
         return currentUser;
     }
 
+    public ActivityList getActivityList() {
+        return activityList;
+    }
+
     /**
      * @param user the currentUser to set
      */
     public static void setCurrentUser(User user) {
         currentUser = user;
     }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+
+    
     
     
 }

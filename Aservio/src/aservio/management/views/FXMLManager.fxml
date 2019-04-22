@@ -3,107 +3,59 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressIndicator?>
-<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox fx:id="wrapper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.Management">
+<VBox fx:id="wrapper" prefHeight="95.0" prefWidth="203.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.Management">
    <children>
-      <MenuBar fx:id="menubar">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="View">
-               <items>
-                  <RadioMenuItem mnemonicParsing="false" text="Left toolbar" />
-               </items>
-            </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
       <BorderPane fx:id="borderPane" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets />
          </VBox.margin>
-         <left>
-            <AnchorPane prefWidth="100.0" BorderPane.alignment="CENTER" />
-         </left>
-         <top>
-            <HBox spacing="10.0" BorderPane.alignment="CENTER">
+         <center>
+            <VBox BorderPane.alignment="CENTER">
                <children>
-                  <HBox fx:id="adminToolbar" spacing="10.0">
+                  <HBox spacing="10.0">
                      <children>
-                        <SplitMenuButton mnemonicParsing="false" text="Activities">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Add" />
-                            <MenuItem mnemonicParsing="false" text="Remove" />
-                              <MenuItem mnemonicParsing="false" text="Modify" />
-                          </items>
-                        </SplitMenuButton>
-                        <SplitMenuButton mnemonicParsing="false" text="Users">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
-                          </items>
-                        </SplitMenuButton>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </HBox>
-                  <Pane HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Pane>
-                  <HBox fx:id="viewToolbar" alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" spacing="5.0">
-                     <children>
-                        <SplitMenuButton fx:id="viewMenu" mnemonicParsing="false" text="Views">
-                          <items>
-                            <MenuItem mnemonicParsing="false" onAction="#handleShowMonth" text="Month" />
-                            <MenuItem mnemonicParsing="false" onAction="#handleShowWeek" text="Week" />
-                              <MenuItem mnemonicParsing="false" onAction="#handleShowDay" text="Day" />
-                          </items>
-                        </SplitMenuButton>
-                        <Label text="April" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="Verdana" size="18.0" />
-                           </font>
+                        <HBox fx:id="adminToolbar" spacing="10.0">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
-                        </Label>
-                      <Button mnemonicParsing="false" text="&lt;" />
-                        <Button mnemonicParsing="false" text="&gt;" />
+                        </HBox>
+                        <Pane HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Pane>
+                        <HBox fx:id="viewToolbar" alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" spacing="5.0">
+                           <children>
+                              <SplitMenuButton fx:id="viewMenu" mnemonicParsing="false" text="Views">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#handleShowMonth" text="Month" />
+                                  <MenuItem mnemonicParsing="false" onAction="#handleShowWeek" text="Week" />
+                                    <MenuItem mnemonicParsing="false" onAction="#handleShowDay" text="Day" />
+                                </items>
+                              </SplitMenuButton>
+                            <Button mnemonicParsing="false" onAction="#handlePrevious" text="&lt;" />
+                              <Button mnemonicParsing="false" onAction="#handleNext" text="&gt;" />
+                           </children>
+                        </HBox>
                      </children>
+                     <VBox.margin>
+                        <Insets right="5.0" top="5.0" />
+                     </VBox.margin>
                   </HBox>
                </children>
                <BorderPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets />
                </BorderPane.margin>
-            </HBox>
-         </top>
+            </VBox>
+         </center>
       </BorderPane>
       <HBox alignment="BOTTOM_LEFT" maxHeight="40.0" VBox.vgrow="ALWAYS">
          <children>
