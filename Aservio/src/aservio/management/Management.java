@@ -38,7 +38,7 @@ public class Management implements Initializable {
     @FXML
     private HBox viewToolbar;
     @FXML
-    private SplitMenuButton viewMenu;
+    private MenuButton viewMenu;
     @FXML
     private BorderPane borderPane;
     @FXML

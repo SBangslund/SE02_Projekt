@@ -40,8 +40,8 @@ public class FXMLPlatformController implements Initializable {
         File file = new File(imageURL);
         Image logo = new Image(file.toURI().toString());
         ImageView logoImageView = new ImageView(logo);
-        logoImageView.setFitHeight(50);
-        logoImageView.setFitWidth(50);
+        logoImageView.setFitHeight(30);
+        logoImageView.setFitWidth(30);
         logoImageView.setPreserveRatio(true);
         tab.setGraphic(logoImageView);
         tab.setText(name);
