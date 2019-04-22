@@ -42,7 +42,7 @@ public class FXMLStaffController implements Initializable {
     public void caretakerSelected(){
         Caretaker selectedCaretaker = listViewStaff.getSelectionModel().getSelectedItem();
         //Skal hente info fra den selected caretaker og vise det vha. platformController
-        ShowUser(selectedCaretaker.)
+       // ShowUser(selectedCaretaker.)
     }
     
 }
