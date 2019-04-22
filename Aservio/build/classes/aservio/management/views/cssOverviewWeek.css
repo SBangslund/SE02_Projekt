@@ -1,0 +1,10 @@
+.activity_box {
+    -fx-background-radius: 5,5,0,5;
+    -fx-effect: dropshadow(gaussian, lightgray, 5,0,1,1);
+}
+
+.activity_box:hover {
+    -fx-effect: dropshadow(gaussian, lightgray, 5,0,2,2);
+    -fx-background-position: right center;
+}
+

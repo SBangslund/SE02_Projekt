@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import aservio.management.activities.ActivityManager;
 import aservio.management.overview.*;
+import aservio.platform.Aservio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,15 +52,29 @@ public class Management implements Initializable {
 
     private List<Overview> views = new ArrayList<>();
     private OverviewManager overviewManager;
+    private ActivityManager activityManager;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         instance = this;
+
         overviewManager = new OverviewManager();
+        activityManager = new ActivityManager("/aservio/management/views/FXMLActivityView.fxml");
+
+        overviewManager.showMonth();
     }
 
     public void setCenterView(Node node) {
-        borderPane.setCenter(node);
+        List<Node> children = ((VBox)borderPane.getCenter()).getChildren();
+        if(children.size() > 1) {
+            children.remove(1);
+        }
+        VBox.setVgrow(node, Priority.ALWAYS);
+        children.add(1, node);
+    }
+
+    public void setLeftView(Node node) {
+        borderPane.setLeft(node);
     }
 
     public Node getCenterView() {
@@ -86,5 +102,23 @@ public class Management implements Initializable {
     @FXML
     public void handleShowDay(ActionEvent actionEvent) {
         overviewManager.showDay();
+    }
+
+    @FXML
+    public void handlePrevious(ActionEvent actionEvent) {
+        overviewManager.showPrevious();
+    }
+
+    @FXML
+    public void handleNext(ActionEvent actionEvent) {
+        overviewManager.showNext();
+    }
+
+    public OverviewManager getOverviewManager() {
+        return overviewManager;
+    }
+
+    public ActivityManager getActivityManager() {
+        return activityManager;
     }
 }

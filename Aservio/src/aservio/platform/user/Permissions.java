@@ -1,7 +1,9 @@
 package aservio.platform.user;
 
+import java.io.Serializable;
 
-public class Permissions {
+
+public class Permissions implements Serializable {
     
     private boolean test1;
     private boolean sePlanlægning;

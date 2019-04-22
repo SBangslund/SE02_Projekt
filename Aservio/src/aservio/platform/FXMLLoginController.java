@@ -1,6 +1,9 @@
 package aservio.platform;
 
+import aservio.platform.user.Address;
 import aservio.platform.user.User;
+import aservio.platform.user.UserInfo;
+import aservio.platform.user.roles.Caretaker;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -50,17 +53,24 @@ public class FXMLLoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         setFile();
         //fake users created to test read, as a temporary solution.
-        //User u1 = new User("jim", "pass");
-        //User u2 = new User("Lars", "code");
-        //User u3 = new User("Skurk", "grill");
-        //writeToFile(u1); //Use pr new file.
-        //appendWriteTOFile(u2);
-        //appendWriteTOFile(u3);
+        /*User user1 = new User("Skurk", "grill", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                null, 21212121, "Skurl", "Bangslund", "samuelbanglund@gmail.com", "handyCenter"));
+        User user2 = new User("tove1234", "tove1234", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                null, 21212121, "Victor", "Clemmensen", "samuelbanglund@gmail.com",
+                "handyCenter"));
+        User user3 = new User("hans1234", "hans1234", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                null, 21212121, "Samuel", "Bangslund", "samuelbanglund@gmail.com",
+                "handyCenter"));
+        writeToFile(user1); //Use pr new file.
+        appendWriteTOFile(user2);
+        appendWriteTOFile(user3);*/
     }
 
     /**
-     * Clicking the login button or hitting enter logs the user in, if the input is acceptable.
-     * @param event 
+     * Clicking the login button or hitting enter logs the user in, if the input
+     * is acceptable.
+     *
+     * @param event
      */
     @FXML
     private void attemptLogin(ActionEvent event) {
@@ -68,20 +78,22 @@ public class FXMLLoginController implements Initializable {
             //TEMP, read file, set current user, return true if succesful.
             if (findUserInFile(usernameField.getText(), passwordField.getText())) {
                 try {
-                    URL file = new File("src/aservio/management/views/FXMLManager.fxml").toURI().toURL();
+                    URL file = new File("src/aservio/platform/views/FXMLPlatform.fxml").toURI().toURL();
                     Parent p = FXMLLoader.load(file);
-                    Aservio.getInstance().getStage().setScene(new Scene(p));
+                    Aservio.getInstance().getPrimaryStage().getScene().setRoot(p);
+                    Aservio.getInstance().getPrimaryStage().setMaximized(true);
                 } catch (IOException ex) {
                     Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
-                    System.out.println(getClass().getResource("FXMLOverviewMonth.fxml"));
                 }
             }
         }
     }
-    
+
     /**
-     * //Tests logininput for errors like illegal characters, spaces, and correct account identifikation.
-     * @return 
+     * //Tests logininput for errors like illegal characters, spaces, and
+     * correct account identifikation.
+     *
+     * @return
      */
     private boolean checkForNoIllegalInput() {
         String tempUser = usernameField.getText();
@@ -157,6 +169,7 @@ public class FXMLLoginController implements Initializable {
             }
         } catch (IOException ex) {
             System.err.println("Could not find file or read from file " + file.getAbsolutePath());
+            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             System.out.println("Could not find the class User");
             Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -165,9 +178,9 @@ public class FXMLLoginController implements Initializable {
     }
 
     private void writeToFile(User u) {
-        try {
-            FileOutputStream fos = new FileOutputStream(file, true);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+        try (
+                FileOutputStream fos = new FileOutputStream(file, true);
+                ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 
             oos.writeObject(u);
 
@@ -179,9 +192,9 @@ public class FXMLLoginController implements Initializable {
     }
 
     private void appendWriteTOFile(User s) {
-        try {
-            FileOutputStream fos = new FileOutputStream(file, true);
-            AppendingObjectOutputStream oos = new AppendingObjectOutputStream(fos);
+        try (
+                FileOutputStream fos = new FileOutputStream(file, true);
+                AppendingObjectOutputStream oos = new AppendingObjectOutputStream(fos)) {
 
             oos.writeObject(s);
 
