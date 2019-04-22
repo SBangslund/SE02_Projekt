@@ -15,9 +15,9 @@ import javafx.scene.paint.Color;
  */
 public enum ActivityType {
 
-    EAT("Eating", "Activity related to eating", "src/aservio/management/icons/iconEating.jpg", Color.hsb(194, 0.8, 1)),
+    EAT("Eating", "Activity related to eating", "src/aservio/management/icons/iconEating.png", Color.hsb(194, 0.8, 1)),
     RUN("Running", "Activity related to running", "src/aservio/management/icons/iconRunning.png", Color.hsb(120, 0.39, 1)),
-    WALK("Walking", "Activity related to walking", "src/aservio/management/icons/iconWalking.svg", Color.hsb(59, 0.39, 1)),
+    WALK("Walking", "Activity related to walking", "src/aservio/management/icons/iconWalking.png", Color.hsb(59, 0.39, 1)),
     VOLLEY("Volley", "Activity related to playing volley", "src/aservio/management/icons/iconVolleyball.png", Color.hsb(29, 0.39, 1)),
     TENNIS("Tennis", "Activity related to playing tennis", "src/aservio/management/icons/iconTennis.png", Color.hsb(328, 0.39, 1));
 
