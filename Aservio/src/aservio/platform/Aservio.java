@@ -13,7 +13,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 /**
  *
@@ -47,6 +50,8 @@ public class Aservio extends Application {
         stage.setMinWidth(500);
         stage.setMinHeight(500);
         stage.setTitle("Aservio");
+        stage.getIcons().add(new Image(new File("resources/logo/LogoIcon.png").toURI().toString()));
+
         stage.setScene(scene);
         stage.show();
 

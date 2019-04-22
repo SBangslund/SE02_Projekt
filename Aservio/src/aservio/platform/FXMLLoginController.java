@@ -4,6 +4,7 @@ import aservio.platform.user.User;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,9 +18,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class FXMLLoginController implements Initializable {
 
+    public ImageView logoImageView;
     @FXML
     private TextField usernameField;
     @FXML
@@ -38,7 +42,9 @@ public class FXMLLoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        File file = new File("resources/logo/LogoLarge.png");
+        Image logo = new Image(file.toURI().toString());
+        logoImageView.setImage(logo);
     }
 
     //If input is correct, hitting enter og clicking the loginbutton logs the user in.
