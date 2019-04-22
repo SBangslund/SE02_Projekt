@@ -61,7 +61,7 @@ public class Management implements Initializable {
         overviewManager = new OverviewManager();
         activityManager = new ActivityManager("/aservio/management/views/FXMLActivityView.fxml");
 
-        overviewManager.showMonth();
+        overviewManager.showDay();
     }
 
     public void setCenterView(Node node) {

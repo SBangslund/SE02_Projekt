@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="wrapper" prefHeight="95.0" prefWidth="203.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.Management">
+<VBox fx:id="wrapper" prefHeight="95.0" prefWidth="203.0" stylesheets="@CSSManager.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.Management">
    <children>
       <BorderPane fx:id="borderPane" VBox.vgrow="ALWAYS">
          <VBox.margin>
@@ -41,8 +41,8 @@
                                     <MenuItem mnemonicParsing="false" onAction="#handleShowDay" text="Day" />
                                 </items>
                               </SplitMenuButton>
-                            <Button mnemonicParsing="false" onAction="#handlePrevious" text="&lt;" />
-                              <Button mnemonicParsing="false" onAction="#handleNext" text="&gt;" />
+                            <Button mnemonicParsing="false" onAction="#handlePrevious" styleClass="button_back_forward" text="&lt;" />
+                              <Button mnemonicParsing="false" onAction="#handleNext" styleClass="button_back_forward" text="&gt;" />
                            </children>
                         </HBox>
                      </children>

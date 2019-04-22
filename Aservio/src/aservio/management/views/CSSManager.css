@@ -1,0 +1,14 @@
+.button_back_forward {
+    -fx-border-radius: 30;
+    -fx-background-color: #33CCCC;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+}
+
+.button_back_forward:hover{
+    -fx-background-color: green;
+}
+
+.button_back_forward:pressed{
+    -fx-background-color: blue;
+}
