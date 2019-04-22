@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,9 +28,23 @@ public class FXMLPlatformController implements Initializable {
         try {
             borderPane.setLeft(FXMLLoader.load(getClass().getResource("/aservio/platform/views/FXMLProfile.fxml")));
             tabPane.getTabs().get(0).setContent(FXMLLoader.load(getClass().getResource("/aservio/management/views/FXMLManager.fxml")));
-            //tabPane.getTabs().get(1).setGraphic(new ImageView(new Image(new File("resources/DiaryWithoutText.png").toURI().toString())));
+            setTabIcon(tabPane.getTabs().get(0), "resources/OrganiserWithoutText.png", "Planlægning");
+            setTabIcon(tabPane.getTabs().get(1), "resources/DiaryWithoutText.png", "Dagbog");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setTabIcon(Tab tab, String imageURL, String name){
+        File file = new File(imageURL);
+        Image logo = new Image(file.toURI().toString());
+        ImageView logoImageView = new ImageView(logo);
+        logoImageView.setFitHeight(50);
+        logoImageView.setFitWidth(50);
+        logoImageView.setPreserveRatio(true);
+        tab.setGraphic(logoImageView);
+        tab.setText(name);
+
     }
 }
