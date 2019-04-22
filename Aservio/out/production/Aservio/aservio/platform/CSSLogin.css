@@ -18,5 +18,10 @@
 
 }
 
+.button:hover{
+    -fx-background-color: lime;
+    -fx-text-fill: black;
+}
+
 .image-view {
 }
