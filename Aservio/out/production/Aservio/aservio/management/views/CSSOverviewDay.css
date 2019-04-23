@@ -1,4 +1,6 @@
-
+.root{
+    -fx-background-color: white;
+}
 
 .label_weekDay {
     -fx-font-size: 40;
@@ -18,7 +20,7 @@
 }
 
 .scoll-pane {
-    -fx-background-color: transparent;
+    -fx-background-color: white;
 }
 
 .button {
@@ -36,6 +38,7 @@
 
 .hbox {
     -fx-background-radius: 10, 10, 0, 10;
+    -fx-background-color: transparent;
 }
 
 

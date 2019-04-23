@@ -14,6 +14,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,9 +30,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class FXMLLoginController implements Initializable {
 
+    public ImageView logoImageView;
     @FXML
     private TextField usernameField;
     @FXML
@@ -56,6 +60,9 @@ public class FXMLLoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        File file = new File("resources/logo/LogoLarge.png");
+        Image logo = new Image(file.toURI().toString());
+        logoImageView.setImage(logo);
         setFile();
 
         //TEMPORARY

@@ -138,6 +138,7 @@ public class OverviewDay extends Overview implements Initializable {
 
         activityPane.getChildren().add(line);
         activityPane.getChildren().add(c);
+        activityPane.setStyle("-fx-background-color: transparent;");
     }
 
     private void setBackgroundImage() {
@@ -161,6 +162,7 @@ public class OverviewDay extends Overview implements Initializable {
             visualHour.getChildren().add(line);
 
             backgroundVbox.getChildren().add(visualHour);
+            backgroundVbox.setStyle("-fx-background-color: white;");
         }
 
     }
@@ -208,7 +210,6 @@ public class OverviewDay extends Overview implements Initializable {
                         }
                     }
                 }.start();
-
             }
         });
 
@@ -226,9 +227,6 @@ public class OverviewDay extends Overview implements Initializable {
                         }
                     }
                 }.start();
-
-
-
             }
         });
         eventButton.setOnAction(

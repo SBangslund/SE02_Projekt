@@ -62,6 +62,7 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
         super(date);
         this.currentDate = date;
 
+
     }
 
     @Override
@@ -102,6 +103,8 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         paneArray = new Pane[]{paneSunday, paneMonday, paneTuersday, paneWednesday, paneThursday, paneFriday, paneSatuday};
+        gridePaneHours.setStyle("-fx-background-color: white");
+        daysGridpane.setStyle("-fx-background-color: white; -fx-grid-lines-visible: false;");
     }
 
     private void createVisualWeek(ActivityList activities, Date date) {
