@@ -63,24 +63,32 @@ public class FXMLLoginController implements Initializable {
         File file = new File("resources/logo/LogoLarge.png");
         Image logo = new Image(file.toURI().toString());
         logoImageView.setImage(logo);
-        setFile();
+        setUsersFile();
+    }
 
-        //TEMPORARY
-        if (!file.exists()) {//Use once pr new file.
-            //fake users created to test read, as a temporary solution.
-            User user1 = new User("Skurk", "grill", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
-                    null, 21212121, "Skurl", "Bangslund", "samuelbanglund@gmail.com", "handyCenter"));
-            User user2 = new User("xXpu55yde5tr0yerXx", "tove1234", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
-                    null, 21212121, "Victor", "Clemmensen", "samuelbanglund@gmail.com",
-                    "handyCenter"));
-            User user3 = new User("Slagteren", "affaldssortering", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
-                    null, 21212121, "Rene", "Bangslund", "samuelbanglund@gmail.com",
-                    "handyCenter"));
-            writeToFile(user1);
-            appendWriteTOFile(user2);
-            appendWriteTOFile(user3);
+    private void setUsersFile() {
+        file = new File("users.txt");
+        try {
+            //TEMPORARY
+            if (!file.exists()) {//Use once pr new file.
+                file.createNewFile();
+                //fake users created to test read, as a temporary solution.
+                User user1 = new User("Skurk", "grill", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                        null, 21212121, "Skurl", "Bangslund", "samuelbanglund@gmail.com", "handyCenter"));
+                User user2 = new User("xXpu55yde5tr0yerXx", "tove1234", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                        null, 21212121, "Victor", "Clemmensen", "samuelbanglund@gmail.com",
+                        "handyCenter"));
+                User user3 = new User("Slagteren", "affaldssortering", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                        null, 21212121, "Rene", "Bangslund", "samuelbanglund@gmail.com",
+                        "handyCenter"));
+                writeToFile(user1);
+                appendWriteTOFile(user2);
+                appendWriteTOFile(user3);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        System.out.println("File set: " + file);
     }
 
     /**
@@ -167,11 +175,6 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void checkUserInput(ActionEvent event) {
-    }
-
-    private void setFile() {
-        file = new File("users.txt");
-        System.out.println("File set: " + file);
     }
 
     private boolean findUserInFile(String username, String password) {
