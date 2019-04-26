@@ -43,15 +43,15 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private Button loginButton;
 
-    private static final char[] ILLEGALCHARACTERS = new char[]{ //use legal characters instead a-å
+    private static final char[] ILLEGALCHARACTERS = new char[]{ //use legal characters instead a-å //CURRENTLY NOT IN USE
         ';', '"', '\\'
     };
-    private char minCapLetter = 65;
-    private char maxCapLetter = 90;
-    private char minLetter = 97;
+    private char minCapLetter = 65; //A-Z
+    private char maxCapLetter = 90; 
+    private char minLetter = 97; //a-z
     private char maxLetter = 122;
-    private char charUnderscore = 95;
-    private char minNumber = 48;
+    private char charUnderscore = 95; //_
+    private char minNumber = 48; //0-9
     private char maxNumber = 57;
 
     private File file;
@@ -73,9 +73,9 @@ public class FXMLLoginController implements Initializable {
             if (!file.exists()) {//Use once pr new file.
                 file.createNewFile();
                 //fake users created to test read, as a temporary solution.
-                User user1 = new User("Skurk", "grill", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
-                        null, 21212121, "Skurl", "Bangslund", "samuelbanglund@gmail.com", "handyCenter"));
-                User user2 = new User("xXpu55yde5tr0yerXx", "tove1234", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                User user1 = new User("q", "q", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                        null, 21212121, "Samuel", "Bangslund", "samuelbanglund@gmail.com", "handyCenter"));
+                User user2 = new User("tove_1234", "rambo", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
                         null, 21212121, "Victor", "Clemmensen", "samuelbanglund@gmail.com",
                         "handyCenter"));
                 User user3 = new User("Slagteren", "affaldssortering", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
@@ -213,7 +213,7 @@ public class FXMLLoginController implements Initializable {
             System.err.println("Error usually caused by corrupted or modified file or path. Try deleting the file (see path above).");
 
         } catch (ClassNotFoundException ex) {
-            System.out.println("Could not find the class User");
+            System.err.println("Could not find the class User");
             Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
