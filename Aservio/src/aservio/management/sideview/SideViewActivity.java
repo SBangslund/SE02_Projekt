@@ -7,11 +7,15 @@ import aservio.platform.user.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+
+import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -21,6 +25,9 @@ import java.util.ResourceBundle;
 
 public class SideViewActivity extends SideView implements Initializable {
 
+    public Button addButton;
+    public Button modifyButton;
+    public Button removeButton;
     @FXML
     private HBox activityBox;
     @FXML
@@ -48,12 +55,33 @@ public class SideViewActivity extends SideView implements Initializable {
     @Override
     protected void initialize() {
 
+        modifyButton.setText("Rediger");
+        modifyButton.getStyleClass().add("button_modify");
+        addButton.setText("Tilføj");
+        addButton.getStyleClass().add("button_add");
+        removeButton.setText("Slet");
+        removeButton.getStyleClass().add("button_remove");
+
+//        setButtonImage(modifyButton, "resources/generalIcons/modifyIcon.png", "button_modify");
+//        setButtonImage(addButton, "resources/generalIcons/addIcon.png", "button_add");
+//        setButtonImage(removeButton, "resources/generalIcons/removeIcon.png", "button_remove");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+    //could be implementend, in case we want icons as buttons, instead of text
+//    public void setButtonImage(Button button, String path, String style){
+//        File modify = new File(path);
+//        ImageView modifyImage = new ImageView(new Image(modify.toURI().toString()));
+//        modifyImage.setFitHeight(20);
+//        modifyImage.setFitWidth(20);
+//        modifyImage.setPreserveRatio(true);
+//        button.setGraphic(modifyImage);
+//        button.getStylesheets().add(style);
+//    }
 
     public void showActivity(Activity activity) {
         if(activityBox.getChildren().size() > 2)

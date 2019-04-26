@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.UUID;
 
 public class User implements Serializable {
-    
+
     private boolean usesDefaultPermissions;
-    
+
     private UUID id;
     private String username;
     private String password;
@@ -18,11 +18,21 @@ public class User implements Serializable {
     private static User currentUser;
     private ActivityList activityList = new ActivityList();
     private UserInfo userInfo;
+    
+        public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+        id = UUID.randomUUID();
+        //Create ID
+    }
+
     /**
      * upon creation of a user, the username, password and role is constructed.
+     *
      * @param username
      * @param password
-     * @param preselectedRole 
+     * @param preselectedRole
+     * @param userInfo
      */
     public User (String username, String password, Role preselectedRole, UserInfo userInfo){
         this.username = username;
@@ -32,8 +42,8 @@ public class User implements Serializable {
         id = UUID.randomUUID();
         //Create ID
     }
-    
-    public List<Role> getRole (){
+
+    public List<Role> getRole() {
         return roles;
     }
 
@@ -58,9 +68,17 @@ public class User implements Serializable {
     public UserInfo getUserInfo() {
         return userInfo;
     }
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
 
-
-    
-    
-    
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
 }

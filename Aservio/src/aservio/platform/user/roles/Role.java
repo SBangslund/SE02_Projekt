@@ -1,8 +1,9 @@
 package aservio.platform.user.roles;
 
 import aservio.platform.user.Permissions;
+import java.io.Serializable;
 
-public abstract class Role {
+public abstract class Role implements Serializable {
 
     protected Permissions defaultPermissions;
     

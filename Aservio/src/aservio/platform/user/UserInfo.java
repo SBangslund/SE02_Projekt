@@ -5,13 +5,14 @@
  */
 package aservio.platform.user;
 
+import java.io.Serializable;
 import javafx.scene.image.Image;
 
 /**
  *
  * @author victo
  */
-public class UserInfo {
+public class UserInfo implements Serializable{
     private Address address;
     private Image image;
     private int mobileNumber;

@@ -1,0 +1,27 @@
+.text-field {
+    -fx-border-color: #33CCCC;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+}
+
+.password-field {
+    -fx-border-color: #33CCCC;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+
+}
+
+.button {
+    -fx-background-color: #FF9933;
+    -fx-text-fill: white;
+    -fx-padding: 10, 10, 10, 10;
+
+}
+
+.button:hover{
+    -fx-background-color: lime;
+    -fx-text-fill: black;
+}
+
+.image-view {
+}

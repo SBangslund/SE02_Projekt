@@ -5,11 +5,13 @@
  */
 package aservio.platform.user;
 
+import java.io.Serializable;
+
 /**
  *
  * @author victo
  */
-public class Address {
+public class Address implements Serializable {
     private String road;
     private String country;
     private int postcode;
