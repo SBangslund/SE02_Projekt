@@ -1,0 +1,25 @@
+.button_back_forward {
+    -fx-border-radius: 30;
+    -fx-background-color: grey;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+}
+
+.button_back_forward:hover {
+    -fx-background-color: #33CCCC;
+}
+
+.menu-button {
+    -fx-background-color: white;
+}
+
+.menu-item:focused {
+    -fx-background-color: #33CCCC;
+}
+
+.context-menu {
+    -fx-background-color: white;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+
+}
