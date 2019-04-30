@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.overview.OverviewDay">
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.management.controllers.overview.OverviewDay">
    <children>
       <Label fx:id="DayOfWeekLabel" styleClass="label_weekDay" stylesheets="/aservio/management/views/CSSOverviewDay.css" text="Label" />
       <Label fx:id="moreInformationLabel" styleClass="label_moreInformation" stylesheets="/aservio/management/views/CSSOverviewDay.css" text="Label" />

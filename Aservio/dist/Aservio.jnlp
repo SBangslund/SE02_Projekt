@@ -13,6 +13,6 @@
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Aservio" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="aservio.platform.Aservio"  name="Aservio" />
+  <jfx:javafx-desc width="800" height="600" main-class="aservio.domain.platform.Aservio" name="Aservio" />
   <update check="always"/>
 </jnlp>
