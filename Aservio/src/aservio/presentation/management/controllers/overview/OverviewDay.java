@@ -56,9 +56,9 @@ public class OverviewDay extends Overview implements Initializable {
     }
 
     public OverviewDay(Date date) {
-        super(date);
         this.currentDate = date;
         eventButtonList = new ArrayList<>();
+        super.getInterFace().getActivities();
     }
 
     @Override

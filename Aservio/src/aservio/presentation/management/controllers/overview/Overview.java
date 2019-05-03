@@ -1,5 +1,6 @@
 package aservio.presentation.management.controllers.overview;
 
+import aservio.presentation.PresentationManager;
 import aservio.presentation.management.Management;
 import aservio.domain.management.activities.Activity;
 import aservio.presentation.management.interfaces.Pageable;
@@ -16,11 +17,7 @@ import java.util.Date;
 public abstract class Overview implements ShowableActivity, Pageable, Initializable {
 
     private Parent view;
-    protected IOverview interFace;
-
-    protected Overview(IOverview interFace) {
-        this.interFace = interFace;
-    }
+    private IOverview interFace = PresentationManager.getIOverview();
 
     /**
      * Initializes all the necessary nodes for this view. This needs to be implemented by inherited classes.
@@ -49,5 +46,9 @@ public abstract class Overview implements ShowableActivity, Pageable, Initializa
 
     public Parent getView() {
         return view;
+    }
+
+    protected IOverview getInterFace() {
+        return interFace;
     }
 }

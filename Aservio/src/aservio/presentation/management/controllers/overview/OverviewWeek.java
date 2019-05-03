@@ -59,7 +59,6 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
     }
 
     public OverviewWeek(Date date) {
-        super(date);
         this.currentDate = date;
 
     }

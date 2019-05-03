@@ -33,8 +33,7 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
     private ActivityList activities;
     private AtomicInteger windowHeight = new AtomicInteger();
 
-    public OverviewMonth(IOverview interFace) {
-        super(interFace);
+    public OverviewMonth() {
         currentMonth = new GregorianCalendar().get(Calendar.MONTH);
     }
 

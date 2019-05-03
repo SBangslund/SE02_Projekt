@@ -3,10 +3,12 @@
  */
 package aservio.domain.platform;
 
+import aservio.domain.management.interfaces.implementors.IOverviewImp;
 import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
 import aservio.domain.platform.roles.Caretaker;
+import aservio.presentation.PresentationManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,6 +28,9 @@ public class Aservio extends Application {
     public void start(Stage stage) throws Exception {
         instance = this;
         primaryStage = stage;
+
+        PresentationManager presentation = new PresentationManager();
+        presentation.setIOverview(new IOverviewImp());
 
         User user1 = new User("bent1234", "bent1234", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
                 null, 21212121, "Samuel", "Bangslund", "samuelbanglund@gmail.com","handyCenter"));
