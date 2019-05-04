@@ -3,6 +3,8 @@
  */
 package aservio.domain.platform;
 
+import aservio.data.IDatabaseImp;
+import aservio.domain.DomainInterfaceManager;
 import aservio.domain.management.interfaces.implementors.IOverviewImp;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
@@ -31,6 +33,9 @@ public class Aservio extends Application {
     public void start(Stage stage) throws Exception {
         instance = this;
         primaryStage = stage;
+
+        DomainInterfaceManager domain = new DomainInterfaceManager();
+        domain.setiDatabase(new IDatabaseImp());
 
         PresentationInterfaceManager presentation = new PresentationInterfaceManager();
         presentation.setIOverview(new IOverviewImp());
