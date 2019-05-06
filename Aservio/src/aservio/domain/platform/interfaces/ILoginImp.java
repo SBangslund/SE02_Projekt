@@ -5,7 +5,11 @@
  */
 package aservio.domain.platform.interfaces;
 
+import aservio.domain.platform.Aservio;
+import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
+import aservio.domain.platform.user.UserInfo;
+import aservio.domain.platform.user.roles.Caretaker;
 import aservio.presentation.platform.controllers.Login;
 import aservio.presentation.platform.interfaces.contracts.ILogin;
 import java.io.EOFException;
@@ -16,10 +20,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 
 public class ILoginImp implements ILogin {
 
@@ -36,7 +43,7 @@ public class ILoginImp implements ILogin {
 
     /**
      * Tests login input for errors like illegal characters, spaces, and correct
-     * account identification.
+     * account identification. WIP
      *
      * @param username
      * @param password
@@ -74,6 +81,13 @@ public class ILoginImp implements ILogin {
         return "Access";
     }
 
+    /**
+     * WIP
+     *
+     * @param username
+     * @param password
+     * @return
+     */
     private boolean findUserInFile(String username, String password) {
         boolean cont = true;
         int count = 0;
@@ -116,14 +130,108 @@ public class ILoginImp implements ILogin {
         return false;
     }
 
+    /**
+     * WIP
+     *
+     * @param username
+     * @param password
+     * @return
+     */
     @Override
     public String validateLogin(String username, String password) {
         throw new UnsupportedOperationException("validate Login not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * WIP
+     *
+     * @param fileName
+     */
     @Override
     public void setFile(String fileName) {
         file = new File(fileName);
+    }
+
+    /**
+     * WIP
+     */
+    @Override
+    public void tempUserSetupByFile() {
+        file = new File("users.txt");
+        try {
+            //TEMPORARY
+            if (!file.exists()) {//Use once pr new file.
+                file.createNewFile();
+                //fake users created to test read, as a temporary solution.
+                User user1 = new User("q", "q", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                        null, 21212121, "Samuel", "Bangslund", "samuelbanglund@gmail.com", "handyCenter"));
+                User user2 = new User("tove_1234", "rambo", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                        null, 21212121, "Victor", "Clemmensen", "samuelbanglund@gmail.com",
+                        "handyCenter"));
+                User user3 = new User("Slagteren", "affaldssortering", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                        null, 21212121, "Rene", "Bangslund", "samuelbanglund@gmail.com",
+                        "handyCenter"));
+                writeToFile(user1);
+                appendWriteTOFile(user2);
+                appendWriteTOFile(user3);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        setFile("users.txt");
+        System.out.println("File set: " + file);
+    }
+
+    private void writeToFile(User u) {
+        try (
+                FileOutputStream fos = new FileOutputStream(file, true);
+                ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+
+            oos.writeObject(u);
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.err.println("Could not find file or read from file " + file.getAbsolutePath());
+        }
+    }
+
+    private void appendWriteTOFile(User s) {
+        try (
+                FileOutputStream fos = new FileOutputStream(file, true);
+                AppendingObjectOutputStream oos = new AppendingObjectOutputStream(fos)) {
+
+            oos.writeObject(s);
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.err.println("Could not find file or read from file " + file.getAbsolutePath());
+        }
+    }
+
+    @Override
+    public void loadScene() {
+        try {
+            Parent p = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLPlatform.fxml"));
+            Aservio.getInstance().getPrimaryStage().getScene().setRoot(p);
+            Aservio.getInstance().getPrimaryStage().setMaximized(true);
+        } catch (IOException ex) {
+            System.out.println("Couldn't load FXMLPlatform.fxml file.");
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private class AppendingObjectOutputStream extends ObjectOutputStream {
+
+        public AppendingObjectOutputStream(OutputStream out) throws IOException {
+            super(out);
+        }
+
+        @Override
+        protected void writeStreamHeader() throws IOException {
+            reset();
+        }
     }
 
 }

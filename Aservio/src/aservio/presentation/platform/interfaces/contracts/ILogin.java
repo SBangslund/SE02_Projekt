@@ -11,10 +11,12 @@ package aservio.presentation.platform.interfaces.contracts;
  */
 public interface ILogin {
     
-    void setFile(String fileName);
+    void setFile(String fileName); //WIP Replace in data layer
+    void tempUserSetupByFile(); //WIP Replace in data layer
     String checkForNoIllegalInput(String username, String password);
     String validateLogin(String username, String password);
-    //void reaquireUsernameMail();
-    //void resetPassword();
+    void loadScene();
+    //void reaquireUsernameMail(); //WIP
+    //void resetPassword(); //WIP
 }
 

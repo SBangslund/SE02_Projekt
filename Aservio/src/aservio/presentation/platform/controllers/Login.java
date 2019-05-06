@@ -38,6 +38,8 @@ import javafx.scene.input.KeyEvent;
 
 public class Login implements Initializable {
 
+    private final ILogin interFace = PresentationInterfaceManager.getILogin();
+
     public ImageView logoImageView;
     @FXML
     private TextField usernameField;
@@ -45,10 +47,6 @@ public class Login implements Initializable {
     private PasswordField passwordField;
     @FXML
     private Button loginButton;
-
-    private final ILogin interFace = PresentationInterfaceManager.getILogin();
-
-    private File file;
     @FXML
     private Label inputWarningLabel;
 
@@ -57,38 +55,13 @@ public class Login implements Initializable {
         File file = new File("resources/logo/LogoLarge.png");
         Image logo = new Image(file.toURI().toString());
         logoImageView.setImage(logo);
-        setUsersFile();
-    }
-
-    private void setUsersFile() {
-        file = new File("users.txt");
-        try {
-            //TEMPORARY
-            if (!file.exists()) {//Use once pr new file.
-                file.createNewFile();
-                //fake users created to test read, as a temporary solution.
-                User user1 = new User("q", "q", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
-                        null, 21212121, "Samuel", "Bangslund", "samuelbanglund@gmail.com", "handyCenter"));
-                User user2 = new User("tove_1234", "rambo", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
-                        null, 21212121, "Victor", "Clemmensen", "samuelbanglund@gmail.com",
-                        "handyCenter"));
-                User user3 = new User("Slagteren", "affaldssortering", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
-                        null, 21212121, "Rene", "Bangslund", "samuelbanglund@gmail.com",
-                        "handyCenter"));
-                writeToFile(user1);
-                appendWriteTOFile(user2);
-                appendWriteTOFile(user3);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        interFace.setFile("users.txt");
-        System.out.println("File set: " + file);
+        interFace.tempUserSetupByFile();
     }
 
     /**
-     * Clicking the login button or hitting enter logs the user in, if the input
-     * is acceptable.
+     * WIP Clicking the login button or hitting enter logs the user in, if the
+     * input is acceptable. checkForNoIllegalInput returns a string "Access" if
+     * validated, else returns a string containing an error message.
      *
      * @param event
      */
@@ -96,67 +69,21 @@ public class Login implements Initializable {
     private void validateLogin(ActionEvent event) {
         String result = interFace.checkForNoIllegalInput(usernameField.getText(), passwordField.getText());
         if (result.equals("Access")) {
-            //TEMP, read file, set current user, return true if succesful.
-            try {
-                Parent p = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLPlatform.fxml"));
-                Aservio.getInstance().getPrimaryStage().getScene().setRoot(p);
-                Aservio.getInstance().getPrimaryStage().setMaximized(true);
-            } catch (IOException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            interFace.loadScene();
         } else {
             inputWarningLabel.setText(result);
         }
     }
 
-    private void writeToFile(User u) {
-        try (
-                FileOutputStream fos = new FileOutputStream(file, true);
-                ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-
-            oos.writeObject(u);
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            System.err.println("Could not find file or read from file " + file.getAbsolutePath());
-        }
-    }
-
-    private void appendWriteTOFile(User s) {
-        try (
-                FileOutputStream fos = new FileOutputStream(file, true);
-                AppendingObjectOutputStream oos = new AppendingObjectOutputStream(fos)) {
-
-            oos.writeObject(s);
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            System.err.println("Could not find file or read from file " + file.getAbsolutePath());
-        }
-    }
-
     /**
      * Enter on login button equals pressing it.
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void onLoginBtnEnter(KeyEvent event) {
-        if (event.getCode().equals(KeyCode.ENTER)){
+        if (event.getCode().equals(KeyCode.ENTER)) {
             validateLogin(new ActionEvent());
-        }
-    }
-
-    private class AppendingObjectOutputStream extends ObjectOutputStream {
-
-        public AppendingObjectOutputStream(OutputStream out) throws IOException {
-            super(out);
-        }
-
-        @Override
-        protected void writeStreamHeader() throws IOException {
-            reset();
         }
     }
 }
