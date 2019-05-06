@@ -20,11 +20,11 @@
                </VBox.margin>
             </ImageView>
             <Label fx:id="inputWarningLabel" textFill="RED" />
-            <TextField fx:id="usernameField" onAction="#checkUserInput" prefHeight="26.0" prefWidth="234.0" promptText="Username" stylesheets="@../../css/CSSLogin.css" />
-            <PasswordField fx:id="passwordField" onAction="#checkUserInput" prefHeight="32.0" prefWidth="236.0" promptText="Password" stylesheets="@../../css/CSSLogin.css" />
+            <TextField fx:id="usernameField" onAction="#validateLogin" prefHeight="26.0" prefWidth="234.0" promptText="Username" stylesheets="@../../css/CSSLogin.css" />
+            <PasswordField fx:id="passwordField" onAction="#validateLogin" prefHeight="32.0" prefWidth="236.0" promptText="Password" stylesheets="@../../css/CSSLogin.css" />
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="237.0">
                <children>
-                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#attemptLogin" stylesheets="@../../css/CSSLogin.css" text="Login" />
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#validateLogin" onKeyPressed="#onLoginBtnEnter" stylesheets="@../../css/CSSLogin.css" text="Login" />
                </children>
             </HBox>
          </children>

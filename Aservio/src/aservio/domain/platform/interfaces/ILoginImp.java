@@ -21,42 +21,40 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Sigur
- */
 public class ILoginImp implements ILogin {
 
     //Limits for keyboardinputs in username and password.
-    private char minCapLetter = 65; //A-Z
-    private char maxCapLetter = 90;
-    private char minLetter = 97; //a-z
-    private char maxLetter = 122;
-    private char charUnderscore = 95; //_
-    private char minNumber = 48; //0-9
-    private char maxNumber = 57;
+    private char minCapLetter = 'A'; //65; //A-Z
+    private char maxCapLetter = 'Z'; //90;
+    private char minLetter = 'a'; //97; //a-z
+    private char maxLetter = 'z'; //122;
+    private char charUnderscore = '_'; //95; //_
+    private char minNumber = '0'; //48; //0-9
+    private char maxNumber = '9'; //57;
 
     File file;
-    
+
+    /**
+     * Tests login input for errors like illegal characters, spaces, and correct
+     * account identification.
+     *
+     * @param username
+     * @param password
+     * @return
+     */
     @Override
     public String checkForNoIllegalInput(String username, String password) {
         //Is Input empty?
         if (username.isEmpty() || password.isEmpty()) {
             return "Write your username and password to log in.";
-            //inputWarningLabel.setText("Write your username and password to log in");
-            //return false;
         }
-
         //Is Input in username ILLEGALCHARACTER?
         for (char j : username.toCharArray()) {
             boolean capitalLetterRange = j >= minCapLetter && j <= maxCapLetter;
             boolean smallLetterRange = j >= minLetter && j <= maxLetter;
             boolean numberRange = j >= minNumber && j <= maxNumber;
             if (!(capitalLetterRange || smallLetterRange || numberRange || j == charUnderscore)) {
-            return "USERNAME contains special characters. Only 0-9, a-z and _ is permitted";
-//inputWarningLabel.setText("USERNAME contains special characters. Only 0-9, a-z and _ is permitted");
-                //System.out.println("USERNAME contains special characters. Only 0-9, a-z and _ is permitted");
-                //return false;
+                return "USERNAME contains special characters. Only 0-9, a-z and _ is permitted";
             }
         }
         //Is Input in username ILLEGALCHARACTER?
@@ -65,33 +63,17 @@ public class ILoginImp implements ILogin {
             boolean smallLetterRange = j >= minLetter && j <= maxLetter;
             boolean numberRange = j >= minNumber && j <= maxNumber;
             if (!(capitalLetterRange || smallLetterRange || numberRange || j == charUnderscore)) {
-                //inputWarningLabel.setText("PASSWORD contains special characters. Only 0-9, a-z and _ is permitted");
-                //System.out.println("PASSWORD contains special characters. Only 0-9, a-z and _ is permitted");
                 return "PASSWORD contains special characters. Only 0-9, a-z and _ is permitted";
             }
         }
-        /*//Is Input in username ILLEGALCHARACTER?
-        for (char J : ILLEGALCHARACTERS) {
-            if (tempUser.contains(Character.toString(J))) {
-                inputWarningLabel.setText("Username or password contains special characters: ; / \\ , . % &");
-                return false;
-            }
-        }
-        //Is Input in password ILLEGALCHARACTER?
-        for (char J : ILLEGALCHARACTERS) {
-            if (tempPassword.contains(Character.toString(J))) {
-                inputWarningLabel.setText("Username or password contains special characters: ; / \\ , . % &");
-                return false;
-            }
-        }*/
         //Is Input a user?
         if (!findUserInFile(username, password)) {
-            //inputWarningLabel.setText("Wrong username or password");
             return "Wrong username or password";
         }
         //All constraints are followed.
         return "Access";
     }
+
     private boolean findUserInFile(String username, String password) {
         boolean cont = true;
         int count = 0;

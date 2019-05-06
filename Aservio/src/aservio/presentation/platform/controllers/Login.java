@@ -33,6 +33,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class Login implements Initializable {
 
@@ -91,8 +93,9 @@ public class Login implements Initializable {
      * @param event
      */
     @FXML
-    private void attemptLogin(ActionEvent event) {
-        if (interFace.checkForNoIllegalInput(usernameField.getText(), passwordField.getText()).equals("Access")) {
+    private void validateLogin(ActionEvent event) {
+        String result = interFace.checkForNoIllegalInput(usernameField.getText(), passwordField.getText());
+        if (result.equals("Access")) {
             //TEMP, read file, set current user, return true if succesful.
             try {
                 Parent p = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLPlatform.fxml"));
@@ -102,20 +105,8 @@ public class Login implements Initializable {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            inputWarningLabel.setText(interFace.checkForNoIllegalInput(usernameField.getText(), passwordField.getText()));
+            inputWarningLabel.setText(result);
         }
-    }
-
-    /**
-     * //Tests login input for errors like illegal characters, spaces, and
-     * correct account identification.
-     *
-     * @return
-     */
-
-    @FXML
-    private void checkUserInput(ActionEvent event) {
-        attemptLogin(event);
     }
 
     private void writeToFile(User u) {
@@ -143,6 +134,17 @@ public class Login implements Initializable {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             System.err.println("Could not find file or read from file " + file.getAbsolutePath());
+        }
+    }
+
+    /**
+     * Enter on login button equals pressing it.
+     * @param event 
+     */
+    @FXML
+    private void onLoginBtnEnter(KeyEvent event) {
+        if (event.getCode().equals(KeyCode.ENTER)){
+            validateLogin(new ActionEvent());
         }
     }
 
