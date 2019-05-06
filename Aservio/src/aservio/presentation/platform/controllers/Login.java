@@ -5,6 +5,8 @@ import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
 import aservio.domain.platform.user.roles.Caretaker;
+import aservio.presentation.PresentationInterfaceManager;
+import aservio.presentation.platform.interfaces.contracts.ILogin;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,7 +34,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class FXMLLoginController implements Initializable {
+public class Login implements Initializable {
 
     public ImageView logoImageView;
     @FXML
@@ -42,9 +44,6 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private Button loginButton;
 
-    private static final char[] ILLEGALCHARACTERS = new char[]{ //use legal characters instead a-å //CURRENTLY NOT IN USE
-        ';', '"', '\\'
-    };
     private char minCapLetter = 65; //A-Z
     private char maxCapLetter = 90; 
     private char minLetter = 97; //a-z
@@ -52,7 +51,10 @@ public class FXMLLoginController implements Initializable {
     private char charUnderscore = 95; //_
     private char minNumber = 48; //0-9
     private char maxNumber = 57;
-
+    
+    private ILogin interFace = PresentationInterfaceManager.getILogin();
+    
+    
     private File file;
     @FXML
     private Label inputWarningLabel;
@@ -85,7 +87,7 @@ public class FXMLLoginController implements Initializable {
                 appendWriteTOFile(user3);
             }
         } catch (IOException ex) {
-            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("File set: " + file);
     }
@@ -98,15 +100,18 @@ public class FXMLLoginController implements Initializable {
      */
     @FXML
     private void attemptLogin(ActionEvent event) {
-        if (checkForNoIllegalInput()) {
+        if (checkForNoIllegalInput().equals("Access")) {
             //TEMP, read file, set current user, return true if succesful.
             try {
                 Parent p = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLPlatform.fxml"));
                 Aservio.getInstance().getPrimaryStage().getScene().setRoot(p);
                 Aservio.getInstance().getPrimaryStage().setMaximized(true);
             } catch (IOException ex) {
-                Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        else{
+            inputWarningLabel.setText(checkForNoIllegalInput());
         }
     }
 
@@ -116,14 +121,15 @@ public class FXMLLoginController implements Initializable {
      *
      * @return
      */
-    private boolean checkForNoIllegalInput() {
+    private String checkForNoIllegalInput() {
         String tempUser = usernameField.getText();
         String tempPassword = passwordField.getText();
 
         //Is Input empty?
         if (tempUser.isEmpty() || tempPassword.isEmpty()) {
-            inputWarningLabel.setText("Write your username and password to log in");
-            return false;
+            return "Write your username and password to log in.";
+            //inputWarningLabel.setText("Write your username and password to log in");
+            //return false;
         }
 
         //Is Input in username ILLEGALCHARACTER?
@@ -132,9 +138,10 @@ public class FXMLLoginController implements Initializable {
             boolean smallLetterRange = j >= minLetter && j <= maxLetter;
             boolean numberRange = j >= minNumber && j <= maxNumber;
             if (!(capitalLetterRange || smallLetterRange || numberRange || j == charUnderscore)) {
-                inputWarningLabel.setText("USERNAME contains special characters. Only 0-9, a-z and _ is permitted");
-                System.out.println("USERNAME contains special characters. Only 0-9, a-z and _ is permitted");
-                return false;
+            return "USERNAME contains special characters. Only 0-9, a-z and _ is permitted";
+//inputWarningLabel.setText("USERNAME contains special characters. Only 0-9, a-z and _ is permitted");
+                //System.out.println("USERNAME contains special characters. Only 0-9, a-z and _ is permitted");
+                //return false;
             }
         }
         //Is Input in username ILLEGALCHARACTER?
@@ -143,9 +150,9 @@ public class FXMLLoginController implements Initializable {
             boolean smallLetterRange = j >= minLetter && j <= maxLetter;
             boolean numberRange = j >= minNumber && j <= maxNumber;
             if (!(capitalLetterRange || smallLetterRange || numberRange || j == charUnderscore)) {
-                inputWarningLabel.setText("PASSWORD contains special characters. Only 0-9, a-z and _ is permitted");
-                System.out.println("PASSWORD contains special characters. Only 0-9, a-z and _ is permitted");
-                return false;
+                //inputWarningLabel.setText("PASSWORD contains special characters. Only 0-9, a-z and _ is permitted");
+                //System.out.println("PASSWORD contains special characters. Only 0-9, a-z and _ is permitted");
+                return "PASSWORD contains special characters. Only 0-9, a-z and _ is permitted";
             }
         }
         /*//Is Input in username ILLEGALCHARACTER?
@@ -164,11 +171,11 @@ public class FXMLLoginController implements Initializable {
         }*/
         //Is Input a user?
         if (!findUserInFile(usernameField.getText(), passwordField.getText())) {
-            inputWarningLabel.setText("Wrong username or password");
-            return false;
+            //inputWarningLabel.setText("Wrong username or password");
+            return "Wrong username or password";
         }
         //All constraints are followed.
-        return true;
+        return "Access";
     }
 
     @FXML
@@ -212,7 +219,7 @@ public class FXMLLoginController implements Initializable {
 
         } catch (ClassNotFoundException ex) {
             System.err.println("Could not find the class User");
-            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -225,7 +232,7 @@ public class FXMLLoginController implements Initializable {
             oos.writeObject(u);
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             System.err.println("Could not find file or read from file " + file.getAbsolutePath());
         }
@@ -239,7 +246,7 @@ public class FXMLLoginController implements Initializable {
             oos.writeObject(s);
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             System.err.println("Could not find file or read from file " + file.getAbsolutePath());
         }

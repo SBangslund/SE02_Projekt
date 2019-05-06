@@ -3,11 +3,9 @@
  */
 package aservio.domain.platform;
 
+import aservio.domain.DomainInterfaceManager;
 import aservio.domain.management.interfaces.implementors.IOverviewImp;
-import aservio.domain.platform.user.User;
-import aservio.domain.platform.user.UserInfo;
-import aservio.domain.platform.user.Address;
-import aservio.domain.platform.user.roles.Caretaker;
+import aservio.domain.platform.interfaces.ILoginImp;
 import aservio.presentation.PresentationInterfaceManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +31,10 @@ public class Aservio extends Application {
         primaryStage = stage;
 
         PresentationInterfaceManager presentation = new PresentationInterfaceManager();
+        DomainInterfaceManager domain = new DomainInterfaceManager();
+        
         presentation.setIOverview(new IOverviewImp());
+        presentation.setILogin(new ILoginImp());
 
         //Parent root = FXMLLoader.load(getClass().getResource("../Management/views/FXMLManager.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLLogin.fxml"));
