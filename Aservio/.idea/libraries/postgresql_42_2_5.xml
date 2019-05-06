@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="postgresql-42.2.5">
     <CLASSES>
-      <root url="jar://D:/OneDrive - Syddansk Universitet/SDU/2. Semester/Programmering og database/DataBaseSetup/postgresql-42.2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/postgresql-42.2.5.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

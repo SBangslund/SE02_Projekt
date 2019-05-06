@@ -2,169 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cefc65ca-ca20-485c-9761-f498581290a4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/data/temp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/DomainInterfaceManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/management/activities/ActivityList.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/management/activities/ActivityManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/management/activities/ActivityType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/management/interfaces/implementors/IOverviewImp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/Aservio.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/user/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/user/UserInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/user/roles/Admin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/user/roles/Caretaker.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/user/roles/Citizen.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/user/roles/Relative.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/user/roles/Role.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/PresentationInterfaceManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/Management.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/overview/Overview.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/overview/OverviewDay$1$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/overview/OverviewDay$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/overview/OverviewDay$2$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/overview/OverviewDay$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/overview/OverviewDay$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/overview/OverviewDay.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/overview/OverviewManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/overview/OverviewMonth.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/overview/OverviewType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/overview/OverviewWeek.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/interfaces/Pageable.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/interfaces/ShowableActivity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/interfaces/contracts/IOverview.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/controllers/FXMLLoginController$AppendingObjectOutputStream.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/controllers/FXMLLoginController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/controllers/FXMLProfileController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/controllers/FXMLSeeProfileController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/aservio/data/temp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/aservio/domain/DomainInterfaceManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/aservio/domain/management/interfaces/implementors/IOverviewImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/aservio/presentation/PresentationInterfaceManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/aservio/presentation/management/controllers/overview/OverviewType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/aservio/presentation/management/interfaces/ShowableActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/aservio/presentation/management/interfaces/contracts/IOverview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/postgresql_42_2_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/postgresql_42_2_5.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLActivityPopup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLActivityPopup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLManager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLManager.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLOverviewDay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLOverviewDay.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLOverviewMonth.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLOverviewMonth.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLOverviewWeek.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/management/views/FXMLOverviewWeek.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/platform/FXMLLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/platform/FXMLLogin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/aservio/platform/views/FXMLPlatform.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/aservio/platform/views/FXMLPlatform.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Aservio.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Aservio.jnlp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/Management.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/activities/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/management/activities/Activity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/activities/ActivityList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/activities/ActivityManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/activities/ActivityType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/icons/iconEating.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/icons/iconEating.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/icons/iconRunning.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/icons/iconRunning.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/icons/iconTennis.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/icons/iconTennis.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/icons/iconVolleyball.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/icons/iconVolleyball.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/icons/iconWalking.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/icons/iconWalking.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/interfaces/CalenderInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/interfaces/CalenderInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/interfaces/Pageable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/interfaces/ShowableActivity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/Overview.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewActivityPopup.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/overview/OverviewActivityPopup.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewDay$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewDay$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewDay$2$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewDay$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewDay$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewDay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewMonth.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/overview/OverviewWeek.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/sideview/SideView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/sideview/SideView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/sideview/SideViewActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/controllers/sideview/SideViewActivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/views/CSSActivityView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/views/CSSActivityView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/views/CSSManager.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/views/CSSManager.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/views/CSSOverviewDay.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/views/CSSOverviewDay.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/views/CSSOverviewMonth.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/views/CSSOverviewMonth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/views/FXMLActivityView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/views/FXMLActivityView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/views/FXMLManager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/views/FXMLManager.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/views/FXMLOverviewDay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/views/FXMLOverviewDay.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/views/FXMLOverviewMonth.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/views/FXMLOverviewMonth.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/views/FXMLOverviewWeek.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/views/FXMLOverviewWeek.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/management/views/cssOverviewWeek.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/views/cssOverviewWeek.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/Aservio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/CSSLogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/css/CSSLogin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/FXMLLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/platform/views/FXMLLogin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/FXMLLoginController$AppendingObjectOutputStream.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/FXMLLoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/FXMLPlatformController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/controllers/FXMLPlatformController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/FXMLProfileController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/FXMLSeeProfileController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/user/Address.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/user/Address.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/user/Permissions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/user/Permissions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/user/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/user/UserInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/user/roles/Admin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/user/roles/Caretaker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/user/roles/Citizen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/user/roles/Relative.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/user/roles/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/views/CSSPlatform.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/css/CSSPlatform.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/views/FXMLPlatform.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/platform/views/FXMLPlatform.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/views/FXMLProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/views/FXMLProfile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/platform/views/FXMLSeeProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/views/FXMLSeeProfile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/Management.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/controllers/Management.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/activities/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/management/activities/Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/activities/ActivityList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/management/activities/ActivityList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/activities/ActivityManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/management/activities/ActivityManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/activities/ActivityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/management/activities/ActivityType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/icons/iconEating.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/icons/iconEating.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/icons/iconRunning.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/icons/iconRunning.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/icons/iconTennis.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/icons/iconTennis.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/icons/iconVolleyball.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/icons/iconVolleyball.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/icons/iconWalking.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/icons/iconWalking.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/interfaces/CalenderInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/interfaces/CalenderInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/interfaces/Pageable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/interfaces/Pageable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/interfaces/ShowableActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/overview/Overview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/controllers/overview/Overview.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/overview/OverviewActivityPopup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/controllers/overview/OverviewActivityPopup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/overview/OverviewDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/controllers/overview/OverviewDay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/overview/OverviewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/controllers/overview/OverviewManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/overview/OverviewMonth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/controllers/overview/OverviewMonth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/overview/OverviewType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/overview/OverviewWeek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/controllers/overview/OverviewWeek.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/sideview/SideView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/controllers/sideview/SideView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/sideview/SideViewActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/controllers/sideview/SideViewActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/views/CSSActivityView.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/views/CSSActivityView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/views/CSSManager.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/views/CSSManager.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/views/CSSOverviewDay.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/views/CSSOverviewDay.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/views/CSSOverviewMonth.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/views/CSSOverviewMonth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/views/FXMLActivityView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/views/FXMLActivityView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/views/FXMLManager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/views/FXMLManager.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/views/FXMLOverviewDay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/views/FXMLOverviewDay.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/views/FXMLOverviewMonth.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/management/views/FXMLOverviewMonth.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/views/FXMLOverviewWeek.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/views/FXMLOverviewWeek.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/management/views/cssOverviewWeek.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/views/cssOverviewWeek.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/Aservio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/Aservio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/CSSLogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/css/CSSLogin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/FXMLLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/views/FXMLLogin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/FXMLLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/platform/controllers/FXMLLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/FXMLPlatformController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/platform/controllers/FXMLPlatformController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/FXMLProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/platform/controllers/FXMLProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/FXMLSeeProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/platform/controllers/FXMLSeeProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/user/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/user/Permissions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/Permissions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/user/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/user/roles/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/roles/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/user/roles/Caretaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/roles/Caretaker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/user/roles/Citizen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/roles/Citizen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/user/roles/Relative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/roles/Relative.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/user/roles/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/roles/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/views/CSSPlatform.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/css/CSSPlatform.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/views/FXMLPlatform.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/views/FXMLPlatform.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/views/FXMLProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/platform/views/FXMLProfile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/platform/views/FXMLSeeProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/platform/views/FXMLSeeProfile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/users.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/DomainInterfaceManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/DomainInterfaceManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/management/interfaces/implementors/IOverviewImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/management/interfaces/implementors/IOverviewImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/Aservio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/Aservio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/data/IDatabaseImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/data/IDataPipeImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/domain/DomainInterfaceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/DomainInterfaceManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/domain/management/activities/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/management/activities/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/domain/management/interfaces/implementors/IOverviewImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/management/interfaces/implementors/IOverviewImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/domain/platform/Aservio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/Aservio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IDataPipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/domain/platform/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/presentation/management/interfaces/contracts/IOverview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/presentation/management/interfaces/contracts/IOverview.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -188,138 +39,137 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/aservio/domain/DomainInterfaceManager.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-                  <folding>
-                    <element signature="e#226#227#0" expanded="true" />
-                    <element signature="e#272#273#0" expanded="true" />
-                    <element signature="e#322#323#0" expanded="true" />
-                    <element signature="e#353#354#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/aservio/presentation/management/controllers/overview/Overview.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="646">
-                  <caret line="51" column="1" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/aservio/presentation/PresentationInterfaceManager.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-                  <folding>
-                    <element signature="e#243#244#0" expanded="true" />
-                    <element signature="e#285#286#0" expanded="true" />
-                    <element signature="e#331#332#0" expanded="true" />
-                    <element signature="e#363#364#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/Aservio.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="212">
-                  <caret line="38" selection-start-line="38" selection-end-line="38" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/aservio/presentation/platform/controllers/FXMLLoginController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1559">
-                  <caret line="78" column="40" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="40" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/aservio/domain/management/interfaces/implementors/IOverviewImp.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="119">
-                  <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-                  <folding>
-                    <element signature="e#413#414#0" expanded="true" />
-                    <element signature="e#440#441#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/aservio/data/IDatabaseImp.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#352#353#0" expanded="true" />
-                    <element signature="e#379#380#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d0443fc7-b7b5-42fa-a663-5f3155dee7c2/console.sql">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IDatabase.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/aservio/presentation/management/controllers/overview/OverviewDay.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="60" column="45" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/aservio/presentation/PresentationInterfaceManager.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="16" selection-start-line="16" selection-end-line="16" />
-                  <folding>
-                    <element signature="e#243#244#0" expanded="true" />
-                    <element signature="e#285#286#0" expanded="true" />
-                    <element signature="e#331#332#0" expanded="true" />
-                    <element signature="e#363#364#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/DataPipe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="661">
+              <caret line="34" column="68" lean-forward="true" selection-start-line="34" selection-start-column="68" selection-end-line="34" selection-end-column="68" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IDataPipe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="53" lean-forward="true" selection-start-column="53" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/Aservio.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="586">
+              <caret line="40" column="67" selection-start-line="40" selection-start-column="67" selection-end-line="40" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/aservio/presentation/platform/controllers/FXMLLoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="975">
+              <caret line="78" column="40" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/user/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/aservio/domain/management/interfaces/implementors/IOverviewImp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-end-line="29" />
+              <folding>
+                <element signature="e#600#601#0" expanded="true" />
+                <element signature="e#636#637#0" expanded="true" />
+                <element signature="e#720#721#0" expanded="true" />
+                <element signature="e#773#774#0" expanded="true" />
+                <element signature="e#713#714#0" expanded="true" />
+                <element signature="e#740#741#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/aservio/presentation/management/interfaces/contracts/IOverview.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/aservio/data/IDataPipeImp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="575">
+              <caret line="37" column="52" lean-forward="true" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#641#642#0" expanded="true" />
+                <element signature="e#677#678#0" expanded="true" />
+                <element signature="e#745#746#0" expanded="true" />
+                <element signature="e#781#782#0" expanded="true" />
+                <element signature="e#837#838#0" expanded="true" />
+                <element signature="e#873#874#0" expanded="true" />
+                <element signature="e#781#782#0" expanded="true" />
+                <element signature="e#843#844#0" expanded="true" />
+                <element signature="e#879#880#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/aservio/domain/management/activities/Activity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="886">
+              <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+              <folding>
+                <element signature="e#1697#1698#0" expanded="true" />
+                <element signature="e#1722#1723#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/aservio/domain/DomainInterfaceManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+              <folding>
+                <element signature="e#222#223#0" expanded="true" />
+                <element signature="e#269#270#0" expanded="true" />
+                <element signature="e#314#315#0" expanded="true" />
+                <element signature="e#346#347#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -342,7 +192,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/aservio/management/views/FXMLOverviewMonth.fxml" />
         <option value="$PROJECT_DIR$/src/aservio/management/overview/Overview.java" />
         <option value="$PROJECT_DIR$/src/aservio/management/views/CSSOverviewMonth.css" />
         <option value="$PROJECT_DIR$/src/aservio/management/views/CSSOverviewMonth.css" />
@@ -375,20 +224,25 @@
         <option value="$PROJECT_DIR$/src/aservio/presentation/management/temp.java" />
         <option value="$PROJECT_DIR$/src/aservio/presentation/platform/temp.java" />
         <option value="$PROJECT_DIR$/src/aservio/presentation/platform/controllers/FXMLLoginController.java" />
-        <option value="$PROJECT_DIR$/src/aservio/presentation/management/interfaces/contracts/IOverview.java" />
         <option value="$PROJECT_DIR$/src/aservio/presentation/management/overview/Overview.java" />
         <option value="$PROJECT_DIR$/src/aservio/presentation/management/overview/OverviewDay.java" />
         <option value="$PROJECT_DIR$/src/aservio/presentation/management/overview/OverviewWeek.java" />
         <option value="$PROJECT_DIR$/src/aservio/presentation/management/overview/OverviewMonth.java" />
-        <option value="$PROJECT_DIR$/src/aservio/domain/management/interfaces/implementors/IOverviewImp.java" />
         <option value="$PROJECT_DIR$/src/aservio/domain/management/activities/ActivityType.java" />
         <option value="$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IDatabase.java" />
         <option value="$PROJECT_DIR$/src/aservio/data/DataBaseSetup.java" />
-        <option value="$PROJECT_DIR$/src/aservio/domain/DomainInterfaceManager.java" />
-        <option value="$PROJECT_DIR$/src/aservio/domain/platform/Aservio.java" />
         <option value="$PROJECT_DIR$/src/aservio/presentation/PresentationInterfaceManager.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/d0443fc7-b7b5-42fa-a663-5f3155dee7c2/console.sql" />
         <option value="$PROJECT_DIR$/src/aservio/data/IDatabaseImp.java" />
+        <option value="$PROJECT_DIR$/src/aservio/domain/DomainInterfaceManager.java" />
+        <option value="$PROJECT_DIR$/src/aservio/domain/platform/Aservio.java" />
+        <option value="$PROJECT_DIR$/src/aservio/domain/platform/user/User.java" />
+        <option value="$PROJECT_DIR$/src/aservio/presentation/management/interfaces/contracts/IOverview.java" />
+        <option value="$PROJECT_DIR$/src/aservio/domain/management/interfaces/implementors/IOverviewImp.java" />
+        <option value="$PROJECT_DIR$/src/aservio/domain/management/activities/Activity.java" />
+        <option value="$PROJECT_DIR$/src/aservio/domain/platform/DataPipe.java" />
+        <option value="$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IDataPipe.java" />
+        <option value="$PROJECT_DIR$/src/aservio/data/IDataPipeImp.java" />
       </list>
     </option>
   </component>
@@ -398,14 +252,14 @@
     <option name="width" value="1750" />
     <option name="height" value="980" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -453,7 +307,7 @@
               <item name="aservio" type="462c0819:PsiDirectoryNode" />
               <item name="domain" type="462c0819:PsiDirectoryNode" />
               <item name="management" type="462c0819:PsiDirectoryNode" />
-              <item name="implementors" type="462c0819:PsiDirectoryNode" />
+              <item name="activities" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Aservio" type="b2602c69:ProjectViewProjectNode" />
@@ -471,6 +325,15 @@
               <item name="domain" type="462c0819:PsiDirectoryNode" />
               <item name="platform" type="462c0819:PsiDirectoryNode" />
               <item name="contracts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aservio" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aservio" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="aservio" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Aservio" type="b2602c69:ProjectViewProjectNode" />
@@ -523,34 +386,23 @@
               <item name="platform" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Aservio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Aservio" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="aservio" type="462c0819:PsiDirectoryNode" />
-              <item name="presentation" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556983813061" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557144316394" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="D:/OneDrive - Syddansk Universitet/SDU/2. Semester/Programmering og database/DataBaseSetup/postgresql-42.2.5.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/postgresql-42.2.5.jar!/" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -623,12 +475,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35652000" />
+    <option name="totallyTimeSpent" value="40375000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-7" y="-7" width="1839" height="1191" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.15884861" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.16582349" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -636,10 +489,9 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="DB Browser" order="7" />
-      <window_info anchor="bottom" id="Database Console" weight="0.3290461" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32766762" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32047158" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3201133" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -649,9 +501,10 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3279743" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32368702" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32294616" />
       <window_info anchor="bottom" id="DB Execution Console" order="13" />
       <window_info anchor="bottom" id="Thumbnails" order="14" weight="0.3290461" />
+      <window_info anchor="bottom" id="Database Console" order="15" weight="0.3290461" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -722,13 +575,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/domain/management/activities/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -880,23 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/user/UserInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/user/Address.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -905,13 +734,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/aservio/domain/management/interfaces/temp.java" />
-    <entry file="file://$PROJECT_DIR$/src/aservio/presentation/management/interfaces/contracts/IOverview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/aservio/presentation/management/controllers/overview/Overview.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -932,12 +754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/aservio/presentation/management/controllers/overview/OverviewMonth.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-          <folding>
-            <element signature="e#1094#1095#0" expanded="true" />
-            <element signature="e#1168#1169#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="450">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
         </state>
       </provider>
     </entry>
@@ -992,50 +810,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IDatabase.java">
+    <entry file="file://$PROJECT_DIR$/src/aservio/data/DataBaseSetup.java" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d0443fc7-b7b5-42fa-a663-5f3155dee7c2/console.sql" />
+    <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/user/UserInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/data/DataBaseSetup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/domain/DomainInterfaceManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding>
-            <element signature="e#226#227#0" expanded="true" />
-            <element signature="e#272#273#0" expanded="true" />
-            <element signature="e#322#323#0" expanded="true" />
-            <element signature="e#353#354#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/presentation/platform/controllers/FXMLLoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1559">
-          <caret line="78" column="40" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/Aservio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="225">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/aservio/presentation/PresentationInterfaceManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="325">
           <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
           <folding>
             <element signature="e#243#244#0" expanded="true" />
@@ -1046,28 +832,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d0443fc7-b7b5-42fa-a663-5f3155dee7c2/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/domain/management/interfaces/implementors/IOverviewImp.java">
+    <entry file="file://$PROJECT_DIR$/src/aservio/domain/DomainInterfaceManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        <state relative-caret-position="300">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
           <folding>
-            <element signature="e#413#414#0" expanded="true" />
-            <element signature="e#440#441#0" expanded="true" />
+            <element signature="e#222#223#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
+            <element signature="e#314#315#0" expanded="true" />
+            <element signature="e#346#347#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/data/IDatabaseImp.java">
+    <entry file="file://$PROJECT_DIR$/src/aservio/presentation/platform/controllers/FXMLLoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+        <state relative-caret-position="975">
+          <caret line="78" column="40" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#352#353#0" expanded="true" />
-            <element signature="e#379#380#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aservio/domain/management/interfaces/implementors/IOverviewImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-end-line="29" />
+          <folding>
+            <element signature="e#600#601#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#773#774#0" expanded="true" />
+            <element signature="e#713#714#0" expanded="true" />
+            <element signature="e#740#741#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/Aservio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="586">
+          <caret line="40" column="67" selection-start-line="40" selection-start-column="67" selection-end-line="40" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aservio/domain/management/activities/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="886">
+          <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+          <folding>
+            <element signature="e#1697#1698#0" expanded="true" />
+            <element signature="e#1722#1723#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aservio/presentation/management/interfaces/contracts/IOverview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IDataPipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="53" lean-forward="true" selection-start-column="53" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aservio/data/IDataPipeImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="37" column="52" lean-forward="true" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#641#642#0" expanded="true" />
+            <element signature="e#677#678#0" expanded="true" />
+            <element signature="e#745#746#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#873#874#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#843#844#0" expanded="true" />
+            <element signature="e#879#880#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/DataPipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="661">
+          <caret line="34" column="68" lean-forward="true" selection-start-line="34" selection-start-column="68" selection-end-line="34" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1112,7 +981,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>1.8.0_171</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -1,48 +1,56 @@
 package aservio.data;
 
-import aservio.domain.platform.interfaces.contracts.IDatabase;
-import aservio.domain.platform.user.User;
+import aservio.domain.management.activities.Activity;
+import aservio.domain.platform.interfaces.contracts.IDataPipe;
 
 import java.sql.*;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class IDatabaseImp implements IDatabase {
+public class IDataPipeImp implements IDataPipe {
 
     private Connection connection;
     private boolean succesfullConnection = false;
 
-    public IDatabaseImp(){
+    public IDataPipeImp(){
         this.setupConnection();
-        System.out.println(this.userVerification("test", "me"));
-        System.out.println(this.userVerification("test", "test"));
-    }
-
-    private void testConnection(){
-        Statement execStat = null;
-        try {
-            execStat = connection.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(IDatabaseImp.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            ResultSet worths = execStat.executeQuery("SELECT * FROM userinfo");
-            while(worths.next()){
-                System.out.println("result: " + worths.getString("firstname"));
-                System.out.println("result: " + worths.getString("userid"));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(IDatabaseImp.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        System.out.println(this.verifyUser("test", "me"));
+        System.out.println(this.verifyUser("test", "test"));
     }
 
     @Override
-    public String userVerification(String username, String password) {
+    public String getUser(String username, String password) {
+        return null;
+    }
+
+    @Override
+    public String[] getUsers(UUID activityid) {
+        return new String[0];
+    }
+
+    @Override
+    public String[] getActivity(UUID activityid) {
+        return new String[0];
+    }
+
+    @Override
+    public String[] getUserActivities(UUID userid) {
+        return new String[0];
+    }
+
+    @Override
+    public String[] getUserInfo(UUID userid) {
+        return new String[0];
+    }
+
+    @Override
+    public String verifyUser(String username, String password) {
         Statement execStat = null;
         try {
             execStat = connection.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(IDatabaseImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             ResultSet worths = execStat.executeQuery("SELECT getuserid('" + username + "', '" + password + "')");
@@ -50,14 +58,9 @@ public class IDatabaseImp implements IDatabase {
                 return worths.getString(1);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(IDatabaseImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "method not working";
-    }
-
-    @Override
-    public String getUserActivities(User user) {
-        return null;
     }
 
     public void setupConnection(){

@@ -3,20 +3,22 @@ package aservio.domain.management.activities;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 public class Activity {
     private String description;
     private ActivityType activityType;
+    private UUID id;
 
     private Date startDate;
     private Date endDate;
 
     public Activity(ActivityType activityType, Date startDate) {
-        this(activityType, startDate, new Date());
+        this(activityType, startDate, new Date(), UUID.randomUUID());
         setEndDate(setStandartEndDate(startDate));
     }
 
-    public Activity(ActivityType activityType, Date startDate, Date endDate) {
+    public Activity(ActivityType activityType, Date startDate, Date endDate, UUID id) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.activityType = activityType;
@@ -57,5 +59,9 @@ public class Activity {
 
     public ActivityType getActivityType() {
         return activityType;
+    }
+
+    public UUID getId() {
+        return id;
     }
 }

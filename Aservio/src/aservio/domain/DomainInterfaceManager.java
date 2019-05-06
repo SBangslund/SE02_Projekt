@@ -1,15 +1,15 @@
 package aservio.domain;
 
-import aservio.domain.platform.interfaces.contracts.IDatabase;
+import aservio.domain.platform.interfaces.contracts.IDataPipe;
 
 public class DomainInterfaceManager {
-    private static IDatabase iDatabase;
+    private static IDataPipe iDataPipe;
 
-    public void setiDatabase(IDatabase implementation){
-        this.iDatabase = implementation;
+    public void setIDataPipe(IDataPipe implementation){
+        this.iDataPipe = implementation;
     }
 
-    public static IDatabase getiDatabase(){
-        return iDatabase;
+    public static IDataPipe getIDataPipe(){
+        return iDataPipe;
     }
 }
