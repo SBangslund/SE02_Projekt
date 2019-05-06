@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.platform.controllers.FXMLLoginController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.platform.controllers.Login">
    <children>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="400.0" prefWidth="600.0" spacing="10.0">
          <children>
@@ -20,11 +20,11 @@
                </VBox.margin>
             </ImageView>
             <Label fx:id="inputWarningLabel" textFill="RED" />
-            <TextField fx:id="usernameField" onAction="#checkUserInput" prefHeight="26.0" prefWidth="234.0" promptText="Username" stylesheets="@../../css/CSSLogin.css" />
-            <PasswordField fx:id="passwordField" onAction="#checkUserInput" prefHeight="32.0" prefWidth="236.0" promptText="Password" stylesheets="@../../css/CSSLogin.css" />
+            <TextField fx:id="usernameField" onAction="#validateLogin" prefHeight="26.0" prefWidth="234.0" promptText="Username" stylesheets="@../../css/CSSLogin.css" />
+            <PasswordField fx:id="passwordField" onAction="#validateLogin" prefHeight="32.0" prefWidth="236.0" promptText="Password" stylesheets="@../../css/CSSLogin.css" />
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="237.0">
                <children>
-                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#attemptLogin" stylesheets="@../../css/CSSLogin.css" text="Login" />
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#validateLogin" onKeyPressed="#onLoginBtnEnter" stylesheets="@../../css/CSSLogin.css" text="Login" />
                </children>
             </HBox>
          </children>

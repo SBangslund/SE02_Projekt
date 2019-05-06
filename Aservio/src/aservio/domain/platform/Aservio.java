@@ -6,6 +6,7 @@ package aservio.domain.platform;
 import aservio.data.IDataPipeImp;
 import aservio.domain.DomainInterfaceManager;
 import aservio.domain.management.interfaces.implementors.IOverviewImp;
+import aservio.domain.platform.interfaces.ILoginImp;
 import aservio.domain.platform.interfaces.contracts.IDataPipe;
 import aservio.presentation.PresentationInterfaceManager;
 import javafx.application.Application;
@@ -35,7 +36,9 @@ public class Aservio extends Application {
         domain.setIDataPipe(new IDataPipeImp());
 
         PresentationInterfaceManager presentation = new PresentationInterfaceManager();
+        
         presentation.setIOverview(new IOverviewImp());
+        presentation.setILogin(new ILoginImp());
 
 
         //Parent root = FXMLLoader.load(getClass().getResource("../Management/views/FXMLManager.fxml"));
