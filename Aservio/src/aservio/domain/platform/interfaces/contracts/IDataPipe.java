@@ -1,7 +1,5 @@
 package aservio.domain.platform.interfaces.contracts;
 
-import aservio.domain.management.activities.Activity;
-
 import java.util.UUID;
 
 public interface IDataPipe {
@@ -11,4 +9,6 @@ public interface IDataPipe {
     String[] getUserInfo(UUID userid);
     String[] getUsers(UUID activityid);
     String[] getActivity(UUID activityid);
+    String[] getUserAddress(UUID userid);
+    String[] getInstitution(UUID institutionid);
 }

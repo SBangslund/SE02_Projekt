@@ -35,6 +35,16 @@ public class IDataPipeImp implements IDataPipe {
     }
 
     @Override
+    public String[] getUserAddress(UUID userid) {
+        return new String[0];
+    }
+
+    @Override
+    public String[] getInstitution(UUID institutionid) {
+        return new String[0];
+    }
+
+    @Override
     public String[] getUserActivities(UUID userid) {
         return new String[0];
     }
