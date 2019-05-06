@@ -44,17 +44,8 @@ public class Login implements Initializable {
     @FXML
     private Button loginButton;
 
-    private char minCapLetter = 65; //A-Z
-    private char maxCapLetter = 90; 
-    private char minLetter = 97; //a-z
-    private char maxLetter = 122;
-    private char charUnderscore = 95; //_
-    private char minNumber = 48; //0-9
-    private char maxNumber = 57;
-    
-    private ILogin interFace = PresentationInterfaceManager.getILogin();
-    
-    
+    private final ILogin interFace = PresentationInterfaceManager.getILogin();
+
     private File file;
     @FXML
     private Label inputWarningLabel;
@@ -89,6 +80,7 @@ public class Login implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
+        interFace.setFile("users.txt");
         System.out.println("File set: " + file);
     }
 
@@ -100,7 +92,7 @@ public class Login implements Initializable {
      */
     @FXML
     private void attemptLogin(ActionEvent event) {
-        if (checkForNoIllegalInput().equals("Access")) {
+        if (interFace.checkForNoIllegalInput(usernameField.getText(), passwordField.getText()).equals("Access")) {
             //TEMP, read file, set current user, return true if succesful.
             try {
                 Parent p = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLPlatform.fxml"));
@@ -109,9 +101,8 @@ public class Login implements Initializable {
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else{
-            inputWarningLabel.setText(checkForNoIllegalInput());
+        } else {
+            inputWarningLabel.setText(interFace.checkForNoIllegalInput(usernameField.getText(), passwordField.getText()));
         }
     }
 
@@ -121,107 +112,9 @@ public class Login implements Initializable {
      *
      * @return
      */
-    private String checkForNoIllegalInput() {
-        String tempUser = usernameField.getText();
-        String tempPassword = passwordField.getText();
-
-        //Is Input empty?
-        if (tempUser.isEmpty() || tempPassword.isEmpty()) {
-            return "Write your username and password to log in.";
-            //inputWarningLabel.setText("Write your username and password to log in");
-            //return false;
-        }
-
-        //Is Input in username ILLEGALCHARACTER?
-        for (char j : tempUser.toCharArray()) {
-            boolean capitalLetterRange = j >= minCapLetter && j <= maxCapLetter;
-            boolean smallLetterRange = j >= minLetter && j <= maxLetter;
-            boolean numberRange = j >= minNumber && j <= maxNumber;
-            if (!(capitalLetterRange || smallLetterRange || numberRange || j == charUnderscore)) {
-            return "USERNAME contains special characters. Only 0-9, a-z and _ is permitted";
-//inputWarningLabel.setText("USERNAME contains special characters. Only 0-9, a-z and _ is permitted");
-                //System.out.println("USERNAME contains special characters. Only 0-9, a-z and _ is permitted");
-                //return false;
-            }
-        }
-        //Is Input in username ILLEGALCHARACTER?
-        for (char j : tempPassword.toCharArray()) {
-            boolean capitalLetterRange = j >= minCapLetter && j <= maxCapLetter;
-            boolean smallLetterRange = j >= minLetter && j <= maxLetter;
-            boolean numberRange = j >= minNumber && j <= maxNumber;
-            if (!(capitalLetterRange || smallLetterRange || numberRange || j == charUnderscore)) {
-                //inputWarningLabel.setText("PASSWORD contains special characters. Only 0-9, a-z and _ is permitted");
-                //System.out.println("PASSWORD contains special characters. Only 0-9, a-z and _ is permitted");
-                return "PASSWORD contains special characters. Only 0-9, a-z and _ is permitted";
-            }
-        }
-        /*//Is Input in username ILLEGALCHARACTER?
-        for (char J : ILLEGALCHARACTERS) {
-            if (tempUser.contains(Character.toString(J))) {
-                inputWarningLabel.setText("Username or password contains special characters: ; / \\ , . % &");
-                return false;
-            }
-        }
-        //Is Input in password ILLEGALCHARACTER?
-        for (char J : ILLEGALCHARACTERS) {
-            if (tempPassword.contains(Character.toString(J))) {
-                inputWarningLabel.setText("Username or password contains special characters: ; / \\ , . % &");
-                return false;
-            }
-        }*/
-        //Is Input a user?
-        if (!findUserInFile(usernameField.getText(), passwordField.getText())) {
-            //inputWarningLabel.setText("Wrong username or password");
-            return "Wrong username or password";
-        }
-        //All constraints are followed.
-        return "Access";
-    }
 
     @FXML
     private void checkUserInput(ActionEvent event) {
-    }
-
-    private boolean findUserInFile(String username, String password) {
-        boolean cont = true;
-        int count = 0;
-        List<User> users = new ArrayList();
-        try {
-            FileInputStream fileStream = new FileInputStream(file);
-            ObjectInputStream objectIn = new ObjectInputStream(fileStream);
-
-            while (cont) {
-                Object o = objectIn.readObject();
-                if (o != null) {
-                    if (o instanceof User) {
-                        users.add((User) o);
-                        System.out.println(o);
-                    }
-                }
-                count++;
-            }
-        } catch (EOFException ex) {
-            System.out.println("reached end of file");
-            System.out.println("count: " + count);
-            System.out.println("--------");
-            for (User u : users) {
-                if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
-                    System.out.println("User with correct username and password found");
-                    User.setCurrentUser(u);
-                    System.out.println("The current users username is: " + User.getCurrentUser().getUsername());
-                    return true;
-                }
-            }
-        } catch (IOException ex) {
-            System.err.println("----------");
-            System.err.println("Could not find file or read from file. " + file.getAbsolutePath());
-            System.err.println("Error usually caused by corrupted or modified file or path. Try deleting the file (see path above).");
-
-        } catch (ClassNotFoundException ex) {
-            System.err.println("Could not find the class User");
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
     }
 
     private void writeToFile(User u) {

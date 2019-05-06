@@ -11,6 +11,7 @@ package aservio.presentation.platform.interfaces.contracts;
  */
 public interface ILogin {
     
+    void setFile(String fileName);
     String checkForNoIllegalInput(String username, String password);
     String validateLogin(String username, String password);
     //void reaquireUsernameMail();
