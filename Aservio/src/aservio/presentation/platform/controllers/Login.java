@@ -115,6 +115,7 @@ public class Login implements Initializable {
 
     @FXML
     private void checkUserInput(ActionEvent event) {
+        attemptLogin(event);
     }
 
     private void writeToFile(User u) {
