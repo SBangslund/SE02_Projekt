@@ -1,0 +1,26 @@
+.activity_box {
+    -fx-background-radius: 5, 5, 0, 5;
+    -fx-effect: dropshadow(gaussian , lightgrey , 5,0,1,1 );
+
+}
+
+.activity_box:hover {
+    -fx-effect: dropshadow(gaussian , dimgrey , 5,0,2,2 );
+    -fx-background-position: right center;
+}
+
+.day_label {
+    -fx-font-size: 16;
+    -fx-text-fill: teal;
+}
+
+.day_title {
+    -fx-font-size: 18;
+    -fx-text-fill: grey;
+}
+
+.activity_label {
+    -fx-font-size: 14;
+    -fx-text-fill: grey;
+    -fx-padding: 5 5 5 10;
+}

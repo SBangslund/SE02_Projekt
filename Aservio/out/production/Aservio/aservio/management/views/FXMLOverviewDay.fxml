@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.management.overview.OverviewDay">
+   <children>
+      <Label fx:id="DayOfWeekLabel" styleClass="label_weekDay" stylesheets="/aservio/management/views/CSSOverviewDay.css" text="Label" />
+      <Label fx:id="moreInformationLabel" styleClass="label_moreInformation" stylesheets="/aservio/management/views/CSSOverviewDay.css" text="Label" />
+      <ScrollPane fx:id="scrollPane" styleClass="scoll-pane" stylesheets="/aservio/management/views/CSSOverviewDay.css">
+         <content>
+            <StackPane fx:id="stackPane">
+               <children>
+                  <VBox fx:id="backgroundVbox" prefHeight="200.0" prefWidth="100.0" />
+                  <Pane fx:id="activityPane" prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </StackPane>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

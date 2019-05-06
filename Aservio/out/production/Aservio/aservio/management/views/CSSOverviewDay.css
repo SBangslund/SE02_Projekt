@@ -1,0 +1,49 @@
+.root{
+    -fx-background-color: white;
+}
+
+.label_weekDay {
+    -fx-font-size: 40;
+    -fx-text-fill: grey;
+    -fx-padding: 10 10 0 10;
+}
+
+.label_moreInformation {
+    -fx-font-size: 20;
+    -fx-text-fill: teal;
+    -fx-padding: 0 10 10 10;
+}
+
+.cell {
+    -fx-border-color: silver;
+    -fx-border-width: 0 0 1 0;
+}
+
+.scoll-pane {
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-background-radius: 10, 10, 0, 10;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-alignment: TOP-LEFT;
+    -fx-effect: dropshadow( gaussian , lightgrey , 5,0,1,1 );
+}
+
+.button:hover {
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( gaussian , dimgrey , 5,0,2,2 );
+}
+
+.hbox {
+    -fx-background-radius: 10, 10, 0, 10;
+    -fx-background-color: transparent;
+}
+
+
+
+.ImageView {
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+}
