@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -72,12 +73,12 @@ public class FXMLLoginController implements Initializable {
             if (!file.exists()) {//Use once pr new file.
                 file.createNewFile();
                 //fake users created to test read, as a temporary solution.
-                User user1 = new User("q", "q", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                User user1 = new User("q", "q", UUID.randomUUID(), new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
                         null, 21212121, "Samuel", "Bangslund", "samuelbanglund@gmail.com", "handyCenter"));
-                User user2 = new User("tove_1234", "rambo", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                User user2 = new User("tove_1234", "rambo", UUID.randomUUID(), new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
                         null, 21212121, "Victor", "Clemmensen", "samuelbanglund@gmail.com",
                         "handyCenter"));
-                User user3 = new User("Slagteren", "affaldssortering", new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
+                User user3 = new User("Slagteren", "affaldssortering", UUID.randomUUID(), new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
                         null, 21212121, "Rene", "Bangslund", "samuelbanglund@gmail.com",
                         "handyCenter"));
                 writeToFile(user1);
