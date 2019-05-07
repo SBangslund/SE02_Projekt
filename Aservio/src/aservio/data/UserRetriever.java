@@ -64,7 +64,7 @@ public class UserRetriever {
             Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            ResultSet result = execStat.executeQuery("SELECT getusersfromActivity('" + userid.toString() + "')");
+            ResultSet result = execStat.executeQuery("SELECT getusersfromActivity('" + activityid.toString() + "')");
             String[] resultArr = new String[7];
             result.getFetchSize();
             int index = 0;

@@ -22,6 +22,37 @@ public class DataPipe {
         return interFace.verifyUser(username, password);
     }
 
+    public boolean addUser(User user) {
+        return interFace.addUser(
+                user.getUsername(),
+                user.getPassword(),
+                user.getId()
+        );
+    }
+
+    public boolean addUserInfo(UserInfo userInfo) {
+        return interFace.addUserInfo(
+                userInfo.getMail(),
+                userInfo.getFirstName(),
+                userInfo.getLastName(),
+                userInfo.getMobileNumber(),
+                userInfo.getImage().toString(),
+                userInfo.getId()
+        );
+    }
+
+    public boolean addUserAddress(Address address) {
+        return interFace.addUserAddress(
+                address.getRoad(),
+                address.getCountry(),
+                address.getPostcode(),
+                address.getCity(),
+                address.getHouseNumber(),
+                address.getLevel(),
+                address.getUserId()
+        );
+    }
+
     public UserInfo getUserInfo(UUID userId) {
         String[] userInfoStrings = interFace.getUserInfo(userId);
         UserInfo userInfo = null;
@@ -35,7 +66,7 @@ public class DataPipe {
             Address userAddress = getUserAddress(userId);
             String institutionName = getInstitutionName(institutionid);
 
-            userInfo = new UserInfo(userAddress, null, phone, firstname, lastname, mail, institutionName);
+            userInfo = new UserInfo(userAddress, null, phone, firstname, lastname, mail, institutionName, userId);
         } else {
             System.err.println("[DATA_ERROR](DatePipe.getUserInfo()): String[].length != 7.");
         }
@@ -107,7 +138,7 @@ public class DataPipe {
                     houseNumber = userAddress[4],
                     level = userAddress[5];
             int postcode = Integer.parseInt(userAddress[2]);
-            address = new Address(roadname, country, postcode, city, houseNumber, level);
+            address = new Address(roadname, country, postcode, city, houseNumber, level, userid);
         } else {
             System.err.println("[DATA_ERROR](DatePipe.getUserAddress()): String[].length != 7.");
         }
