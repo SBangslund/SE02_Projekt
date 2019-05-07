@@ -4,7 +4,7 @@ import aservio.domain.DomainInterfaceManager;
 import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.management.activities.ActivityType;
-import aservio.domain.platform.interfaces.contracts.IDataPipe;
+import aservio.domain.platform.interfaces.contracts.IRepository;
 import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
@@ -15,8 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.UUID;
 
-public class DataPipe {
-    private IDataPipe interFace = DomainInterfaceManager.getIDataPipe();
+public class Repository {
+    private IRepository interFace = DomainInterfaceManager.getIDataPipe();
 
     public String verifyUser(String username, String password) {
         return interFace.verifyUser(username, password);

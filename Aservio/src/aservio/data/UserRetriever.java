@@ -23,13 +23,13 @@ public class UserRetriever {
         try {
             execStat = connection.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             execStat.executeQuery("SELECT adduser('" + username + "', '" + password + "', '" + userid.toString() + "')");
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -39,13 +39,13 @@ public class UserRetriever {
         try {
             execStat = connection.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             execStat.executeQuery("SELECT adduserinfo('" + mail + "', '" + firstname + "', '" + lastname + "', " + phone + ", '" + picture + "', '" + userid.toString() + "', '" + institutionname + "')");
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -55,13 +55,13 @@ public class UserRetriever {
         try {
             execStat = connection.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             execStat.executeQuery("SELECT adduseraddress('" + roadname + "', '" + country + "', " + postcode + ", '" + city + "', '" + housenumber + "', '" + level + "', '" + userid.toString() + "')");
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -71,7 +71,7 @@ public class UserRetriever {
         try {
             execStat = connection.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             ResultSet result = execStat.executeQuery("SELECT getuserid('" + username + "', '" + password + "')");
@@ -79,7 +79,7 @@ public class UserRetriever {
                 return result.getString(1);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -89,7 +89,7 @@ public class UserRetriever {
         try {
             execStat = connection.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             ResultSet result = execStat.executeQuery("SELECT verifyuser('" + username + "', '" + password + "')");
@@ -97,7 +97,7 @@ public class UserRetriever {
                 return result.getString(1);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -107,7 +107,7 @@ public class UserRetriever {
         try {
             execStat = connection.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             ResultSet result = execStat.executeQuery("SELECT getusersfromActivity('" + activityid.toString() + "')");
@@ -120,7 +120,7 @@ public class UserRetriever {
             }
             return resultArr;
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -131,7 +131,7 @@ public class UserRetriever {
         try {
             execStat = connection.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             ResultSet result = execStat.executeQuery("SELECT getuserinfo('" + userid.toString() + "')");
@@ -145,7 +145,7 @@ public class UserRetriever {
                 return resultArr;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -155,7 +155,7 @@ public class UserRetriever {
         try {
             execStat = connection.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             ResultSet result = execStat.executeQuery("SELECT getuseraddress('" + userid.toString() + "')");
@@ -169,7 +169,7 @@ public class UserRetriever {
                 return resultArr;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
 

@@ -3,11 +3,10 @@
  */
 package aservio.domain.platform;
 
-import aservio.data.IDataPipeImp;
+import aservio.data.IRepositoryImp;
 import aservio.domain.DomainInterfaceManager;
 import aservio.domain.management.interfaces.implementors.IOverviewImp;
 import aservio.domain.platform.interfaces.implementors.ILoginWithFileImp;
-import aservio.domain.platform.interfaces.contracts.IDataPipe;
 import aservio.presentation.PresentationInterfaceManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -32,12 +31,14 @@ public class Aservio extends Application {
         instance = this;
         primaryStage = stage;
 
+
         DomainInterfaceManager domain = new DomainInterfaceManager();
-        domain.setIDataPipe(new IDataPipeImp());
+        domain.setIDataPipe(new IRepositoryImp());
 
         PresentationInterfaceManager presentation = new PresentationInterfaceManager();
-        
-        presentation.setIOverview(new IOverviewImp());
+
+        Repository repository = new Repository();
+        presentation.setIOverview(new IOverviewImp(repository));
         presentation.setILogin(new ILoginWithFileImp());
 
 

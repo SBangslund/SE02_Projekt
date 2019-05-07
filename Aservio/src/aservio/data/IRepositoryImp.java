@@ -1,20 +1,17 @@
 package aservio.data;
 
-import aservio.domain.management.activities.Activity;
-import aservio.domain.platform.interfaces.contracts.IDataPipe;
+import aservio.domain.platform.interfaces.contracts.IRepository;
 
 import java.sql.*;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class IDataPipeImp implements IDataPipe {
+public class IRepositoryImp implements IRepository {
 
     private Connection connection;
     private boolean succesfullConnection = false;
     private UserRetriever userRetriever;
 
-    public IDataPipeImp(){
+    public IRepositoryImp(){
         this.setupConnection();
         userRetriever = new UserRetriever(connection);
         System.out.println(this.verifyUser("test", "me"));

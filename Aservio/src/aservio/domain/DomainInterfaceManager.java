@@ -1,15 +1,15 @@
 package aservio.domain;
 
-import aservio.domain.platform.interfaces.contracts.IDataPipe;
+import aservio.domain.platform.interfaces.contracts.IRepository;
 
 public class DomainInterfaceManager {
-    private static IDataPipe iDataPipe;
+    private static IRepository iRepository;
 
-    public void setIDataPipe(IDataPipe implementation){
-        this.iDataPipe = implementation;
+    public void setIDataPipe(IRepository implementation){
+        this.iRepository = implementation;
     }
 
-    public static IDataPipe getIDataPipe(){
-        return iDataPipe;
+    public static IRepository getIDataPipe(){
+        return iRepository;
     }
 }
