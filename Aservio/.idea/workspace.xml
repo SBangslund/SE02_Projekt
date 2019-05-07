@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df5e1f52-34ce-43f5-8ad2-10e275095778" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/data/IDataPipeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/data/IDataPipeImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/data/UserRetriever.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/data/UserRetriever.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/Aservio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/Aservio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/interfaces/ILoginImp$AppendingObjectOutputStream.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/interfaces/ILoginImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/interfaces/contracts/IDataPipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aservio/aservio/domain/platform/interfaces/contracts/IDataPipe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/controllers/FXMLPlatformController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/controllers/FXMLProfileController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/controllers/FXMLSeeProfileController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/views/FXMLLogin.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/views/FXMLPlatform.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/views/FXMLProfile.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aservio/aservio/presentation/platform/views/FXMLSeeProfile.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/data/IDataPipeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/data/IDataPipeImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/data/UserRetriever.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/data/UserRetriever.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/domain/platform/DataPipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/DataPipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IDataPipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IDataPipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/domain/platform/user/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/domain/platform/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/domain/platform/user/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/user/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aservio/domain/platform/interfaces/implementors/ILoginWithFileImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/interfaces/implementors/ILoginWithFileImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,11 +133,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/aservio/presentation/platform/controllers/Login.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
               <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/aservio/domain/platform/interfaces/implementors/ILoginWithFileImp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="825">
+              <caret line="175" column="34" lean-forward="true" selection-start-line="175" selection-start-column="34" selection-end-line="175" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -232,15 +221,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/aservio/presentation/management/controllers/overview/OverviewMonth.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -256,6 +236,7 @@
         <option value="$PROJECT_DIR$/src/aservio/domain/platform/user/UserInfo.java" />
         <option value="$PROJECT_DIR$/src/aservio/domain/platform/user/Address.java" />
         <option value="$PROJECT_DIR$/src/aservio/domain/platform/DataPipe.java" />
+        <option value="$PROJECT_DIR$/src/aservio/domain/platform/interfaces/implementors/ILoginWithFileImp.java" />
       </list>
     </option>
   </component>
@@ -336,6 +317,16 @@
               <item name="aservio" type="462c0819:PsiDirectoryNode" />
               <item name="domain" type="462c0819:PsiDirectoryNode" />
               <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
+              <item name="implementors" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aservio" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aservio" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="aservio" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -362,6 +353,15 @@
               <item name="platform" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Aservio" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aservio" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="aservio" type="462c0819:PsiDirectoryNode" />
+              <item name="presentation" type="462c0819:PsiDirectoryNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -371,7 +371,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557230530670" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557231999536" />
     <property name="database.console.LAST_STATE" value="false" />
   </component>
   <component name="RunDashboard">
@@ -429,7 +429,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1850000" />
+    <option name="totallyTimeSpent" value="2010000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1839" height="1191" extended-state="6" />

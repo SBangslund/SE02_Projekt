@@ -159,15 +159,16 @@ public class ILoginWithFileImp implements ILogin {
             //TEMPORARY
             if (!file.exists()) {//Use once pr new file.
                 file.createNewFile();
+                UUID user1ID = UUID.randomUUID(),
+                        user2ID = UUID.randomUUID(),
+                        user3ID = UUID.randomUUID();
                 //fake users created to test read, as a temporary solution.
-                User user1 = new User("q", "q", UUID.randomUUID(),new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
-                        null, 21212121, "Samuel", "Bangslund", "samuelbanglund@gmail.com", "handyCenter"));
-                User user2 = new User("tove_1234", "rambo", UUID.randomUUID(), new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
-                        null, 21212121, "Victor", "Clemmensen", "samuelbanglund@gmail.com",
-                        "handyCenter"));
-                User user3 = new User("Slagteren", "affaldssortering", UUID.randomUUID(), new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1"),
-                        null, 21212121, "Rene", "Bangslund", "samuelbanglund@gmail.com",
-                        "handyCenter"));
+                User user1 = new User("q", "q", user1ID,new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1", user1ID),
+                        null, 21212121, "Samuel", "Bangslund", "samuelbanglund@gmail.com", "handyCenter", user1ID));
+                User user2 = new User("tove_1234", "rambo", user2ID, new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1", user2ID),
+                        null, 21212121, "Victor", "Clemmensen", "samuelbanglund@gmail.com", "handyCenter", user2ID));
+                User user3 = new User("Slagteren", "affaldssortering", user3ID, new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1", user3ID),
+                        null, 21212121, "Rene", "Bangslund", "samuelbanglund@gmail.com", "handyCenter", user3ID));
                 writeToFile(user1);
                 appendWriteTOFile(user2);
                 appendWriteTOFile(user3);
