@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
-public class seeProfile implements Initializable {
+public class SeeProfile implements Initializable {
 
     @FXML
     private ImageView imagePerson;

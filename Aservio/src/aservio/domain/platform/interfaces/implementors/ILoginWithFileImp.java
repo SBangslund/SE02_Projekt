@@ -135,7 +135,7 @@ public class ILoginWithFileImp implements ILogin {
      * @return
      */
     @Override
-    public String validateLogin(String username, String password) {
+    public String verifyUser(String username, String password) {
         throw new UnsupportedOperationException("validate Login not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class profile implements Initializable {
+public class Profile implements Initializable {
 
     @FXML
     private Label labelName;

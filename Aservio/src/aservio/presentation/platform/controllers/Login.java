@@ -42,7 +42,7 @@ public class Login implements Initializable {
     /**
      * WIP Clicking the login button or hitting enter logs the user in, if the
      * input is acceptable. checkForNoIllegalInput returns a string "Access" if
-     * validated, else returns a string containing an error message.
+     * validated, else returns a string containing an error message displaying it to the user.
      *
      * @param event
      */
