@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.presentation.platform.controllers;
 
 import aservio.domain.platform.user.User;
@@ -15,12 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
-/**
- * FXML Controller class
- *
- * @author victo
- */
-public class FXMLSeeProfileController implements Initializable {
+public class seeProfile implements Initializable {
 
     @FXML
     private ImageView imagePerson;

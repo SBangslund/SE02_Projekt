@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLPlatformController implements Initializable {
+public class platform implements Initializable {
     @FXML
     private MenuBar menuBar;
     @FXML
@@ -26,7 +26,7 @@ public class FXMLPlatformController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            borderPane.setLeft(FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLProfile.fxml")));
+            borderPane.setLeft(FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/Profile.fxml")));
             tabPane.getTabs().get(0).setContent(FXMLLoader.load(getClass().getResource("/aservio/presentation/management/views/FXMLManager.fxml")));
             setTabIcon(tabPane.getTabs().get(0), "resources/OrganiserWithoutText.png", "Planlægning");
             setTabIcon(tabPane.getTabs().get(1), "resources/DiaryWithoutText.png", "Dagbog");

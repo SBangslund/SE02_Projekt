@@ -32,13 +32,13 @@ import javafx.scene.Parent;
 public class ILoginWithFileImp implements ILogin {
 
     //Limits for keyboardinputs in username and password.
-    private char minCapLetter = 'A'; //65; //A-Z
-    private char maxCapLetter = 'Z'; //90;
-    private char minLetter = 'a'; //97; //a-z
-    private char maxLetter = 'z'; //122;
-    private char charUnderscore = '_'; //95; //_
-    private char minNumber = '0'; //48; //0-9
-    private char maxNumber = '9'; //57;
+    private final char minCapLetter = 'A'; //65; //A-Z
+    private final char maxCapLetter = 'Z'; //90;
+    private final char minLetter = 'a'; //97; //a-z
+    private final char maxLetter = 'z'; //122;
+    private final char charUnderscore = '_'; //95; //_
+    private final char minNumber = '0'; //48; //0-9
+    private final char maxNumber = '9'; //57;
 
     File file;
 
@@ -214,11 +214,11 @@ public class ILoginWithFileImp implements ILogin {
     @Override
     public void loadScene() {
         try {
-            Parent p = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLPlatform.fxml"));
+            Parent p = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/Platform.fxml"));
             Aservio.getInstance().getPrimaryStage().getScene().setRoot(p);
             Aservio.getInstance().getPrimaryStage().setMaximized(true);
         } catch (IOException ex) {
-            System.out.println("Couldn't load FXMLPlatform.fxml file.");
+            System.out.println("Couldn't load Platform.fxml file.");
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

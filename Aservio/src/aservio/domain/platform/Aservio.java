@@ -42,7 +42,7 @@ public class Aservio extends Application {
 
 
         //Parent root = FXMLLoader.load(getClass().getResource("../Management/views/FXMLManager.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/Login.fxml"));
 
         Scene scene = new Scene(root);
 

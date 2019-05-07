@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLProfileController implements Initializable {
+public class profile implements Initializable {
 
     @FXML
     private Label labelName;
@@ -27,7 +27,7 @@ public class FXMLProfileController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             labelName.setText(User.getCurrentUser().getUserInfo().getFirstName() + " " + User.getCurrentUser().getUserInfo().getLastName());
-            profileView.getChildren().add(FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLSeeProfile.fxml")));
+            profileView.getChildren().add(FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/SeeProfile.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
