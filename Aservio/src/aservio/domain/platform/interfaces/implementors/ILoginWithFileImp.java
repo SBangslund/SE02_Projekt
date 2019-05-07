@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.domain.platform.interfaces.implementors;
 
 import aservio.domain.platform.Aservio;
@@ -123,7 +118,8 @@ public class ILoginWithFileImp implements ILogin {
             System.err.println("----------");
             System.err.println("Could not find file or read from file. " + file.getAbsolutePath());
             System.err.println("Error usually caused by corrupted or modified file or path. Try deleting the file (see path above).");
-
+            System.err.println("Can also be caused by changes in Aservio which requires a rebuild of the project. ");
+            System.err.println("Especially likely if you just downloaded a new version or merged.");
         } catch (ClassNotFoundException ex) {
             System.err.println("Could not find the class User");
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
