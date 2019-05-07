@@ -12,12 +12,58 @@ public class UserRetriever {
 
     private Connection connection;
 
-    private boolean addUser(String username, String password, String userid, String mail, String firstname, String lastname, int phone, String picture, String instituionname){
-        return false;
-    }
 
     public UserRetriever(Connection connection) {
         this.connection = connection;
+    }
+
+
+    boolean addUser(String username, String password, UUID userid) {
+        Statement execStat = null;
+        try {
+            execStat = connection.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            execStat.executeQuery("SELECT adduser('" + username + "', '" + password + "', '" + userid.toString() + "')");
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    boolean addUserInfo(String mail, String firstname, String lastname, int phone, String picture, UUID userid, String institutionname) {
+        Statement execStat = null;
+        try {
+            execStat = connection.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            execStat.executeQuery("SELECT adduserinfo('" + mail + "', '" + firstname + "', '" + lastname + "', " + phone + ", '" + picture + "', '" + userid.toString() + "', '" + institutionname + "')");
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    boolean addUserAddress(String roadname, String country, int postcode, String city, String housenumber, String level, UUID userid) {
+        Statement execStat = null;
+        try {
+            execStat = connection.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            execStat.executeQuery("SELECT adduserinfo('" + roadname + "', '" + country + "', " + postcode + ", '" + city + "', '" + housenumber + "', '" + level + "', '" + userid.toString() + "')");
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     public String getUser(String username, String password) {
@@ -35,7 +81,7 @@ public class UserRetriever {
         } catch (SQLException ex) {
             Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "Method not working";
+        return null;
     }
 
     public String verifyUser(String username, String password) {
@@ -119,7 +165,7 @@ public class UserRetriever {
                 resultArr[index] = result.getString(index);
                 index++;
             }
-            if(result.getFetchSize() >= 1) {
+            if (result.getFetchSize() >= 1) {
                 return resultArr;
             }
         } catch (SQLException ex) {

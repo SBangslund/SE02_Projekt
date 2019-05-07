@@ -26,6 +26,7 @@ public class IDataPipeImp implements IDataPipe {
         return userRetriever.getUser(username, password);
     }
 
+
     @Override
     public String[] getUsers(UUID activityid) {
         return new String[0];
@@ -36,6 +37,21 @@ public class IDataPipeImp implements IDataPipe {
         return new String[0];
     }
 
+    @Override
+    public boolean addUser(String username, String password, UUID userid) {
+        return userRetriever.addUser(username, password, userid);
+    }
+
+    @Override
+    public boolean addUserInfo(String mail, String firstname, String lastname, int phone, String picture, UUID userid, String institutionname) {
+        return userRetriever.addUserInfo(mail, firstname, lastname, phone, picture, userid, institutionname);
+    }
+
+    @Override
+    public boolean addUserAddress(String roadname, String country, int postcode, String city, String housenumber, String level, UUID userid) {
+        return userRetriever.addUserAddress(roadname, country, postcode, city, housenumber, level, userid);
+    }
+
     public String[] getUserAddress(UUID userid){
         return userRetriever.getUserAdress(userid);
     }
@@ -43,11 +59,6 @@ public class IDataPipeImp implements IDataPipe {
     @Override
     public String[] getInstitution(UUID institutionid) {
         return new String[0];
-    }
-
-    @Override
-    public boolean addUser(String username, String password, String userid, String mail, String firstname, String lastname, int phone, String picture, String instituionname) {
-        return false;
     }
 
     @Override
