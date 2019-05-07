@@ -27,6 +27,7 @@ public class UserRetriever {
         }
         try {
             execStat.executeQuery("SELECT adduser('" + username + "', '" + password + "', '" + userid.toString() + "')");
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -42,6 +43,7 @@ public class UserRetriever {
         }
         try {
             execStat.executeQuery("SELECT adduserinfo('" + mail + "', '" + firstname + "', '" + lastname + "', " + phone + ", '" + picture + "', '" + userid.toString() + "', '" + institutionname + "')");
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -57,6 +59,7 @@ public class UserRetriever {
         }
         try {
             execStat.executeQuery("SELECT adduserinfo('" + roadname + "', '" + country + "', " + postcode + ", '" + city + "', '" + housenumber + "', '" + level + "', '" + userid.toString() + "')");
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
         }
