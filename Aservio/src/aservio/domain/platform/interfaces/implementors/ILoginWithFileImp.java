@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aservio.domain.platform.interfaces;
+package aservio.domain.platform.interfaces.implementors;
 
 import aservio.domain.platform.Aservio;
 import aservio.domain.platform.user.Address;
@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
-public class ILoginImp implements ILogin {
+public class ILoginWithFileImp implements ILogin {
 
     //Limits for keyboardinputs in username and password.
     private char minCapLetter = 'A'; //65; //A-Z
