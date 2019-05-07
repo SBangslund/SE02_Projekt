@@ -58,7 +58,7 @@ public class UserRetriever {
             Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            execStat.executeQuery("SELECT adduserinfo('" + roadname + "', '" + country + "', " + postcode + ", '" + city + "', '" + housenumber + "', '" + level + "', '" + userid.toString() + "')");
+            execStat.executeQuery("SELECT adduseraddress('" + roadname + "', '" + country + "', " + postcode + ", '" + city + "', '" + housenumber + "', '" + level + "', '" + userid.toString() + "')");
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);

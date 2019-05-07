@@ -36,7 +36,7 @@ public class DataPipe {
                 userInfo.getFirstName(),
                 userInfo.getLastName(),
                 userInfo.getMobileNumber(),
-                userInfo.getImage().toString(),
+                null,
                 userInfo.getId(),
                 userInfo.getInstitution()
         );

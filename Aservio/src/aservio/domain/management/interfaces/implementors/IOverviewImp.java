@@ -5,7 +5,10 @@ import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.platform.DataPipe;
 import aservio.domain.platform.interfaces.contracts.IDataPipe;
+import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
+import aservio.domain.platform.user.UserInfo;
+import aservio.domain.platform.user.roles.Caretaker;
 import aservio.presentation.management.interfaces.contracts.IOverview;
 import javafx.scene.control.DatePicker;
 

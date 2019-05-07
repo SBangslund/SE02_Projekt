@@ -6,6 +6,15 @@
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>kzpurfgw</user-name>
+    </data-source>
+    <data-source name="kzpurfgw@balarama.db.elephantsql.com [2]" uuid="93b10742-956d-4f27-b244-d07de84b1217">
+      <database-info product="PostgreSQL" version="11.2 (Ubuntu 11.2-1.pgdg18.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="11.2" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
       <user-name>kzpurfgw</user-name>
       <introspection-schemas>@:@</introspection-schemas>
     </data-source>
