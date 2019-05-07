@@ -10,8 +10,7 @@ package aservio.presentation.platform.interfaces.contracts;
  * @author Sigur
  */
 public interface ILogin {
-    
-    void setFile(String fileName); //WIP Replace in data layer
+
     void tempUserSetupByFile(); //WIP Replace in data layer
     String checkForNoIllegalInput(String username, String password);
     String verifyUser(String username, String password);
