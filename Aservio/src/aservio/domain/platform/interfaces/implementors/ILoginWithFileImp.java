@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package aservio.domain.platform.interfaces;
+package aservio.domain.platform.interfaces.implementors;
 
 import aservio.domain.platform.Aservio;
 import aservio.domain.platform.user.Address;
@@ -29,16 +24,16 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
-public class ILoginImp implements ILogin {
+public class ILoginWithFileImp implements ILogin {
 
     //Limits for keyboardinputs in username and password.
-    private char minCapLetter = 'A'; //65; //A-Z
-    private char maxCapLetter = 'Z'; //90;
-    private char minLetter = 'a'; //97; //a-z
-    private char maxLetter = 'z'; //122;
-    private char charUnderscore = '_'; //95; //_
-    private char minNumber = '0'; //48; //0-9
-    private char maxNumber = '9'; //57;
+    private final char minCapLetter = 'A'; //65; //A-Z
+    private final char maxCapLetter = 'Z'; //90;
+    private final char minLetter = 'a'; //97; //a-z
+    private final char maxLetter = 'z'; //122;
+    private final char charUnderscore = '_'; //95; //_
+    private final char minNumber = '0'; //48; //0-9
+    private final char maxNumber = '9'; //57;
 
     File file;
 
@@ -123,7 +118,8 @@ public class ILoginImp implements ILogin {
             System.err.println("----------");
             System.err.println("Could not find file or read from file. " + file.getAbsolutePath());
             System.err.println("Error usually caused by corrupted or modified file or path. Try deleting the file (see path above).");
-
+            System.err.println("Can also be caused by changes in Aservio which requires a rebuild of the project. ");
+            System.err.println("Especially likely if you just downloaded a new version or merged.");
         } catch (ClassNotFoundException ex) {
             System.err.println("Could not find the class User");
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -214,11 +210,11 @@ public class ILoginImp implements ILogin {
     @Override
     public void loadScene() {
         try {
-            Parent p = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLPlatform.fxml"));
+            Parent p = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/Platform.fxml"));
             Aservio.getInstance().getPrimaryStage().getScene().setRoot(p);
             Aservio.getInstance().getPrimaryStage().setMaximized(true);
         } catch (IOException ex) {
-            System.out.println("Couldn't load FXMLPlatform.fxml file.");
+            System.out.println("Couldn't load Platform.fxml file.");
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

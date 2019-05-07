@@ -11,4 +11,5 @@ public interface IDataPipe {
     String[] getActivity(UUID activityid);
     String[] getUserAddress(UUID userid);
     String[] getInstitution(UUID institutionid);
+    boolean addUser(String username, String password, String userid, String mail, String firstname, String lastname, int phone, String picture, String instituionname);
 }

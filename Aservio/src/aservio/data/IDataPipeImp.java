@@ -12,16 +12,18 @@ public class IDataPipeImp implements IDataPipe {
 
     private Connection connection;
     private boolean succesfullConnection = false;
+    private UserRetriever userRetriever;
 
     public IDataPipeImp(){
         this.setupConnection();
+        userRetriever = new UserRetriever(connection);
         System.out.println(this.verifyUser("test", "me"));
         System.out.println(this.verifyUser("test", "test"));
     }
 
     @Override
     public String getUser(String username, String password) {
-        return null;
+        return userRetriever.getUser(username, password);
     }
 
     @Override
@@ -34,9 +36,8 @@ public class IDataPipeImp implements IDataPipe {
         return new String[0];
     }
 
-    @Override
-    public String[] getUserAddress(UUID userid) {
-        return new String[0];
+    public String[] getUserAddress(UUID userid){
+        return userRetriever.getUserAdress(userid);
     }
 
     @Override
@@ -51,26 +52,12 @@ public class IDataPipeImp implements IDataPipe {
 
     @Override
     public String[] getUserInfo(UUID userid) {
-        return new String[0];
+        return userRetriever.getUserInfo(userid);
     }
 
     @Override
     public String verifyUser(String username, String password) {
-        Statement execStat = null;
-        try {
-            execStat = connection.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            ResultSet worths = execStat.executeQuery("SELECT getuserid('" + username + "', '" + password + "')");
-            while(worths.next()){
-                return worths.getString(1);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return "method not working";
+        return userRetriever.verifyUser(username, password);
     }
 
     public void setupConnection(){

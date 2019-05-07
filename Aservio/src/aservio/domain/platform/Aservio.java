@@ -6,7 +6,7 @@ package aservio.domain.platform;
 import aservio.data.IDataPipeImp;
 import aservio.domain.DomainInterfaceManager;
 import aservio.domain.management.interfaces.implementors.IOverviewImp;
-import aservio.domain.platform.interfaces.ILoginImp;
+import aservio.domain.platform.interfaces.implementors.ILoginWithFileImp;
 import aservio.domain.platform.interfaces.contracts.IDataPipe;
 import aservio.presentation.PresentationInterfaceManager;
 import javafx.application.Application;
@@ -38,11 +38,11 @@ public class Aservio extends Application {
         PresentationInterfaceManager presentation = new PresentationInterfaceManager();
         
         presentation.setIOverview(new IOverviewImp());
-        presentation.setILogin(new ILoginImp());
+        presentation.setILogin(new ILoginWithFileImp());
 
 
         //Parent root = FXMLLoader.load(getClass().getResource("../Management/views/FXMLManager.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/Login.fxml"));
 
         Scene scene = new Scene(root);
 
