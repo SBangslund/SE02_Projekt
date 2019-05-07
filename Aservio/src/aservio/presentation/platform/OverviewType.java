@@ -1,4 +1,4 @@
-package aservio.presentation.management.controllers.overview;
+package aservio.presentation.platform;
 
 public enum OverviewType {
     MONTH(0, "/aservio/presentation/management/views/FXMLOverviewMonth.fxml"),

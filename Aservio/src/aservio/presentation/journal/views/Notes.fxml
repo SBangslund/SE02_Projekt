@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox>
+         <children>
+            <VBox>
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <TextField text="dsjakfdsaf" />
+               </children>
+            </VBox>
+            <VBox />
+         </children>
+      </HBox>
+   </children>
+</VBox>
