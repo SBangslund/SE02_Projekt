@@ -68,31 +68,41 @@ public class UserRetriever {
             Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            ResultSet result = execStat.executeQuery("SELECT ");
+            ResultSet result = execStat.executeQuery("SELECT getuserinfo('" + userid.toString() + "')");
             String[] resultArr = new String[7];
             int index = 0;
             while(result.next()){
-                StringBuilder sb = new StringBuilder();
-                sb.append(result.getString("mail"));
-                sb.append(result.getString("firstname"));
-                sb.append(result.getString("lastname"));
-                sb.append(result.getString("phone"));
-                sb.append(result.getString("picture"));
-                sb.append(result.getString("userid"));
-                sb.append(result.getString("institutionname"));
-                resultArr[index] = sb.toString();
+                resultArr[index] = result.getString(index);
+                index++;
             }
-            return
+            return resultArr;
+        } catch (SQLException ex) {
+            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public String[] getUserAdress(UUID userid){
+        Statement execStat = null;
+        try {
+            execStat = connection.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            ResultSet result = execStat.executeQuery("SELECT getuseraddress('" + userid.toString() + "')");
+            String[] resultArr = new String[7];
+            int index = 0;
+            while(result.next()){
+                resultArr[index] = result.getString(index);
+                index++;
+            }
+            return resultArr;
         } catch (SQLException ex) {
             Logger.getLogger(IDataPipeImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
 
-        return new String[0];
-    }
-
-    public String[] getUserAdress(){
-        return null;
     }
 
 
