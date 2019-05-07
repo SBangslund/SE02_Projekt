@@ -2,7 +2,7 @@ package aservio.domain.platform.interfaces.contracts;
 
 import java.util.UUID;
 
-public interface IDataPipe {
+public interface IRepository {
     String verifyUser(String username, String password);
     String getUser(String username, String password);
     String[] getUserActivities(UUID userid);
