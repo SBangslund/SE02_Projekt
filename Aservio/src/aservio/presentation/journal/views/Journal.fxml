@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="95.0" prefWidth="203.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.journal.controllers.overview.JournalController">
+<VBox prefHeight="95.0" prefWidth="203.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.journal.controllers.Journal">
    <children>
-      <BorderPane VBox.vgrow="ALWAYS">
+      <BorderPane fx:id="borderPane" VBox.vgrow="ALWAYS">
          <left>
             <ListView fx:id="showListView" BorderPane.alignment="CENTER" />
          </left>

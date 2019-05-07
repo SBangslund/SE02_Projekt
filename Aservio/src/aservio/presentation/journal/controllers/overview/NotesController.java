@@ -7,9 +7,11 @@ package aservio.presentation.journal.controllers.overview;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
@@ -21,19 +23,17 @@ import javafx.scene.control.TextArea;
 public class NotesController implements Initializable {
 
     @FXML
-    private Label dateLabel;
-    @FXML
-    private Label startTimeLabel;
-    @FXML
-    private Label endTimeLabel;
-    @FXML
-    private Button modifyButton;
-    @FXML
     private Label titelLabel;
     @FXML
     private TextArea noteTextArea;
     @FXML
     private Label locationLabel;
+    @FXML
+    private DatePicker datePicker;
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private Button saveButton;
 
     /**
      * Initializes the controller class.
@@ -42,5 +42,13 @@ public class NotesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void cancelButtonEvent(ActionEvent event) {
+    }
+
+    @FXML
+    private void saveButtonEvent(ActionEvent event) {
+    }
     
 }
