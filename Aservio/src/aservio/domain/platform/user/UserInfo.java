@@ -6,6 +6,8 @@
 package aservio.domain.platform.user;
 
 import java.io.Serializable;
+import java.util.UUID;
+
 import javafx.scene.image.Image;
 
 /**
@@ -13,6 +15,7 @@ import javafx.scene.image.Image;
  * @author victo
  */
 public class UserInfo implements Serializable{
+    private UUID id;
     private Address address;
     private Image image;
     private int mobileNumber;
@@ -21,7 +24,7 @@ public class UserInfo implements Serializable{
     private String mail;
     private String institution;
 
-    public UserInfo(Address address, Image image, int mobileNumber, String firstName, String lastName, String mail, String institution) {
+    public UserInfo(Address address, Image image, int mobileNumber, String firstName, String lastName, String mail, String institution, UUID id) {
         this.address = address;
         this.image = image;
         this.mobileNumber = mobileNumber;
@@ -29,6 +32,7 @@ public class UserInfo implements Serializable{
         this.lastName = lastName;
         this.mail = mail;
         this.institution = institution;
+        this.id = id;
     }
 
     public Address getAddress() {
@@ -59,5 +63,7 @@ public class UserInfo implements Serializable{
         return institution;
     }
     
-    
+    public UUID getId() {
+        return id;
+    }
 }

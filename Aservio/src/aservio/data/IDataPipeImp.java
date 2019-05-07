@@ -46,6 +46,11 @@ public class IDataPipeImp implements IDataPipe {
     }
 
     @Override
+    public boolean addUser(String username, String password, String userid, String mail, String firstname, String lastname, int phone, String picture, String instituionname) {
+        return false;
+    }
+
+    @Override
     public String[] getUserActivities(UUID userid) {
         return new String[0];
     }

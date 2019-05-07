@@ -76,4 +76,8 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
+
+    public UUID getId() {
+        return id;
+    }
 }
