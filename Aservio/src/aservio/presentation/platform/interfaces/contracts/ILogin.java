@@ -15,6 +15,7 @@ public interface ILogin {
     void setUser(String username, String password);
 
     void loadScene();
+    
     //void reaquireUsernameMail(); //WIP
     //void resetPassword(); //WIP
 }
