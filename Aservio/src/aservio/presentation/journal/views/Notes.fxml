@@ -31,23 +31,13 @@
                <children>
                   <HBox>
                      <children>
-                        <Label fx:id="CitizenLabel" alignment="TOP_LEFT" contentDisplay="CENTER" text="Citizen + ">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label fx:id="titelLabel" text="Titel" />
+                        <Label fx:id="titelLabel" text="Citizen +Titel" />
                      </children>
                   </HBox>
                   <TextArea fx:id="noteTextArea" editable="false" />
                   <HBox>
                      <children>
-                        <Label fx:id="personanelLabel" text="Personale + ">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label fx:id="locationLabel" text="Sted" />
+                        <Label fx:id="footNoteLabel" text="Personale +Sted" />
                      </children>
                   </HBox>
                </children>

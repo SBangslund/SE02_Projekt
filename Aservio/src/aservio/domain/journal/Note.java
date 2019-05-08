@@ -15,14 +15,16 @@ import java.util.UUID;
  */
 public class Note {
  private UUID id;
- private Date startDate;
- private Date endDate;
+ private Date date;
+ private Date startTime;
+ private Date endTime;
  private StringBuilder noteText;
 
-    public Note(UUID id, Date startDate, Date endDate) {
+    public Note(UUID id, Date date, Date startTime, Date endTime) {
+        this.date = date;
         this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     public UUID getId() {
@@ -34,19 +36,19 @@ public class Note {
     }
 
     public Date getStartDate() {
-        return startDate;
+        return startTime;
     }
 
     public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+        this.startTime = startDate;
     }
 
     public Date getEndDate() {
-        return endDate;
+        return endTime;
     }
 
     public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+        this.endTime = endDate;
     }
 
     public StringBuilder getNoteText() {

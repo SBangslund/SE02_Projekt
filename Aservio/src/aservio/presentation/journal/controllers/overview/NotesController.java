@@ -5,7 +5,12 @@
  */
 package aservio.presentation.journal.controllers.overview;
 
+import aservio.domain.journal.FooterNote;
+import aservio.domain.journal.HeaderNote;
+import aservio.domain.journal.Note;
+import aservio.domain.journal.NoteList;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,8 +31,6 @@ public class NotesController extends JournalOverview implements Initializable {
     @FXML
     private TextArea noteTextArea;
     @FXML
-    private Label locationLabel;
-    @FXML
     private Label dateLabel;
     @FXML
     private Label startTimeLabel;
@@ -35,28 +38,34 @@ public class NotesController extends JournalOverview implements Initializable {
     private Label endTimeLabel;
     @FXML
     private Button modifyButton;
-    
-    
+    @FXML
+    private Label footNoteLabel;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
 
-
+    }
     @Override
     protected void initialize() {
+
+    }
+
+    public void setNoteTitle(HeaderNote title) {
+        titelLabel.setText(title.toString());
+    }
+
+    public void setFootNote(FooterNote footerNote) {
+        footNoteLabel.setText(footerNote.toString());
+    }
+//    public void setSideview(Date date){
+//        dateLabel
+//        
+//    }
+    
+    public void setNoteText(Note note){
         
     }
-
-    @FXML
-    private void modifyButtonEvent(ActionEvent event) {
-       
-    }
-
-
-    
 }

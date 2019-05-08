@@ -11,39 +11,43 @@ package aservio.domain.journal;
  */
 public class FooterNote {
 
-    private String citizenFirstName;
-    private String citizenLastName;
-    private String recsidence;
+    private String personaleFirstName;
+    private String personaleLastName;
+    private String residence;
 
-    public FooterNote(String citizenFirstName, String citizenLastName, String recsidence) {
-        this.citizenFirstName = citizenFirstName;
-        this.citizenLastName = citizenLastName;
-        this.recsidence = recsidence;
+    public FooterNote(String personaleFirstName, String personaleLastName, String residence) {
+        this.personaleFirstName = personaleFirstName;
+        this.personaleLastName = personaleLastName;
+        this.residence = residence;
     }
 
-    public String getCitizenFirstName() {
-        return citizenFirstName;
+    public String getPersonaleFirstName() {
+        return personaleFirstName;
     }
 
-    public void setCitizenFirstName(String citizenFirstName) {
-        this.citizenFirstName = citizenFirstName;
+    public void setPersonaleFirstName(String personaleFirstName) {
+        this.personaleFirstName = personaleFirstName;
     }
 
-    public String getCitizenLastName() {
-        return citizenLastName;
+    public String getPersonaleLastName() {
+        return personaleLastName;
     }
 
-    public void setCitizenLastName(String citizenLastName) {
-        this.citizenLastName = citizenLastName;
+    public void setPersonaleLastName(String personaleLastName) {
+        this.personaleLastName = personaleLastName;
     }
 
     public String getRecsidence() {
-        return recsidence;
+        return residence;
     }
 
     public void setRecsidence(String recsidence) {
-        this.recsidence = recsidence;
+        this.residence = recsidence;
+    }
+
+    @Override
+    public String toString() {
+        return personaleFirstName + " " + personaleLastName + " + " + residence;
     }
     
-
 }

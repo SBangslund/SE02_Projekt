@@ -11,30 +11,30 @@ package aservio.domain.journal;
  */
 public class HeaderNote {
 
-    private String personaleFirstName;
-    private String personaleLastName;
+    private String citizenFirstName;
+    private String citizenLastName;
     private String title;
 
-    public HeaderNote(String personaleFirstName, String personaleLastName, String title) {
-        this.personaleFirstName = personaleFirstName;
-        this.personaleLastName = personaleLastName;
+    public HeaderNote(String citizenFirstName, String citizenLastName, String title) {
+        this.citizenFirstName = citizenFirstName;
+        this.citizenLastName = citizenLastName;
         this.title = title;
     }
 
-    public String getPersonaleFirstName() {
-        return personaleFirstName;
+    public String getCitizenFirstName() {
+        return citizenFirstName;
     }
 
-    public void setPersonaleFirstName(String personaleFirstName) {
-        this.personaleFirstName = personaleFirstName;
+    public void setCitizenFirstName(String citizenFirstName) {
+        this.citizenFirstName = citizenFirstName;
     }
 
-    public String getPersonaleLastName() {
-        return personaleLastName;
+    public String getCitizenLastName() {
+        return citizenLastName;
     }
 
-    public void setPersonaleLastName(String personaleLastName) {
-        this.personaleLastName = personaleLastName;
+    public void setCitizenLastName(String citizenLastName) {
+        this.citizenLastName = citizenLastName;
     }
 
     public String getTitle() {
@@ -43,6 +43,11 @@ public class HeaderNote {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return citizenFirstName + " " + citizenLastName + "+" + title;
     }
     
 }
