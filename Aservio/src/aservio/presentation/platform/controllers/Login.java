@@ -36,21 +36,29 @@ public class Login implements Initializable {
         File file = new File("resources/logo/LogoLarge.png");
         Image logo = new Image(file.toURI().toString());
         logoImageView.setImage(logo);
-        interFace.tempUserSetupByFile();
+        //interFace.tempUserSetupByFile();
     }
 
     /**
      * WIP Clicking the login button or hitting enter logs the user in, if the
      * input is acceptable. checkForNoIllegalInput returns a string "Access" if
-     * validated, else returns a string containing an error message displaying it to the user.
+     * validated, else returns a string containing an error message displaying
+     * it to the user.
      *
      * @param event
      */
     @FXML
     private void validateLogin(ActionEvent event) {
         String result = interFace.checkForNoIllegalInput(usernameField.getText(), passwordField.getText());
-        if (result.equals("Access")) {
-            interFace.loadScene();
+        if (result.equals("inputOK")) {
+            String verifyResult = interFace.verifyUser(usernameField.getText(), passwordField.getText());
+            if (verifyResult.equals("true")) {
+                //get user
+                interFace.loadScene();
+            }
+            else{
+                inputWarningLabel.setText(verifyResult);
+            }
         } else {
             inputWarningLabel.setText(result);
         }
