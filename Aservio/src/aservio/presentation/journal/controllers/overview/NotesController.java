@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import aservio.presentation.journal.controllers.overview.JournalOverviewManager;
+import com.jfoenix.controls.JFXTimePicker;
 
 /**
  * FXML Controller class
@@ -29,11 +31,15 @@ public class NotesController extends JournalOverview implements Initializable {
     @FXML
     private Label locationLabel;
     @FXML
-    private DatePicker datePicker;
+    private Label dateLabel;
     @FXML
-    private Button cancelButton;
+    private Label startTimeLabel;
     @FXML
-    private Button saveButton;
+    private Label endTimeLabel;
+    @FXML
+    private Button modifyButton;
+    
+    
 
     /**
      * Initializes the controller class.
@@ -43,18 +49,17 @@ public class NotesController extends JournalOverview implements Initializable {
         
     }    
 
-    @FXML
-    private void cancelButtonEvent(ActionEvent event) {
-    }
-
-    @FXML
-    private void saveButtonEvent(ActionEvent event) {
-    }
 
     @Override
     protected void initialize() {
         
     }
+
+    @FXML
+    private void modifyButtonEvent(ActionEvent event) {
+       
+    }
+
 
     
 }
