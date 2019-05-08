@@ -104,8 +104,10 @@ public class IRepositoryImp implements IRepository {
             connection = DriverManager.getConnection(
                     "jdbc:postgresql://balarama.db.elephantsql.com:5432/kzpurfgw", "kzpurfgw",
                     "ZyHDoKdmCOf-89xy6pPGSry97kpVWb1l");
+            succesfullConnection = true;
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
+            succesfullConnection = false;
             e.printStackTrace();
             return;
         }
