@@ -20,20 +20,20 @@ import javafx.scene.control.TextArea;
  *
  * @author victo
  */
-public class NotesController implements Initializable {
+public class CreateNotesController implements Initializable {
 
-    @FXML
-    private Label titelLabel;
-    @FXML
-    private TextArea noteTextArea;
-    @FXML
-    private Label locationLabel;
     @FXML
     private DatePicker datePicker;
     @FXML
     private Button cancelButton;
     @FXML
     private Button saveButton;
+    @FXML
+    private Label titelLabel;
+    @FXML
+    private TextArea noteTextArea;
+    @FXML
+    private Label locationLabel;
 
     /**
      * Initializes the controller class.
@@ -50,6 +50,5 @@ public class NotesController implements Initializable {
     @FXML
     private void saveButtonEvent(ActionEvent event) {
     }
-
     
 }
