@@ -4,6 +4,7 @@ package aservio.data;
 import aservio.domain.platform.interfaces.contracts.IRepository;
 
 import java.sql.*;
+import java.util.Date;
 import java.util.UUID;
 
 public class IRepositoryImp implements IRepository {
@@ -11,11 +12,13 @@ public class IRepositoryImp implements IRepository {
     private Connection connection;
     private boolean succesfullConnection = false;
     private UserRetriever userRetriever;
+    private ActivityRetriever activityRetriever;
 
     public IRepositoryImp(){
         this.setupConnection();
         userRetriever = new UserRetriever(connection);
-        System.out.println(this.verifyUser("test", "me"));
+        activityRetriever = new ActivityRetriever(connection);
+        System.out.println(this.verifyUser("q", "q"));
         System.out.println(this.verifyUser("test", "test"));
     }
 
@@ -27,12 +30,12 @@ public class IRepositoryImp implements IRepository {
 
     @Override
     public String[] getUsers(UUID activityid) {
-        return new String[0];
+        return userRetriever.getUsers(activityid);
     }
 
     @Override
     public String[] getActivity(UUID activityid) {
-        return new String[0];
+        return activityRetriever.getActivity(activityid);
     }
 
     @Override
@@ -50,6 +53,16 @@ public class IRepositoryImp implements IRepository {
         return userRetriever.addUserAddress(roadname, country, postcode, city, housenumber, level, userid);
     }
 
+    @Override
+    public boolean addActivity(String name, String type, Date date, String starttime, String endtime, UUID activityid) {
+        return activityRetriever.addActivity(name, type, date, starttime, endtime, activityid);
+    }
+
+    @Override
+    public boolean addUserToActivity(UUID activityid, UUID userid) {
+        return activityRetriever.addUserToActivity(activityid, userid);
+    }
+
     public String[] getUserAddress(UUID userid){
         return userRetriever.getUserAdress(userid);
     }
@@ -61,7 +74,7 @@ public class IRepositoryImp implements IRepository {
 
     @Override
     public String[] getUserActivities(UUID userid) {
-        return new String[0];
+        return activityRetriever.getUserActivities(userid);
     }
 
     @Override
@@ -91,8 +104,10 @@ public class IRepositoryImp implements IRepository {
             connection = DriverManager.getConnection(
                     "jdbc:postgresql://balarama.db.elephantsql.com:5432/kzpurfgw", "kzpurfgw",
                     "ZyHDoKdmCOf-89xy6pPGSry97kpVWb1l");
+            succesfullConnection = true;
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
+            succesfullConnection = false;
             e.printStackTrace();
             return;
         }
