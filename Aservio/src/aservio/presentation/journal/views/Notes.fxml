@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.journal.controllers.overview.NotesController">
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.journal.controllers.overview.NotesController">
    <children>
-      <HBox>
+      <HBox spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox alignment="TOP_CENTER" spacing="20.0">
                <children>
@@ -18,7 +18,7 @@
                   <Label fx:id="startTimeLabel" text="Start tidspunkt" />
                   <Label fx:id="endTimeLabel" text="Slut tidspunkt" />
                   <Pane VBox.vgrow="ALWAYS" />
-                  <Button fx:id="modifyButton" mnemonicParsing="false" text="Rediger" />
+                  <Button fx:id="modifyButton" mnemonicParsing="false" onAction="#modifyButtonEvent" text="Rediger" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -27,14 +27,17 @@
                   <Insets bottom="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox alignment="TOP_CENTER">
+            <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                <children>
                   <Label fx:id="titelLabel" text="Titel" />
-                  <TextArea fx:id="noteTextArea" editable="false" />
+                  <TextArea fx:id="noteTextArea" editable="false" VBox.vgrow="ALWAYS" />
                   <Label fx:id="locationLabel" text="Sted" />
                </children>
             </VBox>
          </children>
       </HBox>
    </children>
+   <padding>
+      <Insets left="10.0" right="20.0" />
+   </padding>
 </VBox>

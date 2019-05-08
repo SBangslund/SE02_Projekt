@@ -5,6 +5,8 @@
  */
 package aservio.presentation.journal.controllers.overview;
 
+import aservio.presentation.journal.controllers.Journal;
+import com.jfoenix.controls.JFXTimePicker;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,7 +22,7 @@ import javafx.scene.control.TextArea;
  *
  * @author victo
  */
-public class CreateNotesController implements Initializable {
+public class CreateNotesController extends JournalOverview implements Initializable {
 
     @FXML
     private DatePicker datePicker;
@@ -34,6 +36,10 @@ public class CreateNotesController implements Initializable {
     private TextArea noteTextArea;
     @FXML
     private Label locationLabel;
+    @FXML
+    private JFXTimePicker startTimePicker;
+    @FXML
+    private JFXTimePicker endTimePicker;
 
     /**
      * Initializes the controller class.
@@ -45,10 +51,16 @@ public class CreateNotesController implements Initializable {
 
     @FXML
     private void cancelButtonEvent(ActionEvent event) {
+        Journal.getInstance().getJournalOverviewManager().showNote();
     }
 
     @FXML
     private void saveButtonEvent(ActionEvent event) {
+    }
+
+    @Override
+    protected void initialize() {
+
     }
     
 }
