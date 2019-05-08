@@ -5,6 +5,8 @@
  */
 package aservio.presentation.platform.interfaces.contracts;
 
+import aservio.domain.platform.user.User;
+
 /**
  *
  * @author Sigur
@@ -15,6 +17,8 @@ public interface ILogin {
     String checkForNoIllegalInput(String username, String password);
     String verifyUser(String username, String password);
     void loadScene();
+    User getUser(String username, String password);
+    void setUser(String username, String password);
     //void reaquireUsernameMail(); //WIP
     //void resetPassword(); //WIP
 }

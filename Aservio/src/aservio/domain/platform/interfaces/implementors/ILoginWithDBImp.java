@@ -2,9 +2,11 @@ package aservio.domain.platform.interfaces.implementors;
 
 import aservio.domain.platform.Aservio;
 import aservio.domain.platform.Repository;
+import aservio.domain.platform.user.User;
 import aservio.presentation.platform.controllers.Login;
 import aservio.presentation.platform.interfaces.contracts.ILogin;
 import java.io.IOException;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
@@ -53,25 +55,20 @@ public class ILoginWithDBImp implements ILogin {
         }
         return "inputOK";
     }
-    //Is Input a user?
-
-    /* if (!findUserInFile(username, password)) {
-            return "Wrong username or password";
-        }
-        //All constraints are followed.
-        return "Access";
-    }
-            //Is Input a user?
-        if (verifyUser(username, password).equals(maxNumber)) {
-            return "Wrong username or password";
-        }
-        //All constraints are followed.
-        return "Unexpected error, returned true, but unexpected string.";
-    }*/
 
     @Override
     public String verifyUser(String username, String password) {
         return repository.verifyUser(username, password);
+    }
+
+    @Override
+    public void setUser(String username, String password) {
+        User.setCurrentUser(getUser(username, password));
+    }
+
+    @Override
+    public User getUser(String username, String password) {
+        return repository.getUser(username, password);
     }
 
     @Override
@@ -86,8 +83,9 @@ public class ILoginWithDBImp implements ILogin {
         }
     }
 
-    @Override
+    @Override //Not used with DB
     public void tempUserSetupByFile() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

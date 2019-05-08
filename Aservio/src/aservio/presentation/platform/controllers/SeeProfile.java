@@ -37,26 +37,26 @@ public class SeeProfile implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         showUser();
-    }    
-    
+    }
+
     public void showUser() {
         setUserInfo(User.getCurrentUser().getUserInfo());
     }
-    
+
     public void showUser(User user) {
         setUserInfo(user.getUserInfo());
     }
-    
-    public void setUserInfo(UserInfo info) {
-        labelFirstName.setText(info.getFirstName());
-        labelLastName.setText(info.getLastName());
-        labelAddress.setText(info.getAddress().getRoad() + " " + info.getAddress().getHouseNumber()+ ", " + info.getAddress().getLevel());
-        labelCity.setText(info.getAddress().getCity());
-        labelPostcode.setText(Integer.toString(info.getAddress().getPostcode()));
-        labelPhoneNumber.setText(Integer.toString(info.getMobileNumber()));
-        labelMail.setText(info.getMail());
-        labelInstitution.setText(info.getInstitution());
-    }
 
-    
+    public void setUserInfo(UserInfo info) {
+        if (info.getAddress() != null) {
+            labelFirstName.setText(info.getFirstName());
+            labelLastName.setText(info.getLastName());
+            labelAddress.setText(info.getAddress().getRoad() + " " + info.getAddress().getHouseNumber() + ", " + info.getAddress().getLevel());
+            labelCity.setText(info.getAddress().getCity());
+            labelPostcode.setText(Integer.toString(info.getAddress().getPostcode()));
+            labelPhoneNumber.setText(Integer.toString(info.getMobileNumber()));
+            labelMail.setText(info.getMail());
+            labelInstitution.setText(Integer.toString(info.getInstitution()));
+        }
+    }
 }
