@@ -25,6 +25,7 @@ public class User implements Serializable {
      *
      * @param username
      * @param password
+     * @param userId
      * @param preselectedRole
      * @param userInfo
      */
