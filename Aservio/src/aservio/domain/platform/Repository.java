@@ -8,6 +8,8 @@ import aservio.domain.platform.interfaces.contracts.IRepository;
 import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
+import aservio.domain.platform.user.roles.Admin;
+import aservio.domain.platform.user.roles.Role;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -16,6 +18,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Repository {
+
     private IRepository interFace = DomainInterfaceManager.getIDataPipe();
 
     public String verifyUser(String username, String password) {
@@ -63,21 +66,22 @@ public class Repository {
                     lastname = userInfoStrings[2],
                     picture = "null";
             int phone = Integer.parseInt(userInfoStrings[3]);
-            UUID institutionid = UUID.fromString(userInfoStrings[6]);
+            int institutionid = Integer.valueOf(userInfoStrings[6]);
             Address userAddress = getUserAddress(userId);
-            String institutionName = getInstitutionName(institutionid);
 
-            userInfo = new UserInfo(userAddress, null, phone, firstname, lastname, mail, institutionName, userId);
+            userInfo = new UserInfo(userAddress, null, phone, firstname, lastname, mail, institutionid, userId);
         } else {
             System.err.println("[DATA_ERROR](DatePipe.getUserInfo()): String[].length != 7.");
+            System.out.println("length: " + userInfoStrings.length);
         }
         return userInfo;
     }
 
     public User getUser(String username, String password) {
-        String userString = interFace.getUser(username, password);
-        //TODO convert String[] to User
-        return null;
+        UUID userID = UUID.fromString(interFace.getUser(username, password));
+        User user = new User(username, password, userID, null /*User role not implemented*/, getUserInfo(userID));
+        System.err.println("OBS: Role not implemented in repository/getUser");
+        return user;
     }
 
     public List<User> getUsers(Activity activity) {
@@ -89,11 +93,12 @@ public class Repository {
     public ActivityList getUserActivities(UUID userId) {
         String[] userActivityStrings = interFace.getUserActivities(userId);
         ActivityList activityList = new ActivityList();
-        if (userActivityStrings != null)
+        if (userActivityStrings != null) {
             for (int i = 0; i < userActivityStrings.length; i++) {
                 Activity activity = getActivity(UUID.fromString(userActivityStrings[i]));
                 activityList.add(activity);
             }
+        }
         return activityList;
     }
 
@@ -132,22 +137,26 @@ public class Repository {
     public Address getUserAddress(UUID userid) {
         String[] userAddress = interFace.getUserAddress(userid);
         Address address = null;
-        if (userAddress != null && userAddress.length == 7) {
-            String roadname = userAddress[0],
-                    country = userAddress[1],
-                    city = userAddress[3],
-                    houseNumber = userAddress[4],
-                    level = userAddress[5];
-            int postcode = Integer.parseInt(userAddress[2]);
-            address = new Address(roadname, country, postcode, city, houseNumber, level, userid);
+        if (userAddress != null) {
+            if (userAddress.length == 7) {
+                String roadname = userAddress[0],
+                        country = userAddress[1],
+                        city = userAddress[3],
+                        houseNumber = userAddress[4],
+                        level = userAddress[5];
+                int postcode = userAddress[2] != null ? Integer.parseInt(userAddress[2]) : 0;
+                address = new Address(roadname, country, postcode, city, houseNumber, level, userid);
+            } else {
+                System.err.println("[DATA_ERROR](DatePipe.getUserAddress()): String[].length != 7.");
+            }
         } else {
-            System.err.println("[DATA_ERROR](DatePipe.getUserAddress()): String[].length != 7.");
+            System.err.println("[DATA](DataPipe.getUserAddress()): No results.");
         }
         return address;
     }
 
-    public String getInstitutionName(UUID institutionId) {
-        String[] institutionString = interFace.getInstitution(institutionId);
+    public String getInstitutionName(int institutionid) {
+        String[] institutionString = interFace.getInstitution(institutionid);
         String name = null;
         if (institutionString != null) {
             name = institutionString[0];

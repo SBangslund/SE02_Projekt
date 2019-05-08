@@ -22,16 +22,16 @@ public class UserInfo implements Serializable{
     private String firstName;
     private String lastName;
     private String mail;
-    private String institution;
+    private int institutionid;
 
-    public UserInfo(Address address, Image image, int mobileNumber, String firstName, String lastName, String mail, String institution, UUID id) {
+    public UserInfo(Address address, Image image, int mobileNumber, String firstName, String lastName, String mail, int institutionid, UUID id) {
         this.address = address;
         this.image = image;
         this.mobileNumber = mobileNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.mail = mail;
-        this.institution = institution;
+        this.institutionid = institutionid;
         this.id = id;
     }
 
@@ -59,8 +59,8 @@ public class UserInfo implements Serializable{
         return mail;
     }
 
-    public String getInstitution() {
-        return institution;
+    public int getInstitution() {
+        return institutionid;
     }
     
     public UUID getId() {

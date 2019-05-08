@@ -11,9 +11,9 @@ public interface IRepository {
     String[] getUsers(UUID activityid);
     String[] getActivity(UUID activityid);
     String[] getUserAddress(UUID userid);
-    String[] getInstitution(UUID institutionid);
+    String[] getInstitution(int institutionid);
     boolean addUser(String username, String password, UUID userid);
-    boolean addUserInfo(String mail, String firstname, String lastname, int phone, String picture, UUID userid, String institutionName);
+    boolean addUserInfo(String mail, String firstname, String lastname, int phone, String picture, UUID userid, int institutionid);
     boolean addUserAddress(String roadname, String country, int postcode, String city, String housenumber, String level, UUID userid);
     boolean addActivity(String name, String type, Date date, String starttime, String endtime, UUID activityid);
     boolean addUserToActivity(UUID activityid, UUID userid);

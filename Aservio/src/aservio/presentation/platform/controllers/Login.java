@@ -1,5 +1,6 @@
 package aservio.presentation.platform.controllers;
 
+import aservio.domain.platform.user.User;
 import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.platform.interfaces.contracts.ILogin;
 import java.io.File;
@@ -36,21 +37,32 @@ public class Login implements Initializable {
         File file = new File("resources/logo/LogoLarge.png");
         Image logo = new Image(file.toURI().toString());
         logoImageView.setImage(logo);
-        interFace.tempUserSetupByFile();
+        //interFace.tempUserSetupByFile();
     }
 
     /**
      * WIP Clicking the login button or hitting enter logs the user in, if the
      * input is acceptable. checkForNoIllegalInput returns a string "Access" if
-     * validated, else returns a string containing an error message displaying it to the user.
+     * validated, else returns a string containing an error message displaying
+     * it to the user.
      *
      * @param event
      */
     @FXML
     private void validateLogin(ActionEvent event) {
-        String result = interFace.checkForNoIllegalInput(usernameField.getText(), passwordField.getText());
-        if (result.equals("Access")) {
-            interFace.loadScene();
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        
+        String result = interFace.checkForNoIllegalInput(username, password);
+        if (result.equals("inputOK")) {
+            String verifyResult = interFace.verifyUser(username, password);
+            if (verifyResult.equals("true")) {
+                interFace.setUser(username, password);
+                interFace.loadScene();
+            }
+            else{
+                inputWarningLabel.setText(verifyResult);
+            }
         } else {
             inputWarningLabel.setText(result);
         }

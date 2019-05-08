@@ -165,11 +165,11 @@ public class ILoginWithFileImp implements ILogin {
                         user3ID = UUID.randomUUID();
                 //fake users created to test read, as a temporary solution.
                 User user1 = new User("q", "q", user1ID,new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1", user1ID),
-                        null, 21212121, "Samuel", "Bangslund", "samuelbanglund@gmail.com", "handyCenter", user1ID));
+                        null, 21212121, "Samuel", "Bangslund", "samuelbanglund@gmail.com", 1, user1ID));
                 User user2 = new User("tove_1234", "rambo", user2ID, new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1", user2ID),
-                        null, 21212121, "Victor", "Clemmensen", "samuelbanglund@gmail.com", "handyCenter", user2ID));
+                        null, 21212121, "Victor", "Clemmensen", "samuelbanglund@gmail.com", 1, user2ID));
                 User user3 = new User("Slagteren", "affaldssortering", user3ID, new Caretaker(), new UserInfo(new Address("Solsikkemarken", "Danmark", 5260, "Odense M", "18", "1", user3ID),
-                        null, 21212121, "Rene", "Bangslund", "samuelbanglund@gmail.com", "handyCenter", user3ID));
+                        null, 21212121, "Rene", "Bangslund", "samuelbanglund@gmail.com", 1, user3ID));
                 writeToFile(user1);
                 appendWriteTOFile(user2);
                 appendWriteTOFile(user3);
@@ -219,6 +219,16 @@ public class ILoginWithFileImp implements ILogin {
             System.out.println("Couldn't load Platform.fxml file.");
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public User getUser(String username, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setUser(String username, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private class AppendingObjectOutputStream extends ObjectOutputStream {
