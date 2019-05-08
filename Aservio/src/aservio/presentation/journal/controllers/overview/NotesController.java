@@ -20,7 +20,7 @@ import javafx.scene.control.TextArea;
  *
  * @author victo
  */
-public class NotesController implements Initializable {
+public class NotesController extends JournalOverview implements Initializable {
 
     @FXML
     private Label titelLabel;
@@ -40,7 +40,7 @@ public class NotesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
 
     @FXML
@@ -49,6 +49,11 @@ public class NotesController implements Initializable {
 
     @FXML
     private void saveButtonEvent(ActionEvent event) {
+    }
+
+    @Override
+    protected void initialize() {
+        
     }
 
     

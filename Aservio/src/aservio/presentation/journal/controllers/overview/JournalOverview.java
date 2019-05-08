@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author victo
  */
-public abstract class JournalOverview {
+public abstract class JournalOverview implements Initializable {
 
     private Parent view;
 
