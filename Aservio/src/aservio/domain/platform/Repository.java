@@ -8,12 +8,11 @@ import aservio.domain.platform.interfaces.contracts.IRepository;
 import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
-import aservio.domain.platform.user.roles.Admin;
-import aservio.domain.platform.user.roles.Role;
 
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -84,8 +83,20 @@ public class Repository {
         return user;
     }
 
-    public List<User> getUsers(Activity activity) {
-        String[] usersString = interFace.getUsers(activity.getId());
+    public List<UserInfo> getUsersFromInstitution(int institutionid) {
+        String[] usersString = interFace.getUsersFromInsitution(institutionid);
+        List<UserInfo> users = null;
+        if(usersString != null) {
+            users = new ArrayList<>();
+            for (String userid: usersString) {
+                users.add(getUserInfo(UUID.fromString(userid)));
+            }
+        }
+        return users;
+    }
+
+    public List<UserInfo> getUsersFromActivity(Activity activity) {
+        String[] usersString = interFace.getUsersFromActivity(activity.getId());
         //TODO convert String[] to list of users.
         return null;
     }

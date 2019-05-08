@@ -3,6 +3,7 @@ package aservio.domain.platform.interfaces.implementors;
 import aservio.domain.platform.Aservio;
 import aservio.domain.platform.Repository;
 import aservio.domain.platform.user.User;
+import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.platform.controllers.Login;
 import aservio.presentation.platform.interfaces.contracts.ILogin;
 import java.io.IOException;
