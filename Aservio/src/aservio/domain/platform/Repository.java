@@ -72,7 +72,6 @@ public class Repository {
             userInfo = new UserInfo(userAddress, null, phone, firstname, lastname, mail, institutionid, userId);
         } else {
             System.err.println("[DATA_ERROR](DatePipe.getUserInfo()): String[].length != 7.");
-            System.out.println("length: " + userInfoStrings.length);
         }
         return userInfo;
     }
