@@ -55,12 +55,12 @@ public class IRepositoryImp implements IRepository {
 
     @Override
     public boolean addActivity(String name, String type, Date date, String starttime, String endtime, UUID activityid) {
-        return false;
+        return activityRetriever.addActivity(name, type, date, starttime, endtime, activityid);
     }
 
     @Override
     public boolean addUserToActivity(UUID activityid, UUID userid) {
-        return false;
+        return activityRetriever.addUserToActivity(activityid, userid);
     }
 
     public String[] getUserAddress(UUID userid){

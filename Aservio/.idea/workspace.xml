@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df5e1f52-34ce-43f5-8ad2-10e275095778" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/aservio/data/ActivityRetriever.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/93b10742-956d-4f27-b244-d07de84b1217.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/93b10742-956d-4f27-b244-d07de84b1217.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/93b10742-956d-4f27-b244-d07de84b1217/storage_v2/_src_/database/kzpurfgw.2N-aZg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/93b10742-956d-4f27-b244-d07de84b1217/storage_v2/_src_/database/kzpurfgw.2N-aZg/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/93b10742-956d-4f27-b244-d07de84b1217/storage_v2/_src_/database/kzpurfgw.2N-aZg/schema/public.abK9xQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/93b10742-956d-4f27-b244-d07de84b1217/storage_v2/_src_/database/kzpurfgw.2N-aZg/schema/public.abK9xQ.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/aservio/data/IRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/data/IRepositoryImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,17 +154,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/aservio/data/IRepositoryImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="55" column="4" selection-start-line="55" selection-start-column="4" selection-end-line="63" selection-end-column="5" />
+            <state relative-caret-position="106">
+              <caret line="62" column="70" selection-start-line="62" selection-start-column="70" selection-end-line="62" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#992#993#0" expanded="true" />
                 <element signature="e#1015#1016#0" expanded="true" />
-                <element signature="e#1879#1880#0" expanded="true" />
-                <element signature="e#1907#1908#0" expanded="true" />
                 <element signature="e#2299#2300#0" expanded="true" />
                 <element signature="e#2358#2359#0" expanded="true" />
               </folding>
@@ -185,7 +175,7 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/aservio/data/ActivityRetriever.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="205">
@@ -238,9 +228,9 @@
         <option value="$PROJECT_DIR$/src/aservio/domain/management/interfaces/implementors/IOverviewImp.java" />
         <option value="$PROJECT_DIR$/src/aservio/domain/platform/Aservio.java" />
         <option value="$PROJECT_DIR$/src/aservio/domain/platform/interfaces/contracts/IRepository.java" />
-        <option value="$PROJECT_DIR$/src/aservio/data/IRepositoryImp.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/93b10742-956d-4f27-b244-d07de84b1217/console.sql" />
         <option value="$PROJECT_DIR$/src/aservio/data/ActivityRetriever.java" />
+        <option value="$PROJECT_DIR$/src/aservio/data/IRepositoryImp.java" />
       </list>
     </option>
   </component>
@@ -351,7 +341,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557301272876" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557303134065" />
     <property name="database.console.LAST_STATE" value="true" />
   </component>
   <component name="RunDashboard">
@@ -409,7 +399,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7599000" />
+    <option name="totallyTimeSpent" value="8627000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -575,22 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/aservio/data/IRepositoryImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="55" column="4" selection-start-line="55" selection-start-column="4" selection-end-line="63" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#992#993#0" expanded="true" />
-            <element signature="e#1015#1016#0" expanded="true" />
-            <element signature="e#1879#1880#0" expanded="true" />
-            <element signature="e#1907#1908#0" expanded="true" />
-            <element signature="e#2299#2300#0" expanded="true" />
-            <element signature="e#2358#2359#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/93b10742-956d-4f27-b244-d07de84b1217/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -609,6 +583,20 @@
             <element signature="imports" expanded="true" />
             <element signature="e#168#169#0" expanded="true" />
             <element signature="e#211#212#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aservio/data/IRepositoryImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="62" column="70" selection-start-line="62" selection-start-column="70" selection-end-line="62" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#992#993#0" expanded="true" />
+            <element signature="e#1015#1016#0" expanded="true" />
+            <element signature="e#2299#2300#0" expanded="true" />
+            <element signature="e#2358#2359#0" expanded="true" />
           </folding>
         </state>
       </provider>
