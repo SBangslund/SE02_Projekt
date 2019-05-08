@@ -58,9 +58,5 @@ public class CreateNotesController extends JournalOverview implements Initializa
     private void saveButtonEvent(ActionEvent event) {
     }
 
-    @Override
-    protected void initialize() {
-
-    }
     
 }

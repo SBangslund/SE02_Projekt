@@ -50,11 +50,6 @@ public class NotesController extends JournalOverview implements Initializable {
     }    
 
 
-    @Override
-    protected void initialize() {
-        
-    }
-
     @FXML
     private void modifyButtonEvent(ActionEvent event) {
        

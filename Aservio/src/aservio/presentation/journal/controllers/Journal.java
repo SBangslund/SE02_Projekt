@@ -82,6 +82,7 @@ public class Journal implements Initializable {
 
     @FXML
     private void handleShowDiagnosing(ActionEvent event) {
+        journalOverviewManager.showDiagnosing();
     }
 
     @FXML
@@ -104,5 +105,10 @@ public class Journal implements Initializable {
     private void newNoteButtonEvent(ActionEvent event) {
         journalOverviewManager.showCreateNote();
     }
+
+    private void viewMenuEvent(ActionEvent event) {
+        journalOverviewManager.showDiagnosing();
+    }
+    
 
 }

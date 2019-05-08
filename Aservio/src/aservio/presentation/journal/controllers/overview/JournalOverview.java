@@ -17,11 +17,9 @@ public abstract class JournalOverview implements Initializable {
 
     private Parent view;
 
-    protected abstract void initialize();
 
     public void show() {
         Journal.getInstance().setCenterView(view);
-        initialize();
     }
 
     public void setView(Parent view) {
