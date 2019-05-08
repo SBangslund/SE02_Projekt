@@ -35,7 +35,7 @@ public class ILoginWithDBImp implements ILogin {
         if (username.isEmpty() || password.isEmpty()) {
             return "Write your username and password to log in.";
         }
-        //Is Input in username ILLEGALCHARACTER?
+        //Is Input in username illegal?
         for (char j : username.toCharArray()) {
             boolean capitalLetterRange = j >= minCapLetter && j <= maxCapLetter;
             boolean smallLetterRange = j >= minLetter && j <= maxLetter;
@@ -44,7 +44,7 @@ public class ILoginWithDBImp implements ILogin {
                 return "USERNAME contains special characters. Only 0-9, a-z and _ is permitted";
             }
         }
-        //Is Input in username ILLEGALCHARACTER?
+        //Is Input in username illegal?
         for (char j : password.toCharArray()) {
             boolean capitalLetterRange = j >= minCapLetter && j <= maxCapLetter;
             boolean smallLetterRange = j >= minLetter && j <= maxLetter;

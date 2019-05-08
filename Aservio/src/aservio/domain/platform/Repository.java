@@ -78,7 +78,7 @@ public class Repository {
     }
 
     public User getUser(String username, String password) {
-        UUID userID = UUID.fromString(interFace.getUser(username, password));
+        UUID userID = UUID.fromString(interFace.getUser(username, password));        
         User user = new User(username, password, userID, null /*User role not implemented*/, getUserInfo(userID));
         System.err.println("OBS: Role not implemented in repository/getUser");
         return user;
