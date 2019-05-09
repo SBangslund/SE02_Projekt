@@ -22,7 +22,7 @@ import javafx.scene.control.TextArea;
  *
  * @author victo
  */
-public class CreateNotesController extends JournalOverview implements Initializable {
+public class CreateNotes extends JournalOverview implements Initializable {
 
     @FXML
     private DatePicker datePicker;
@@ -58,9 +58,5 @@ public class CreateNotesController extends JournalOverview implements Initializa
     private void saveButtonEvent(ActionEvent event) {
     }
 
-    @Override
-    protected void initialize() {
-
-    }
     
 }

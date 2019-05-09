@@ -48,10 +48,7 @@ public class Notes extends JournalOverview implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
     }
-    @Override
-    protected void initialize() {
 
-    }
 
     public void setNoteTitle(HeaderNote title) {
         titelLabel.setText(title.toString());
