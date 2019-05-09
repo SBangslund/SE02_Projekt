@@ -71,13 +71,12 @@ public class Repository {
             userInfo = new UserInfo(userAddress, null, phone, firstname, lastname, mail, institutionid, userId);
         } else {
             System.err.println("[DATA_ERROR](DatePipe.getUserInfo()): String[].length != 7.");
-            System.out.println("length: " + userInfoStrings.length);
         }
         return userInfo;
     }
 
     public User getUser(String username, String password) {
-        UUID userID = UUID.fromString(interFace.getUser(username, password));
+        UUID userID = UUID.fromString(interFace.getUser(username, password));        
         User user = new User(username, password, userID, null /*User role not implemented*/, getUserInfo(userID));
         System.err.println("OBS: Role not implemented in repository/getUser");
         return user;

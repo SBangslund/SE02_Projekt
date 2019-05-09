@@ -1,6 +1,5 @@
 package aservio.data;
 
-
 import aservio.domain.platform.interfaces.contracts.IRepository;
 
 import java.sql.*;
@@ -10,11 +9,11 @@ import java.util.UUID;
 public class IRepositoryImp implements IRepository {
 
     private Connection connection;
-    private boolean succesfullConnection = false;
+    private boolean succesfulConnection = false;
     private UserRetriever userRetriever;
     private ActivityRetriever activityRetriever;
 
-    public IRepositoryImp(){
+    public IRepositoryImp() {
         this.setupConnection();
         userRetriever = new UserRetriever(connection);
         activityRetriever = new ActivityRetriever(connection);
@@ -26,7 +25,6 @@ public class IRepositoryImp implements IRepository {
     public String getUser(String username, String password) {
         return userRetriever.getUser(username, password);
     }
-
 
     @Override
     public String[] getUsersFromActivity(UUID activityid) {
@@ -92,7 +90,7 @@ public class IRepositoryImp implements IRepository {
         return userRetriever.verifyUser(username, password);
     }
 
-    public void setupConnection(){
+    public void setupConnection() {
         System.out.println("-------- PostgreSQL "
                 + "JDBC Connection Testing ------------");
         try {
@@ -109,19 +107,16 @@ public class IRepositoryImp implements IRepository {
             connection = DriverManager.getConnection(
                     "jdbc:postgresql://balarama.db.elephantsql.com:5432/kzpurfgw", "kzpurfgw",
                     "ZyHDoKdmCOf-89xy6pPGSry97kpVWb1l");
-            succesfullConnection = true;
+            succesfulConnection = true;
         } catch (SQLException e) {
-            System.out.println("Connection Failed! Check output console");
-            succesfullConnection = false;
+            succesfulConnection = false;
             e.printStackTrace();
             return;
         }
         if (connection != null) {
-            System.out.println("You made it, take control your database now!");
+            System.out.println("Successfully connected to Database");
         } else {
-            System.out.println("Failed to make connection!");
+            System.err.println("Database connection failed");
         }
-
     }
-
 }

@@ -36,7 +36,8 @@ public class ILoginWithFileImp implements ILogin {
     private final char maxNumber = '9'; //57;
 
     File file;
-
+    
+    //IMPORTANT. tempUserSetup must be run before accessing users. (previously located in Login)
     /**
      * Tests login input for errors like illegal characters, spaces, and correct
      * account identification. WIP

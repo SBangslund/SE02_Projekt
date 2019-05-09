@@ -2,6 +2,7 @@ package aservio.domain.platform.interfaces.implementors;
 
 import aservio.domain.platform.Aservio;
 import aservio.domain.platform.Repository;
+import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.platform.controllers.Login;
@@ -36,7 +37,7 @@ public class ILoginWithDBImp implements ILogin {
         if (username.isEmpty() || password.isEmpty()) {
             return "Write your username and password to log in.";
         }
-        //Is Input in username ILLEGALCHARACTER?
+        //Is Input in username illegal?
         for (char j : username.toCharArray()) {
             boolean capitalLetterRange = j >= minCapLetter && j <= maxCapLetter;
             boolean smallLetterRange = j >= minLetter && j <= maxLetter;
@@ -45,7 +46,7 @@ public class ILoginWithDBImp implements ILogin {
                 return "USERNAME contains special characters. Only 0-9, a-z and _ is permitted";
             }
         }
-        //Is Input in username ILLEGALCHARACTER?
+        //Is Input in username illegal?
         for (char j : password.toCharArray()) {
             boolean capitalLetterRange = j >= minCapLetter && j <= maxCapLetter;
             boolean smallLetterRange = j >= minLetter && j <= maxLetter;
@@ -79,7 +80,7 @@ public class ILoginWithDBImp implements ILogin {
             Aservio.getInstance().getPrimaryStage().getScene().setRoot(p);
             Aservio.getInstance().getPrimaryStage().setMaximized(true);
         } catch (IOException ex) {
-            System.out.println("Couldn't load Platform.fxml file.");
+            System.err.println("Couldn't load Platform.fxml file.");
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

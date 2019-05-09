@@ -24,7 +24,7 @@
             <PasswordField fx:id="passwordField" onAction="#validateLogin" prefHeight="32.0" prefWidth="236.0" promptText="Password" stylesheets="@../../css/CSSLogin.css" />
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="237.0">
                <children>
-                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#validateLogin" onKeyPressed="#onLoginBtnEnter" stylesheets="@../../css/CSSLogin.css" text="Login" />
+                  <Button mnemonicParsing="false" onAction="#validateLogin" onKeyPressed="#onLoginBtnEnter" stylesheets="@../../css/CSSLogin.css" text="Login" />
                </children>
             </HBox>
          </children>
