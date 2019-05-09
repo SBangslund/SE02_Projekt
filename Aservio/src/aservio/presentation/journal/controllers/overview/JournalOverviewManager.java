@@ -22,7 +22,7 @@ public class JournalOverviewManager {
         updateCurrentJournalOverview(OverviewType.NOTE.getURL());
     }
 
-    public void createNote() {
+    public void showCreateNote() {
         updateCurrentJournalOverview(OverviewType.CREATENOTE.getURL());
     }
 

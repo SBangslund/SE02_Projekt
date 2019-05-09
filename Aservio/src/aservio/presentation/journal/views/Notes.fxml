@@ -29,10 +29,21 @@
             </VBox>
             <VBox alignment="TOP_CENTER">
                <children>
-                  <Label fx:id="titelLabel" text="Titel" />
+                  <HBox>
+                     <children>
+                        <Label fx:id="titelLabel" text="Citizen +Titel" />
+                     </children>
+                  </HBox>
                   <TextArea fx:id="noteTextArea" editable="false" />
-                  <Label fx:id="locationLabel" text="Sted" />
+                  <HBox>
+                     <children>
+                        <Label fx:id="footNoteLabel" text="Personale +Sted" />
+                     </children>
+                  </HBox>
                </children>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
             </VBox>
          </children>
       </HBox>

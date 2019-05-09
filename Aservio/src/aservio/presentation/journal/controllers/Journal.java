@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
@@ -43,6 +44,8 @@ public class Journal implements Initializable {
     private BorderPane borderPane;
     @FXML
     private ListView<?> showListView;
+    @FXML
+    private Button newNoteButton;
 
     /**
      * Initializes the controller class.
@@ -63,6 +66,8 @@ public class Journal implements Initializable {
 
     public void setCenterView(Node node) {
         borderPane.setCenter(node);
+        
+        
 //        List<Node> children = ((VBox) borderPane.getCenter()).getChildren();
 //        if (children.size() > 1) {
 //            children.remove(1);
@@ -93,6 +98,11 @@ public class Journal implements Initializable {
 
     public JournalOverviewManager getJournalOverviewManager() {
         return journalOverviewManager;
+    }
+
+    @FXML
+    private void newNoteButtonEvent(ActionEvent event) {
+        journalOverviewManager.showCreateNote();
     }
 
 }
