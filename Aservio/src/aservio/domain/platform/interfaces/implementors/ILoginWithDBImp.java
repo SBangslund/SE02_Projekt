@@ -2,7 +2,14 @@ package aservio.domain.platform.interfaces.implementors;
 
 import aservio.domain.platform.Aservio;
 import aservio.domain.platform.Repository;
+import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
+import aservio.domain.platform.user.UserInfo;
+import aservio.domain.platform.user.roles.Admin;
+import aservio.domain.platform.user.roles.Caretaker;
+import aservio.domain.platform.user.roles.Citizen;
+import aservio.domain.platform.user.roles.Relative;
+import aservio.domain.platform.user.roles.Role;
 import aservio.presentation.platform.controllers.Login;
 import aservio.presentation.platform.interfaces.contracts.ILogin;
 import java.io.IOException;
@@ -35,7 +42,7 @@ public class ILoginWithDBImp implements ILogin {
         if (username.isEmpty() || password.isEmpty()) {
             return "Write your username and password to log in.";
         }
-        //Is Input in username ILLEGALCHARACTER?
+        //Is Input in username illegal?
         for (char j : username.toCharArray()) {
             boolean capitalLetterRange = j >= minCapLetter && j <= maxCapLetter;
             boolean smallLetterRange = j >= minLetter && j <= maxLetter;
@@ -44,7 +51,7 @@ public class ILoginWithDBImp implements ILogin {
                 return "USERNAME contains special characters. Only 0-9, a-z and _ is permitted";
             }
         }
-        //Is Input in username ILLEGALCHARACTER?
+        //Is Input in username illegal?
         for (char j : password.toCharArray()) {
             boolean capitalLetterRange = j >= minCapLetter && j <= maxCapLetter;
             boolean smallLetterRange = j >= minLetter && j <= maxLetter;

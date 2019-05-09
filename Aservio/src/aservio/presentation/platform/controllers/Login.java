@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -28,8 +27,6 @@ public class Login implements Initializable {
     @FXML
     private PasswordField passwordField;
     @FXML
-    private Button loginButton;
-    @FXML
     private Label inputWarningLabel;
 
     @Override
@@ -37,12 +34,11 @@ public class Login implements Initializable {
         File file = new File("resources/logo/LogoLarge.png");
         Image logo = new Image(file.toURI().toString());
         logoImageView.setImage(logo);
-        //interFace.tempUserSetupByFile();
     }
 
     /**
-     * WIP Clicking the login button or hitting enter logs the user in, if the
-     * input is acceptable. checkForNoIllegalInput returns a string "Access" if
+     * Clicking the login button or hitting enter logs the user in, if the input
+     * is acceptable. checkForNoIllegalInput returns a string "inputOK" if
      * validated, else returns a string containing an error message displaying
      * it to the user.
      *
@@ -52,15 +48,14 @@ public class Login implements Initializable {
     private void validateLogin(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        
+
         String result = interFace.checkForNoIllegalInput(username, password);
         if (result.equals("inputOK")) {
             String verifyResult = interFace.verifyUser(username, password);
             if (verifyResult.equals("true")) {
                 interFace.setUser(username, password);
                 interFace.loadScene();
-            }
-            else{
+            } else {
                 inputWarningLabel.setText(verifyResult);
             }
         } else {
@@ -69,7 +64,7 @@ public class Login implements Initializable {
     }
 
     /**
-     * Enter on login button equals pressing it.
+     * Userinput 'enter' on login button equals pressing it.
      *
      * @param event
      */
