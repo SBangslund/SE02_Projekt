@@ -36,7 +36,7 @@
             </HBox>
             <Separator fx:id="seperator" VBox.vgrow="ALWAYS" />
             <AnchorPane fx:id="profileView" VBox.vgrow="ALWAYS" />
-            <ListView fx:id="userList" onEditCommit="#onEditCommit" VBox.vgrow="ALWAYS">
+            <ListView fx:id="userList" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>

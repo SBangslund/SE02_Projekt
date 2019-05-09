@@ -35,6 +35,11 @@ public class UserInfo implements Serializable{
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s %s", firstName, lastName);
+    }
+
     public Address getAddress() {
         return address;
     }

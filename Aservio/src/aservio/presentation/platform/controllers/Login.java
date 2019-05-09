@@ -22,6 +22,7 @@ public class Login implements Initializable {
 
     private final ILogin interFace = PresentationInterfaceManager.getILogin();
 
+    @FXML
     public ImageView logoImageView;
     @FXML
     private TextField usernameField;
