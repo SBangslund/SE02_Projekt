@@ -27,8 +27,13 @@ public class IRepositoryImp implements IRepository {
     }
 
     @Override
-    public String[] getUsers(UUID activityid) {
+    public String[] getUsersFromActivity(UUID activityid) {
         return userRetriever.getUsers(activityid);
+    }
+
+    @Override
+    public String[] getUsersFromInsitution(int institution) {
+        return userRetriever.getUsers(institution);
     }
 
     @Override
@@ -61,8 +66,8 @@ public class IRepositoryImp implements IRepository {
         return activityRetriever.addUserToActivity(activityid, userid);
     }
 
-    public String[] getUserAddress(UUID userid) {
-        return userRetriever.getUserAdress(userid);
+    public String[] getUserAddress(UUID userid){
+        return userRetriever.getUserAddress(userid);
     }
 
     @Override
@@ -104,17 +109,14 @@ public class IRepositoryImp implements IRepository {
                     "ZyHDoKdmCOf-89xy6pPGSry97kpVWb1l");
             succesfulConnection = true;
         } catch (SQLException e) {
-            System.out.println("Connection Failed! Check output console");
             succesfulConnection = false;
             e.printStackTrace();
             return;
         }
         if (connection != null) {
-            System.out.println("You made it, take control your database now!");
+            System.out.println("Successfully connected to Database");
         } else {
-            System.out.println("Failed to make connection!");
+            System.err.println("Database connection failed");
         }
-
     }
-
 }

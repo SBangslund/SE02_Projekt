@@ -5,11 +5,6 @@ import aservio.domain.platform.Repository;
 import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
-import aservio.domain.platform.user.roles.Admin;
-import aservio.domain.platform.user.roles.Caretaker;
-import aservio.domain.platform.user.roles.Citizen;
-import aservio.domain.platform.user.roles.Relative;
-import aservio.domain.platform.user.roles.Role;
 import aservio.presentation.platform.controllers.Login;
 import aservio.presentation.platform.interfaces.contracts.ILogin;
 import java.io.IOException;
@@ -85,7 +80,7 @@ public class ILoginWithDBImp implements ILogin {
             Aservio.getInstance().getPrimaryStage().getScene().setRoot(p);
             Aservio.getInstance().getPrimaryStage().setMaximized(true);
         } catch (IOException ex) {
-            System.out.println("Couldn't load Platform.fxml file.");
+            System.err.println("Couldn't load Platform.fxml file.");
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

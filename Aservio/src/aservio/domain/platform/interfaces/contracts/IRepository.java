@@ -8,7 +8,8 @@ public interface IRepository {
     String getUser(String username, String password);
     String[] getUserActivities(UUID userid);
     String[] getUserInfo(UUID userid);
-    String[] getUsers(UUID activityid);
+    String[] getUsersFromActivity(UUID activityid);
+    String[] getUsersFromInsitution(int institution);
     String[] getActivity(UUID activityid);
     String[] getUserAddress(UUID userid);
     String[] getInstitution(int institutionid);

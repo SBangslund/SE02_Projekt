@@ -8,6 +8,7 @@ import aservio.domain.DomainInterfaceManager;
 import aservio.domain.management.interfaces.implementors.IOverviewImp;
 import aservio.domain.platform.interfaces.implementors.ILoginWithDBImp;
 import aservio.domain.platform.interfaces.implementors.ILoginWithFileImp;
+import aservio.domain.platform.interfaces.implementors.IProfileImp;
 import aservio.presentation.PresentationInterfaceManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -41,6 +42,7 @@ public class Aservio extends Application {
         Repository repository = new Repository();
         presentation.setIOverview(new IOverviewImp(repository));
         presentation.setILogin(new ILoginWithDBImp(repository));
+        presentation.setIProfile(new IProfileImp(repository));
 
 
         //Parent root = FXMLLoader.load(getClass().getResource("../Management/views/FXMLManager.fxml"));
