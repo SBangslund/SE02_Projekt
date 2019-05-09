@@ -5,6 +5,8 @@
  */
 package aservio.presentation.journal.interfaces.contracts;
 
+import aservio.domain.journal.NoteList;
+import aservio.domain.platform.user.UserInfo;
 import java.util.Date;
 
 /**
@@ -12,7 +14,7 @@ import java.util.Date;
  * @author Rene_
  */
 public interface INotes {
-// public Note getNote(Date date){
-//     
-// }   
+    NoteList getNoteList(UserInfo userInfo);
+    
+    
 }

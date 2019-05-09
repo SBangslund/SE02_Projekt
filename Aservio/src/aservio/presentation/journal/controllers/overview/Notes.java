@@ -24,7 +24,7 @@ import javafx.scene.control.TextArea;
  *
  * @author victo
  */
-public class NotesController extends JournalOverview implements Initializable {
+public class Notes extends JournalOverview implements Initializable {
 
     @FXML
     private Label titelLabel;
