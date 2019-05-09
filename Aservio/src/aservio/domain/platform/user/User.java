@@ -2,6 +2,7 @@ package aservio.domain.platform.user;
 
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.platform.user.roles.Role;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,28 +19,22 @@ public class User implements Serializable {
     private static User currentUser;
     private ActivityList activityList = new ActivityList();
     private UserInfo userInfo;
-    
-        public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-        id = UUID.randomUUID();
-        //Create ID
-    }
 
     /**
      * upon creation of a user, the username, password and role is constructed.
      *
      * @param username
      * @param password
+     * @param userId
      * @param preselectedRole
      * @param userInfo
      */
-    public User (String username, String password, Role preselectedRole, UserInfo userInfo){
+    public User(String username, String password, UUID userId, Role preselectedRole, UserInfo userInfo) {
         this.username = username;
         this.password = password;
+        this.id = userId;
         this.userInfo = userInfo;
         this.roles.add(preselectedRole);
-        id = UUID.randomUUID();
         //Create ID
     }
 
@@ -68,6 +63,7 @@ public class User implements Serializable {
     public UserInfo getUserInfo() {
         return userInfo;
     }
+
     /**
      * @return the username
      */
@@ -80,5 +76,9 @@ public class User implements Serializable {
      */
     public String getPassword() {
         return password;
+    }
+
+    public UUID getId() {
+        return id;
     }
 }

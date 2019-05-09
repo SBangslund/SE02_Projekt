@@ -6,12 +6,14 @@
 package aservio.domain.platform.user;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  *
  * @author victo
  */
 public class Address implements Serializable {
+    private UUID userId;
     private String road;
     private String country;
     private int postcode;
@@ -19,13 +21,14 @@ public class Address implements Serializable {
     private String houseNumber;
     private String level;
 
-    public Address(String road, String country, int postcode, String city, String houseNumber, String level) {
+    public Address(String road, String country, int postcode, String city, String houseNumber, String level, UUID userId) {
         this.road = road;
         this.country = country;
         this.postcode = postcode;
         this.city = city;
         this.houseNumber = houseNumber;
         this.level = level;
+        this.userId = userId;
     }
 
     public String getRoad() {
@@ -52,7 +55,7 @@ public class Address implements Serializable {
         return level;
     }
 
-    
-    
-
+    public UUID getUserId() {
+        return userId;
+    }
 }

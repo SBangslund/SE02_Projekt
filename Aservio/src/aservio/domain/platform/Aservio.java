@@ -3,11 +3,12 @@
  */
 package aservio.domain.platform;
 
+import aservio.data.IRepositoryImp;
+import aservio.domain.DomainInterfaceManager;
 import aservio.domain.management.interfaces.implementors.IOverviewImp;
-import aservio.domain.platform.user.User;
-import aservio.domain.platform.user.UserInfo;
-import aservio.domain.platform.user.Address;
-import aservio.domain.platform.user.roles.Caretaker;
+import aservio.domain.platform.interfaces.implementors.ILoginWithDBImp;
+import aservio.domain.platform.interfaces.implementors.ILoginWithFileImp;
+import aservio.domain.platform.interfaces.implementors.IProfileImp;
 import aservio.presentation.PresentationInterfaceManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -32,11 +33,20 @@ public class Aservio extends Application {
         instance = this;
         primaryStage = stage;
 
+
+        DomainInterfaceManager domain = new DomainInterfaceManager();
+        domain.setIDataPipe(new IRepositoryImp());
+
         PresentationInterfaceManager presentation = new PresentationInterfaceManager();
-        presentation.setIOverview(new IOverviewImp());
+
+        Repository repository = new Repository();
+        presentation.setIOverview(new IOverviewImp(repository));
+        presentation.setILogin(new ILoginWithDBImp(repository));
+        presentation.setIProfile(new IProfileImp(repository));
+
 
         //Parent root = FXMLLoader.load(getClass().getResource("../Management/views/FXMLManager.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/FXMLLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/Login.fxml"));
 
         Scene scene = new Scene(root);
 

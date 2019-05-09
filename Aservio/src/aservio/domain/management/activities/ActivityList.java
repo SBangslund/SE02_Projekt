@@ -5,7 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityList implements Serializable {
-    private List<Activity> activities = new ArrayList<>();
+    private List<Activity> activities;
+
+    public ActivityList() {
+        this.activities = new ArrayList<>();
+    }
+
+    public ActivityList(List<Activity> activities) {
+        this.activities = activities;
+    }
 
     public void add(Activity activity) {
         activities.add(activity);
