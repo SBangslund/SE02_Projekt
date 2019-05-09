@@ -1,5 +1,6 @@
 package aservio.presentation.management.controllers.overview;
 
+import aservio.presentation.platform.OverviewType;
 import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.management.activities.ActivityType;

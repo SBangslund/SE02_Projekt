@@ -28,6 +28,7 @@ public class Platform implements Initializable {
         try {
             borderPane.setLeft(FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/Profile.fxml")));
             tabPane.getTabs().get(0).setContent(FXMLLoader.load(getClass().getResource("/aservio/presentation/management/views/FXMLManager.fxml")));
+            tabPane.getTabs().get(1).setContent(FXMLLoader.load(getClass().getResource("/aservio/presentation/journal/views/Journal.fxml")));
             setTabIcon(tabPane.getTabs().get(0), "resources/OrganiserWithoutText.png", "Planlægning");
             setTabIcon(tabPane.getTabs().get(1), "resources/DiaryWithoutText.png", "Dagbog");
 
