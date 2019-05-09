@@ -18,4 +18,5 @@ public interface IRepository {
     boolean addUserAddress(String roadname, String country, int postcode, String city, String housenumber, String level, UUID userid);
     boolean addActivity(String name, String type, Date date, String starttime, String endtime, UUID activityid);
     boolean addUserToActivity(UUID activityid, UUID userid);
+    boolean deleteActivity(UUID activityid);
 }

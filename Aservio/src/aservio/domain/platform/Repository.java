@@ -173,4 +173,8 @@ public class Repository {
         }
         return name;
     }
+    
+    public boolean deleteActivity (UUID activityid){
+        return interFace.deleteActivity(activityid);
+    }
 }

@@ -90,6 +90,11 @@ public class IRepositoryImp implements IRepository {
         return userRetriever.verifyUser(username, password);
     }
 
+    @Override
+    public boolean deleteActivity(UUID activityid) {
+        return activityRetriever.deleteActivity(activityid);
+    }
+
     public void setupConnection() {
         System.out.println("-------- PostgreSQL "
                 + "JDBC Connection Testing ------------");
