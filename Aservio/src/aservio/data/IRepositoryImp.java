@@ -57,8 +57,13 @@ public class IRepositoryImp implements IRepository {
     }
 
     @Override
-    public boolean addActivity(String name, String type, Date date, String starttime, String endtime, UUID activityid) {
-        return activityRetriever.addActivity(name, type, date, starttime, endtime, activityid);
+    public boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid) {
+        return activityRetriever.addActivity(name, type, starttime, endtime, activityid);
+    }
+
+    @Override
+    public boolean deleteActivity(UUID activityid) {
+        return activityRetriever.deleteActivity(activityid);
     }
 
     @Override
@@ -66,7 +71,7 @@ public class IRepositoryImp implements IRepository {
         return activityRetriever.addUserToActivity(activityid, userid);
     }
 
-    public String[] getUserAddress(UUID userid){
+    public String[] getUserAddress(UUID userid) {
         return userRetriever.getUserAddress(userid);
     }
 
@@ -88,11 +93,6 @@ public class IRepositoryImp implements IRepository {
     @Override
     public String verifyUser(String username, String password) {
         return userRetriever.verifyUser(username, password);
-    }
-
-    @Override
-    public boolean deleteActivity(UUID activityid) {
-        return activityRetriever.deleteActivity(activityid);
     }
 
     public void setupConnection() {

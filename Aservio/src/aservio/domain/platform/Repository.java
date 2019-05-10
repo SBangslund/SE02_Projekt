@@ -76,7 +76,7 @@ public class Repository {
     }
 
     public User getUser(String username, String password) {
-        UUID userID = UUID.fromString(interFace.getUser(username, password));        
+        UUID userID = UUID.fromString(interFace.getUser(username, password));
         User user = new User(username, password, userID, null /*User role not implemented*/, getUserInfo(userID));
         System.err.println("OBS: Role not implemented in repository/getUser");
         return user;
@@ -85,9 +85,9 @@ public class Repository {
     public List<UserInfo> getUsersFromInstitution(int institutionid) {
         String[] usersString = interFace.getUsersFromInsitution(institutionid);
         List<UserInfo> users = null;
-        if(usersString != null) {
+        if (usersString != null) {
             users = new ArrayList<>();
-            for (String userid: usersString) {
+            for (String userid : usersString) {
                 users.add(getUserInfo(UUID.fromString(userid)));
             }
         }
@@ -116,28 +116,13 @@ public class Repository {
         String[] userActivity = interFace.getActivity(activityid);
         Activity activity = null;
         if (userActivity != null) {
-            String name = userActivity[0],
-                    type = userActivity[1],
-                    startTime = userActivity[3],
-                    endTime = userActivity[4];
-            java.sql.Date date = Date.valueOf(userActivity[2]);
+            //String name = userActivity[0];
+            String type = userActivity[1];
+            Long startTime = Long.parseLong(userActivity[3]);
+            Long endTime = Long.parseLong(userActivity[4]);
 
-            //startTime -> java.util.Date
-            java.util.Date startDate = null;
-            try {
-                startDate = new SimpleDateFormat("hh:mm").parse(startTime);
-            } catch (ParseException e) {
-                System.err.println("[DATA_ERROR](DatePipe.getActivity()):ID=" + activityid + ": startDate has a wrong format.");
-            }
-            //endTime -> java.util.Date
-            java.util.Date endDate = null;
-            try {
-                endDate = new SimpleDateFormat("hh:mm").parse(endTime);
-            } catch (ParseException e) {
-                System.err.println("[DATA_ERROR](DatePipe.getActivity()):ID=" + activityid + ": endDate has a wrong format.");
-            }
-            //date -> java.util.Date
-            java.util.Date currentDate = new java.util.Date(date.getTime());
+            Date startDate = new Date(startTime);
+            Date endDate = new Date(endTime);
 
             activity = new Activity(ActivityType.valueOf(type), startDate, endDate, activityid);
         }
@@ -173,8 +158,13 @@ public class Repository {
         }
         return name;
     }
-    
-    public boolean deleteActivity (UUID activityid){
+
+    public boolean deleteActivity(UUID activityid) {
         return interFace.deleteActivity(activityid);
+    }
+
+    public boolean addActivity(Activity activity) {
+        //String name, String type, String starttime, String endtime, UUID activityid
+        return interFace.addActivity(activity.getActivityType().getName(), activity.getActivityType().getName(), activity.getStartDate(), activity.getEndDate(), activity.getId());
     }
 }

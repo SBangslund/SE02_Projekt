@@ -10,10 +10,6 @@ import aservio.domain.platform.Repository;
 import aservio.presentation.management.interfaces.contracts.ISideView;
 import java.util.UUID;
 
-/**
- *
- * @author Sigur
- */
 public class ISideViewImp implements ISideView {
 
     private final Repository repository;
@@ -24,7 +20,7 @@ public class ISideViewImp implements ISideView {
 
     @Override
     public boolean addActivity(Activity activity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return repository.addActivity(activity);
     }
 
     @Override

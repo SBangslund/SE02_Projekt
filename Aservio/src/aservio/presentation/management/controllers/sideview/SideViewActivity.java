@@ -136,6 +136,9 @@ public class SideViewActivity extends SideView implements Initializable {
         Date startdate = Date.from(startdt.atZone(ZoneId.systemDefault()).toInstant());
         Date enddate = Date.from(enddt.atZone(ZoneId.systemDefault()).toInstant());
         Activity activity1 = new Activity(ActivityType.WALK, startdate, enddate, UUID.randomUUID());
+        System.out.println(startdate);
+        System.out.println(enddate);
+        interFace.addActivity(activity1);
     }
 
     @FXML

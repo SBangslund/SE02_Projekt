@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +29,7 @@ public class ActivityRetriever {
         }
         return execStat;
     }
-    
+
     public String[] getActivity(UUID activityid) {
         try {
             ResultSet result = createStatement().executeQuery("SELECT get_activity('" + activityid.toString() + "')");
@@ -66,9 +69,9 @@ public class ActivityRetriever {
         return null;
     }
 
-    public boolean addActivity(String name, String type, Date date, String starttime, String endtime, UUID activityid) {
+    public boolean addUserToActivity(UUID activityid, UUID userid) {
         try {
-            createStatement().executeQuery("SELECT add_activity('" + name + "', '" + type + "', '" + date.getTime() + "', " + starttime + ", '" + endtime + "', '" + activityid.toString() + "')");
+            createStatement().executeQuery("SELECT add_user_to_activity('" + activityid.toString() + "', '" + userid.toString() + "')");
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,9 +79,11 @@ public class ActivityRetriever {
         return false;
     }
 
-    public boolean addUserToActivity(UUID activityid, UUID userid) {
+    public boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid) {
+
+        
         try {
-            createStatement().executeQuery("SELECT add_user_to_activity('" + activityid.toString() + "', '" + userid.toString() + "')");
+            createStatement().executeQuery("SELECT add_activity('" + name + "', '" + type + "', " + starttime.getTime() + ", " + endtime.getTime() + ", '" + activityid.toString() + "')");
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
