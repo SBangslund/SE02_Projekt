@@ -5,6 +5,7 @@ package aservio.domain.platform;
 
 import aservio.data.IRepositoryImp;
 import aservio.domain.DomainInterfaceManager;
+import aservio.domain.journal.interfaces.contracts.IJournalOverviewImp;
 import aservio.domain.management.interfaces.implementors.IOverviewImp;
 import aservio.domain.platform.interfaces.implementors.ILoginWithDBImp;
 import aservio.domain.platform.interfaces.implementors.ILoginWithFileImp;
@@ -43,6 +44,7 @@ public class Aservio extends Application {
         presentation.setIOverview(new IOverviewImp(repository));
         presentation.setILogin(new ILoginWithDBImp(repository));
         presentation.setIProfile(new IProfileImp(repository));
+        presentation.setiJournalOverview(new IJournalOverviewImp(repository));
 
 
         //Parent root = FXMLLoader.load(getClass().getResource("../Management/views/FXMLManager.fxml"));

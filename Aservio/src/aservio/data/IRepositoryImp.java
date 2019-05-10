@@ -12,13 +12,13 @@ public class IRepositoryImp implements IRepository {
     private boolean succesfulConnection = false;
     private UserRetriever userRetriever;
     private ActivityRetriever activityRetriever;
+    private DocumentRetriever documentRetriever;
 
     public IRepositoryImp() {
         this.setupConnection();
         userRetriever = new UserRetriever(connection);
         activityRetriever = new ActivityRetriever(connection);
-        System.out.println(this.verifyUser("q", "q"));
-        System.out.println(this.verifyUser("test", "test"));
+        documentRetriever = new DocumentRetriever(connection);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class IRepositoryImp implements IRepository {
         return activityRetriever.addUserToActivity(activityid, userid);
     }
 
-    public String[] getUserAddress(UUID userid){
+    public String[] getUserAddress(UUID userid) {
         return userRetriever.getUserAddress(userid);
     }
 
@@ -88,6 +88,22 @@ public class IRepositoryImp implements IRepository {
     @Override
     public String verifyUser(String username, String password) {
         return userRetriever.verifyUser(username, password);
+    }
+
+    @Override
+    public String[] getNotesFromUser(UUID userid) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    @Override
+    public boolean addUserNote(UUID noteid, Date noteDate, String startTime, String endTime, String noteText) {
+        return documentRetriever.addUserNotes(noteid, noteDate, startTime, endTime, noteText);
+    }
+    
+    @Override
+    public String[] getNote(UUID noteid) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void setupConnection() {
@@ -119,4 +135,6 @@ public class IRepositoryImp implements IRepository {
             System.err.println("Database connection failed");
         }
     }
+
+
 }

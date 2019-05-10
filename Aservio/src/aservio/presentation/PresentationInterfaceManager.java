@@ -1,13 +1,16 @@
 package aservio.presentation;
 
+import aservio.presentation.journal.interfaces.contracts.IJournalOverview;
 import aservio.presentation.management.interfaces.contracts.IOverview;
 import aservio.presentation.platform.interfaces.contracts.ILogin;
 import aservio.presentation.platform.interfaces.contracts.IProfile;
 
 public class PresentationInterfaceManager {
+
     private static IOverview iOverview;
     private static ILogin iLogin;
     private static IProfile iProfile;
+    private static IJournalOverview iJournalOverview;
 
     public static IOverview getIOverview() {
         return iOverview;
@@ -17,7 +20,13 @@ public class PresentationInterfaceManager {
         return iLogin;
     }
 
-    public static IProfile getIProfile() {return iProfile;}
+    public static IProfile getIProfile() {
+        return iProfile;
+    }
+
+    public static IJournalOverview getiJournalOverview() {
+        return iJournalOverview;
+    }
 
     public void setIOverview(IOverview implementation) {
         iOverview = implementation;
@@ -30,5 +39,9 @@ public class PresentationInterfaceManager {
     public void setIProfile(IProfile implementation) {
         iProfile = implementation;
     }
-}
 
+    public void setiJournalOverview(IJournalOverview implementation) {
+        iJournalOverview = implementation;
+    }
+
+}

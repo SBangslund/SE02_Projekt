@@ -35,6 +35,10 @@ public class Note {
         this.id = id;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
     public Date getStartDate() {
         return startTime;
     }
