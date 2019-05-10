@@ -9,6 +9,7 @@ public interface IRepository {
     String[] getNotesFromUser(UUID userid);
     String[] getNote(UUID noteid);
     boolean addUserNote(UUID noteid, Date noteDate, String startTime, String endTime, String noteText);
+    boolean addNoteToUser(UUID userid, UUID noteid);
     String[] getUserActivities(UUID userid);
     String[] getUserInfo(UUID userid);
     String[] getUsersFromActivity(UUID activityid);

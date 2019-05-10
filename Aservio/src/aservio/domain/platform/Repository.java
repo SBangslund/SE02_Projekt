@@ -59,15 +59,21 @@ public class Repository {
     }
 
     public boolean addUserNote(Note note) {
+        addNoteToUser(note, note.getCitizenInfo().getId());
+        addNoteToUser(note, User.getCurrentUser().getId());
         return interFace.addUserNote(
                 note.getId(),
                 note.getDate(),
                 note.getStartDate().toString(),
                 note.getEndDate().toString(),
-                note.getNoteText().toString()
+                note.getNoteText()
         );
     }
 
+    public boolean addNoteToUser(Note note, UUID userid){
+        return interFace.addNoteToUser(userid, note.getId());
+    }
+    
     public UserInfo getUserInfo(UUID userId) {
         String[] userInfoStrings = interFace.getUserInfo(userId);
         UserInfo userInfo = null;

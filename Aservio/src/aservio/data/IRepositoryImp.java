@@ -21,6 +21,36 @@ public class IRepositoryImp implements IRepository {
         documentRetriever = new DocumentRetriever(connection);
     }
 
+    public void setupConnection() {
+        System.out.println("-------- PostgreSQL "
+                + "JDBC Connection Testing ------------");
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Where is your PostgreSQL JDBC Driver? "
+                    + "Include in your library path!");
+            e.printStackTrace();
+            return;
+        }
+        System.out.println("PostgreSQL JDBC Driver Registered!");
+        connection = null;
+        try {
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://balarama.db.elephantsql.com:5432/kzpurfgw", "kzpurfgw",
+                    "ZyHDoKdmCOf-89xy6pPGSry97kpVWb1l");
+            succesfulConnection = true;
+        } catch (SQLException e) {
+            succesfulConnection = false;
+            e.printStackTrace();
+            return;
+        }
+        if (connection != null) {
+            System.out.println("Successfully connected to Database");
+        } else {
+            System.err.println("Database connection failed");
+        }
+    }
+
     @Override
     public String getUser(String username, String password) {
         return userRetriever.getUser(username, password);
@@ -95,46 +125,19 @@ public class IRepositoryImp implements IRepository {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
     @Override
     public boolean addUserNote(UUID noteid, Date noteDate, String startTime, String endTime, String noteText) {
-        return documentRetriever.addUserNotes(noteid, noteDate, startTime, endTime, noteText);
+        return documentRetriever.addNote(noteid, noteDate, startTime, endTime, noteText);
     }
-    
+
     @Override
     public String[] getNote(UUID noteid) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void setupConnection() {
-        System.out.println("-------- PostgreSQL "
-                + "JDBC Connection Testing ------------");
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Where is your PostgreSQL JDBC Driver? "
-                    + "Include in your library path!");
-            e.printStackTrace();
-            return;
-        }
-        System.out.println("PostgreSQL JDBC Driver Registered!");
-        connection = null;
-        try {
-            connection = DriverManager.getConnection(
-                    "jdbc:postgresql://balarama.db.elephantsql.com:5432/kzpurfgw", "kzpurfgw",
-                    "ZyHDoKdmCOf-89xy6pPGSry97kpVWb1l");
-            succesfulConnection = true;
-        } catch (SQLException e) {
-            succesfulConnection = false;
-            e.printStackTrace();
-            return;
-        }
-        if (connection != null) {
-            System.out.println("Successfully connected to Database");
-        } else {
-            System.err.println("Database connection failed");
-        }
+    @Override
+    public boolean addNoteToUser(UUID userid, UUID noteid) {
+        return documentRetriever.addNoteToUser(userid, noteid);
     }
-
 
 }

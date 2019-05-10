@@ -36,9 +36,19 @@ public class DocumentRetriever {
         return execStat;
     }
 
-    public boolean addUserNotes(UUID noteid, Date noteDate, String startTime, String endTime, String noteText) {
+    public boolean addNote(UUID noteid, Date noteDate, String startTime, String endTime, String noteText) {
         try {
             createStatement().executeQuery("SELECT addNotes('" + noteid.toString() + "', '" + noteDate.getTime() + "', '" + startTime + "', " + endTime + "', " + noteText + "')");
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public boolean addNoteToUser(UUID userid, UUID noteid){
+         try {
+            createStatement().executeQuery("SELECT addNoteToUser('" + userid.toString() + "', '" + noteid.toString() + "')");
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);

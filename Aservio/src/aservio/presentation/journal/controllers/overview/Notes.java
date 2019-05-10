@@ -63,6 +63,10 @@ public class Notes extends JournalOverview implements Initializable {
 //    }
     
     public void setNoteText(Note note){
-        
+        interFace.addNote(note);
+    }
+    
+    public void createNote(){
+    
     }
 }

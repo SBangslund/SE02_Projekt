@@ -5,6 +5,8 @@
  */
 package aservio.domain.journal;
 
+import aservio.domain.platform.user.UserInfo;
+
 /**
  *
  * @author Rene_
@@ -15,9 +17,9 @@ public class HeaderNote {
     private String citizenLastName;
     private String title;
 
-    public HeaderNote(String citizenFirstName, String citizenLastName, String title) {
-        this.citizenFirstName = citizenFirstName;
-        this.citizenLastName = citizenLastName;
+    public HeaderNote(UserInfo citizenInfo, String title) {
+        this.citizenFirstName = citizenInfo.getFirstName();
+        this.citizenLastName = citizenInfo.getLastName();
         this.title = title;
     }
 

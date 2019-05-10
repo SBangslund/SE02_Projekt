@@ -6,6 +6,7 @@
 package aservio.domain.journal;
 
 import aservio.domain.platform.user.User;
+import aservio.domain.platform.user.UserInfo;
 import java.util.Date;
 import java.util.UUID;
 
@@ -14,29 +15,50 @@ import java.util.UUID;
  * @author Rene_
  */
 public class Note {
- private UUID id;
- private Date date;
- private Date startTime;
- private Date endTime;
- private StringBuilder noteText;
 
-    public Note(UUID id, Date date, Date startTime, Date endTime) {
+    private UUID noteid;
+    private Date date;
+    private Date startTime;
+    private Date endTime;
+    private String noteText;
+    private UserInfo citizenInfo;
+    private String title;
+
+    public Note(UUID id, Date date, Date startTime, Date endTime, StringBuilder noteText, UserInfo citizenInfo, String title) {
         this.date = date;
-        this.id = id;
+        this.noteid = id;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.citizenInfo = citizenInfo;
+        this.title = title;
+        createNoteText(noteText);
+    }
+    
+    private void createNoteText(StringBuilder noteText){
+        FooterNote footerNote = new FooterNote(User.getCurrentUser().getUserInfo());
+        HeaderNote headerNote = new HeaderNote(citizenInfo, title);
+        StringBuilder sb = new StringBuilder();
+        sb.append(headerNote);
+        sb.append(noteText);
+        sb.append(footerNote);
+        this.noteText = sb.toString();
+        System.out.println(sb);
     }
 
     public UUID getId() {
-        return id;
+        return noteid;
     }
 
     public void setId(UUID id) {
-        this.id = id;
+        this.noteid = id;
     }
 
     public Date getDate() {
         return date;
+    }
+
+    public UserInfo getCitizenInfo() {
+        return citizenInfo;
     }
 
     public Date getStartDate() {
@@ -55,14 +77,14 @@ public class Note {
         this.endTime = endDate;
     }
 
-    public StringBuilder getNoteText() {
+    public String getNoteText() {
         return noteText;
     }
 
-    public void setNoteText(StringBuilder noteText) {
+    public void setNoteText(String noteText) {
         this.noteText = noteText;
     }
     
- 
- 
+    
+
 }
