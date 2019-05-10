@@ -16,11 +16,14 @@
    <children>
       <BorderPane fx:id="borderPane" VBox.vgrow="ALWAYS">
          <left>
-            <VBox BorderPane.alignment="CENTER">
+            <VBox spacing="5.0" BorderPane.alignment="CENTER">
                <children>
                   <ListView fx:id="showListView" VBox.vgrow="ALWAYS" />
                   <Button fx:id="newNoteButton" mnemonicParsing="false" onAction="#newNoteButtonEvent" text="Ny note" VBox.vgrow="ALWAYS" />
                </children>
+               <BorderPane.margin>
+                  <Insets top="5.0" />
+               </BorderPane.margin>
             </VBox>
          </left>
          <top>
@@ -48,12 +51,18 @@
                      </VBox.margin>
                   </HBox>
                </children>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" />
+               </BorderPane.margin>
             </VBox>
          </top>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
       </BorderPane>
       <HBox alignment="BOTTOM_LEFT" maxHeight="40.0" VBox.vgrow="ALWAYS">
          <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" />
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </VBox.margin>
          <children>
             <Label fx:id="leftStatus" text="Left status" />
@@ -63,4 +72,7 @@
          </children>
       </HBox>
    </children>
+   <padding>
+      <Insets bottom="5.0" left="10.0" top="5.0" />
+   </padding>
 </VBox>

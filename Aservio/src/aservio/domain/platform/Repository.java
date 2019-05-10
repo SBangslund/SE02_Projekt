@@ -63,9 +63,9 @@ public class Repository {
         addNoteToUser(note, User.getCurrentUser().getId());
         return interFace.addUserNote(
                 note.getId(),
-                note.getDate(),
-                note.getStartDate().toString(),
-                note.getEndDate().toString(),
+                note.getDate().getTime(),
+                note.getStartDate(),
+                note.getEndDate(),
                 note.getNoteText()
         );
     }

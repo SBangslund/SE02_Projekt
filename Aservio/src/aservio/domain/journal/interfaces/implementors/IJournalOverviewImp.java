@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aservio.domain.journal.interfaces.contracts;
+package aservio.domain.journal.interfaces.implementors;
 
 import aservio.domain.journal.Note;
 import aservio.domain.journal.NoteList;
 import aservio.domain.platform.Repository;
 import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.journal.interfaces.contracts.IJournalOverview;
+import java.util.List;
 
 /**
  *
@@ -32,6 +33,11 @@ public class IJournalOverviewImp implements IJournalOverview {
     @Override
     public void addNote(Note note) {
         repository.addUserNote(note);
+    }
+
+    @Override
+    public List<UserInfo> getUsersFromInstitution(int institutionid) {
+        return repository.getUsersFromInstitution(institutionid);
     }
 
 }

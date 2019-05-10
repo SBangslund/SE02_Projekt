@@ -5,7 +5,7 @@ package aservio.domain.platform;
 
 import aservio.data.IRepositoryImp;
 import aservio.domain.DomainInterfaceManager;
-import aservio.domain.journal.interfaces.contracts.IJournalOverviewImp;
+import aservio.domain.journal.interfaces.implementors.IJournalOverviewImp;
 import aservio.domain.management.interfaces.implementors.IOverviewImp;
 import aservio.domain.platform.interfaces.implementors.ILoginWithDBImp;
 import aservio.domain.platform.interfaces.implementors.ILoginWithFileImp;

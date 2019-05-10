@@ -36,9 +36,9 @@ public class DocumentRetriever {
         return execStat;
     }
 
-    public boolean addNote(UUID noteid, Date noteDate, String startTime, String endTime, String noteText) {
+    public boolean addNote(UUID noteid, Long noteDate, String startTime, String endTime, String noteText) {
         try {
-            createStatement().executeQuery("SELECT addNotes('" + noteid.toString() + "', '" + noteDate.getTime() + "', '" + startTime + "', " + endTime + "', " + noteText + "')");
+            createStatement().executeQuery("SELECT addNotes('" + noteText + "', " + noteDate + ", '" + startTime + "', '" + endTime + "', '" + noteid.toString() + "')");
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);

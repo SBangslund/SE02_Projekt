@@ -126,7 +126,7 @@ public class IRepositoryImp implements IRepository {
     }
 
     @Override
-    public boolean addUserNote(UUID noteid, Date noteDate, String startTime, String endTime, String noteText) {
+    public boolean addUserNote(UUID noteid, Long noteDate, String startTime, String endTime, String noteText) {
         return documentRetriever.addNote(noteid, noteDate, startTime, endTime, noteText);
     }
 

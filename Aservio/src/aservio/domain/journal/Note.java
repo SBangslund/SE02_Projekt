@@ -18,13 +18,13 @@ public class Note {
 
     private UUID noteid;
     private Date date;
-    private Date startTime;
-    private Date endTime;
+    private String startTime;
+    private String endTime;
     private String noteText;
     private UserInfo citizenInfo;
     private String title;
 
-    public Note(UUID id, Date date, Date startTime, Date endTime, StringBuilder noteText, UserInfo citizenInfo, String title) {
+    public Note(UUID id, Date date, String startTime, String endTime, String noteText, UserInfo citizenInfo, String title) {
         this.date = date;
         this.noteid = id;
         this.startTime = startTime;
@@ -34,7 +34,7 @@ public class Note {
         createNoteText(noteText);
     }
     
-    private void createNoteText(StringBuilder noteText){
+    private void createNoteText(String noteText){
         FooterNote footerNote = new FooterNote(User.getCurrentUser().getUserInfo());
         HeaderNote headerNote = new HeaderNote(citizenInfo, title);
         StringBuilder sb = new StringBuilder();
@@ -61,19 +61,19 @@ public class Note {
         return citizenInfo;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startTime;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startTime = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endTime;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endTime = endDate;
     }
 
