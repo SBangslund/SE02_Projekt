@@ -13,20 +13,19 @@ import java.util.UUID;
 public class ISideViewImp implements ISideView {
 
     private final Repository repository;
-    
+
     public ISideViewImp(Repository repository) {
         this.repository = repository;
     }
 
     @Override
-    public boolean addActivity(Activity activity) {
-        return repository.addActivity(activity);
+    public boolean addActivity(Activity activity, UUID userid) {
+        return repository.addActivity(activity, userid);
     }
 
     @Override
     public boolean deleteActivity(UUID activityid) {
-        
         return repository.deleteActivity(activityid);
     }
-    
+
 }

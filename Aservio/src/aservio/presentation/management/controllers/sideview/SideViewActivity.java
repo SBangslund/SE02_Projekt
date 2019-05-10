@@ -135,10 +135,11 @@ public class SideViewActivity extends SideView implements Initializable {
         LocalDateTime enddt = startdt.plusHours(2);
         Date startdate = Date.from(startdt.atZone(ZoneId.systemDefault()).toInstant());
         Date enddate = Date.from(enddt.atZone(ZoneId.systemDefault()).toInstant());
-        Activity activity1 = new Activity(ActivityType.WALK, startdate, enddate, UUID.randomUUID());
-        System.out.println(startdate);
-        System.out.println(enddate);
-        interFace.addActivity(activity1);
+        Activity activity1 = new Activity(ActivityType.WALK, startdate, enddate, UUID.randomUUID()); //QQ id: UUID.fromString("dc1e324b-cca4-499d-871f-8ff9076f214c"
+//        System.out.println(startdate);
+//        System.out.println(enddate);
+        interFace.addActivity(activity1, User.getCurrentUser().getId());
+
     }
 
     @FXML

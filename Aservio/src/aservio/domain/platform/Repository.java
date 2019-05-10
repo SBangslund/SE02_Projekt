@@ -10,15 +10,13 @@ import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
 
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class Repository {
 
-    private IRepository interFace = DomainInterfaceManager.getIDataPipe();
+    private IRepository interFace = DomainInterfaceManager.getIRepository();
 
     public String verifyUser(String username, String password) {
         return interFace.verifyUser(username, password);
@@ -112,6 +110,28 @@ public class Repository {
         return activityList;
     }
 
+    public boolean deleteActivity(UUID activityid) {
+        return interFace.deleteActivity(activityid);
+    }
+
+    /**
+     * Creates an activity, and adds users to it. If successful returns true.
+     * @param activity
+     * @param userid
+     * @return 
+     */
+    public boolean addActivity(Activity activity, UUID userid) {
+        return interFace.addActivity(
+                        activity.getActivityType().getName(),
+                        activity.getActivityType().getName(),
+                        activity.getStartDate(),
+                        activity.getEndDate(),
+                        activity.getId()) 
+                &&
+                interFace.addUserToActivity(activity.getId(), userid)
+                ;
+    }
+
     public Activity getActivity(UUID activityid) {
         String[] userActivity = interFace.getActivity(activityid);
         Activity activity = null;
@@ -157,14 +177,5 @@ public class Repository {
             name = institutionString[0];
         }
         return name;
-    }
-
-    public boolean deleteActivity(UUID activityid) {
-        return interFace.deleteActivity(activityid);
-    }
-
-    public boolean addActivity(Activity activity) {
-        //String name, String type, String starttime, String endtime, UUID activityid
-        return interFace.addActivity(activity.getActivityType().getName(), activity.getActivityType().getName(), activity.getStartDate(), activity.getEndDate(), activity.getId());
     }
 }

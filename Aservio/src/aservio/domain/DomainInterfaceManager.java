@@ -9,7 +9,7 @@ public class DomainInterfaceManager {
         this.iRepository = implementation;
     }
 
-    public static IRepository getIDataPipe(){
+    public static IRepository getIRepository(){
         return iRepository;
     }
 }

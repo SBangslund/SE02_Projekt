@@ -1,14 +1,10 @@
 package aservio.presentation.management.controllers.overview;
 
-import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
-import aservio.domain.management.activities.ActivityType;
+import aservio.domain.platform.user.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
-
 import java.io.IOException;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class OverviewManager {
 
@@ -50,8 +46,11 @@ public class OverviewManager {
     }
 
     private void updateActivities() {
-        ActivityList list = new ActivityList();
-        list.add(new Activity(ActivityType.TENNIS, new Date()));
+        ActivityList list = currentOverview.getInterFace().getActivities(User.getCurrentUser().getId());
+        //selected user
+        //last user
+        
+        /*list.add(new Activity(ActivityType.TENNIS, new Date()));
         list.add(new Activity(ActivityType.EAT, new Date()));
         list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 3, 4, 8, 20).getTime()));
         list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 3, 5, 8, 20).getTime()));
@@ -64,7 +63,7 @@ public class OverviewManager {
             activity.setDescription("Der skal løbes så svedet drypper og fødderne bløder!");
             list.add(activity);
         }
-        list.add(new Activity(ActivityType.TENNIS, new Date()));
+        list.add(new Activity(ActivityType.TENNIS, new Date()));*/
         currentOverview.showActivities(list);
     }
 
