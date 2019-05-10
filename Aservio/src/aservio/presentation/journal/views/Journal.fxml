@@ -18,6 +18,7 @@
          <left>
             <VBox spacing="5.0" BorderPane.alignment="CENTER">
                <children>
+                  <Label text="Note oversigt:" underline="true" />
                   <ListView fx:id="showListView" VBox.vgrow="ALWAYS" />
                   <Button fx:id="newNoteButton" mnemonicParsing="false" onAction="#newNoteButtonEvent" text="Ny note" VBox.vgrow="ALWAYS" />
                </children>
