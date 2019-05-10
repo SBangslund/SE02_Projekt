@@ -52,9 +52,14 @@ public class ActivityRetriever {
     public String[] getUserActivities(UUID userid) {
         try {
             ResultSet result = createStatement().executeQuery("SELECT get_activity_from_user('" + userid.toString() + "')");
-            String[] resultArr = new String[result.getFetchSize()];
-            System.out.println(resultArr.length);
-            System.out.println(result.getFetchSize());
+            int in = 0;
+            while(result.next()){
+                in++;
+            }
+            //System.out.println("in:  " + in);
+            ResultSet resultLate = createStatement().executeQuery("SELECT  get_activity_from_user('" + userid.toString() + "')");
+            String[] resultArr = new String[in];
+
             int index = 0;
             while (result.next()) {
                 resultArr[index] = result.getString(index + 1);
@@ -80,8 +85,6 @@ public class ActivityRetriever {
     }
 
     public boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid) {
-
-        
         try {
             createStatement().executeQuery("SELECT add_activity('" + name + "', '" + type + "', " + starttime.getTime() + ", " + endtime.getTime() + ", '" + activityid.toString() + "')");
             return true;

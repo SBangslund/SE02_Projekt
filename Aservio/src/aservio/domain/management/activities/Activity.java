@@ -22,6 +22,7 @@ public class Activity {
         this.startDate = startDate;
         this.endDate = endDate;
         this.activityType = activityType;
+        this.id = id;
     }
 
     public void setDescription(String description) {
