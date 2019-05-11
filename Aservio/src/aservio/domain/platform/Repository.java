@@ -11,6 +11,7 @@ import aservio.domain.platform.user.UserInfo;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -100,11 +101,14 @@ public class Repository {
 
     public ActivityList getUserActivities(UUID userId) {
         String[] userActivityStrings = interFace.getUserActivities(userId);
+        System.out.println("repository, getuseractivities: "  + userActivityStrings);
         ActivityList activityList = new ActivityList();
         if (userActivityStrings != null) {
             for (int i = 0; i < userActivityStrings.length; i++) {
+                System.out.println("repository, getuseractivities: "  + userActivityStrings[i]);
                 Activity activity = getActivity(UUID.fromString(userActivityStrings[i]));
                 activityList.add(activity);
+                System.out.println("repository, getuseractivities: " + activity);
             }
         }
         return activityList;
@@ -121,9 +125,10 @@ public class Repository {
      * @return 
      */
     public boolean addActivity(Activity activity, UUID userid) {
+
         return interFace.addActivity(
                         activity.getActivityType().getName(),
-                        activity.getActivityType().getName(),
+                        activity.getActivityType().toString(),
                         activity.getStartDate(),
                         activity.getEndDate(),
                         activity.getId()) 
@@ -134,17 +139,20 @@ public class Repository {
 
     public Activity getActivity(UUID activityid) {
         String[] userActivity = interFace.getActivity(activityid);
+        System.out.println("repositorv, getactivity: " + Arrays.toString(userActivity));
         Activity activity = null;
         if (userActivity != null) {
             //String name = userActivity[0];
             String type = userActivity[1];
-            Long startTime = Long.parseLong(userActivity[3]);
-            Long endTime = Long.parseLong(userActivity[4]);
+            Long startTime = Long.parseLong(userActivity[2]);
+            Long endTime = Long.parseLong(userActivity[3]);
+
 
             Date startDate = new Date(startTime);
             Date endDate = new Date(endTime);
 
             activity = new Activity(ActivityType.valueOf(type), startDate, endDate, activityid);
+            System.out.println("repository, getactivity: " + activity);
         }
         return activity;
     }

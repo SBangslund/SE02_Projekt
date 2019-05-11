@@ -5,10 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,15 +29,20 @@ public class ActivityRetriever {
 
     public String[] getActivity(UUID activityid) {
         try {
-            ResultSet result = createStatement().executeQuery("SELECT get_activity('" + activityid.toString() + "')");
-            String[] resultArr = new String[6];
-            System.out.println(result.getFetchSize());
+
+
+            ResultSet result = createStatement().executeQuery("SELECT * from  get_activity('" + activityid+ "')");
+            String[] resultArr = new String[5];
             int index = 0;
             while (result.next()) {
-                resultArr[index] = result.getString(index + 1);
-                index++;
+                resultArr[0] = result.getString(1);
+                resultArr[1] = result.getString(2);
+                resultArr[2] = String.valueOf(result.getString(3));
+                resultArr[3] = String.valueOf(result.getString(4));
+                resultArr[4] = result.getString(5);
             }
-            if (resultArr.length > 1) {
+            if (resultArr.length >= 1) {
+                System.out.println("activityretriever, getuseractivities: " + Arrays.toString(resultArr));
                 return resultArr;
             }
         } catch (SQLException ex) {
@@ -50,6 +52,7 @@ public class ActivityRetriever {
     }
 
     public String[] getUserActivities(UUID userid) {
+        System.out.println("getuseractivities/activityretriever, userid: " + userid.toString());
         try {
             ResultSet result = createStatement().executeQuery("SELECT get_activity_from_user('" + userid.toString() + "')");
             int in = 0;
@@ -61,11 +64,12 @@ public class ActivityRetriever {
             String[] resultArr = new String[in];
 
             int index = 0;
-            while (result.next()) {
-                resultArr[index] = result.getString(index + 1);
+            while (resultLate.next()) {
+                resultArr[index] = resultLate.getString(1);
                 index++;
             }
             if (resultArr.length > 1) {
+                System.out.println("activityretriever, getuseractivities: " + Arrays.toString(resultArr));
                 return resultArr;
             }
         } catch (SQLException ex) {
