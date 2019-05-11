@@ -17,8 +17,9 @@ public class IRepositoryImp implements IRepository {
         this.setupConnection();
         userRetriever = new UserRetriever(connection);
         activityRetriever = new ActivityRetriever(connection);
-        System.out.println(this.verifyUser("q", "q"));
-        System.out.println(this.verifyUser("test", "test"));
+        System.out.println("supposed to be true: " + this.verifyUser("q", "q"));
+        System.out.println("supposed to be false, wrong username: "  + this.verifyUser("test", "test"));
+        System.out.println("supposed to be false, wrong password: "  + this.verifyUser("q", "s"));
     }
 
     @Override

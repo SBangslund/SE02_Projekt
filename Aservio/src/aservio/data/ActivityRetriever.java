@@ -29,8 +29,6 @@ public class ActivityRetriever {
 
     public String[] getActivity(UUID activityid) {
         try {
-
-
             ResultSet result = createStatement().executeQuery("SELECT * from  get_activity('" + activityid+ "')");
             String[] resultArr = new String[5];
             int index = 0;
@@ -52,7 +50,6 @@ public class ActivityRetriever {
     }
 
     public String[] getUserActivities(UUID userid) {
-        System.out.println("getuseractivities/activityretriever, userid: " + userid.toString());
         try {
             ResultSet result = createStatement().executeQuery("SELECT get_activity_from_user('" + userid.toString() + "')");
             int in = 0;
@@ -69,7 +66,6 @@ public class ActivityRetriever {
                 index++;
             }
             if (resultArr.length > 1) {
-                System.out.println("activityretriever, getuseractivities: " + Arrays.toString(resultArr));
                 return resultArr;
             }
         } catch (SQLException ex) {

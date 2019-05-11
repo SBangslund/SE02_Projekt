@@ -46,7 +46,6 @@ public class OverviewManager {
     }
 
     private void updateActivities() {
-        System.out.println("overviewmanager, currentuser: " + User.getCurrentUser().getId());
         ActivityList list = currentOverview.getInterFace().getActivities(User.getCurrentUser().getId());
 
         //selected user
