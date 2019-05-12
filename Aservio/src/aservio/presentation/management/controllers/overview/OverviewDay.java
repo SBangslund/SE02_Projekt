@@ -190,10 +190,12 @@ public class OverviewDay extends Overview implements Initializable {
                 new AnimationTimer() {
                     @Override
                     public void handle(long now) {
+
+
                         if (colorWidth.get() >= 0) {
                             eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px" + colorWidth + "px, " + color + " 99%, white);");
                             colorWidth.decrementAndGet();
-                        } else{
+                        } else if(colorWidth.get() < 0){
                             this.stop();
                         }
                     }
@@ -207,7 +209,7 @@ public class OverviewDay extends Overview implements Initializable {
                 new AnimationTimer() {
                     @Override
                     public void handle(long now) {
-                        if (colorWidth.get() < 10) {
+                        if (colorWidth.get() <= 10) {
                             eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px " + colorWidth + "px, " + color + " 99%, white);");
                             colorWidth.addAndGet(1);
                         } else {

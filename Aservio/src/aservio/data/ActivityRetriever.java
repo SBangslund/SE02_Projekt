@@ -33,14 +33,11 @@ public class ActivityRetriever {
             String[] resultArr = new String[5];
             int index = 0;
             while (result.next()) {
-                resultArr[0] = result.getString(1);
-                resultArr[1] = result.getString(2);
-                resultArr[2] = String.valueOf(result.getString(3));
-                resultArr[3] = String.valueOf(result.getString(4));
-                resultArr[4] = result.getString(5);
+                for (int i = 0; i < resultArr.length -1; i++) {
+                    resultArr[i] = result.getString(i+1);
+                }
             }
             if (resultArr.length >= 1) {
-                System.out.println("activityretriever, getuseractivities: " + Arrays.toString(resultArr));
                 return resultArr;
             }
         } catch (SQLException ex) {

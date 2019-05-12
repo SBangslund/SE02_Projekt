@@ -104,7 +104,6 @@ public class Repository {
         ActivityList activityList = new ActivityList();
         if (userActivityStrings != null) {
             for (int i = 0; i < userActivityStrings.length; i++) {
-                System.out.println("repository, getuseractivities: "  + userActivityStrings[i]);
                 Activity activity = getActivity(UUID.fromString(userActivityStrings[i]));
                 activityList.add(activity);
             }
