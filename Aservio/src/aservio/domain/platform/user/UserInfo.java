@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.domain.platform.user;
 
 import java.io.Serializable;
@@ -10,10 +5,6 @@ import java.util.UUID;
 
 import javafx.scene.image.Image;
 
-/**
- *
- * @author victo
- */
 public class UserInfo implements Serializable{
     private UUID id;
     private Address address;

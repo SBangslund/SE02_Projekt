@@ -15,13 +15,14 @@ public class Activity {
 
     public Activity(ActivityType activityType, Date startDate) {
         this(activityType, startDate, new Date(), UUID.randomUUID());
-        setEndDate(setStandartEndDate(startDate));
+        setEndDate(setStandardEndDate(startDate));
     }
 
     public Activity(ActivityType activityType, Date startDate, Date endDate, UUID id) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.activityType = activityType;
+        this.id = id;
     }
 
     public void setDescription(String description) {
@@ -29,7 +30,7 @@ public class Activity {
     }
 
     //Create a date an hour from the specified date
-    public Date setStandartEndDate(Date date) {
+    public Date setStandardEndDate(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(startDate);
         cal.add(Calendar.HOUR_OF_DAY, 3);

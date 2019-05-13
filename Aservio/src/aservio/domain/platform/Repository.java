@@ -10,17 +10,20 @@ import aservio.domain.platform.interfaces.contracts.IRepository;
 import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
+import aservio.domain.platform.user.roles.Admin;
+import aservio.domain.platform.user.roles.Caretaker;
+import aservio.domain.platform.user.roles.Citizen;
+import aservio.domain.platform.user.roles.Role;
 
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 public class Repository {
 
-    private final IRepository interFace = DomainInterfaceManager.getIDataPipe();
+    private final IRepository interFace = DomainInterfaceManager.getIRepository();
 
     public String verifyUser(String username, String password) {
         return interFace.verifyUser(username, password);
@@ -95,13 +98,39 @@ public class Repository {
 
     public User getUser(String username, String password) {
         UUID userID = UUID.fromString(interFace.getUser(username, password));
-        User user = new User(username, password, userID, null /*User role not implemented*/, getUserInfo(userID));
+        User user = new User(username, password, userID, getUserRole(userID), getUserInfo(userID));
         System.err.println("OBS: Role not implemented in repository/getUser");
         return user;
     }
 
-    public List<UserInfo> getUsersFromInstitution(int institutionid) {
-        String[] usersString = interFace.getUsersFromInsitution(institutionid);
+    public Role getUserRole(UUID userid){
+        Role role = null;
+
+        String roleString = interFace.getUserRole(userid.toString());
+        switch(roleString){
+            case "Caretaker":
+                return new Caretaker();
+                //break;
+            case "Citizen":
+                return new Citizen();
+                //break;
+            case "SysAdmin":
+                return new Admin();
+                //break;
+            default:
+                return null;
+        }
+    }
+    public List<UserInfo> getCitizensFromCaretaker(UUID caretakerID){
+        String[] citizens = interFace.getCitizensFromCaretaker(caretakerID.toString());
+        List<UserInfo> citizenList = new ArrayList<>();
+        for (String s: citizens ) {
+            citizenList.add(getUserInfo(UUID.fromString(s)));
+        }
+        return citizenList;
+    }
+    public List<UserInfo> getUsersFromInstitution(int institutionID) {
+        String[] usersString = interFace.getUsersFromInsitution(institutionID);
         List<UserInfo> users = null;
         if (usersString != null) {
             users = new ArrayList<>();
@@ -130,32 +159,41 @@ public class Repository {
         return activityList;
     }
 
+    public boolean deleteActivity(UUID activityid) {
+        return interFace.deleteActivity(activityid);
+    }
+
+    /**
+     * Creates an activity, and adds users to it. If successful returns true.
+     * @param activity
+     * @param userid
+     * @return 
+     */
+    public boolean addActivity(Activity activity, UUID userid) {
+
+        return interFace.addActivity(
+                        activity.getActivityType().getName(),
+                        activity.getActivityType().toString(),
+                        activity.getStartDate(),
+                        activity.getEndDate(),
+                        activity.getId()) 
+                &&
+                interFace.addUserToActivity(activity.getId(), userid)
+                ;
+    }
+
     public Activity getActivity(UUID activityid) {
         String[] userActivity = interFace.getActivity(activityid);
         Activity activity = null;
         if (userActivity != null) {
-            String name = userActivity[0],
-                    type = userActivity[1],
-                    startTime = userActivity[3],
-                    endTime = userActivity[4];
-            java.sql.Date date = Date.valueOf(userActivity[2]);
+            //String name = userActivity[0];
+            String type = userActivity[1];
+            Long startTime = Long.parseLong(userActivity[2]);
+            Long endTime = Long.parseLong(userActivity[3]);
 
-            //startTime -> java.util.Date
-            java.util.Date startDate = null;
-            try {
-                startDate = new SimpleDateFormat("hh:mm").parse(startTime);
-            } catch (ParseException e) {
-                System.err.println("[DATA_ERROR](DatePipe.getActivity()):ID=" + activityid + ": startDate has a wrong format.");
-            }
-            //endTime -> java.util.Date
-            java.util.Date endDate = null;
-            try {
-                endDate = new SimpleDateFormat("hh:mm").parse(endTime);
-            } catch (ParseException e) {
-                System.err.println("[DATA_ERROR](DatePipe.getActivity()):ID=" + activityid + ": endDate has a wrong format.");
-            }
-            //date -> java.util.Date
-            java.util.Date currentDate = new java.util.Date(date.getTime());
+
+            java.util.Date startDate = new java.util.Date(startTime);
+            java.util.Date endDate = new java.util.Date(endTime);
 
             activity = new Activity(ActivityType.valueOf(type), startDate, endDate, activityid);
         }

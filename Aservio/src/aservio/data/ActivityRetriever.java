@@ -4,8 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,23 +15,27 @@ public class ActivityRetriever {
         this.connection = connection;
     }
 
-    public String[] getActivity(UUID activityid) {
+    private Statement createStatement() {
         Statement execStat = null;
         try {
-            execStat = connection.createStatement();
+            execStat = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         } catch (SQLException ex) {
             Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return execStat;
+    }
+
+    public String[] getActivity(UUID activityid) {
         try {
-            ResultSet result = execStat.executeQuery("SELECT get_activity('" + activityid.toString() + "')");
-            String[] resultArr = new String[6];
-            System.out.println(result.getFetchSize());
+            ResultSet result = createStatement().executeQuery("SELECT * from  get_activity('" + activityid+ "')");
+            String[] resultArr = new String[5];
             int index = 0;
             while (result.next()) {
-                resultArr[index] = result.getString(index + 1);
-                index++;
+                for (int i = 0; i < resultArr.length -1; i++) {
+                    resultArr[i] = result.getString(i+1);
+                }
             }
-            if(resultArr.length > 1) {
+            if (resultArr.length >= 1) {
                 return resultArr;
             }
         } catch (SQLException ex) {
@@ -42,23 +45,22 @@ public class ActivityRetriever {
     }
 
     public String[] getUserActivities(UUID userid) {
-        Statement execStat = null;
         try {
-            execStat = connection.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            ResultSet result = execStat.executeQuery("SELECT get_activity_from_user('" + userid.toString() + "')");
-            String[] resultArr = new String[result.getFetchSize()];
-            System.out.println(resultArr.length);
-            System.out.println(result.getFetchSize());
+            ResultSet result = createStatement().executeQuery("SELECT get_activity_from_user('" + userid.toString() + "')");
+            int in = 0;
+            while(result.next()){
+                in++;
+            }
+            //System.out.println("in:  " + in);
+            ResultSet resultLate = createStatement().executeQuery("SELECT  get_activity_from_user('" + userid.toString() + "')");
+            String[] resultArr = new String[in];
+
             int index = 0;
-            while (result.next()) {
-                resultArr[index] = result.getString(index + 1);
+            while (resultLate.next()) {
+                resultArr[index] = resultLate.getString(1);
                 index++;
             }
-            if(resultArr.length > 1) {
+            if (resultArr.length > 1) {
                 return resultArr;
             }
         } catch (SQLException ex) {
@@ -67,32 +69,30 @@ public class ActivityRetriever {
         return null;
     }
 
-    public boolean addActivity(String name, String type, Date date, String starttime, String endtime, UUID activityid) {
-            Statement execStat = null;
-            try {
-                execStat = connection.createStatement();
-            } catch (SQLException ex) {
-                Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                execStat.executeQuery("SELECT add_activity('" + name + "', '" + type + "', '" + date.getTime() + "', " + starttime + ", '" + endtime + "', '" + activityid.toString() + "')");
-                return true;
-            } catch (SQLException ex) {
-                Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            return false;
-    }
-
     public boolean addUserToActivity(UUID activityid, UUID userid) {
-        Statement execStat = null;
         try {
-            execStat = connection.createStatement();
+            createStatement().executeQuery("SELECT add_user_to_activity('" + activityid.toString() + "', '" + userid.toString() + "')");
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
+    }
+
+    public boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid) {
         try {
-            execStat.executeQuery("SELECT add_user_to_activity('" + activityid.toString() + "', '" + userid.toString() + "')");
+            createStatement().executeQuery("SELECT add_activity('" + name + "', '" + type + "', " + starttime.getTime() + ", " + endtime.getTime() + ", '" + activityid.toString() + "')");
             return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public boolean deleteActivity(UUID activityid) {
+        try {
+            ResultSet result = createStatement().executeQuery("SELECT deleteActivity('" + activityid + "')");
+            return result.wasNull();
         } catch (SQLException ex) {
             Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }

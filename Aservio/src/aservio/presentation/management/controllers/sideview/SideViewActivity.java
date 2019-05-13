@@ -16,9 +16,15 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 public class SideViewActivity extends SideView implements Initializable {
 
@@ -79,10 +85,10 @@ public class SideViewActivity extends SideView implements Initializable {
 //        button.setGraphic(modifyImage);
 //        button.getStylesheets().add(style);
 //    }
-
     public void showActivity(Activity activity) {
-        if(activityBox.getChildren().size() > 2)
+        if (activityBox.getChildren().size() > 2) {
             activityBox.getChildren().remove(2);
+        }
 
         selectedActivity = activity;
         activityName.setText(activity.getActivityType().getName());
@@ -100,7 +106,7 @@ public class SideViewActivity extends SideView implements Initializable {
         SimpleDateFormat timeEndFormat = new SimpleDateFormat("HH:mm:ss");
         String timeEndString = timeEndFormat.format(activity.getEndDate());
         timeEndText.setText(timeEndString);
-        
+
     }
 
     private Pane createActivityLabel(ActivityType activityType) {
@@ -124,6 +130,16 @@ public class SideViewActivity extends SideView implements Initializable {
 
     @FXML
     public void handleAdd(ActionEvent actionEvent) {
+
+        LocalDateTime startdt = LocalDateTime.now();
+        LocalDateTime enddt = startdt.plusHours(2);
+        Date startdate = Date.from(startdt.atZone(ZoneId.systemDefault()).toInstant());
+        Date enddate = Date.from(enddt.atZone(ZoneId.systemDefault()).toInstant());
+        Activity activity1 = new Activity(ActivityType.WALK, startdate, enddate, UUID.randomUUID()); //QQ id: UUID.fromString("dc1e324b-cca4-499d-871f-8ff9076f214c"
+//        System.out.println(startdate);
+//        System.out.println(enddate);
+        interFace.addActivity(activity1, User.getCurrentUser().getId());
+
     }
 
     @FXML
@@ -132,5 +148,13 @@ public class SideViewActivity extends SideView implements Initializable {
 
     @FXML
     public void handleRemove(ActionEvent actionEvent) {
+        //delete selected activity this view (overview)
+        activityName.setText(selectedActivity.getActivityType().getName() + " (Deleted)");
+        //delete selected activity db (repository)
+        if (interFace.deleteActivity(selectedActivity.getId())) {
+            System.out.println("Deleted activity from db");
+        } else {
+            System.out.println("Activity was not deleted from db");
+        }
     }
 }

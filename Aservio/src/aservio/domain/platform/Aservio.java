@@ -7,8 +7,8 @@ import aservio.data.IRepositoryImp;
 import aservio.domain.DomainInterfaceManager;
 import aservio.domain.journal.interfaces.implementors.IJournalOverviewImp;
 import aservio.domain.management.interfaces.implementors.IOverviewImp;
+import aservio.domain.management.interfaces.implementors.ISideViewImp;
 import aservio.domain.platform.interfaces.implementors.ILoginWithDBImp;
-import aservio.domain.platform.interfaces.implementors.ILoginWithFileImp;
 import aservio.domain.platform.interfaces.implementors.IProfileImp;
 import aservio.presentation.PresentationInterfaceManager;
 import javafx.application.Application;
@@ -44,6 +44,7 @@ public class Aservio extends Application {
         presentation.setIOverview(new IOverviewImp(repository));
         presentation.setILogin(new ILoginWithDBImp(repository));
         presentation.setIProfile(new IProfileImp(repository));
+        presentation.setISideView(new ISideViewImp(repository));
         presentation.setiJournalOverview(new IJournalOverviewImp(repository));
 
 

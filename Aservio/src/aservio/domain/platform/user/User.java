@@ -3,7 +3,6 @@ package aservio.domain.platform.user;
 import aservio.domain.journal.NoteList;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.platform.user.roles.Role;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

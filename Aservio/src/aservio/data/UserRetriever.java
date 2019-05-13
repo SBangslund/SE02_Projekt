@@ -1,11 +1,9 @@
 package aservio.data;
 
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -82,7 +80,7 @@ public class UserRetriever {
         return null;
     }
 
-    public String[] getUsers(UUID activityid) {
+    public String[] getUsersFromActivity(UUID activityid) {
         try {
             ResultSet result = createStatement().executeQuery("SELECT * FROM getusersfromActivity('" + activityid.toString() + "')");
             String[] resultArr = new String[7];
@@ -98,7 +96,7 @@ public class UserRetriever {
         return null;
     }
 
-    public String[] getUsers(int institutionid) {
+    public String[] getUsersFromInstitution(int institutionid) {
         try {
             ResultSet result = createStatement().executeQuery("SELECT getusersfrominstitution('" + institutionid +"')");
             String[] resultArr = null;
@@ -148,6 +146,38 @@ public class UserRetriever {
             return resultArr;
         } catch (SQLException ex) {
             Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public String getUserRole(String userid) {
+        try {
+            ResultSet result = createStatement().executeQuery("SELECT role FROM userinfo WHERE userinfo.userid = '" + userid + "'");
+            result.next();
+            return result.getString(1);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String[] getCitizensFromCaretaker(String caretakerID) {
+        try {
+            ResultSet result = createStatement().executeQuery("SELECT citizen_id from caretaker_has_citizen where caretaker_has_citizen.caretaker_id = '" + caretakerID + "'");
+            String[] resultArr = null;
+            if(result.last()) {
+                int size = result.getRow();
+                resultArr = new String[size];
+                result.first();
+                for (int i = 0; i < size; i++) {
+                    resultArr[i] = result.getString(1);
+                    result.next();
+                }
+            }
+            return resultArr;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
