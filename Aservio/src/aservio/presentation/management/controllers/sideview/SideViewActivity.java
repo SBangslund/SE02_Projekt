@@ -139,11 +139,13 @@ public class SideViewActivity extends SideView implements Initializable {
 //        System.out.println(startdate);
 //        System.out.println(enddate);
         interFace.addActivity(activity1, User.getCurrentUser().getId());
-
+        updateView();
     }
 
     @FXML
     public void handleModify(ActionEvent actionEvent) {
+
+        updateView();
     }
 
     @FXML
@@ -156,5 +158,10 @@ public class SideViewActivity extends SideView implements Initializable {
         } else {
             System.out.println("Activity was not deleted from db");
         }
+        updateView();
+    }
+
+    private void updateView() {
+        
     }
 }
