@@ -2,8 +2,10 @@ package aservio.presentation.management.controllers.overview;
 
 import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
+import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.management.interfaces.Pageable;
 import aservio.domain.platform.Aservio;
+import aservio.presentation.platform.controllers.Profile;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -16,6 +18,8 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class OverviewMonth extends Overview implements Initializable, Pageable {
+
+    private transient Vector listeners;
 
     @FXML
     private AnchorPane anchor;
@@ -53,6 +57,11 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
     }
 
     @Override
+    protected void handleSelectedUsersChanged(List<UserInfo> userInfoList) {
+        //TODO needs implementing
+    }
+
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         for (int i = 0; i < 6; i++) {       // For every row...
             for (int j = 0; j < 7; j++) {   // For every column
@@ -64,6 +73,10 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
         }
         gridPaneDays.getChildren().forEach(e -> e.getStyleClass().add("day_title"));    // Link CSS
         populateDays(currentMonth);                                                     // Fill in the days correctly.
+
+        //Profile.eventManager.addEventHandler(Profile.SELECTED_USERS_CHANGED, e -> {
+        //    Do the stuff
+        //});
     }
 
     /**

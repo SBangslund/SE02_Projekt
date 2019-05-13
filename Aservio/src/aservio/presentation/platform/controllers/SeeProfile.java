@@ -12,6 +12,8 @@ import javafx.scene.image.ImageView;
 
 public class SeeProfile implements Initializable {
 
+    private static SeeProfile instance;
+
     @FXML
     private ImageView imagePerson;
     @FXML
@@ -37,6 +39,7 @@ public class SeeProfile implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         showUser();
+        instance = this;
     }
 
     public void showUser() {
@@ -58,5 +61,9 @@ public class SeeProfile implements Initializable {
             labelMail.setText(info.getMail());
             labelInstitution.setText(Integer.toString(info.getInstitution()));
         }
+    }
+
+    public static SeeProfile getInstance() {
+        return instance;
     }
 }
