@@ -38,9 +38,9 @@ public class Note {
         FooterNote footerNote = new FooterNote(User.getCurrentUser().getUserInfo());
         HeaderNote headerNote = new HeaderNote(citizenInfo, title);
         StringBuilder sb = new StringBuilder();
-        sb.append(headerNote);
-        sb.append(noteText);
-        sb.append(footerNote);
+        sb.append(headerNote + "+");
+        sb.append(noteText + "+");
+        sb.append(footerNote + "+");
         this.noteText = sb.toString();
         System.out.println(sb);
     }

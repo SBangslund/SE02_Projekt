@@ -1,5 +1,6 @@
 package aservio.domain.platform.user;
 
+import aservio.domain.journal.NoteList;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.platform.user.roles.Role;
 
@@ -19,6 +20,7 @@ public class User implements Serializable {
     private static User currentUser;
     private ActivityList activityList = new ActivityList();
     private UserInfo userInfo;
+    private NoteList noteList = new NoteList();
 
     /**
      * upon creation of a user, the username, password and role is constructed.
@@ -51,6 +53,10 @@ public class User implements Serializable {
 
     public ActivityList getActivityList() {
         return activityList;
+    }
+
+    public NoteList getNoteList() {
+        return noteList;
     }
 
     /**

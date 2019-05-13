@@ -27,4 +27,11 @@ public class NoteList {
     public List<Note> getNotes() {
         return this.noteList;
     }
+    
+    public String toString(){
+        return noteList.toString();
+    }
+    
+    
+    
 }

@@ -45,9 +45,9 @@ public class DocumentRetriever {
         }
         return false;
     }
-    
-    public boolean addNoteToUser(UUID userid, UUID noteid){
-         try {
+
+    public boolean addNoteToUser(UUID userid, UUID noteid) {
+        try {
             createStatement().executeQuery("SELECT addNoteToUser('" + userid.toString() + "', '" + noteid.toString() + "')");
             return true;
         } catch (SQLException ex) {
@@ -55,4 +55,47 @@ public class DocumentRetriever {
         }
         return false;
     }
+
+    public String[] getNotesFromUser(UUID userid) {
+        try {
+            ResultSet result = createStatement().executeQuery("SELECT get_notes_from_user('" + userid.toString() + "')");
+            int countNotes = 0;
+            while (result.next()) {
+                countNotes++;
+            }
+            ResultSet resultLate = createStatement().executeQuery("SELECT get_notes_from_user('" + userid.toString() + "')");
+            String[] resultArr = new String[countNotes];
+
+            int index = 0;
+            while (resultLate.next()) {
+                resultArr[index] = resultLate.getString(4);
+                index++;
+            }
+            if (resultArr.length > 1) {
+                return resultArr;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DocumentRetriever.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+        public String[] getNote(UUID noteid) {
+        try {
+            ResultSet result = createStatement().executeQuery("SELECT * FROM get_note('" + noteid.toString() + "')");
+            String[] resultArr = null;
+            if (result.next()) {
+                resultArr = new String[5];
+                for (int i = 0; i < 5; i++) {
+                    resultArr[i] = result.getString(i + 1);
+                }
+            }
+            return resultArr;
+        } catch (SQLException ex) {
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
 }

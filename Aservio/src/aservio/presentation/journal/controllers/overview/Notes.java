@@ -67,6 +67,6 @@ public class Notes extends JournalOverview implements Initializable {
     }
     
     public void createNote(){
-    
+        
     }
 }

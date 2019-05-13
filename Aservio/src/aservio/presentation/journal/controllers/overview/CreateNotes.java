@@ -6,6 +6,7 @@
 package aservio.presentation.journal.controllers.overview;
 
 import aservio.domain.journal.Note;
+import aservio.domain.journal.NoteList;
 import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.journal.controllers.Journal;
 import com.jfoenix.controls.JFXTimePicker;
@@ -65,8 +66,6 @@ public class CreateNotes extends JournalOverview implements Initializable {
         String endTime = endTimePicker.getValue().toString();
         Note note = new Note(UUID.randomUUID(), new Date(), startTime, endTime, noteTextArea.getText(), citizenInfo, titleField.getText());
         interFace.addNote(note);
-        
-        
     }
 
     

@@ -70,10 +70,10 @@ public class Repository {
         );
     }
 
-    public boolean addNoteToUser(Note note, UUID userid){
+    public boolean addNoteToUser(Note note, UUID userid) {
         return interFace.addNoteToUser(userid, note.getId());
     }
-    
+
     public UserInfo getUserInfo(UUID userId) {
         String[] userInfoStrings = interFace.getUserInfo(userId);
         UserInfo userInfo = null;
@@ -193,7 +193,31 @@ public class Repository {
     }
 
     public NoteList getNoteList(UUID userID) {
-        return null;
+        String[] userNotesStrings = interFace.getNotesFromUser(userID);
+        NoteList noteList = null;
+        if (userNotesStrings != null) {
+            noteList = new NoteList();
+            for (int i = 0; i < userNotesStrings.length; i++) {
+                Note note = getNote(UUID.fromString(userNotesStrings[i]), getUserInfo(userID));
+                noteList.add(note);
+
+            }
+        }
+        return noteList;
+    }
+
+    private Note getNote(UUID noteid, UserInfo citizenInfo) {
+        String[] userNotes = interFace.getNote(noteid);
+        Note note = null;
+        if (userNotes != null) {
+            String noteText = userNotes[0];
+            Date date = Date.valueOf(userNotes[1]);
+            String startTime = userNotes[2];
+            String endTime = userNotes[3];
+            note = new Note(noteid, date, startTime, endTime, noteText, citizenInfo, "test" + date.toString());
+
+        }
+        return note;
     }
 
 }

@@ -122,7 +122,7 @@ public class IRepositoryImp implements IRepository {
 
     @Override
     public String[] getNotesFromUser(UUID userid) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return documentRetriever.getNotesFromUser(userid);
     }
 
     @Override
@@ -132,7 +132,7 @@ public class IRepositoryImp implements IRepository {
 
     @Override
     public String[] getNote(UUID noteid) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return documentRetriever.getNote(noteid);
     }
 
     @Override

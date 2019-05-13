@@ -24,11 +24,7 @@ public class IJournalOverviewImp implements IJournalOverview {
         this.repository = repository;
     }
 
-    @Override
-    public NoteList getNoteList(UserInfo userInfo) {
-//        return repository.getNotes()
-        return null;
-    }
+
 
     @Override
     public void addNote(Note note) {
@@ -38,6 +34,11 @@ public class IJournalOverviewImp implements IJournalOverview {
     @Override
     public List<UserInfo> getUsersFromInstitution(int institutionid) {
         return repository.getUsersFromInstitution(institutionid);
+    }
+
+    @Override
+    public NoteList getNoteList(UserInfo userInfo) {
+        return repository.getNoteList(userInfo.getId());
     }
 
 }
