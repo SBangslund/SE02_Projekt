@@ -19,4 +19,8 @@ public interface IRepository {
     boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid);
     boolean addUserToActivity(UUID activityid, UUID userid);
     boolean deleteActivity(UUID activityid);
+
+    String getUserRole(String userid);
+
+    String[] getCitizensFromCaretaker(String caretakerID);
 }

@@ -29,12 +29,12 @@ public class IRepositoryImp implements IRepository {
 
     @Override
     public String[] getUsersFromActivity(UUID activityid) {
-        return userRetriever.getUsers(activityid);
+        return userRetriever.getUsersFromActivity(activityid);
     }
 
     @Override
     public String[] getUsersFromInsitution(int institution) {
-        return userRetriever.getUsers(institution);
+        return userRetriever.getUsersFromInstitution(institution);
     }
 
     @Override
@@ -65,6 +65,16 @@ public class IRepositoryImp implements IRepository {
     @Override
     public boolean deleteActivity(UUID activityid) {
         return activityRetriever.deleteActivity(activityid);
+    }
+
+    @Override
+    public String getUserRole(String userid) {
+        return userRetriever.getUserRole(userid);
+    }
+
+    @Override
+    public String[] getCitizensFromCaretaker(String caretakerID) {
+        return userRetriever.getCitizensFromCaretaker(caretakerID);
     }
 
     @Override

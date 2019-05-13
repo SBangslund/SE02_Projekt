@@ -8,9 +8,14 @@ import aservio.domain.platform.interfaces.contracts.IRepository;
 import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
+import aservio.domain.platform.user.roles.Admin;
+import aservio.domain.platform.user.roles.Caretaker;
+import aservio.domain.platform.user.roles.Citizen;
+import aservio.domain.platform.user.roles.Role;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -75,13 +80,39 @@ public class Repository {
 
     public User getUser(String username, String password) {
         UUID userID = UUID.fromString(interFace.getUser(username, password));
-        User user = new User(username, password, userID, null /*User role not implemented*/, getUserInfo(userID));
+        User user = new User(username, password, userID, getUserRole(userID), getUserInfo(userID));
         System.err.println("OBS: Role not implemented in repository/getUser");
         return user;
     }
 
-    public List<UserInfo> getUsersFromInstitution(int institutionid) {
-        String[] usersString = interFace.getUsersFromInsitution(institutionid);
+    public Role getUserRole(UUID userid){
+        Role role = null;
+
+        String roleString = interFace.getUserRole(userid.toString());
+        switch(roleString){
+            case "Caretaker":
+                return new Caretaker();
+                //break;
+            case "Citizen":
+                return new Citizen();
+                //break;
+            case "SysAdmin":
+                return new Admin();
+                //break;
+            default:
+                return null;
+        }
+    }
+    public List<UserInfo> getCitizensFromCaretaker(UUID caretakerID){
+        String[] citizens = interFace.getCitizensFromCaretaker(caretakerID.toString());
+        List<UserInfo> citizenList = new ArrayList<>();
+        for (String s: citizens ) {
+            citizenList.add(getUserInfo(UUID.fromString(s)));
+        }
+        return citizenList;
+    }
+    public List<UserInfo> getUsersFromInstitution(int institutionID) {
+        String[] usersString = interFace.getUsersFromInsitution(institutionID);
         List<UserInfo> users = null;
         if (usersString != null) {
             users = new ArrayList<>();
