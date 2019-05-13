@@ -5,7 +5,9 @@
  */
 package aservio.presentation.journal.controllers.overview;
 
+import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.journal.controllers.Journal;
+import aservio.presentation.journal.interfaces.contracts.IJournalOverview;
 import javafx.scene.Parent;
 import javafx.fxml.Initializable;
 
@@ -16,7 +18,7 @@ import javafx.fxml.Initializable;
 public abstract class JournalOverview implements Initializable {
 
     private Parent view;
-
+    protected IJournalOverview interFace = PresentationInterfaceManager.getiJournalOverview();
 
     public void show() {
         Journal.getInstance().setCenterView(view);

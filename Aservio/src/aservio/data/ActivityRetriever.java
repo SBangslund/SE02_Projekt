@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class ActivityRetriever {
 
-    Connection connection;
+    private final Connection connection;
     public ActivityRetriever(Connection connection){
         this.connection = connection;
     }

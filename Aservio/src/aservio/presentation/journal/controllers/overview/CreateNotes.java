@@ -5,10 +5,16 @@
  */
 package aservio.presentation.journal.controllers.overview;
 
+import aservio.domain.journal.Note;
+import aservio.domain.journal.NoteList;
+import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.journal.controllers.Journal;
 import com.jfoenix.controls.JFXTimePicker;
 import java.net.URL;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -31,15 +38,13 @@ public class CreateNotes extends JournalOverview implements Initializable {
     @FXML
     private Button saveButton;
     @FXML
-    private Label titelLabel;
-    @FXML
     private TextArea noteTextArea;
-    @FXML
-    private Label locationLabel;
     @FXML
     private JFXTimePicker startTimePicker;
     @FXML
     private JFXTimePicker endTimePicker;
+    @FXML
+    private TextField titleField;
 
     /**
      * Initializes the controller class.
@@ -56,6 +61,11 @@ public class CreateNotes extends JournalOverview implements Initializable {
 
     @FXML
     private void saveButtonEvent(ActionEvent event) {
+        UserInfo citizenInfo = interFace.getUsersFromInstitution(1).get(0);
+        String startTime = startTimePicker.getValue().toString();
+        String endTime = endTimePicker.getValue().toString();
+        Note note = new Note(UUID.randomUUID(), new Date(), startTime, endTime, noteTextArea.getText(), citizenInfo, titleField.getText());
+        interFace.addNote(note);
     }
 
     

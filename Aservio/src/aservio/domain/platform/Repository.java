@@ -1,6 +1,8 @@
 package aservio.domain.platform;
 
 import aservio.domain.DomainInterfaceManager;
+import aservio.domain.journal.Note;
+import aservio.domain.journal.NoteList;
 import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.management.activities.ActivityType;
@@ -18,7 +20,7 @@ import java.util.UUID;
 
 public class Repository {
 
-    private IRepository interFace = DomainInterfaceManager.getIDataPipe();
+    private final IRepository interFace = DomainInterfaceManager.getIDataPipe();
 
     public String verifyUser(String username, String password) {
         return interFace.verifyUser(username, password);
@@ -56,6 +58,22 @@ public class Repository {
         );
     }
 
+    public boolean addUserNote(Note note) {
+        addNoteToUser(note, note.getCitizenInfo().getId());
+        addNoteToUser(note, User.getCurrentUser().getId());
+        return interFace.addUserNote(
+                note.getId(),
+                note.getDate().getTime(),
+                note.getStartDate(),
+                note.getEndDate(),
+                note.getNoteText()
+        );
+    }
+
+    public boolean addNoteToUser(Note note, UUID userid) {
+        return interFace.addNoteToUser(userid, note.getId());
+    }
+
     public UserInfo getUserInfo(UUID userId) {
         String[] userInfoStrings = interFace.getUserInfo(userId);
         UserInfo userInfo = null;
@@ -76,7 +94,7 @@ public class Repository {
     }
 
     public User getUser(String username, String password) {
-        UUID userID = UUID.fromString(interFace.getUser(username, password));        
+        UUID userID = UUID.fromString(interFace.getUser(username, password));
         User user = new User(username, password, userID, null /*User role not implemented*/, getUserInfo(userID));
         System.err.println("OBS: Role not implemented in repository/getUser");
         return user;
@@ -85,9 +103,9 @@ public class Repository {
     public List<UserInfo> getUsersFromInstitution(int institutionid) {
         String[] usersString = interFace.getUsersFromInsitution(institutionid);
         List<UserInfo> users = null;
-        if(usersString != null) {
+        if (usersString != null) {
             users = new ArrayList<>();
-            for (String userid: usersString) {
+            for (String userid : usersString) {
                 users.add(getUserInfo(UUID.fromString(userid)));
             }
         }
@@ -173,4 +191,33 @@ public class Repository {
         }
         return name;
     }
+
+    public NoteList getNoteList(UUID userID) {
+        String[] userNotesStrings = interFace.getNotesFromUser(userID);
+        NoteList noteList = null;
+        if (userNotesStrings != null) {
+            noteList = new NoteList();
+            for (int i = 0; i < userNotesStrings.length; i++) {
+                Note note = getNote(UUID.fromString(userNotesStrings[i]), getUserInfo(userID));
+                noteList.add(note);
+
+            }
+        }
+        return noteList;
+    }
+
+    private Note getNote(UUID noteid, UserInfo citizenInfo) {
+        String[] userNotes = interFace.getNote(noteid);
+        Note note = null;
+        if (userNotes != null) {
+            String noteText = userNotes[0];
+            Date date = Date.valueOf(userNotes[1]);
+            String startTime = userNotes[2];
+            String endTime = userNotes[3];
+            note = new Note(noteid, date, startTime, endTime, noteText, citizenInfo, "test" + date.toString());
+
+        }
+        return note;
+    }
+
 }

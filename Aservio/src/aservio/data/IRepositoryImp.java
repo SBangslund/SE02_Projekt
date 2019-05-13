@@ -12,13 +12,43 @@ public class IRepositoryImp implements IRepository {
     private boolean succesfulConnection = false;
     private UserRetriever userRetriever;
     private ActivityRetriever activityRetriever;
+    private DocumentRetriever documentRetriever;
 
     public IRepositoryImp() {
         this.setupConnection();
         userRetriever = new UserRetriever(connection);
         activityRetriever = new ActivityRetriever(connection);
-        System.out.println(this.verifyUser("q", "q"));
-        System.out.println(this.verifyUser("test", "test"));
+        documentRetriever = new DocumentRetriever(connection);
+    }
+
+    public void setupConnection() {
+        System.out.println("-------- PostgreSQL "
+                + "JDBC Connection Testing ------------");
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Where is your PostgreSQL JDBC Driver? "
+                    + "Include in your library path!");
+            e.printStackTrace();
+            return;
+        }
+        System.out.println("PostgreSQL JDBC Driver Registered!");
+        connection = null;
+        try {
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://balarama.db.elephantsql.com:5432/kzpurfgw", "kzpurfgw",
+                    "ZyHDoKdmCOf-89xy6pPGSry97kpVWb1l");
+            succesfulConnection = true;
+        } catch (SQLException e) {
+            succesfulConnection = false;
+            e.printStackTrace();
+            return;
+        }
+        if (connection != null) {
+            System.out.println("Successfully connected to Database");
+        } else {
+            System.err.println("Database connection failed");
+        }
     }
 
     @Override
@@ -66,7 +96,7 @@ public class IRepositoryImp implements IRepository {
         return activityRetriever.addUserToActivity(activityid, userid);
     }
 
-    public String[] getUserAddress(UUID userid){
+    public String[] getUserAddress(UUID userid) {
         return userRetriever.getUserAddress(userid);
     }
 
@@ -90,33 +120,24 @@ public class IRepositoryImp implements IRepository {
         return userRetriever.verifyUser(username, password);
     }
 
-    public void setupConnection() {
-        System.out.println("-------- PostgreSQL "
-                + "JDBC Connection Testing ------------");
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Where is your PostgreSQL JDBC Driver? "
-                    + "Include in your library path!");
-            e.printStackTrace();
-            return;
-        }
-        System.out.println("PostgreSQL JDBC Driver Registered!");
-        connection = null;
-        try {
-            connection = DriverManager.getConnection(
-                    "jdbc:postgresql://balarama.db.elephantsql.com:5432/kzpurfgw", "kzpurfgw",
-                    "ZyHDoKdmCOf-89xy6pPGSry97kpVWb1l");
-            succesfulConnection = true;
-        } catch (SQLException e) {
-            succesfulConnection = false;
-            e.printStackTrace();
-            return;
-        }
-        if (connection != null) {
-            System.out.println("Successfully connected to Database");
-        } else {
-            System.err.println("Database connection failed");
-        }
+    @Override
+    public String[] getNotesFromUser(UUID userid) {
+        return documentRetriever.getNotesFromUser(userid);
     }
+
+    @Override
+    public boolean addUserNote(UUID noteid, Long noteDate, String startTime, String endTime, String noteText) {
+        return documentRetriever.addNote(noteid, noteDate, startTime, endTime, noteText);
+    }
+
+    @Override
+    public String[] getNote(UUID noteid) {
+        return documentRetriever.getNote(noteid);
+    }
+
+    @Override
+    public boolean addNoteToUser(UUID userid, UUID noteid) {
+        return documentRetriever.addNoteToUser(userid, noteid);
+    }
+
 }

@@ -5,10 +5,14 @@
  */
 package aservio.presentation.journal.controllers;
 
+import aservio.domain.journal.Note;
 import aservio.presentation.journal.controllers.overview.JournalOverviewManager;
+import aservio.presentation.journal.controllers.overview.Notes;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,9 +47,10 @@ public class Journal implements Initializable {
     @FXML
     private BorderPane borderPane;
     @FXML
-    private ListView<?> showListView;
+    private ListView<Note> showListView;
     @FXML
     private Button newNoteButton;
+    private ObservableList<Note> observableList;
 
     /**
      * Initializes the controller class.
@@ -57,17 +62,20 @@ public class Journal implements Initializable {
         journalOverviewManager = new JournalOverviewManager();
 
         journalOverviewManager.showNote();
+
+        observableList = FXCollections.observableArrayList();
+        showListView.setItems(observableList);
+
     }
 
     @FXML
     private void handleShowNote(ActionEvent event) {
-        
+
     }
 
     public void setCenterView(Node node) {
         borderPane.setCenter(node);
-        
-        
+
 //        List<Node> children = ((VBox) borderPane.getCenter()).getChildren();
 //        if (children.size() > 1) {
 //            children.remove(1);
@@ -109,6 +117,9 @@ public class Journal implements Initializable {
     private void viewMenuEvent(ActionEvent event) {
         journalOverviewManager.showDiagnosing();
     }
-    
 
+    public ObservableList<Note> getObservableList() {
+        return observableList;
+    }
+    
 }

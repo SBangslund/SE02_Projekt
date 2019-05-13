@@ -6,6 +6,10 @@ import java.util.UUID;
 public interface IRepository {
     String verifyUser(String username, String password);
     String getUser(String username, String password);
+    String[] getNotesFromUser(UUID userid);
+    String[] getNote(UUID noteid);
+    boolean addUserNote(UUID noteid, Long noteDate, String startTime, String endTime, String noteText);
+    boolean addNoteToUser(UUID userid, UUID noteid);
     String[] getUserActivities(UUID userid);
     String[] getUserInfo(UUID userid);
     String[] getUsersFromActivity(UUID activityid);

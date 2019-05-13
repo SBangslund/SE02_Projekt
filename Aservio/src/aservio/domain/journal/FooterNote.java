@@ -5,6 +5,8 @@
  */
 package aservio.domain.journal;
 
+import aservio.domain.platform.user.UserInfo;
+
 /**
  *
  * @author Rene_
@@ -13,12 +15,12 @@ public class FooterNote {
 
     private String personaleFirstName;
     private String personaleLastName;
-    private String residence;
+    private int residence;
 
-    public FooterNote(String personaleFirstName, String personaleLastName, String residence) {
-        this.personaleFirstName = personaleFirstName;
-        this.personaleLastName = personaleLastName;
-        this.residence = residence;
+    public FooterNote(UserInfo personaleInfo) {
+        this.personaleFirstName = personaleInfo.getFirstName();
+        this.personaleLastName = personaleInfo.getLastName();
+        this.residence = personaleInfo.getInstitution();
     }
 
     public String getPersonaleFirstName() {
@@ -37,12 +39,12 @@ public class FooterNote {
         this.personaleLastName = personaleLastName;
     }
 
-    public String getRecsidence() {
+    public int getResidence() {
         return residence;
     }
 
-    public void setRecsidence(String recsidence) {
-        this.residence = recsidence;
+    public void setResidence(int residence) {
+        this.residence = residence;
     }
 
     @Override
