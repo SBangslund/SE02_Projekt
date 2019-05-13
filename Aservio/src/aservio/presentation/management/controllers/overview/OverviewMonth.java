@@ -160,7 +160,7 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
         resetActivities();              // Reset all the activities currently present in the view.
         this.activities = activities;   // Store the given activities globally for later referencing.
         for (Activity activity : activities.getActivities()) {  // For every activity..
-            for (Date date : daysDates) {                       // For every date..
+            for (java.util.Date date : daysDates) {                       // For every date..
                 // Create a reference to the date of the Activity and the current iterable date.
                 LocalDate activityDate = activity.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 LocalDate currentDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

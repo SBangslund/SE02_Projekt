@@ -144,8 +144,8 @@ public class Repository {
             Long endTime = Long.parseLong(userActivity[3]);
 
 
-            Date startDate = new Date(startTime);
-            Date endDate = new Date(endTime);
+            java.util.Date startDate = new java.util.Date(startTime);
+            java.util.Date endDate = new java.util.Date(endTime);
 
             activity = new Activity(ActivityType.valueOf(type), startDate, endDate, activityid);
         }
