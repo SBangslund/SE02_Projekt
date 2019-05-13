@@ -6,8 +6,10 @@
 package aservio.presentation.journal.controllers;
 
 import aservio.domain.journal.Note;
+import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.journal.controllers.overview.JournalOverviewManager;
 import aservio.presentation.journal.controllers.overview.Notes;
+import aservio.presentation.platform.controllers.Profile;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -65,9 +67,17 @@ public class Journal implements Initializable {
 
         observableList = FXCollections.observableArrayList();
         showListView.setItems(observableList);
+        
+        Profile.eventManager.addEventHandler(Profile.SELECTED_USERS_CHANGED, event -> {
+               handleSelectedUsersChanged(event.getSelectedUsers());
+        });
 
     }
 
+    private void handleSelectedUsersChanged(List<UserInfo> selectedUsers) {
+        
+    }
+    
     @FXML
     private void handleShowNote(ActionEvent event) {
 
