@@ -2,14 +2,13 @@ package aservio.presentation.management.controllers.overview;
 
 import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
+import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.management.interfaces.Pageable;
 import aservio.presentation.management.interfaces.ShowableActivity;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -66,6 +65,12 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
     protected void initialize() {
 
     }
+
+    @Override
+    protected void handleSelectedUsersChanged(List<UserInfo> userInfoList) {
+        // TODO needs implementing
+    }
+
     // First currentday set. When 'next' has been pressed, the calendar get reset.
     // After currentDate + 7 been set and the acticities as well
     @Override

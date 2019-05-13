@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -15,7 +16,7 @@
 
 <AnchorPane fx:id="profileAnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.platform.controllers.Profile">
    <children>
-      <VBox fx:id="vbox" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <VBox fx:id="vbox" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <HBox fx:id="topLabel" alignment="CENTER">
                <children>
@@ -36,6 +37,7 @@
             </HBox>
             <Separator fx:id="seperator" VBox.vgrow="ALWAYS" />
             <AnchorPane fx:id="profileView" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="searchField" onKeyPressed="#handleSearchChanged" promptText="Søg..." />
             <ListView fx:id="userList" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="5.0" />
