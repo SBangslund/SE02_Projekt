@@ -3,6 +3,7 @@ package aservio.presentation.management.controllers.overview;
 
 import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
+import aservio.domain.platform.user.UserInfo;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -304,5 +305,10 @@ public class OverviewDay extends Overview implements Initializable {
             setBackgroundImage();
         });
 
+    }
+
+    @Override
+    protected void handleSelectedUsersChanged(List<UserInfo> userInfoList) {
+        // TODO needs implementing
     }
 }
