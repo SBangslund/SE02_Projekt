@@ -6,13 +6,18 @@
 package aservio.presentation.journal.controllers;
 
 import aservio.domain.journal.Note;
+import aservio.domain.journal.NoteList;
+import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
+import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.journal.controllers.overview.JournalOverviewManager;
 import aservio.presentation.journal.controllers.overview.Notes;
+import aservio.presentation.journal.interfaces.contracts.IJournal;
 import aservio.presentation.platform.controllers.Profile;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,6 +39,8 @@ import javafx.scene.layout.VBox;
  * @author victo
  */
 public class Journal implements Initializable {
+
+    private IJournal interFace = PresentationInterfaceManager.getIJournal();
 
     @FXML
     private MenuButton viewMenu;
@@ -67,17 +74,28 @@ public class Journal implements Initializable {
 
         observableList = FXCollections.observableArrayList();
         showListView.setItems(observableList);
-        
+
         Profile.eventManager.addEventHandler(Profile.SELECTED_USERS_CHANGED, event -> {
-               handleSelectedUsersChanged(event.getSelectedUsers());
+            handleSelectedUsersChanged(event.getSelectedUsers());
         });
 
     }
 
     private void handleSelectedUsersChanged(List<UserInfo> selectedUsers) {
-        
+        if (!selectedUsers.isEmpty()) {
+            NoteList noteList = interFace.getNoteList(selectedUsers.get(0));
+            showNoteList(noteList);
+        }
     }
-    
+
+    private void showNoteList(NoteList noteList) {
+        if (!noteList.getNotes().isEmpty()) {
+            showListView.getItems().clear();
+            List<Note> notes = noteList.getNotes();
+            showListView.getItems().addAll(notes);
+        }
+    }
+
     @FXML
     private void handleShowNote(ActionEvent event) {
 
@@ -131,5 +149,5 @@ public class Journal implements Initializable {
     public ObservableList<Note> getObservableList() {
         return observableList;
     }
-    
+
 }

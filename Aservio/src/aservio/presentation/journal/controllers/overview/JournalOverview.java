@@ -18,7 +18,7 @@ import javafx.fxml.Initializable;
 public abstract class JournalOverview implements Initializable {
 
     private Parent view;
-    protected IJournalOverview interFace = PresentationInterfaceManager.getiJournalOverview();
+    protected IJournalOverview interFace = PresentationInterfaceManager.getIJournalOverview();
 
     public void show() {
         Journal.getInstance().setCenterView(view);

@@ -68,7 +68,7 @@ public class DocumentRetriever {
 
             int index = 0;
             while (resultLate.next()) {
-                resultArr[index] = resultLate.getString(4);
+                resultArr[index] = resultLate.getString(1);
                 index++;
             }
             if (resultArr.length > 1) {
