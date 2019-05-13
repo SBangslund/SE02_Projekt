@@ -198,6 +198,7 @@ public class Repository {
         if (userNotesStrings != null) {
             noteList = new NoteList();
             for (int i = 0; i < userNotesStrings.length; i++) {
+                System.out.println(userNotesStrings[i]);
                 Note note = getNote(UUID.fromString(userNotesStrings[i]), getUserInfo(userID));
                 if (note != null) {
                     noteList.add(note);
@@ -215,7 +216,7 @@ public class Repository {
             Date date = new Date(Long.valueOf(userNotes[1]));
             String startTime = userNotes[2];
             String endTime = userNotes[3];
-            note = new Note(noteid, date, startTime, endTime, noteText, citizenInfo, "test" + date.toString());
+            note = new Note(noteid, date, startTime, endTime, noteText, citizenInfo, "test");
 
         }
         return note;

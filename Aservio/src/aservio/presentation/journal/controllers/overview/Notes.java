@@ -46,7 +46,7 @@ public class Notes extends JournalOverview implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+   
     }
 
 
@@ -66,7 +66,7 @@ public class Notes extends JournalOverview implements Initializable {
         interFace.addNote(note);
     }
     
-    public void createNote(){
+    public void viewNote(){
         
     }
 }

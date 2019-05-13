@@ -14,11 +14,13 @@ import aservio.presentation.journal.controllers.overview.JournalOverviewManager;
 import aservio.presentation.journal.controllers.overview.Notes;
 import aservio.presentation.journal.interfaces.contracts.IJournal;
 import aservio.presentation.platform.controllers.Profile;
+import aservio.presentation.platform.controllers.SeeProfile;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,7 +31,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
@@ -79,6 +83,14 @@ public class Journal implements Initializable {
             handleSelectedUsersChanged(event.getSelectedUsers());
         });
 
+        showListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<Note>) c -> {
+            c.next();
+            if (c.getAddedSize() > 0) {
+                TextArea text = (TextArea) (((VBox) ((HBox) borderPane.getCenter()).getChildren().get(1)).getChildren().get(1));
+                text.setText(c.getAddedSubList().get(0).getNoteText());
+            }
+        });
+
     }
 
     private void handleSelectedUsersChanged(List<UserInfo> selectedUsers) {
@@ -89,16 +101,11 @@ public class Journal implements Initializable {
     }
 
     private void showNoteList(NoteList noteList) {
-        if (!noteList.getNotes().isEmpty()) {
+        if (noteList != null && !noteList.getNotes().isEmpty()) {
             showListView.getItems().clear();
             List<Note> notes = noteList.getNotes();
             showListView.getItems().addAll(notes);
         }
-    }
-
-    @FXML
-    private void handleShowNote(ActionEvent event) {
-
     }
 
     public void setCenterView(Node node) {

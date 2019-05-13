@@ -9,10 +9,14 @@ import aservio.domain.journal.Note;
 import aservio.domain.journal.NoteList;
 import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.journal.controllers.Journal;
+import aservio.presentation.platform.OverviewType;
+import aservio.presentation.platform.controllers.Profile;
 import com.jfoenix.controls.JFXTimePicker;
 import java.net.URL;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
 import javafx.event.ActionEvent;
@@ -51,8 +55,8 @@ public class CreateNotes extends JournalOverview implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        
+    }
 
     @FXML
     private void cancelButtonEvent(ActionEvent event) {
@@ -61,12 +65,14 @@ public class CreateNotes extends JournalOverview implements Initializable {
 
     @FXML
     private void saveButtonEvent(ActionEvent event) {
-        UserInfo citizenInfo = interFace.getUsersFromInstitution(1).get(0);
-        String startTime = startTimePicker.getValue().toString();
-        String endTime = endTimePicker.getValue().toString();
-        Note note = new Note(UUID.randomUUID(), new Date(), startTime, endTime, noteTextArea.getText(), citizenInfo, titleField.getText());
-        interFace.addNote(note);
+        if (!selectedUsers.isEmpty()) {
+            UserInfo citizenInfo = selectedUsers.get(0);
+            String startTime = startTimePicker.getValue().toString();
+            String endTime = endTimePicker.getValue().toString();
+            Note note = new Note(UUID.randomUUID(), new Date(), startTime, endTime, noteTextArea.getText(), citizenInfo, titleField.getText());
+            note.createNoteText(noteTextArea.getText());
+            interFace.addNote(note);
+        }            
+        Journal.getInstance().getJournalOverviewManager().showNote();
     }
-
-    
 }
