@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -28,7 +29,6 @@ import javafx.scene.control.TextArea;
  */
 public class Notes extends JournalOverview implements Initializable, PermissionLimited {
 
-    @FXML
     private Label titelLabel;
     @FXML
     private TextArea noteTextArea;
@@ -40,9 +40,10 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     private Label endTimeLabel;
     @FXML
     private Button modifyButton;
-    @FXML
     private Label footNoteLabel;
     private Note selectedNote;
+    @FXML
+    private VBox noteInformationVBox;
 
     /**
      * Initializes the controller class.
@@ -79,12 +80,14 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     protected void updateSelectedNote(Note note) {
 
         if (note != null) {
+            noteInformationVBox.setVisible(true);
             dateLabel.setText(note.getDate().toString());
             startTimeLabel.setText(note.getStartTime());
             endTimeLabel.setText(note.getEndTime());
             noteTextArea.setText(note.getNoteText());
         } else {
             noteTextArea.setText("");
+            noteInformationVBox.setVisible(false);
         }
     }
 

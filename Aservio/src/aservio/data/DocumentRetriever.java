@@ -25,7 +25,7 @@ public class DocumentRetriever {
     public DocumentRetriever(Connection connection) {
         this.connection = connection;
     }
-
+    
     private Statement createStatement() {
         Statement execStat = null;
         try {

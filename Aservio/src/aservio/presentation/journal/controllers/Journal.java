@@ -159,13 +159,12 @@ public class Journal implements Initializable, PermissionLimited {
     public ListView<Note> getShowListView() {
         return showListView;
     }
-    
-    
 
     @Override
     public void applyPermissionLimitations() {
         newNoteButton.setVisible(DEFAULT_PERMISSIONS.canCreateNote());
-        showNoteList(interFace.getNoteList(User.getCurrentUser().getUserInfo()));
+        if (!DEFAULT_PERMISSIONS.canSeeUserList()) {
+            showNoteList(interFace.getNoteList(User.getCurrentUser().getUserInfo()));
+        }
     }
-
 }

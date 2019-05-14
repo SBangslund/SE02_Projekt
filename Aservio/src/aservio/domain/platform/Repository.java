@@ -238,7 +238,6 @@ public class Repository {
         if (userNotesStrings != null) {
             noteList = new NoteList();
             for (int i = 0; i < userNotesStrings.length; i++) {
-                System.out.println(userNotesStrings[i]);
                 Note note = getNote(UUID.fromString(userNotesStrings[i]), getUserInfo(userID));
                 if (note != null) {
                     noteList.add(note);
