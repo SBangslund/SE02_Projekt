@@ -3,6 +3,7 @@ package aservio.presentation.platform.controllers;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.PresentationInterfaceManager;
+import aservio.presentation.platform.interfaces.PermissionLimited;
 import aservio.presentation.platform.interfaces.contracts.IProfile;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
@@ -23,7 +24,7 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Profile implements Initializable {
+public class Profile implements Initializable, PermissionLimited {
     private IProfile interFace = PresentationInterfaceManager.getIProfile();
 
     @FXML
@@ -56,6 +57,7 @@ public class Profile implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        applyPermissionLimitations();
         try {
             labelName.setText(User.getCurrentUser().getUserInfo().getFirstName() + " " + User.getCurrentUser().getUserInfo().getLastName());
             profileView.getChildren().add(FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/SeeProfile.fxml")));
@@ -140,6 +142,14 @@ public class Profile implements Initializable {
         vbox.getChildren().add(profileView);
         vbox.getChildren().add(searchField);
         vbox.getChildren().add(userList);
+
+        applyPermissionLimitations();
+    }
+
+    @Override
+    public void applyPermissionLimitations() {
+        userList.setVisible(DEFAULT_PERMISSIONS.canSeeUserList());
+        searchField.setVisible(DEFAULT_PERMISSIONS.canSeeUserList());
     }
 
     public class SelectedUsersChangedEvent extends Event {
@@ -147,8 +157,7 @@ public class Profile implements Initializable {
         private List<UserInfo> selectedUsersA;
 
         public SelectedUsersChangedEvent() {
-            super(SELECTED_USERS_CHANGED);
-            selectedUsersA = selectedUsers;
+            this(SELECTED_USERS_CHANGED, selectedUsers);
         }
 
         public SelectedUsersChangedEvent(EventType<? extends Event> eventType, List<UserInfo> selectedUsers) {
@@ -156,14 +165,8 @@ public class Profile implements Initializable {
             this.selectedUsersA = selectedUsers;
         }
 
-
         public List<UserInfo> getSelectedUsers() {
             return selectedUsersA;
         }
     }
-
-    public interface SelectedUsersChangedListener extends EventListener {
-        void selectedUsersChanged(SelectedUsersChangedEvent event);
-    }
-
 }

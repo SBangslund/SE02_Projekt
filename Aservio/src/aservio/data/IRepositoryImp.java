@@ -77,8 +77,8 @@ public class IRepositoryImp implements IRepository {
     }
 
     @Override
-    public boolean addUserInfo(String mail, String firstname, String lastname, int phone, String picture, UUID userid, int institutionid) {
-        return userRetriever.addUserInfo(mail, firstname, lastname, phone, picture, userid, institutionid);
+    public boolean addUserInfo(String mail, String firstname, String lastname, int phone, String picture, UUID userid, int institutionid, String role) {
+        return userRetriever.addUserInfo(mail, firstname, lastname, phone, picture, userid, institutionid, role);
     }
 
     @Override

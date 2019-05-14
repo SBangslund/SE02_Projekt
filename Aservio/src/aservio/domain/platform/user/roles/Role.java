@@ -8,7 +8,7 @@ public abstract class Role implements Serializable {
     protected Permissions defaultPermissions;
     
     /**
-     * @return Returns the default permissions of a role (FX citizen or relative)
+     * @return Returns the default DEFAULT_PERMISSIONS of a role (FX citizen or relative)
      */
     public Permissions getDefaultPermissions(){
         return defaultPermissions;
