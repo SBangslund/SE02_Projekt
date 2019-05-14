@@ -31,16 +31,16 @@ public class Note {
         this.endTime = endTime;
         this.citizenInfo = citizenInfo;
         this.title = title;
-        createNoteText(noteText);
+        this.noteText = noteText;
     }
     
-    private void createNoteText(String noteText){
+    public void createNoteText(String noteText){
         FooterNote footerNote = new FooterNote(User.getCurrentUser().getUserInfo());
         HeaderNote headerNote = new HeaderNote(citizenInfo, title);
         StringBuilder sb = new StringBuilder();
-        sb.append(headerNote + "+");
-        sb.append(noteText + "+");
-        sb.append(footerNote + "+");
+        sb.append(headerNote + "\nNotat:\n");
+        sb.append("- " +noteText + "\n");
+        sb.append(footerNote);
         this.noteText = sb.toString();
         System.out.println(sb);
     }
@@ -61,20 +61,20 @@ public class Note {
         return citizenInfo;
     }
 
-    public String getStartDate() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartDate(String startDate) {
-        this.startTime = startDate;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public String getEndDate() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndDate(String endDate) {
-        this.endTime = endDate;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public String getNoteText() {
@@ -83,6 +83,12 @@ public class Note {
 
     public void setNoteText(String noteText) {
         this.noteText = noteText;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%10s d.%10s", title, date);
+        
     }
     
     

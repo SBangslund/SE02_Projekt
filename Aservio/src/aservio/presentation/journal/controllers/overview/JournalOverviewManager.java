@@ -5,6 +5,7 @@
  */
 package aservio.presentation.journal.controllers.overview;
 
+import aservio.domain.journal.Note;
 import aservio.presentation.platform.OverviewType;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,10 @@ public class JournalOverviewManager {
         updateCurrentJournalOverview(OverviewType.DIAGNOSING.getURL());
     }
 
+    public void updateSelectedNote(Note note) {
+        currentJournalOverview.updateSelectedNote(note);
+    }
+    
     private void updateCurrentJournalOverview(String url) {
         FXMLLoader loader = new FXMLLoader();
         try {

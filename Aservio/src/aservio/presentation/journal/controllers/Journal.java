@@ -6,12 +6,18 @@
 package aservio.presentation.journal.controllers;
 
 import aservio.domain.journal.Note;
+import aservio.domain.journal.NoteList;
+import aservio.domain.platform.user.User;
+import aservio.domain.platform.user.UserInfo;
+import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.journal.controllers.overview.JournalOverviewManager;
-import aservio.presentation.journal.controllers.overview.Notes;
+import aservio.presentation.journal.interfaces.contracts.IJournal;
+import aservio.presentation.platform.controllers.Profile;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,8 +28,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Priority;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
@@ -32,6 +39,8 @@ import javafx.scene.layout.VBox;
  * @author victo
  */
 public class Journal implements Initializable {
+
+    private IJournal interFace = PresentationInterfaceManager.getIJournal();
 
     @FXML
     private MenuButton viewMenu;
@@ -51,6 +60,8 @@ public class Journal implements Initializable {
     @FXML
     private Button newNoteButton;
     private ObservableList<Note> observableList;
+    private TextArea text = new TextArea();
+    private Note selectedNote;
 
     /**
      * Initializes the controller class.
@@ -65,23 +76,41 @@ public class Journal implements Initializable {
 
         observableList = FXCollections.observableArrayList();
         showListView.setItems(observableList);
-
+        profileChangeEvent();
     }
 
-    @FXML
-    private void handleShowNote(ActionEvent event) {
+    private void profileChangeEvent() {
+        Profile.eventManager.addEventHandler(Profile.SELECTED_USERS_CHANGED, event -> {
+            handleSelectedUsersChanged(event.getSelectedUsers());
+        });
 
+        showListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<Note>) c -> {
+            c.next();
+            if (c.getAddedSize() > 0) {
+                journalOverviewManager.updateSelectedNote(c.getAddedSubList().get(0));
+            }
+        });
+    }
+
+    private void handleSelectedUsersChanged(List<UserInfo> selectedUsers) {
+        observableList.clear();
+        journalOverviewManager.updateSelectedNote(null);
+        if (!selectedUsers.isEmpty()) {
+            NoteList noteList = interFace.getNoteList(selectedUsers.get(0));
+            showNoteList(noteList);
+        }
+    }
+
+    private void showNoteList(NoteList noteList) {
+        if (noteList != null && !noteList.getNotes().isEmpty()) {
+            showListView.getItems().clear();
+            List<Note> notes = noteList.getNotes();
+            showListView.getItems().addAll(notes);
+        }
     }
 
     public void setCenterView(Node node) {
         borderPane.setCenter(node);
-
-//        List<Node> children = ((VBox) borderPane.getCenter()).getChildren();
-//        if (children.size() > 1) {
-//            children.remove(1);
-//        }
-//        VBox.setVgrow(node, Priority.ALWAYS);
-//        children.add(1, node);
     }
 
     public Node getCenterView() {
@@ -121,5 +150,10 @@ public class Journal implements Initializable {
     public ObservableList<Note> getObservableList() {
         return observableList;
     }
+
+    public Note getSelectedNote() {
+        return selectedNote;
+    }
+
     
 }

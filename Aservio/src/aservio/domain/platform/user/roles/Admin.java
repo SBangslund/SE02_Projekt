@@ -11,10 +11,13 @@ public class Admin extends Role {
     @Override
     protected void createDefaultPermissions() {
         Permissions permissions = new Permissions();
-        permissions.setRedigerPlanlægning(false);
-        permissions.setSePlanlægning(true);
-        permissions.setTest1(true);
-
+        permissions.setSeeUserList(true);
+        permissions.setCanEditActivities(true);
         super.defaultPermissions = permissions;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin";
     }
 }
