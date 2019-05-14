@@ -75,4 +75,9 @@ public class CreateNotes extends JournalOverview implements Initializable {
         }            
         Journal.getInstance().getJournalOverviewManager().showNote();
     }
+
+    @Override
+    protected void updateSelectedNote(Note note) {
+        // TODO WIP
+    }
 }

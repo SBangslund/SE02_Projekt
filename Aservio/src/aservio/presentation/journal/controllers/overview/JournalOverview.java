@@ -5,6 +5,7 @@
  */
 package aservio.presentation.journal.controllers.overview;
 
+import aservio.domain.journal.Note;
 import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.journal.controllers.Journal;
@@ -32,6 +33,8 @@ public abstract class JournalOverview implements Initializable {
             selectedUsers = event.getSelectedUsers();
         });
     }
+    
+    protected abstract void updateSelectedNote(Note note);
     
     public void show() {
         Journal.getInstance().setCenterView(view);

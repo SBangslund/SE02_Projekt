@@ -61,20 +61,20 @@ public class Note {
         return citizenInfo;
     }
 
-    public String getStartDate() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartDate(String startDate) {
-        this.startTime = startDate;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public String getEndDate() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndDate(String endDate) {
-        this.endTime = endDate;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public String getNoteText() {

@@ -64,8 +64,8 @@ public class Repository {
         return interFace.addUserNote(
                     note.getId(),
                     note.getDate().getTime(),
-                    note.getStartDate(),
-                    note.getEndDate(),
+                    note.getStartTime(),
+                    note.getEndTime(),
                     note.getNoteText()
         );
     }
