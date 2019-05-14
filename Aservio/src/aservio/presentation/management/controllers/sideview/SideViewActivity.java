@@ -77,7 +77,7 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        this.applyPermissionLimitations();
     }
 
     //could be implementend, in case we want icons as buttons, instead of text
