@@ -10,6 +10,7 @@ import aservio.domain.journal.HeaderNote;
 import aservio.domain.journal.Note;
 import aservio.domain.journal.NoteList;
 import aservio.presentation.journal.controllers.Journal;
+import aservio.presentation.platform.interfaces.PermissionLimited;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -25,7 +26,7 @@ import javafx.scene.control.TextArea;
  *
  * @author victo
  */
-public class Notes extends JournalOverview implements Initializable {
+public class Notes extends JournalOverview implements Initializable, PermissionLimited {
 
     @FXML
     private Label titelLabel;
@@ -48,7 +49,7 @@ public class Notes extends JournalOverview implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        applyPermissionLimitations();
     }
 
     public void setNoteTitle(HeaderNote title) {
@@ -85,6 +86,11 @@ public class Notes extends JournalOverview implements Initializable {
         } else {
             noteTextArea.setText("");
         }
+    }
+
+    @Override
+    public void applyPermissionLimitations() {
+        modifyButton.setVisible(DEFAULT_PERMISSIONS.canModifyNote());
     }
 
 }

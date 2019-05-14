@@ -13,6 +13,7 @@ import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.journal.controllers.overview.JournalOverviewManager;
 import aservio.presentation.journal.interfaces.contracts.IJournal;
 import aservio.presentation.platform.controllers.Profile;
+import aservio.presentation.platform.interfaces.PermissionLimited;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -30,15 +31,13 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
  *
  * @author victo
  */
-public class Journal implements Initializable {
+public class Journal implements Initializable, PermissionLimited {
 
     private IJournal interFace = PresentationInterfaceManager.getIJournal();
 
@@ -77,6 +76,7 @@ public class Journal implements Initializable {
         observableList = FXCollections.observableArrayList();
         showListView.setItems(observableList);
         profileChangeEvent();
+        applyPermissionLimitations();
     }
 
     private void profileChangeEvent() {
@@ -141,6 +141,7 @@ public class Journal implements Initializable {
     @FXML
     private void newNoteButtonEvent(ActionEvent event) {
         journalOverviewManager.showCreateNote();
+        showListView.setVisible(false);
     }
 
     private void viewMenuEvent(ActionEvent event) {
@@ -155,5 +156,16 @@ public class Journal implements Initializable {
         return selectedNote;
     }
 
+    public ListView<Note> getShowListView() {
+        return showListView;
+    }
     
+    
+
+    @Override
+    public void applyPermissionLimitations() {
+        newNoteButton.setVisible(DEFAULT_PERMISSIONS.canCreateNote());
+        showNoteList(interFace.getNoteList(User.getCurrentUser().getUserInfo()));
+    }
+
 }

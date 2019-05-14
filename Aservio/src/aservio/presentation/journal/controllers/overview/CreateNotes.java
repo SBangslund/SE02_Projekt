@@ -61,19 +61,23 @@ public class CreateNotes extends JournalOverview implements Initializable {
     @FXML
     private void cancelButtonEvent(ActionEvent event) {
         Journal.getInstance().getJournalOverviewManager().showNote();
+        Journal.getInstance().getShowListView().setVisible(true);
     }
 
     @FXML
     private void saveButtonEvent(ActionEvent event) {
-        if (!selectedUsers.isEmpty()) {
+        if (!selectedUsers.isEmpty() && startTimePicker.getValue() != null && endTimePicker.getValue() != null) {
             UserInfo citizenInfo = selectedUsers.get(0);
             String startTime = startTimePicker.getValue().toString();
             String endTime = endTimePicker.getValue().toString();
             Note note = new Note(UUID.randomUUID(), new Date(), startTime, endTime, noteTextArea.getText(), citizenInfo, titleField.getText());
             note.createNoteText(noteTextArea.getText());
             interFace.addNote(note);
+        } else{
+            Journal.getInstance().getJournalOverviewManager().showNote();
         }            
-        Journal.getInstance().getJournalOverviewManager().showNote();
+       
+        Journal.getInstance().getShowListView().setVisible(true);
     }
 
     @Override

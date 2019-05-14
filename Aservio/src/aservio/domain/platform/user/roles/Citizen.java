@@ -14,7 +14,8 @@ public class Citizen extends Role {
     protected void createDefaultPermissions() {
         Permissions permissions = new Permissions();
         permissions.setSeeUserList(false);
-
+        permissions.setSeeCreateNote(false);
+        permissions.setSeeModifyNote(false);
         super.defaultPermissions = permissions;
     }
 

@@ -12,7 +12,8 @@ public class Admin extends Role {
     protected void createDefaultPermissions() {
         Permissions permissions = new Permissions();
         permissions.setSeeUserList(true);
-
+        permissions.setSeeCreateNote(true);
+        permissions.setSeeModifyNote(true);
         super.defaultPermissions = permissions;
     }
 
