@@ -36,9 +36,9 @@ public class UserRetriever {
         return false;
     }
 
-    boolean addUserInfo(String mail, String firstname, String lastname, int phone, String picture, UUID userid, int institutionid) {
+    boolean addUserInfo(String mail, String firstname, String lastname, int phone, String picture, UUID userid, int institutionid, String role) {
         try {
-            createStatement().executeQuery("SELECT adduserinfo('" + mail + "', '" + firstname + "', '" + lastname + "', " + phone + ", '" + picture + "', '" + userid.toString() + "', '" + institutionid + "')");
+            createStatement().executeQuery("SELECT adduserinfo('" + mail + "', '" + firstname + "', '" + lastname + "', " + phone + ", '" + picture + "', '" + userid.toString() + "', '" + institutionid + "', '" + role + "')");
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);

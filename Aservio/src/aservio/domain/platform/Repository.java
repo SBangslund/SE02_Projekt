@@ -45,7 +45,8 @@ public class Repository {
                 userInfo.getMobileNumber(),
                 null,
                 userInfo.getId(),
-                userInfo.getInstitution()
+                userInfo.getInstitution(),
+                userInfo.getRole().toString()
         );
     }
 
@@ -87,9 +88,10 @@ public class Repository {
                     picture = "null";
             int phone = Integer.parseInt(userInfoStrings[3]);
             int institutionid = Integer.valueOf(userInfoStrings[6]);
+            Role role = getUserRole(userId);
             Address userAddress = getUserAddress(userId);
 
-            userInfo = new UserInfo(userAddress, null, phone, firstname, lastname, mail, institutionid, userId);
+            userInfo = new UserInfo(userAddress, null, phone, firstname, lastname, mail, role, institutionid, userId);
         } else {
             System.err.println("[DATA_ERROR](DatePipe.getUserInfo()): String[].length != 7.");
         }
@@ -98,37 +100,36 @@ public class Repository {
 
     public User getUser(String username, String password) {
         UUID userID = UUID.fromString(interFace.getUser(username, password));
-        User user = new User(username, password, userID, getUserRole(userID), getUserInfo(userID));
+        User user = new User(username, password, userID, getUserInfo(userID));
         System.err.println("OBS: Role not implemented in repository/getUser");
         return user;
     }
 
-    public Role getUserRole(UUID userid){
-        Role role = null;
-
+    public Role getUserRole(UUID userid) {
         String roleString = interFace.getUserRole(userid.toString());
-        switch(roleString){
+        switch (roleString) {
             case "Caretaker":
                 return new Caretaker();
-                //break;
             case "Citizen":
                 return new Citizen();
-                //break;
             case "SysAdmin":
                 return new Admin();
-                //break;
+            case "Relative":
+                return new Admin();
             default:
                 return null;
         }
     }
-    public List<UserInfo> getCitizensFromCaretaker(UUID caretakerID){
+
+    public List<UserInfo> getCitizensFromCaretaker(UUID caretakerID) {
         String[] citizens = interFace.getCitizensFromCaretaker(caretakerID.toString());
         List<UserInfo> citizenList = new ArrayList<>();
-        for (String s: citizens ) {
+        for (String s : citizens) {
             citizenList.add(getUserInfo(UUID.fromString(s)));
         }
         return citizenList;
     }
+
     public List<UserInfo> getUsersFromInstitution(int institutionID) {
         String[] usersString = interFace.getUsersFromInsitution(institutionID);
         List<UserInfo> users = null;
@@ -165,18 +166,19 @@ public class Repository {
 
     /**
      * Creates an activity, and adds users to it. If successful returns true.
+     *
      * @param activity
      * @param userid
-     * @return 
+     * @return
      */
     public boolean addActivity(Activity activity, UUID userid) {
 
         return interFace.addActivity(
-                        activity.getActivityType().getName(),
-                        activity.getActivityType().toString(),
-                        activity.getStartDate(),
-                        activity.getEndDate(),
-                        activity.getId()) 
+                activity.getActivityType().getName(),
+                activity.getActivityType().toString(),
+                activity.getStartDate(),
+                activity.getEndDate(),
+                activity.getId())
                 &&
                 interFace.addUserToActivity(activity.getId(), userid)
                 ;
