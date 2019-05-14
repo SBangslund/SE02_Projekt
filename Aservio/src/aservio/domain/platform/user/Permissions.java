@@ -7,6 +7,7 @@ public class Permissions implements Serializable {
     
     private boolean seeUserList;
     private boolean redigerPlanlægning;
+    private boolean canEditActivities;
 
     public boolean canSeeUserList() {
         return seeUserList;
@@ -16,5 +17,13 @@ public class Permissions implements Serializable {
     }
     public void setSeeUserList(boolean seeUserList) {
         this.seeUserList = seeUserList;
+    }
+
+    public boolean canEditActivities() {
+        return canEditActivities;
+    }
+
+    public void setCanEditActivities(boolean canEditActivities){
+        this.canEditActivities = canEditActivities;
     }
 }

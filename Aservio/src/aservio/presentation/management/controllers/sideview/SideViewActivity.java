@@ -5,11 +5,14 @@ import aservio.domain.management.activities.ActivityList;
 import aservio.domain.management.activities.ActivityType;
 import aservio.domain.platform.user.User;
 import java.io.IOException;
+
+import aservio.presentation.platform.interfaces.PermissionLimited;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -23,7 +26,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 
-public class SideViewActivity extends SideView implements Initializable {
+public class SideViewActivity extends SideView implements Initializable, PermissionLimited {
+    public ToolBar toolbarAddRemove;
     private Map<User, ActivityList> userActivities = new HashMap<>();
     public Button addButton;
     public Button modifyButton;
@@ -175,4 +179,8 @@ public class SideViewActivity extends SideView implements Initializable {
     }
 
 
+    @Override
+    public void applyPermissionLimitations() {
+        toolbarAddRemove.setVisible(DEFAULT_PERMISSIONS.canEditActivities());
+    }
 }
