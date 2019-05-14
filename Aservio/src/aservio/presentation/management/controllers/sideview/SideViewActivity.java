@@ -6,6 +6,7 @@ import aservio.domain.management.activities.ActivityType;
 import aservio.domain.platform.user.User;
 import java.io.IOException;
 
+import aservio.presentation.management.controllers.Management;
 import aservio.presentation.platform.interfaces.PermissionLimited;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -175,7 +176,7 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
     }
 
     private void updateView() {
-
+        Management.getInstance().getOverviewManager().updateCurrentView();
     }
 
 

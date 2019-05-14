@@ -18,11 +18,9 @@ public class Permissions implements Serializable {
     public void setSeeUserList(boolean seeUserList) {
         this.seeUserList = seeUserList;
     }
-
     public boolean canEditActivities() {
         return canEditActivities;
     }
-
     public void setCanEditActivities(boolean canEditActivities){
         this.canEditActivities = canEditActivities;
     }
