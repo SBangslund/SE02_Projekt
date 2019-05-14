@@ -31,9 +31,9 @@ public class Repository {
 
     public boolean addUser(User user) {
         return interFace.addUser(
-                user.getUsername(),
-                user.getPassword(),
-                user.getId()
+                    user.getUsername(),
+                    user.getPassword(),
+                    user.getId()
         );
     }
 
@@ -52,13 +52,13 @@ public class Repository {
 
     public boolean addUserAddress(Address address) {
         return interFace.addUserAddress(
-                address.getRoad(),
-                address.getCountry(),
-                address.getPostcode(),
-                address.getCity(),
-                address.getHouseNumber(),
-                address.getLevel(),
-                address.getUserId()
+                    address.getRoad(),
+                    address.getCountry(),
+                    address.getPostcode(),
+                    address.getCity(),
+                    address.getHouseNumber(),
+                    address.getLevel(),
+                    address.getUserId()
         );
     }
 
@@ -66,11 +66,11 @@ public class Repository {
         addNoteToUser(note, note.getCitizenInfo().getId());
         addNoteToUser(note, User.getCurrentUser().getId());
         return interFace.addUserNote(
-                note.getId(),
-                note.getDate().getTime(),
-                note.getStartDate(),
-                note.getEndDate(),
-                note.getNoteText()
+                    note.getId(),
+                    note.getDate().getTime(),
+                    note.getStartTime(),
+                    note.getEndTime(),
+                    note.getNoteText()
         );
     }
 
@@ -83,9 +83,9 @@ public class Repository {
         UserInfo userInfo = null;
         if (userInfoStrings != null && userInfoStrings.length == 7) {
             String mail = userInfoStrings[0],
-                    firstname = userInfoStrings[1],
-                    lastname = userInfoStrings[2],
-                    picture = "null";
+                        firstname = userInfoStrings[1],
+                        lastname = userInfoStrings[2],
+                        picture = "null";
             int phone = Integer.parseInt(userInfoStrings[3]);
             int institutionid = Integer.valueOf(userInfoStrings[6]);
             Role role = getUserRole(userId);
@@ -208,10 +208,10 @@ public class Repository {
         if (userAddress != null) {
             if (userAddress.length == 7) {
                 String roadname = userAddress[0],
-                        country = userAddress[1],
-                        city = userAddress[3],
-                        houseNumber = userAddress[4],
-                        level = userAddress[5];
+                            country = userAddress[1],
+                            city = userAddress[3],
+                            houseNumber = userAddress[4],
+                            level = userAddress[5];
                 int postcode = userAddress[2] != null ? Integer.parseInt(userAddress[2]) : 0;
                 address = new Address(roadname, country, postcode, city, houseNumber, level, userid);
             } else {
@@ -238,9 +238,11 @@ public class Repository {
         if (userNotesStrings != null) {
             noteList = new NoteList();
             for (int i = 0; i < userNotesStrings.length; i++) {
+                System.out.println(userNotesStrings[i]);
                 Note note = getNote(UUID.fromString(userNotesStrings[i]), getUserInfo(userID));
-                noteList.add(note);
-
+                if (note != null) {
+                    noteList.add(note);
+                }
             }
         }
         return noteList;
@@ -251,11 +253,10 @@ public class Repository {
         Note note = null;
         if (userNotes != null) {
             String noteText = userNotes[0];
-            Date date = Date.valueOf(userNotes[1]);
+            Date date = new Date(Long.valueOf(userNotes[1]));
             String startTime = userNotes[2];
             String endTime = userNotes[3];
-            note = new Note(noteid, date, startTime, endTime, noteText, citizenInfo, "test" + date.toString());
-
+            note = new Note(noteid, date, startTime, endTime, noteText, citizenInfo, "test");
         }
         return note;
     }

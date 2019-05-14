@@ -5,6 +5,7 @@
  */
 package aservio.presentation.journal.controllers.overview;
 
+import aservio.domain.journal.Note;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -24,5 +25,8 @@ public class Diagnosing extends JournalOverview implements Initializable {
         // TODO
     }    
 
-    
+    @Override
+    protected void updateSelectedNote(Note note) {
+        // TODO WIP
+    }    
 }

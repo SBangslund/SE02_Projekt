@@ -9,6 +9,7 @@ import aservio.domain.journal.FooterNote;
 import aservio.domain.journal.HeaderNote;
 import aservio.domain.journal.Note;
 import aservio.domain.journal.NoteList;
+import aservio.presentation.journal.controllers.Journal;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -40,6 +41,7 @@ public class Notes extends JournalOverview implements Initializable {
     private Button modifyButton;
     @FXML
     private Label footNoteLabel;
+    private Note selectedNote;
 
     /**
      * Initializes the controller class.
@@ -48,7 +50,6 @@ public class Notes extends JournalOverview implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
     }
-
 
     public void setNoteTitle(HeaderNote title) {
         titelLabel.setText(title.toString());
@@ -61,12 +62,29 @@ public class Notes extends JournalOverview implements Initializable {
 //        dateLabel
 //        
 //    }
-    
-    public void setNoteText(Note note){
+
+    public void setNoteText(Note note) {
         interFace.addNote(note);
     }
-    
-    public void createNote(){
-        
+
+    public void viewNote() {
     }
+
+    public Note getSelectedNote() {
+        return selectedNote;
+    }
+
+    @Override
+    protected void updateSelectedNote(Note note) {
+
+        if (note != null) {
+            dateLabel.setText(note.getDate().toString());
+            startTimeLabel.setText(note.getStartTime());
+            endTimeLabel.setText(note.getEndTime());
+            noteTextArea.setText(note.getNoteText());
+        } else {
+            noteTextArea.setText("");
+        }
+    }
+
 }
