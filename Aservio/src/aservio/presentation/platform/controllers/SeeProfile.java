@@ -2,18 +2,25 @@ package aservio.presentation.platform.controllers;
 
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 public class SeeProfile implements Initializable {
 
     private static SeeProfile instance;
 
+    @FXML
+    private AnchorPane anchor;
     @FXML
     private ImageView imagePerson;
     @FXML
@@ -65,5 +72,16 @@ public class SeeProfile implements Initializable {
 
     public static SeeProfile getInstance() {
         return instance;
+    }
+
+    @FXML
+    public void handleOnAddUser(ActionEvent actionEvent) {
+        AnchorPane profileView = ((AnchorPane)anchor.getParent());
+        profileView.getChildren().clear();
+        try {
+            profileView.getChildren().add(FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/AddProfile.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

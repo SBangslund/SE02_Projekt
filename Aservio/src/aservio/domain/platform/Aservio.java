@@ -9,6 +9,7 @@ import aservio.domain.journal.interfaces.implementors.IJournalImp;
 import aservio.domain.journal.interfaces.implementors.IJournalOverviewImp;
 import aservio.domain.management.interfaces.implementors.IOverviewImp;
 import aservio.domain.management.interfaces.implementors.ISideViewImp;
+import aservio.domain.platform.interfaces.implementors.IAddProfileImp;
 import aservio.domain.platform.interfaces.implementors.ILoginWithDBImp;
 import aservio.domain.platform.interfaces.implementors.IProfileImp;
 import aservio.presentation.PresentationInterfaceManager;
@@ -48,7 +49,7 @@ public class Aservio extends Application {
         presentation.setISideView(new ISideViewImp(repository));
         presentation.setiJournalOverview(new IJournalOverviewImp(repository));
         presentation.setiJournal(new IJournalImp(repository));
-
+        presentation.setiAddProfile(new IAddProfileImp(repository));
 
         //Parent root = FXMLLoader.load(getClass().getResource("../Management/views/FXMLManager.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/Login.fxml"));

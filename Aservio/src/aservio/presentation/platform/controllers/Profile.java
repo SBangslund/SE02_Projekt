@@ -1,5 +1,6 @@
 package aservio.presentation.platform.controllers;
 
+import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.PresentationInterfaceManager;
@@ -28,6 +29,8 @@ public class Profile implements Initializable, PermissionLimited {
     private IProfile interFace = PresentationInterfaceManager.getIProfile();
 
     @FXML
+    private Button buttonAddUser;
+    @FXML
     private TextField searchField;
     @FXML
     private VBox vbox;
@@ -51,6 +54,7 @@ public class Profile implements Initializable, PermissionLimited {
     private AnchorPane profileView;
 
     private List<UserInfo> selectedUsers = new ArrayList<>();
+    private ProfileViews currentView;
 
     public final static EventType<SelectedUsersChangedEvent> SELECTED_USERS_CHANGED = new EventType<>("SELECTED_USERS_CHANGED");
     public static AnchorPane eventManager;
@@ -58,12 +62,9 @@ public class Profile implements Initializable, PermissionLimited {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         applyPermissionLimitations();
-        try {
-            labelName.setText(User.getCurrentUser().getUserInfo().getFirstName() + " " + User.getCurrentUser().getUserInfo().getLastName());
-            profileView.getChildren().add(FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/SeeProfile.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        labelName.setText(User.getCurrentUser().getUserInfo().getFirstName() + " " + User.getCurrentUser().getUserInfo().getLastName());
+        setView(ProfileViews.SEE_PROFILE);
 
         showButton.setVisible(false);
 
@@ -82,6 +83,16 @@ public class Profile implements Initializable, PermissionLimited {
         eventManager = this.profileAnchorPane;
 
         showAllUsers();
+    }
+
+    private void setView(ProfileViews view) {
+        currentView = view;
+        profileView.getChildren().clear();
+        try {
+            profileView.getChildren().add(FXMLLoader.load(getClass().getResource(view.path)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showAllUsers() {
@@ -136,7 +147,7 @@ public class Profile implements Initializable, PermissionLimited {
         labelName.setVisible(true);
         profileView.setVisible(true);
 
-        topLabel.setMaxWidth(250);
+        topLabel.setMaxWidth(290);
         userImage.setFitWidth(50);
 
         vbox.getChildren().add(profileView);
@@ -146,10 +157,32 @@ public class Profile implements Initializable, PermissionLimited {
         applyPermissionLimitations();
     }
 
+    @FXML
+    public void handleOnAddUser(ActionEvent actionEvent) {
+        if(currentView.equals(ProfileViews.SEE_PROFILE)) {
+            setView(ProfileViews.ADD_PROFILE);
+            buttonAddUser.setText("Opret bruger");
+        } else {
+            setView(ProfileViews.SEE_PROFILE);
+            buttonAddUser.setText("Tilføj bruger");
+        }
+    }
+
     @Override
     public void applyPermissionLimitations() {
         userList.setVisible(DEFAULT_PERMISSIONS.canSeeUserList());
         searchField.setVisible(DEFAULT_PERMISSIONS.canSeeUserList());
+    }
+
+    private enum ProfileViews {
+        SEE_PROFILE("/aservio/presentation/platform/views/SeeProfile.fxml"),
+        ADD_PROFILE("/aservio/presentation/platform/views/AddProfile.fxml");
+
+        private String path;
+
+        ProfileViews(String path) {
+            this.path = path;
+        }
     }
 
     public class SelectedUsersChangedEvent extends Event {
