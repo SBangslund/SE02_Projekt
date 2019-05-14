@@ -60,10 +60,6 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     public void setFootNote(FooterNote footerNote) {
         footNoteLabel.setText(footerNote.toString());
     }
-//    public void setSideview(Date date){
-//        dateLabel
-//        
-//    }
 
     public void setNoteText(Note note) {
         interFace.addNote(note);

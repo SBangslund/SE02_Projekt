@@ -15,7 +15,7 @@
             <Pane />
             <Label text="Dato:" />
             <Label fx:id="dateLabel" text="Dato" />
-            <Label text="Start tidspunk:t" />
+            <Label text="Start tidspunkt:" />
             <Label fx:id="startTimeLabel" text="Start tidspunkt" />
             <Label text="Slut tidspunkt:" />
             <Label fx:id="endTimeLabel" text="Slut tidspunkt" />
