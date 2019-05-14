@@ -4,6 +4,7 @@ import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.management.activities.ActivityType;
 import aservio.domain.platform.user.User;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,44 +17,43 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.UUID;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.VBox;
 
 public class SideViewActivity extends SideView implements Initializable {
-
+    private Map<User, ActivityList> userActivities = new HashMap<>();
     public Button addButton;
     public Button modifyButton;
     public Button removeButton;
     @FXML
     private HBox activityBox;
     @FXML
-    private Label timeStartLabel;
-    @FXML
     private Label timeStartText;
-    @FXML
-    private Label timeEndLabel;
     @FXML
     private Label timeEndText;
     @FXML
     private Label activityName;
     @FXML
-    private Pane activityLabel;
-    @FXML
     private Text activityDescription;
-    @FXML
-    private Label dateLabel;
     @FXML
     private Label dateText;
 
-    private Map<User, ActivityList> userActivities = new HashMap<>();
     private Activity selectedActivity;
+    @FXML
+    private VBox sideViewVbox;
+    
+    private SideViewCreate sideViewCreate;
+    @FXML
+    private Pane activityLabel;
+    @FXML
+    private Label dateLabel;
+    @FXML
+    private Label timeStartLabel;
+    @FXML
+    private Label timeEndLabel;
 
     @Override
     protected void initialize() {
@@ -130,17 +130,26 @@ public class SideViewActivity extends SideView implements Initializable {
 
     @FXML
     public void handleAdd(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader();
+        try {
+            Pane p = loader.load(getClass().getResource("/aservio/presentation/management/views/FXMLActivityCreate.fxml").openStream());
+            sideViewVbox.getChildren().add(p);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        LocalDateTime startdt = LocalDateTime.now();
-        LocalDateTime enddt = startdt.plusHours(2);
-        Date startdate = Date.from(startdt.atZone(ZoneId.systemDefault()).toInstant());
-        Date enddate = Date.from(enddt.atZone(ZoneId.systemDefault()).toInstant());
-        Activity activity1 = new Activity(ActivityType.WALK, startdate, enddate, UUID.randomUUID()); //QQ id: UUID.fromString("dc1e324b-cca4-499d-871f-8ff9076f214c"
+//        
+//        LocalDateTime startdt = LocalDateTime.now();
+//        LocalDateTime enddt = startdt.plusHours(2);
+//        Date startdate = Date.from(startdt.atZone(ZoneId.systemDefault()).toInstant());
+//        Date enddate = Date.from(enddt.atZone(ZoneId.systemDefault()).toInstant());
+//        Activity activity1 = new Activity(ActivityType.WALK, startdate, enddate, UUID.randomUUID()); //QQ id: UUID.fromString("dc1e324b-cca4-499d-871f-8ff9076f214c"
 //        System.out.println(startdate);
 //        System.out.println(enddate);
-        interFace.addActivity(activity1, User.getCurrentUser().getId());
+//        interFace.addActivity(activity1, User.getCurrentUser().getId());
         updateView();
     }
+    
 
     @FXML
     public void handleModify(ActionEvent actionEvent) {
@@ -162,6 +171,8 @@ public class SideViewActivity extends SideView implements Initializable {
     }
 
     private void updateView() {
-        
+
     }
+
+
 }

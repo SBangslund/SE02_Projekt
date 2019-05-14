@@ -14,7 +14,7 @@
 
 <AnchorPane maxWidth="250.0" prefHeight="433.0" prefWidth="370.0" styleClass="pane" stylesheets="/aservio/presentation/management/views/CSSActivityView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.management.controllers.sideview.SideViewActivity">
    <children>
-      <VBox spacing="5.0" styleClass="vbox" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <VBox fx:id="sideViewVbox" spacing="5.0" styleClass="vbox" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <ToolBar prefHeight="7.0" prefWidth="270.0">
               <items>

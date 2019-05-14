@@ -103,32 +103,36 @@ public class Repository {
         return user;
     }
 
-    public Role getUserRole(UUID userid){
+    public Role getUserRole(UUID userid) {
         Role role = null;
 
         String roleString = interFace.getUserRole(userid.toString());
-        switch(roleString){
+        switch (roleString) {
             case "Caretaker":
                 return new Caretaker();
-                //break;
+            //break;
             case "Citizen":
                 return new Citizen();
-                //break;
+            //break;
             case "SysAdmin":
                 return new Admin();
-                //break;
+            //break;
             default:
                 return null;
         }
     }
-    public List<UserInfo> getCitizensFromCaretaker(UUID caretakerID){
+
+    public List<UserInfo> getCitizensFromCaretaker(UUID caretakerID) {
         String[] citizens = interFace.getCitizensFromCaretaker(caretakerID.toString());
         List<UserInfo> citizenList = new ArrayList<>();
-        for (String s: citizens ) {
-            citizenList.add(getUserInfo(UUID.fromString(s)));
+        if (citizens != null) {
+            for (String s : citizens) {
+                citizenList.add(getUserInfo(UUID.fromString(s)));
+            }
         }
         return citizenList;
     }
+
     public List<UserInfo> getUsersFromInstitution(int institutionID) {
         String[] usersString = interFace.getUsersFromInsitution(institutionID);
         List<UserInfo> users = null;
@@ -165,21 +169,20 @@ public class Repository {
 
     /**
      * Creates an activity, and adds users to it. If successful returns true.
+     *
      * @param activity
      * @param userid
-     * @return 
+     * @return
      */
     public boolean addActivity(Activity activity, UUID userid) {
 
         return interFace.addActivity(
-                        activity.getActivityType().getName(),
-                        activity.getActivityType().toString(),
-                        activity.getStartDate(),
-                        activity.getEndDate(),
-                        activity.getId()) 
-                &&
-                interFace.addUserToActivity(activity.getId(), userid)
-                ;
+                activity.getActivityType().getName(),
+                activity.getActivityType().toString(),
+                activity.getStartDate(),
+                activity.getEndDate(),
+                activity.getId())
+                && interFace.addUserToActivity(activity.getId(), userid);
     }
 
     public Activity getActivity(UUID activityid) {
@@ -190,7 +193,6 @@ public class Repository {
             String type = userActivity[1];
             Long startTime = Long.parseLong(userActivity[2]);
             Long endTime = Long.parseLong(userActivity[3]);
-
 
             java.util.Date startDate = new java.util.Date(startTime);
             java.util.Date endDate = new java.util.Date(endTime);

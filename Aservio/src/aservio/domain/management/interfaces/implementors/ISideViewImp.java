@@ -7,7 +7,9 @@ package aservio.domain.management.interfaces.implementors;
 
 import aservio.domain.management.activities.Activity;
 import aservio.domain.platform.Repository;
+import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.management.interfaces.contracts.ISideView;
+import java.util.List;
 import java.util.UUID;
 
 public class ISideViewImp implements ISideView {
@@ -28,4 +30,8 @@ public class ISideViewImp implements ISideView {
         return repository.deleteActivity(activityid);
     }
 
+    @Override
+    public List<UserInfo> getCitizensFromCaretaker(UUID userID) {
+                return repository.getCitizensFromCaretaker(userID);
+    }
 }

@@ -57,11 +57,6 @@ public class OverviewMonth extends Overview implements Initializable, Pageable {
     }
 
     @Override
-    protected void handleSelectedUsersChanged(List<UserInfo> userInfoList) {
-        //TODO needs implementing
-    }
-
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
         for (int i = 0; i < 6; i++) {       // For every row...
             for (int j = 0; j < 7; j++) {   // For every column
