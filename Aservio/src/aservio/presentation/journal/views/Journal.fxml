@@ -44,6 +44,9 @@
                                 </items>
                               </MenuButton>
                            </children>
+                           <padding>
+                              <Insets right="25.0" />
+                           </padding>
                         </HBox>
                      </children>
                      <VBox.margin>

@@ -64,7 +64,7 @@ public class Journal implements Initializable {
     @FXML
     private Button newNoteButton;
     private ObservableList<Note> observableList;
-
+    private TextArea text = new TextArea();
     /**
      * Initializes the controller class.
      */
@@ -86,7 +86,7 @@ public class Journal implements Initializable {
         showListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<Note>) c -> {
             c.next();
             if (c.getAddedSize() > 0) {
-                TextArea text = (TextArea) (((VBox) ((HBox) borderPane.getCenter()).getChildren().get(1)).getChildren().get(1));
+                text = (TextArea) (((VBox) ((HBox) borderPane.getCenter()).getChildren().get(1)).getChildren().get(1));
                 text.setText(c.getAddedSubList().get(0).getNoteText());
             }
         });
@@ -94,6 +94,8 @@ public class Journal implements Initializable {
     }
 
     private void handleSelectedUsersChanged(List<UserInfo> selectedUsers) {
+        observableList.clear();
+        text.setText("");
         if (!selectedUsers.isEmpty()) {
             NoteList noteList = interFace.getNoteList(selectedUsers.get(0));
             showNoteList(noteList);

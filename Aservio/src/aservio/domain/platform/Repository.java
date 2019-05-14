@@ -217,7 +217,6 @@ public class Repository {
             String startTime = userNotes[2];
             String endTime = userNotes[3];
             note = new Note(noteid, date, startTime, endTime, noteText, citizenInfo, "test");
-
         }
         return note;
     }
