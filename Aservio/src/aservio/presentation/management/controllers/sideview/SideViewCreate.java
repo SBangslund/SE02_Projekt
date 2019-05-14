@@ -23,13 +23,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.CheckBoxListCell;
+import javafx.scene.layout.VBox;
 
 public class SideViewCreate extends SideView implements Initializable {
 
@@ -53,7 +56,8 @@ public class SideViewCreate extends SideView implements Initializable {
     @FXML
     private JFXDatePicker endDatePicker;
     @FXML
-    private ListView<UserInfo> userListView;
+    private VBox vboxList;
+    private List<CheckBox> checkboxes;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -63,54 +67,63 @@ public class SideViewCreate extends SideView implements Initializable {
         for (ActivityType a : ActivityType.values()) {
             typeDropDown.getItems().add(new MenuItem(a.getName()));
         }
-        
-        
-        
-        /*
-        ObservableList<UserInfo> listItems = FXCollections.observableArrayList();
+
+        //VboxList
+        checkboxes = new ArrayList();
+        UserInfo currentUserInfo = interFace.getUserInfo(User.getCurrentUser().getId());
+        CheckBox currentUserCb = new CheckBox(currentUserInfo.getFirstName() + " " + currentUserInfo.getLastName());
+        currentUserCb.setUserData(currentUserInfo);
+        vboxList.getChildren().add(currentUserCb);
+        currentUserCb.setSelected(true);
+        checkboxes.add(currentUserCb);
+
         for (UserInfo u : interFace.getCitizensFromCaretaker(User.getCurrentUser().getId())) {
-            listItems.add(u);
-            System.out.println("u is: " + u);
+            CheckBox cb = new CheckBox(u.getFirstName() + " " + u.getLastName());
+            cb.setUserData(u);
+            vboxList.getChildren().add(cb);
+            checkboxes.add(cb);
         }
-
-        userListView.setItems(listItems);
-
-        userListView.setCellFactory(CheckBoxListCell.forListView((String item) -> {
-            BooleanProperty observable = new SimpleBooleanProperty();
-            observable.addListener((obs, wasSelected, isNowSelected)
-                    -> System.out.println("Check box for " + item + " changed from " + wasSelected + " to " + isNowSelected)
-            );
-            return observable;
-        }));*/
     }
 
     @FXML
     private void handleActionButton(ActionEvent event) {
-        //Not 100% consistent.
-        //if (!(nameField.getText().isEmpty() && DatePicker.getValue() == null && startTimePicker.getValue() == null && typeDropDown.isShowing() == "Vælg" && endTimePicker.getValue() == null && descriptionField.getText().isEmpty())) {
+        //Not 100% consistent. //needs a label to inform user to select other values.
+        if (!(nameField.getText().isEmpty()
+                && startDatePicker.getValue() == null
+                && endDatePicker.getValue() == null
+                && startTimePicker.getValue() == null
+                && endTimePicker.getValue() == null
+                && descriptionField.getText().isEmpty() /*&& typeDropDown.get == "Vælg"*/)) {
 
-        String startDateString = startDatePicker.getValue() + " " + startTimePicker.getValue().toString();
-        Date startDate = new Date();
-        try {
-            startDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(startDateString);
-        } catch (ParseException ex) {
-            Logger.getLogger(SideViewCreate.class.getName()).log(Level.SEVERE, null, ex);
+            //For every selected user add the activity
+            for (CheckBox cb : checkboxes) {
+                if (cb.isSelected()) {
+                    UserInfo userInfo = (UserInfo) cb.getUserData();
+                    //System.out.println("getUserdata: " + userinfo.getFirstName());
+
+                    String startDateString = startDatePicker.getValue() + " " + startTimePicker.getValue().toString();
+                    Date startDate = new Date();
+                    try {
+                        startDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(startDateString);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(SideViewCreate.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    String endDateString = endDatePicker.getValue() + " " + endTimePicker.getValue().toString();
+                    Date endDate = new Date();
+                    try {
+                        endDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(endDateString);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(SideViewCreate.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    //System.out.println("Startdate: " + startDate.toString());
+                    //System.out.println("Enddate: " + endDate.toString());
+
+                    Activity activity = new Activity(ActivityType.WALK/*ValueOf*/, startDate, endDate, UUID.randomUUID());
+                    interFace.addActivity(activity, userInfo.getId());
+                }
+            }
         }
-
-        String endDateString = endDatePicker.getValue() + " " + endTimePicker.getValue().toString();
-        Date endDate = new Date();
-        try {
-            endDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(endDateString);
-        } catch (ParseException ex) {
-            Logger.getLogger(SideViewCreate.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println("Startdate: " + startDate.toString());
-        System.out.println("Enddate: " + endDate.toString());
-
-        UUID userid = User.getCurrentUser().getId();
-        Activity activity = new Activity(ActivityType.WALK/*ValueOf*/, startDate, endDate, UUID.randomUUID());
-        interFace.addActivity(activity, userid);
-
     }
 
     @FXML

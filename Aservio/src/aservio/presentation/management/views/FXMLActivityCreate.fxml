@@ -5,7 +5,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
@@ -62,7 +61,7 @@
                   <Button fx:id="activityCancelButton" mnemonicParsing="false" text="Afbryd" />
                </children>
             </HBox>
-            <ListView fx:id="userListView" prefHeight="200.0" prefWidth="200.0" />
+            <VBox fx:id="vboxList" prefHeight="200.0" prefWidth="100.0" />
          </children>
       </VBox>
    </children>

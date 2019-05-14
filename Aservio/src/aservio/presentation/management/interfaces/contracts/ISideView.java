@@ -9,4 +9,5 @@ public interface ISideView {
     boolean addActivity(Activity activity, UUID userid);
     boolean deleteActivity(UUID activityid);
     List<UserInfo> getCitizensFromCaretaker(UUID userID);
+    UserInfo getUserInfo(UUID userID);
 }

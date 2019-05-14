@@ -32,6 +32,11 @@ public class ISideViewImp implements ISideView {
 
     @Override
     public List<UserInfo> getCitizensFromCaretaker(UUID userID) {
-                return repository.getCitizensFromCaretaker(userID);
+        return repository.getCitizensFromCaretaker(userID);
+    }
+
+    @Override
+    public UserInfo getUserInfo(UUID userID) {
+        return repository.getUserInfo(userID);
     }
 }
