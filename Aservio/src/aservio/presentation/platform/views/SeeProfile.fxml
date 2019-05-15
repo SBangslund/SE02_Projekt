@@ -107,7 +107,7 @@
                </children>
             </HBox>
             <Separator prefWidth="200.0" />
-            <Button mnemonicParsing="false" onAction="#handleOnAddUser" text="Tilføj bruger" />
+            <Button fx:id="buttonAddUser" mnemonicParsing="false" onAction="#handleOnAddUser" text="Tilføj bruger" />
          </children>
       </VBox>
    </children>
