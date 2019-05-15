@@ -4,6 +4,7 @@ import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityType;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
+import aservio.presentation.management.controllers.Management;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
 import java.net.URL;
@@ -124,6 +125,7 @@ public class SideViewCreate extends SideView implements Initializable {
                 }
             }
         }
+        Management.getInstance().getOverviewManager().updateCurrentView();
     }
 
     @FXML
