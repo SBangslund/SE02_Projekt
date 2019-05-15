@@ -48,14 +48,14 @@ public class Management implements Initializable {
     private List<Overview> views = new ArrayList<>();
     private OverviewManager overviewManager;
     private ActivityManager activityManager;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         instance = this;
 
         overviewManager = new OverviewManager();
         activityManager = new ActivityManager("/aservio/presentation/management/views/FXMLActivityView.fxml");
-
+        
         overviewManager.showDay();
     }
 

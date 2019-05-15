@@ -1,6 +1,5 @@
 package aservio.presentation.management.controllers.overview;
 
-
 import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.platform.user.UserInfo;
@@ -156,7 +155,6 @@ public class OverviewDay extends Overview implements Initializable {
 
     }
 
-
     private void showActivity(Activity activity) {
         int standartButtonWidth = 170;
 
@@ -192,11 +190,10 @@ public class OverviewDay extends Overview implements Initializable {
                     @Override
                     public void handle(long now) {
 
-
                         if (colorWidth.get() >= 0) {
                             eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px" + colorWidth + "px, " + color + " 99%, white);");
                             colorWidth.decrementAndGet();
-                        } else if(colorWidth.get() < 0){
+                        } else if (colorWidth.get() < 0) {
                             this.stop();
                         }
                     }
@@ -222,15 +219,14 @@ public class OverviewDay extends Overview implements Initializable {
         });
         eventButton.setOnAction(
                 new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        OverviewDay.super.uponClick(activity);
-                    }
-                });
+            @Override
+            public void handle(ActionEvent event) {
+                OverviewDay.super.uponClick(activity);
+            }
+        });
         eventButtonList.add(eventButton);
         activityPane.getChildren().add(eventButton);
     }
-
 
     private Button createRightSizedButton(Activity activity, int standartButtonWidth) {
 
@@ -307,10 +303,5 @@ public class OverviewDay extends Overview implements Initializable {
             setBackgroundImage();
         });
 
-    }
-
-    @Override
-    protected void handleSelectedUsersChanged(List<UserInfo> userInfoList) {
-        // TODO needs implementing
     }
 }

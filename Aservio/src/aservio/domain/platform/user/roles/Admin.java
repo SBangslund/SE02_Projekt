@@ -12,7 +12,7 @@ public class Admin extends Role {
     protected void createDefaultPermissions() {
         Permissions permissions = new Permissions();
         permissions.setSeeUserList(true);
-
+        permissions.setCanEditActivities(true);
         super.defaultPermissions = permissions;
     }
 

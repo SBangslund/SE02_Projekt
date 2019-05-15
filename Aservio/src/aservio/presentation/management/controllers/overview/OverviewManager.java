@@ -1,7 +1,6 @@
 package aservio.presentation.management.controllers.overview;
 
 import aservio.presentation.platform.OverviewType;
-import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.platform.user.User;
 import javafx.fxml.FXMLLoader;
@@ -13,15 +12,15 @@ public class OverviewManager {
     private Overview currentOverview;
 
     public void showMonth() {
-        updateCurrentOverview(OverviewType.MONTH.getURL());
+        setCurrentOverview(OverviewType.MONTH.getURL());
     }
 
     public void showWeek() {
-        updateCurrentOverview(OverviewType.WEEK.getURL());
+        setCurrentOverview(OverviewType.WEEK.getURL());
     }
 
     public void showDay() {
-        updateCurrentOverview(OverviewType.DAY.getURL());
+        setCurrentOverview(OverviewType.DAY.getURL());
     }
 
     public void showNext() {
@@ -33,8 +32,10 @@ public class OverviewManager {
         currentOverview.previous();
         updateActivities();
     }
-
-    private void updateCurrentOverview(String url) {
+    public void updateCurrentView(){
+        updateActivities();
+    }
+    private void setCurrentOverview(String url) {
         FXMLLoader loader = new FXMLLoader();
         try {
             Pane p = loader.load(getClass().getResource(url).openStream());
@@ -48,7 +49,7 @@ public class OverviewManager {
     }
 
     private void updateActivities() {
-        ActivityList list = currentOverview.getInterFace().getActivities(User.getCurrentUser().getId());
+        ActivityList list = currentOverview.interFace.getActivities(User.getCurrentUser().getId());
 
 
         //selected user

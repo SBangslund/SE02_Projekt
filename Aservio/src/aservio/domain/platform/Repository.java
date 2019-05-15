@@ -124,8 +124,10 @@ public class Repository {
     public List<UserInfo> getCitizensFromCaretaker(UUID caretakerID) {
         String[] citizens = interFace.getCitizensFromCaretaker(caretakerID.toString());
         List<UserInfo> citizenList = new ArrayList<>();
-        for (String s : citizens) {
-            citizenList.add(getUserInfo(UUID.fromString(s)));
+        if (citizens != null) {
+            for (String s : citizens) {
+                citizenList.add(getUserInfo(UUID.fromString(s)));
+            }
         }
         return citizenList;
     }
@@ -179,9 +181,7 @@ public class Repository {
                 activity.getStartDate(),
                 activity.getEndDate(),
                 activity.getId())
-                &&
-                interFace.addUserToActivity(activity.getId(), userid)
-                ;
+                && interFace.addUserToActivity(activity.getId(), userid);
     }
 
     public Activity getActivity(UUID activityid) {
@@ -192,7 +192,6 @@ public class Repository {
             String type = userActivity[1];
             Long startTime = Long.parseLong(userActivity[2]);
             Long endTime = Long.parseLong(userActivity[3]);
-
 
             java.util.Date startDate = new java.util.Date(startTime);
             java.util.Date endDate = new java.util.Date(endTime);

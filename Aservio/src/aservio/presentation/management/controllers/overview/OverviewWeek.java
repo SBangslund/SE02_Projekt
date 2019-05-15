@@ -66,11 +66,6 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
 
     }
 
-    @Override
-    protected void handleSelectedUsersChanged(List<UserInfo> userInfoList) {
-        // TODO needs implementing
-    }
-
     // First currentday set. When 'next' has been pressed, the calendar get reset.
     // After currentDate + 7 been set and the acticities as well
     @Override
