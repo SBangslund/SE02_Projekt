@@ -13,6 +13,8 @@ public class Admin extends Role {
         Permissions permissions = new Permissions();
         permissions.setSeeUserList(true);
         permissions.setCanEditActivities(true);
+        permissions.setCanAddUser(true);
+
         super.defaultPermissions = permissions;
     }
 

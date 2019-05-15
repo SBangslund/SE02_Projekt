@@ -13,6 +13,7 @@ public class Relative extends Role {
         Permissions permissions = new Permissions();
         permissions.setSeeUserList(false);
         permissions.setCanEditActivities(false);
+        permissions.setCanAddUser(false);
 
         super.defaultPermissions = permissions;
     }

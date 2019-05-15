@@ -13,6 +13,8 @@ public class Caretaker extends Role {
     protected void createDefaultPermissions() {
         Permissions permissions = new Permissions();
         permissions.setSeeUserList(true);
+        permissions.setCanAddUser(false);
+
         permissions.setCanEditActivities(true);
         super.defaultPermissions = permissions;
     }
