@@ -4,44 +4,53 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.journal.controllers.overview.Notes">
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.journal.controllers.overview.Notes">
    <children>
-      <VBox fx:id="noteInformationVBox" alignment="TOP_CENTER" spacing="10.0" visible="false">
+      <HBox spacing="15.0">
          <children>
-            <Pane />
-            <Label text="Dato:" />
-            <Label fx:id="dateLabel" text="Dato" />
-            <Label text="Start tidspunkt:" />
-            <Label fx:id="startTimeLabel" text="Start tidspunkt" />
-            <Label text="Slut tidspunkt:" />
-            <Label fx:id="endTimeLabel" text="Slut tidspunkt" />
-            <Pane VBox.vgrow="ALWAYS" />
+            <VBox fx:id="noteInformationVBox" alignment="TOP_CENTER" spacing="10.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </HBox.margin>
+               <children>
+                  <Label text="Titel" />
+                  <TextField fx:id="titleTextField" editable="false" />
+                  <Label text="Dato" />
+                  <TextField fx:id="dateTextField" editable="false" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </HBox.margin>
+               <children>
+                  <Label text="Klient" />
+                  <TextField fx:id="clientTextField" editable="false" />
+                  <Label text="Oprettet af" />
+                  <TextField fx:id="authorTextField" editable="false" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <TextArea fx:id="noteTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" />
+      <HBox alignment="TOP_RIGHT" spacing="10.0">
+         <children>
             <Button fx:id="modifyButton" mnemonicParsing="false" text="Rediger" />
+            <Button fx:id="deleteButton" mnemonicParsing="false" text="Slet" />
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <HBox.margin>
-            <Insets bottom="5.0" />
-         </HBox.margin>
-         <padding>
-            <Insets left="5.0" right="5.0" top="20.0" />
-         </padding>
-      </VBox>
-      <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
-         <children>
-            <TextArea fx:id="noteTextArea" editable="false" VBox.vgrow="ALWAYS" />
-         </children>
-         <HBox.margin>
-            <Insets left="10.0" />
-         </HBox.margin>
-         <padding>
-            <Insets bottom="30.0" right="30.0" top="30.0" />
-         </padding>
-      </VBox>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
    </children>
-</HBox>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+   </padding>
+</VBox>

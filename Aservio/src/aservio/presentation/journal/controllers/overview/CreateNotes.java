@@ -13,12 +13,16 @@ import aservio.presentation.platform.OverviewType;
 import aservio.presentation.platform.controllers.Profile;
 import com.jfoenix.controls.JFXTimePicker;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,8 +50,6 @@ public class CreateNotes extends JournalOverview implements Initializable {
     @FXML
     private JFXTimePicker startTimePicker;
     @FXML
-    private JFXTimePicker endTimePicker;
-    @FXML
     private TextField titleField;
 
     /**
@@ -66,11 +68,16 @@ public class CreateNotes extends JournalOverview implements Initializable {
 
     @FXML
     private void saveButtonEvent(ActionEvent event) {
-        if (!selectedUsers.isEmpty() && startTimePicker.getValue() != null && endTimePicker.getValue() != null) {
+        if (!selectedUsers.isEmpty() && startTimePicker.getValue() != null) {
             UserInfo citizenInfo = selectedUsers.get(0);
-            String startTime = startTimePicker.getValue().toString();
-            String endTime = endTimePicker.getValue().toString();
-            Note note = new Note(UUID.randomUUID(), new Date(), startTime, endTime, noteTextArea.getText(), citizenInfo, titleField.getText());
+            String editTime = datePicker.getValue() + " " + startTimePicker.getValue().toString();
+            Date editDate = new Date();
+            try {
+                editDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(editTime);
+            } catch (ParseException ex) {
+                System.err.println("The date was not defined correctly");
+            }
+            Note note = new Note(UUID.randomUUID(), editDate, noteTextArea.getText(), citizenInfo, titleField.getText());
             note.createNoteText(noteTextArea.getText());
             interFace.addNote(note);
         } else{

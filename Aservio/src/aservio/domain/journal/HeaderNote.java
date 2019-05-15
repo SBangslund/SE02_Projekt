@@ -49,7 +49,7 @@ public class HeaderNote {
 
     @Override
     public String toString() {
-        return String.format("Titel: %21s\nBorger navn: %15s\n", title, citizenFirstName + " " + citizenLastName);
+        return String.format("%s+%s+", title, citizenFirstName + citizenLastName);
 
     }
 

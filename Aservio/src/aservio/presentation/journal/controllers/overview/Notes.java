@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 /**
@@ -33,17 +34,21 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     @FXML
     private TextArea noteTextArea;
     @FXML
-    private Label dateLabel;
-    @FXML
-    private Label startTimeLabel;
-    @FXML
-    private Label endTimeLabel;
-    @FXML
     private Button modifyButton;
     private Label footNoteLabel;
     private Note selectedNote;
     @FXML
     private VBox noteInformationVBox;
+    @FXML
+    private TextField titleTextField;
+    @FXML
+    private TextField dateTextField;
+    @FXML
+    private TextField clientTextField;
+    @FXML
+    private TextField authorTextField;
+    @FXML
+    private Button deleteButton;
 
     /**
      * Initializes the controller class.
@@ -76,14 +81,14 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     protected void updateSelectedNote(Note note) {
 
         if (note != null) {
-            noteInformationVBox.setVisible(true);
-            dateLabel.setText(note.getDate().toString());
-            startTimeLabel.setText(note.getStartTime());
-            endTimeLabel.setText(note.getEndTime());
-            noteTextArea.setText(note.getNoteText());
+            String[] arr = note.getNoteText().trim().split("+");
+            
+            dateTextField.setText(arr[0].toString());
+            clientTextField.setText(arr[1].toString());
+//            clientTextField.setText(note.getCitizenInfo().getFirstName() + note.getCitizenInfo().getLastName());
+//            authorTextField.setText(note.);
         } else {
             noteTextArea.setText("");
-            noteInformationVBox.setVisible(false);
         }
     }
 
