@@ -4,12 +4,11 @@ import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.management.activities.ActivityType;
 import aservio.domain.platform.user.User;
-import java.io.IOException;
-
 import aservio.presentation.management.controllers.Management;
 import aservio.presentation.platform.interfaces.PermissionLimited;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,15 +16,15 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.VBox;
 
 public class SideViewActivity extends SideView implements Initializable, PermissionLimited {
     public ToolBar toolbarAddRemove;
@@ -49,7 +48,7 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
     private Activity selectedActivity;
     @FXML
     private VBox sideViewVbox;
-    
+
     private SideViewCreate sideViewCreate;
     @FXML
     private Pane activityLabel;
@@ -137,6 +136,7 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
     public void handleAdd(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         try {
+            sideViewCreate.setEdit(false);
             Pane p = loader.load(getClass().getResource("/aservio/presentation/management/views/FXMLActivityCreate.fxml").openStream());
             sideViewVbox.getChildren().add(p);
         } catch (IOException e) {
@@ -154,12 +154,26 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
 //        interFace.addActivity(activity1, User.getCurrentUser().getId());
         updateView();
     }
-    
+
 
     @FXML
     public void handleModify(ActionEvent actionEvent) {
+        if(selectedActivity != null) {
+            FXMLLoader loader = new FXMLLoader();
+            try {
+                Pane p = loader.load(getClass().getResource("/aservio/presentation/management/views/FXMLActivityCreate.fxml").openStream());
+                sideViewCreate = loader.getController();
+                sideViewCreate.setEdit(true);
+                sideViewCreate.setActivityToBeEditet(selectedActivity);
+                sideViewCreate.initialize();
 
-        updateView();
+
+                sideViewVbox.getChildren().add(p);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            updateView();
+        }
     }
 
     @FXML

@@ -10,6 +10,8 @@ import com.jfoenix.controls.JFXTimePicker;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -60,8 +62,19 @@ public class SideViewCreate extends SideView implements Initializable {
     private VBox vboxList;
     private List<CheckBox> checkboxes;
 
+    private Activity activityToBeEditet;
+
+    private boolean edit = false;
+
+
+    public void setEdit(boolean edit){
+        this.edit = edit;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
         //Dropdown menu initialization.
         selectedUsers = new ArrayList();
 
@@ -70,6 +83,7 @@ public class SideViewCreate extends SideView implements Initializable {
         }
 
         //VboxList
+
         checkboxes = new ArrayList();
         UserInfo currentUserInfo = interFace.getUserInfo(User.getCurrentUser().getId());
         CheckBox currentUserCb = new CheckBox(currentUserInfo.getFirstName() + " " + currentUserInfo.getLastName());
@@ -84,6 +98,10 @@ public class SideViewCreate extends SideView implements Initializable {
             vboxList.getChildren().add(cb);
             checkboxes.add(cb);
         }
+
+
+
+
     }
 
     @FXML
@@ -120,7 +138,7 @@ public class SideViewCreate extends SideView implements Initializable {
                     //System.out.println("Startdate: " + startDate.toString());
                     //System.out.println("Enddate: " + endDate.toString());
 
-                    Activity activity = new Activity(ActivityType.WALK/*ValueOf*/, startDate, endDate, UUID.randomUUID());
+                    Activity activity = new Activity(nameField.getText(), ActivityType.WALK/*ValueOf*/, startDate, endDate, UUID.randomUUID(), descriptionField.getText());
                     interFace.addActivity(activity, userInfo.getId());
                 }
             }
@@ -133,6 +151,26 @@ public class SideViewCreate extends SideView implements Initializable {
 
     }
 
+    private void fillForm(Activity activity){
+        System.out.println(activity);
+        this.nameField.setText(activity.getActivityName());
+        System.out.println(activity.getActivityName());
+        this.descriptionField.setText(activity.getDescription());
+        this.startDatePicker.setValue(Instant.ofEpochMilli(activity.getStartDate().getTime())
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate());
+        this.endDatePicker.setValue(Instant.ofEpochMilli(activity.getEndDate().getTime())
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate());
+        this.startTimePicker.setValue(activity.getStartDate().toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalTime());
+        this.endTimePicker.setValue(activity.getEndDate().toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalTime());
+
+    }
+
     @FXML
     private void datePickerOnAction(ActionEvent event) {
         //autoset værdier baseret på source
@@ -140,7 +178,15 @@ public class SideViewCreate extends SideView implements Initializable {
 
     @Override
     protected void initialize() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(this.edit){
+        System.out.println("edit is true");
+        System.out.println(activityToBeEditet);
+        this.fillForm(activityToBeEditet);
+        }
+    }
+
+    public void setActivityToBeEditet(Activity activity){
+        this.activityToBeEditet = activity;
     }
 
 }

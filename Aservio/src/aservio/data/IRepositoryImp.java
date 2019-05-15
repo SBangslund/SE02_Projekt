@@ -87,8 +87,8 @@ public class IRepositoryImp implements IRepository {
     }
 
     @Override
-    public boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid) {
-        return activityRetriever.addActivity(name, type, starttime, endtime, activityid);
+    public boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid, String description) {
+        return activityRetriever.addActivity(name, type, starttime, endtime, activityid, description);
     }
 
     @Override

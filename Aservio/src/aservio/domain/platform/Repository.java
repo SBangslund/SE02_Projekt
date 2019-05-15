@@ -176,11 +176,12 @@ public class Repository {
     public boolean addActivity(Activity activity, UUID userid) {
 
         return interFace.addActivity(
-                activity.getActivityType().getName(),
+                activity.getActivityName(),
                 activity.getActivityType().toString(),
                 activity.getStartDate(),
                 activity.getEndDate(),
-                activity.getId())
+                activity.getId(),
+                activity.getDescription())
                 && interFace.addUserToActivity(activity.getId(), userid);
     }
 
@@ -188,15 +189,15 @@ public class Repository {
         String[] userActivity = interFace.getActivity(activityid);
         Activity activity = null;
         if (userActivity != null) {
-            //String name = userActivity[0];
+            String name = userActivity[0];
             String type = userActivity[1];
             Long startTime = Long.parseLong(userActivity[2]);
             Long endTime = Long.parseLong(userActivity[3]);
 
             java.util.Date startDate = new java.util.Date(startTime);
             java.util.Date endDate = new java.util.Date(endTime);
-
-            activity = new Activity(ActivityType.valueOf(type), startDate, endDate, activityid);
+            String description = userActivity[5];
+            activity = new Activity(name, ActivityType.valueOf(type), startDate, endDate, activityid, description);
         }
         return activity;
     }

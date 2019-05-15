@@ -28,7 +28,7 @@ public class ActivityRetriever {
     public String[] getActivity(UUID activityid) {
         try {
             ResultSet result = createStatement().executeQuery("SELECT * from  get_activity('" + activityid+ "')");
-            String[] resultArr = new String[5];
+            String[] resultArr = new String[6];
             int index = 0;
             while (result.next()) {
                 for (int i = 0; i < resultArr.length -1; i++) {
@@ -79,9 +79,9 @@ public class ActivityRetriever {
         return false;
     }
 
-    public boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid) {
+    public boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid, String description) {
         try {
-            createStatement().executeQuery("SELECT add_activity('" + name + "', '" + type + "', " + starttime.getTime() + ", " + endtime.getTime() + ", '" + activityid.toString() + "')");
+            createStatement().executeQuery("SELECT add_activity('" + name + "', '" + type + "', " + starttime.getTime() + ", " + endtime.getTime() + ", '" + activityid.toString() + ", '" + description + "')");
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
