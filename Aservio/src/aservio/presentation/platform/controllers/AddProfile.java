@@ -78,12 +78,35 @@ public class AddProfile implements Initializable {
     @FXML
     private SplitMenuButton menuRoles;
 
+    private boolean
+            approvedAddress,
+            approvedCity,
+            approvedPostal,
+            approvedPhone,
+            approvedMail,
+            approvedInstitution,
+            approvedUsername,
+            approvedPassword;
+
     private Role selectedRole;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Tooltip postalTip = new Tooltip("Kan kun være et tal");
-        Tooltip.install(fieldPostalCode, postalTip);
+        Tooltip addressTip = new Tooltip("Alle felter skal være udfyldt.");
+        Tooltip postalTip = new Tooltip("Postnummeret skal være et tal.");
+        Tooltip phoneTip = new Tooltip("Telefonnummeret kan kun været et tal.");
+        Tooltip mailTip = new Tooltip("Skal være en valid mail.");
+        Tooltip institutionTip = new Tooltip("ID'et skal være et tal.");
+        Tooltip usernameTip = new Tooltip("Brugernavnet er taget");
+        Tooltip passwordTip = new Tooltip("Invalide symboler i password.");
+
+        Tooltip.install(iconAddress, addressTip);
+        Tooltip.install(iconPostal, postalTip);
+        Tooltip.install(iconPhone, phoneTip);
+        Tooltip.install(iconMail, mailTip);
+        Tooltip.install(iconInstitution, institutionTip);
+        Tooltip.install(iconUsername, usernameTip);
+        Tooltip.install(iconPassword, passwordTip);
 
         // Set event listeners.
         fieldAddressName.textProperty().addListener((observable, oldText, newText) -> handleOnAddressChange(newText));
@@ -128,57 +151,71 @@ public class AddProfile implements Initializable {
     }
 
     private void handleOnAddressChange(String newText) {
-        boolean approved = !fieldAddressLevel.getText().isEmpty() && !fieldAddressNumber.getText().isEmpty() && !fieldAddressName.getText().isEmpty();
-        setImage(iconAddress, approved);
+        approvedAddress = !fieldAddressLevel.getText().isEmpty() && !fieldAddressNumber.getText().isEmpty() && !fieldAddressName.getText().isEmpty();
+        setImage(iconAddress, approvedAddress);
     }
 
     private void handleOnCityChange(String newText) {
-        boolean approved = !isInteger(newText) && newText.length() > 0;
-        setImage(iconCity, approved);
+        approvedCity = !isInteger(newText) && newText.length() > 0;
+        setImage(iconCity, approvedCity);
     }
 
     private void handleOnPostalChange(String newText) {
-        boolean approved = isInteger(newText) && newText.length() > 0;
-        setImage(iconPostal, approved);
+        approvedPostal = isInteger(newText) && newText.length() > 0;
+        setImage(iconPostal, approvedPostal);
     }
 
     private void handleOnPhoneChange(String newText) {
-        boolean approved = isInteger(newText) && newText.length() > 0;
-        setImage(iconPhone, approved);
+        approvedPhone = isInteger(newText) && newText.length() > 0;
+        setImage(iconPhone, approvedPhone);
     }
 
     private void handleOnMailChange(String newText) {
-        boolean approved = newText.contains("@") && newText.contains(".");
-        setImage(iconMail, approved);
+        approvedMail = newText.contains("@") && newText.contains(".");
+        setImage(iconMail, approvedMail);
     }
 
     private void handleOnInstitutionChange(String newText) {
-        boolean approved = isInteger(newText);
-        setImage(iconInstitution, approved);
+        approvedInstitution = isInteger(newText);
+        setImage(iconInstitution, approvedInstitution);
     }
 
     private void handleOnUsernameChange(String newText) {
-        boolean approved = true; // TODO Set this..
-        setImage(iconUsername, approved);
+        approvedUsername = true; // TODO Set this..
+        setImage(iconUsername, approvedUsername);
     }
 
     private void handleOnPasswordChange(String newText) {
-        boolean approved = true; // TODO Set this..
-        setImage(iconPassword, approved);
+        approvedPassword = true; // TODO Set this..
+        setImage(iconPassword, approvedPassword);
     }
 
     @FXML
     public void handleOnCreateUser(ActionEvent actionEvent) {
-        createUser();
+        if(isAllApproved()) {
+            createUser();
 
-        AnchorPane profileView = ((AnchorPane) anchor.getParent());
-        profileView.getChildren().clear();
-        Profile.getInstance().showAllUsers();
-        try {
-            profileView.getChildren().add(FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/SeeProfile.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
+            AnchorPane profileView = ((AnchorPane) anchor.getParent());
+            profileView.getChildren().clear();
+            Profile.getInstance().showAllUsers();
+            try {
+                profileView.getChildren().add(FXMLLoader.load(getClass().getResource("/aservio/presentation/platform/views/SeeProfile.fxml")));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+    }
+
+    private boolean isAllApproved() {
+        return approvedAddress
+                && approvedCity
+                && approvedPostal
+                && approvedPhone
+                && approvedMail
+                && approvedInstitution
+                && approvedUsername
+                && approvedPassword
+                && selectedRole != null;
     }
 
     private boolean isInteger(String text) {
