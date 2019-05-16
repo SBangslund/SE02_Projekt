@@ -81,7 +81,7 @@ public class ActivityRetriever {
 
     public boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid, String description) {
         try {
-            createStatement().executeQuery("SELECT add_activity('" + name + "', '" + type + "', " + starttime.getTime() + ", " + endtime.getTime() + ", '" + activityid.toString() + ", '" + description + "')");
+            createStatement().executeQuery("SELECT add_activity('" + name + "', '" + type + "', " + starttime.getTime() + ", " + endtime.getTime() + ", '" + activityid.toString() + "', '" + description + "')");
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);

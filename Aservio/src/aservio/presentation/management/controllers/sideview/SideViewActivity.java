@@ -95,7 +95,7 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         }
 
         selectedActivity = activity;
-        activityName.setText(activity.getActivityType().getName());
+        activityName.setText(activity.getActivityName());
         activityBox.getChildren().add(createActivityLabel(activity.getActivityType()));
         activityDescription.setText(activity.getDescription());
 

@@ -7,35 +7,20 @@ import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.management.controllers.Management;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.CheckBoxListCell;
-import javafx.scene.layout.VBox;
 
 public class SideViewCreate extends SideView implements Initializable {
 
@@ -67,7 +52,7 @@ public class SideViewCreate extends SideView implements Initializable {
     private boolean edit = false;
 
 
-    public void setEdit(boolean edit){
+    public void setEdit(boolean edit) {
         this.edit = edit;
     }
 
@@ -98,8 +83,6 @@ public class SideViewCreate extends SideView implements Initializable {
             vboxList.getChildren().add(cb);
             checkboxes.add(cb);
         }
-
-
 
 
     }
@@ -140,6 +123,9 @@ public class SideViewCreate extends SideView implements Initializable {
 
                     Activity activity = new Activity(nameField.getText(), ActivityType.WALK/*ValueOf*/, startDate, endDate, UUID.randomUUID(), descriptionField.getText());
                     interFace.addActivity(activity, userInfo.getId());
+                    if(isEdit()){
+                        interFace.deleteActivity(activityToBeEditet.getId());
+                    }
                 }
             }
         }
@@ -151,7 +137,11 @@ public class SideViewCreate extends SideView implements Initializable {
 
     }
 
-    private void fillForm(Activity activity){
+    private void replaceActivity() {
+
+    }
+
+    private void fillForm(Activity activity) {
         System.out.println(activity);
         this.nameField.setText(activity.getActivityName());
         System.out.println(activity.getActivityName());
@@ -178,15 +168,17 @@ public class SideViewCreate extends SideView implements Initializable {
 
     @Override
     protected void initialize() {
-        if(this.edit){
-        System.out.println("edit is true");
-        System.out.println(activityToBeEditet);
-        this.fillForm(activityToBeEditet);
+        if (this.isEdit()) {
+            this.fillForm(activityToBeEditet);
         }
     }
 
-    public void setActivityToBeEditet(Activity activity){
+    public void setActivityToBeEditet(Activity activity) {
         this.activityToBeEditet = activity;
+    }
+
+    public boolean isEdit(){
+        return edit;
     }
 
 }
