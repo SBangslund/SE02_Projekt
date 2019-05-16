@@ -38,13 +38,15 @@
                            <children>
                               <MenuButton fx:id="viewMenu" mnemonicParsing="false" text="Vis">
                                 <items>
-                                  <MenuItem mnemonicParsing="false" onAction="#handleShowNote" text="Noter" />
                                   <MenuItem mnemonicParsing="false" onAction="#handleShowDiagnosing" text="Udredning" />
                                     <MenuItem mnemonicParsing="false" onAction="#handleShowPrescription" text="Recept" />
                                     <MenuItem mnemonicParsing="false" onAction="#handleShowService" text="Ydelse" />
                                 </items>
                               </MenuButton>
                            </children>
+                           <padding>
+                              <Insets right="25.0" />
+                           </padding>
                         </HBox>
                      </children>
                      <VBox.margin>
