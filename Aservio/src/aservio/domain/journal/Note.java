@@ -21,7 +21,7 @@ public class Note {
     private String noteText;
     private UserInfo citizenInfo;
     private String title;
-    private UserInfo caretakerInfo;
+    private String caretakerName;
 
     public Note(UUID id, Date date, String noteText, UserInfo citizenInfo, String title, String caretakerName) {
         this.date = date;
@@ -29,7 +29,7 @@ public class Note {
         this.citizenInfo = citizenInfo;
         this.title = title;
         this.noteText = noteText;
-        this.caretakerInfo = caretakerInfo;
+        this.caretakerName = caretakerName;
     }
 
     public void createNoteText(String noteText) {
@@ -66,8 +66,12 @@ public class Note {
         this.noteText = noteText;
     }
 
-    public UserInfo getCaretakerInfo() {
-        return caretakerInfo;
+    public String getCaretakerInfo() {
+        return caretakerName;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     @Override

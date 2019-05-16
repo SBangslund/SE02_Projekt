@@ -80,13 +80,11 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     protected void updateSelectedNote(Note note) {
 
         if (note != null) {
-            String[] arr = note.getNoteText().trim().split("\\+");
-            for (String string : arr) {
-                System.out.println(string);
-            }
-//            noteTextArea.setText(arr[1].toString());
             dateLabel.setText(note.getDate().toString());
             clientLabel.setText(note.getCitizenInfo().getFirstName() + " " + note.getCitizenInfo().getLastName());
+            authorLabel.setText(note.getCaretakerInfo());
+            titleLabel.setText(note.getTitle());
+            noteTextArea.setText(note.getNoteText());
         } else {
             noteTextArea.setText("");
         }
