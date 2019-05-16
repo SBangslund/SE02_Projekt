@@ -7,11 +7,11 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-
 
 <AnchorPane fx:id="anchor" prefWidth="290.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.platform.controllers.AddProfile">
    <children>
@@ -25,7 +25,7 @@
                            <children>
                               <Label text="Fornavn:" />
                               <Pane HBox.hgrow="ALWAYS" />
-                              <TextField fx:id="fieldFirstname" prefHeight="25.0" prefWidth="110.0" promptText="Fornavn...">
+                              <TextField fx:id="fieldFirstname" onAction="#handleOnFocus" prefHeight="25.0" prefWidth="110.0" promptText="Fornavn...">
                                  <HBox.margin>
                                     <Insets left="15.0" />
                                  </HBox.margin>
@@ -49,7 +49,12 @@
             <HBox>
                <children>
                   <Label text="Adresse:" />
-                  <Pane minWidth="50.0" HBox.hgrow="ALWAYS" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconAddress" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
                   <TextField fx:id="fieldAddressName" promptText="Vej..." />
                </children>
             </HBox>
@@ -74,13 +79,23 @@
                <children>
                   <Label text="By:" />
                   <Pane minWidth="50.0" HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconCity" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
                   <TextField fx:id="fieldCity" promptText="By..." />
                </children>
             </HBox>
             <HBox>
                <children>
                   <Label text="Postnummer:" />
-                  <Pane minWidth="50.0" HBox.hgrow="ALWAYS" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconPostal" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
                   <TextField fx:id="fieldPostalCode" promptText="Postnummer..." />
                </children>
             </HBox>
@@ -88,21 +103,36 @@
             <HBox>
                <children>
                   <Label text="Telefon nr:" />
-                  <Pane minWidth="50.0" HBox.hgrow="ALWAYS" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconPhone" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
                   <TextField fx:id="fieldPhone" promptText="Telefon nummer..." />
                </children>
             </HBox>
             <HBox>
                <children>
                   <Label text="Mail:" />
-                  <Pane minWidth="50.0" HBox.hgrow="ALWAYS" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconMail" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
                   <TextField fx:id="fieldMail" promptText="Mail..." />
                </children>
             </HBox>
             <HBox>
                <children>
                   <Label text="Institution:" />
-                  <Pane minWidth="50.0" HBox.hgrow="ALWAYS" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconInstitution" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
                   <TextField fx:id="fieldInstitution" promptText="Institutions id..." />
                </children>
             </HBox>
@@ -111,6 +141,11 @@
                <children>
                   <Label prefWidth="90.0" text="Brugernavn:" />
                   <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconUsername" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
                   <TextField fx:id="fieldUsername" promptText="Brugernavn..." />
                </children>
             </HBox>
@@ -118,6 +153,11 @@
                <children>
                   <Label prefHeight="17.0" prefWidth="90.0" text="Kodeord:" />
                   <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconPassword" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
                   <TextField fx:id="fieldPassword" promptText="Adgangskode..." />
                </children>
             </HBox>

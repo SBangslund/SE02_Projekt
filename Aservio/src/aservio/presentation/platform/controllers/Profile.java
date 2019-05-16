@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 
 public class Profile implements Initializable, PermissionLimited {
     private IProfile interFace = PresentationInterfaceManager.getIProfile();
+    private static Profile instance;
 
     @FXML
     private Button buttonAddUser;
@@ -61,6 +62,7 @@ public class Profile implements Initializable, PermissionLimited {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        instance = this;
         applyPermissionLimitations();
 
         labelName.setText(User.getCurrentUser().getUserInfo().getFirstName() + " " + User.getCurrentUser().getUserInfo().getLastName());
@@ -95,7 +97,7 @@ public class Profile implements Initializable, PermissionLimited {
         }
     }
 
-    private void showAllUsers() {
+    public void showAllUsers() {
         userList.getItems().clear();
         // Show users in list related to the current users institution id.
         List<UserInfo> userInfos = interFace.getUsersFromInstitution(User.getCurrentUser().getUserInfo().getInstitution());
@@ -157,21 +159,14 @@ public class Profile implements Initializable, PermissionLimited {
         applyPermissionLimitations();
     }
 
-    @FXML
-    public void handleOnAddUser(ActionEvent actionEvent) {
-        if(currentView.equals(ProfileViews.SEE_PROFILE)) {
-            setView(ProfileViews.ADD_PROFILE);
-            buttonAddUser.setText("Opret bruger");
-        } else {
-            setView(ProfileViews.SEE_PROFILE);
-            buttonAddUser.setText("Tilføj bruger");
-        }
-    }
-
     @Override
     public void applyPermissionLimitations() {
         userList.setVisible(DEFAULT_PERMISSIONS.canSeeUserList());
         searchField.setVisible(DEFAULT_PERMISSIONS.canSeeUserList());
+    }
+
+    public static Profile getInstance() {
+        return instance;
     }
 
     private enum ProfileViews {
