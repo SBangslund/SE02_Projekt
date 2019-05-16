@@ -12,17 +12,20 @@ public class Activity {
 
     private Date startDate;
     private Date endDate;
+    private String activityName;
 
     public Activity(ActivityType activityType, Date startDate) {
-        this(activityType, startDate, new Date(), UUID.randomUUID());
+        this("ingen navn", activityType, startDate, new Date(), UUID.randomUUID(), "ingen beskrivelse");
         setEndDate(setStandardEndDate(startDate));
     }
 
-    public Activity(ActivityType activityType, Date startDate, Date endDate, UUID id) {
+    public Activity(String activityName, ActivityType activityType, Date startDate, Date endDate, UUID id, String description) {
+        this.activityName = activityName;
         this.startDate = startDate;
         this.endDate = endDate;
         this.activityType = activityType;
         this.id = id;
+        this.description = description;
     }
 
     public void setDescription(String description) {
@@ -64,5 +67,9 @@ public class Activity {
 
     public UUID getId() {
         return id;
+    }
+
+    public String getActivityName(){
+        return activityName;
     }
 }

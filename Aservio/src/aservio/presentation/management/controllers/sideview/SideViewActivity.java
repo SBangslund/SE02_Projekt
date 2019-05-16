@@ -4,12 +4,11 @@ import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.management.activities.ActivityType;
 import aservio.domain.platform.user.User;
-import java.io.IOException;
-
 import aservio.presentation.management.controllers.Management;
 import aservio.presentation.platform.interfaces.PermissionLimited;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,8 +16,10 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -74,11 +75,11 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         removeButton.setText("Slet");
         removeButton.getStyleClass().add("button_remove");
 
-        
         //Add activity button
         try {
             FXMLLoader loader = new FXMLLoader();
             addActivityPane = loader.load(getClass().getResource("/aservio/presentation/management/views/FXMLActivityCreate.fxml").openStream());
+            sideViewCreate = loader.getController();
         } catch (IOException ex) {
             Logger.getLogger(SideViewActivity.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -110,7 +111,7 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         }
 
         selectedActivity = activity;
-        activityName.setText(activity.getActivityType().getName());
+        activityName.setText(activity.getActivityName());
         activityBox.getChildren().add(createActivityLabel(activity.getActivityType()));
         activityDescription.setText(activity.getDescription());
 
@@ -149,22 +150,46 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
 
     @FXML
     public void handleAdd(ActionEvent actionEvent) {
-        if (addActivityPane.isVisible()) {
-            addActivityPane.setVisible(false);
-        } else {
+        //Open form not adding (editing)
+        if (sideViewCreate.isEdit() && addActivityPane.isVisible()) {
+            //reset
+            sideViewCreate.setEdit(false);
+            sideViewCreate.initialize();
+        } //Closed form
+        else if (!sideViewCreate.isEdit() && !addActivityPane.isVisible()) {
+            //reset
             addActivityPane.setVisible(true);
-            //sideViewCreate.updatePresetTimes();
+            sideViewCreate.initialize();
+        } //Open form already adding
+        else if (!sideViewCreate.isEdit() && addActivityPane.isVisible()) {
+            //close
+            addActivityPane.setVisible(false);
         }
     }
 
     @FXML
-    public void handleModify(ActionEvent actionEvent) {
-
-        updateView();
+    public void handleModify(ActionEvent actionEvent
+    ) {
+        if (selectedActivity != null) {
+            if (!sideViewCreate.isEdit() && addActivityPane.isVisible()) { //goes into modify cause Addactivity form was visible, but not in modify
+                sideViewCreate.setEdit(true);
+                sideViewCreate.setActivityToBeEditet(selectedActivity);
+                sideViewCreate.initialize();
+            } else if (sideViewCreate.isEdit() && addActivityPane.isVisible()) { //closes form cause already open (modifying)
+                addActivityPane.setVisible(false);
+                sideViewCreate.setEdit(false);
+            } else if (!sideViewCreate.isEdit() && !addActivityPane.isVisible()) { //opens cause form is closed, not editing or adding.
+                addActivityPane.setVisible(true);
+                sideViewCreate.setEdit(true);
+                sideViewCreate.setActivityToBeEditet(selectedActivity);
+                sideViewCreate.initialize();
+            }
+        }
     }
 
     @FXML
-    public void handleRemove(ActionEvent actionEvent) {
+    public void handleRemove(ActionEvent actionEvent
+    ) {
         //delete selected activity this view (overview)
         activityName.setText(selectedActivity.getActivityType().getName() + " (Deleted)");
         //delete selected activity (repository)

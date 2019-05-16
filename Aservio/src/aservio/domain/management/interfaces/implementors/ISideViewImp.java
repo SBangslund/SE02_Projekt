@@ -39,4 +39,9 @@ public class ISideViewImp implements ISideView {
     public UserInfo getUserInfo(UUID userID) {
         return repository.getUserInfo(userID);
     }
+
+    @Override
+    public Activity getActivity(UUID activityID) {
+        return repository.getActivity(activityID);
+    }
 }

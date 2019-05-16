@@ -7,9 +7,12 @@ import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.management.controllers.Management;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
+
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -56,6 +59,14 @@ public class SideViewCreate extends SideView implements Initializable {
     private VBox vboxList;
     private List<CheckBox> checkboxes;
 
+    private Activity activityToBeEditet;
+
+    private boolean edit = false;
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -91,6 +102,25 @@ public class SideViewCreate extends SideView implements Initializable {
         }
     }
 
+    @Override
+    protected void initialize() {
+        if (isEdit()) {
+            fillForm(activityToBeEditet);
+        } else {
+            resetForm();
+        }
+    }
+
+    private void resetForm() {
+        nameField.setText("");
+        typeMenu.setText("Vælg");
+        selectedActivityType = null;
+        descriptionField.setText("");
+        startDatePicker.setValue(LocalDate.now());
+        startTimePicker.setValue(LocalTime.now());
+        endDatePicker.setValue(LocalDate.now());
+    }
+
     public void updatePresetTimes() {
         startDatePicker.setValue(LocalDate.now());
         startTimePicker.setValue(LocalTime.now());
@@ -100,14 +130,9 @@ public class SideViewCreate extends SideView implements Initializable {
     @FXML
     private void handleActionButton(ActionEvent event) {
         //Not 100% consistent. //needs a label to inform user to select other values.
-        if (!(nameField.getText().isEmpty()
-                && startDatePicker.getValue() == null
-                && endDatePicker.getValue() == null
-                && startTimePicker.getValue() == null
-                && endTimePicker.getValue() == null
-                && descriptionField.getText().isEmpty()
-                && selectedActivityType == null)) {
+        if (isFormFilled()) {
 
+            System.out.println("Selected activity type is : " + selectedActivityType);
             //For every selected user add the activity
             for (CheckBox cb : checkboxes) {
                 if (cb.isSelected()) {
@@ -132,8 +157,11 @@ public class SideViewCreate extends SideView implements Initializable {
                     //System.out.println("Startdate: " + startDate.toString());
                     //System.out.println("Enddate: " + endDate.toString());
 
-                    Activity activity = new Activity(selectedActivityType, startDate, endDate, UUID.randomUUID());
+                    Activity activity = new Activity(nameField.getText(), selectedActivityType, startDate, endDate, UUID.randomUUID(), descriptionField.getText());
                     interFace.addActivity(activity, userInfo.getId());
+                    if (isEdit()) {
+                        interFace.deleteActivity(activityToBeEditet.getId());
+                    }
                 }
             }
             Management.getInstance().getOverviewManager().updateCurrentView();
@@ -145,14 +173,50 @@ public class SideViewCreate extends SideView implements Initializable {
 
     }
 
+    private void fillForm(Activity activity) {
+        System.out.println(activity);
+        this.nameField.setText(activity.getActivityName());
+        System.out.println(activity.getActivityName());
+        typeMenu.setText(activity.getActivityType().getName());
+        selectedActivityType = activity.getActivityType();
+        this.descriptionField.setText(activity.getDescription());
+        System.out.println("Current description is: " + activity.getDescription());
+        this.startDatePicker.setValue(Instant.ofEpochMilli(activity.getStartDate().getTime())
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate());
+        this.endDatePicker.setValue(Instant.ofEpochMilli(activity.getEndDate().getTime())
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate());
+        this.startTimePicker.setValue(activity.getStartDate().toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalTime());
+        this.endTimePicker.setValue(activity.getEndDate().toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalTime());
+    }
+
     @FXML
     private void datePickerOnAction(ActionEvent event) {
         //autoset værdier baseret på source
     }
 
-    @Override
-    protected void initialize() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setActivityToBeEditet(Activity activity) {
+        this.activityToBeEditet = activity;
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    private boolean isFormFilled() {
+        return (
+                !nameField.getText().isEmpty()
+                && !descriptionField.getText().isEmpty()
+                && startDatePicker.getValue() != null
+                && endDatePicker.getValue() != null
+                && startTimePicker.getValue() != null
+                && endTimePicker.getValue() != null
+                && selectedActivityType != null);
     }
 
 }

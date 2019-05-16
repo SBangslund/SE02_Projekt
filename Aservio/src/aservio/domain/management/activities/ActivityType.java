@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
  */
 public enum ActivityType {
 
+    OTHER("Andet", "Activity not specified", "src/aservio/presentation/management/icons/iconWalking.png", Color.hsb(0, 0, 0)),
     EAT("Eating", "Activity related to eating", "src/aservio/presentation/management/icons/iconEating.png", Color.hsb(194, 0.8, 1)),
     RUN("Running", "Activity related to running", "src/aservio/presentation/management/icons/iconRunning.png", Color.hsb(120, 0.39, 1)),
     WALK("Walking", "Activity related to walking", "src/aservio/presentation/management/icons/iconWalking.png", Color.hsb(59, 0.39, 1)),
