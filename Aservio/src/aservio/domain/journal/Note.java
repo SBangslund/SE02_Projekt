@@ -21,15 +21,15 @@ public class Note {
     private String noteText;
     private UserInfo citizenInfo;
     private String title;
-    private UUID authorid;
+    private UserInfo caretakerInfo;
 
-    public Note(UUID id, Date date, String noteText, UserInfo citizenInfo, String title, UUID authorid) {
+    public Note(UUID id, Date date, String noteText, UserInfo citizenInfo, String title, String caretakerName) {
         this.date = date;
         this.noteid = id;
         this.citizenInfo = citizenInfo;
         this.title = title;
         this.noteText = noteText;
-        this.authorid = authorid;
+        this.caretakerInfo = caretakerInfo;
     }
 
     public void createNoteText(String noteText) {
@@ -65,11 +65,15 @@ public class Note {
     public void setNoteText(String noteText) {
         this.noteText = noteText;
     }
-//
-//    @Override
-//    public String toString() {
-//        return String.format("%10s d.%10s", title, date);
-//        
-//    }
+
+    public UserInfo getCaretakerInfo() {
+        return caretakerInfo;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%10s d.%10s", title, date);
+
+    }
 
 }

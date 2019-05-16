@@ -7,6 +7,7 @@ package aservio.presentation.journal.controllers.overview;
 
 import aservio.domain.journal.Note;
 import aservio.domain.journal.NoteList;
+import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.journal.controllers.Journal;
 import aservio.presentation.platform.OverviewType;
@@ -70,6 +71,7 @@ public class CreateNotes extends JournalOverview implements Initializable {
     private void saveButtonEvent(ActionEvent event) {
         if (!selectedUsers.isEmpty() && startTimePicker.getValue() != null) {
             UserInfo citizenInfo = selectedUsers.get(0);
+            UserInfo caretakerInfo = User.getCurrentUser().getUserInfo();
             String editTime = datePicker.getValue() + " " + startTimePicker.getValue().toString();
             Date editDate = new Date();
             try {
@@ -77,7 +79,7 @@ public class CreateNotes extends JournalOverview implements Initializable {
             } catch (ParseException ex) {
                 System.err.println("The date was not defined correctly");
             }
-            Note note = new Note(UUID.randomUUID(), editDate, noteTextArea.getText(), citizenInfo, titleField.getText());
+            Note note = new Note(UUID.randomUUID(), editDate, noteTextArea.getText(), citizenInfo, titleField.getText(), caretakerInfo.getFirstName() + caretakerInfo.getLastName());
             note.createNoteText(noteTextArea.getText());
             interFace.addNote(note);
         } else{

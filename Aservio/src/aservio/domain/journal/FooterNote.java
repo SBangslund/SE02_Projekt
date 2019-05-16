@@ -49,7 +49,7 @@ public class FooterNote {
 
     @Override
     public String toString() {
-        return String.format("+%s+%s", personaleFirstName + " " + personaleLastName, residence);
+        return String.format("+%s+%s", personaleFirstName + " " + personaleLastName);
     }
     
 }

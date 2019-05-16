@@ -17,7 +17,6 @@ import aservio.domain.platform.user.roles.Role;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -250,10 +249,11 @@ public class Repository {
             String noteInfo = userNotes[0];
             String[] noteInfoSplitted = noteInfo.trim().split("\\+");
             Date date = new Date(Long.valueOf(userNotes[1]));
-            String noteText = "sss";
-            String startTime = noteInfoSplitted[1];
+            String title = noteInfoSplitted[0].toString();
+            String noteText = noteInfoSplitted[2].toString();
+            String caretakerName = noteInfoSplitted[3].toString();
 
-            note = new Note(noteid, date, noteText, citizenInfo, "test", );
+            note = new Note(noteid, date, noteText, citizenInfo, title, caretakerName);
         }
         return note;
     }

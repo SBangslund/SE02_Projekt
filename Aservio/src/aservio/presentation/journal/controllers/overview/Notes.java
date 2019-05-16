@@ -35,20 +35,19 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     private TextArea noteTextArea;
     @FXML
     private Button modifyButton;
-    private Label footNoteLabel;
     private Note selectedNote;
     @FXML
     private VBox noteInformationVBox;
     @FXML
-    private TextField titleTextField;
-    @FXML
-    private TextField dateTextField;
-    @FXML
-    private TextField clientTextField;
-    @FXML
-    private TextField authorTextField;
-    @FXML
     private Button deleteButton;
+    @FXML
+    private Label titleLabel;
+    @FXML
+    private Label dateLabel;
+    @FXML
+    private Label clientLabel;
+    @FXML
+    private Label authorLabel;
 
     /**
      * Initializes the controller class.
@@ -59,11 +58,11 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     }
 
     public void setNoteTitle(HeaderNote title) {
-        titelLabel.setText(title.toString());
+        titleLabel.setText(title.toString());
     }
 
     public void setFootNote(FooterNote footerNote) {
-        footNoteLabel.setText(footerNote.toString());
+        authorLabel.setText(footerNote.toString());
     }
 
     public void setNoteText(Note note) {
@@ -81,12 +80,10 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     protected void updateSelectedNote(Note note) {
 
         if (note != null) {
-            String[] arr = note.getNoteText().trim().split("+");
-            
-            dateTextField.setText(arr[0].toString());
-            clientTextField.setText(arr[1].toString());
-//            clientTextField.setText(note.getCitizenInfo().getFirstName() + note.getCitizenInfo().getLastName());
-//            authorTextField.setText(note.);
+            String[] arr = note.getNoteText().trim().split("\\+");
+            noteTextArea.setText(arr[2].toString());
+            dateLabel.setText(note.getDate().toString());
+            clientLabel.setText(note.getCitizenInfo().getFirstName() + " " + note.getCitizenInfo().getLastName());
         } else {
             noteTextArea.setText("");
         }
