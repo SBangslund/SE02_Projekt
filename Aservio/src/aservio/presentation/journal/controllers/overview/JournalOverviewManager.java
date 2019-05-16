@@ -30,6 +30,14 @@ public class JournalOverviewManager {
     public void showDiagnosing() {
         updateCurrentJournalOverview(OverviewType.DIAGNOSING.getURL());
     }
+    
+    public void showPrescription() {
+        updateCurrentJournalOverview(OverviewType.PRESCRIPTION.getURL());
+    }
+    
+    public void showService() {
+        updateCurrentJournalOverview(OverviewType.SERVICE.getURL());
+    }
 
     public void updateSelectedNote(Note note) {
         currentJournalOverview.updateSelectedNote(note);

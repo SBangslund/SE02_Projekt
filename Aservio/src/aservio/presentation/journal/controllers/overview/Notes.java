@@ -95,4 +95,8 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
         modifyButton.setVisible(DEFAULT_PERMISSIONS.canModifyNote());
     }
 
+    @FXML
+    private void modifyButton(ActionEvent event) {
+    }
+
 }

@@ -77,6 +77,8 @@ public class Journal implements Initializable, PermissionLimited {
         showListView.setItems(observableList);
         profileChangeEvent();
         applyPermissionLimitations();
+        newNoteButton.setVisible(false);
+        
     }
 
     private void profileChangeEvent() {
@@ -98,6 +100,7 @@ public class Journal implements Initializable, PermissionLimited {
         if (!selectedUsers.isEmpty()) {
             NoteList noteList = interFace.getNoteList(selectedUsers.get(0));
             showNoteList(noteList);
+            applyPermissionLimitations();
         }
     }
 
@@ -124,10 +127,17 @@ public class Journal implements Initializable, PermissionLimited {
 
     @FXML
     private void handleShowPrescription(ActionEvent event) {
+        journalOverviewManager.showPrescription();
     }
 
     @FXML
     private void handleShowService(ActionEvent event) {
+        journalOverviewManager.showService();
+    }
+    
+    @FXML
+    private void handleShowNote(ActionEvent event) {
+        journalOverviewManager.showNote();
     }
 
     public static Journal getInstance() {

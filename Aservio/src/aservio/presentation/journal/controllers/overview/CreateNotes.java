@@ -85,7 +85,7 @@ public class CreateNotes extends JournalOverview implements Initializable {
         } else{
             Journal.getInstance().getJournalOverviewManager().showNote();
         }            
-       
+        Journal.getInstance().getJournalOverviewManager().showNote();
         Journal.getInstance().getShowListView().setVisible(true);
     }
 

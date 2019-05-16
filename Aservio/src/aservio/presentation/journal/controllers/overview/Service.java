@@ -16,7 +16,7 @@ import javafx.fxml.Initializable;
  *
  * @author Rene_
  */
-public class Diagnosing extends JournalOverview implements Initializable, PermissionLimited {
+public class Service extends JournalOverview implements Initializable, PermissionLimited {
 
     /**
      * Initializes the controller class.
