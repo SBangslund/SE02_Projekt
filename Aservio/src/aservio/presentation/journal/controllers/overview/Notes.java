@@ -20,11 +20,10 @@ import javafx.scene.layout.VBox;
  * @author victo
  */
 public class Notes extends JournalOverview implements Initializable, PermissionLimited {
-
+    @FXML
     private TextArea noteTextArea;
     @FXML
     private Button modifyButton;
-    private Note selectedNote;
     @FXML
     private VBox noteInformationVBox;
     @FXML
@@ -37,6 +36,8 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     private Label clientLabel;
     @FXML
     private Label authorLabel;
+    
+    private Note selectedNote;
 
     /**
      * Initializes the controller class.

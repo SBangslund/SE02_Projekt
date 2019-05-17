@@ -35,8 +35,10 @@ import javafx.scene.layout.BorderPane;
 public class Journal implements Initializable, PermissionLimited {
 
     private IJournal interFace = PresentationInterfaceManager.getIJournal();
+    @FXML
     private ProgressIndicator progressIndicator;
     private static Journal instance; //Singleton reference
+    @FXML
     private Button newNoteButton;
     private ObservableList<Note> observableList;
     private TextArea text = new TextArea();
@@ -48,14 +50,11 @@ public class Journal implements Initializable, PermissionLimited {
     private Label leftStatus;
     @FXML
     private Label rightStatus;
-    @FXML
     private JournalOverviewManager journalOverviewManager;
     @FXML
     private BorderPane borderPane;
     @FXML
     private ListView<Note> showListView;
-
-    @FXML
 
     /**
      * Initializes the controller class.

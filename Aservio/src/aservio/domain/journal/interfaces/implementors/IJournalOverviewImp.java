@@ -19,8 +19,6 @@ public class IJournalOverviewImp implements IJournalOverview {
         this.repository = repository;
     }
 
-
-
     @Override
     public void addNote(Note note) {
         repository.addUserNote(note);

@@ -46,13 +46,24 @@ public class CreateNotes extends JournalOverview implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
     }
-
+    /**
+     * The cancelButton does that the user can cancel create note mode 
+     * and returns to the note overview 
+     * @param event 
+     */
     @FXML
     private void cancelButtonEvent(ActionEvent event) {
         Journal.getInstance().getJournalOverviewManager().showNote();
         Journal.getInstance().getShowListView().setVisible(true);
     }
-
+    /**
+     * This event save the created note to the selected user
+     * To make the note, the user have to insert: 
+     * -Date, startTime, title and note text
+     * Then the save button has been pressed, the caretaker's name will be set on the note
+     * NB The singleton getInstance() is used to call the journalOverviewManager to showNote()
+     * @param event 
+     */
     @FXML
     private void saveButtonEvent(ActionEvent event) {
         if (!selectedUsers.isEmpty() && startTimePicker.getValue() != null) {
