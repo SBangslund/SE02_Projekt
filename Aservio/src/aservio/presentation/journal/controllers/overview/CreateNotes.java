@@ -1,35 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.presentation.journal.controllers.overview;
 
 import aservio.domain.journal.Note;
-import aservio.domain.journal.NoteList;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.journal.controllers.Journal;
-import aservio.presentation.platform.OverviewType;
-import aservio.presentation.platform.controllers.Profile;
 import com.jfoenix.controls.JFXTimePicker;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 

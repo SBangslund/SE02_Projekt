@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.domain.journal;
 
 import aservio.domain.platform.user.User;
@@ -46,10 +41,6 @@ public class Note {
         return noteid;
     }
 
-    public void setId(UUID id) {
-        this.noteid = id;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -62,16 +53,20 @@ public class Note {
         return noteText;
     }
 
-    public void setNoteText(String noteText) {
-        this.noteText = noteText;
-    }
-
     public String getCaretakerInfo() {
         return caretakerName;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public void setId(UUID id) {
+        this.noteid = id;
+    }
+
+    public void setNoteText(String noteText) {
+        this.noteText = noteText;
     }
 
     @Override

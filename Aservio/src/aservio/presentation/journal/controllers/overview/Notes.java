@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.presentation.journal.controllers.overview;
 
 import aservio.domain.journal.FooterNote;
 import aservio.domain.journal.HeaderNote;
 import aservio.domain.journal.Note;
-import aservio.domain.journal.NoteList;
-import aservio.presentation.journal.controllers.Journal;
 import aservio.presentation.platform.interfaces.PermissionLimited;
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 /**
@@ -30,8 +21,6 @@ import javafx.scene.layout.VBox;
  */
 public class Notes extends JournalOverview implements Initializable, PermissionLimited {
 
-    private Label titelLabel;
-    @FXML
     private TextArea noteTextArea;
     @FXML
     private Button modifyButton;
@@ -97,6 +86,7 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
 
     @FXML
     private void modifyButton(ActionEvent event) {
+        //Todo
     }
 
 }

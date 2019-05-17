@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.presentation.journal.controllers;
 
 import aservio.domain.journal.Note;
@@ -40,6 +35,12 @@ import javafx.scene.layout.BorderPane;
 public class Journal implements Initializable, PermissionLimited {
 
     private IJournal interFace = PresentationInterfaceManager.getIJournal();
+    private ProgressIndicator progressIndicator;
+    private static Journal instance; //Singleton reference
+    private Button newNoteButton;
+    private ObservableList<Note> observableList;
+    private TextArea text = new TextArea();
+    private Note selectedNote;
 
     @FXML
     private MenuButton viewMenu;
@@ -48,19 +49,13 @@ public class Journal implements Initializable, PermissionLimited {
     @FXML
     private Label rightStatus;
     @FXML
-    private ProgressIndicator progressIndicator;
-
-    private static Journal instance; //Singleton reference
     private JournalOverviewManager journalOverviewManager;
     @FXML
     private BorderPane borderPane;
     @FXML
     private ListView<Note> showListView;
+
     @FXML
-    private Button newNoteButton;
-    private ObservableList<Note> observableList;
-    private TextArea text = new TextArea();
-    private Note selectedNote;
 
     /**
      * Initializes the controller class.
@@ -78,7 +73,7 @@ public class Journal implements Initializable, PermissionLimited {
         profileChangeEvent();
         applyPermissionLimitations();
         newNoteButton.setVisible(false);
-        
+
     }
 
     private void profileChangeEvent() {
@@ -112,6 +107,10 @@ public class Journal implements Initializable, PermissionLimited {
         }
     }
 
+    public JournalOverviewManager getJournalOverviewManager() {
+        return journalOverviewManager;
+    }
+
     public void setCenterView(Node node) {
         borderPane.setCenter(node);
     }
@@ -120,42 +119,8 @@ public class Journal implements Initializable, PermissionLimited {
         return borderPane.getCenter();
     }
 
-    @FXML
-    private void handleShowDiagnosing(ActionEvent event) {
-        journalOverviewManager.showDiagnosing();
-    }
-
-    @FXML
-    private void handleShowPrescription(ActionEvent event) {
-        journalOverviewManager.showPrescription();
-    }
-
-    @FXML
-    private void handleShowService(ActionEvent event) {
-        journalOverviewManager.showService();
-    }
-    
-    @FXML
-    private void handleShowNote(ActionEvent event) {
-        journalOverviewManager.showNote();
-    }
-
     public static Journal getInstance() {
         return instance;
-    }
-
-    public JournalOverviewManager getJournalOverviewManager() {
-        return journalOverviewManager;
-    }
-
-    @FXML
-    private void newNoteButtonEvent(ActionEvent event) {
-        journalOverviewManager.showCreateNote();
-        showListView.setVisible(false);
-    }
-
-    private void viewMenuEvent(ActionEvent event) {
-        journalOverviewManager.showDiagnosing();
     }
 
     public ObservableList<Note> getObservableList() {
@@ -176,5 +141,35 @@ public class Journal implements Initializable, PermissionLimited {
         if (!DEFAULT_PERMISSIONS.canSeeUserList()) {
             showNoteList(interFace.getNoteList(User.getCurrentUser().getUserInfo()));
         }
+    }
+
+    @FXML
+    private void handleShowDiagnosing(ActionEvent event) {
+        journalOverviewManager.showDiagnosing();
+    }
+
+    @FXML
+    private void handleShowPrescription(ActionEvent event) {
+        journalOverviewManager.showPrescription();
+    }
+
+    @FXML
+    private void handleShowService(ActionEvent event) {
+        journalOverviewManager.showService();
+    }
+
+    @FXML
+    private void handleShowNote(ActionEvent event) {
+        journalOverviewManager.showNote();
+    }
+
+    @FXML
+    private void newNoteButtonEvent(ActionEvent event) {
+        journalOverviewManager.showCreateNote();
+        showListView.setVisible(false);
+    }
+
+    private void viewMenuEvent(ActionEvent event) {
+        journalOverviewManager.showDiagnosing();
     }
 }
