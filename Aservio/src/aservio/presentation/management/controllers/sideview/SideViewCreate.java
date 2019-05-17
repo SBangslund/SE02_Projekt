@@ -121,14 +121,21 @@ public class SideViewCreate extends SideView implements Initializable {
         endDatePicker.setValue(LocalDate.now());
     }
 
-    public void updatePresetTimes() {
+    /*public void updatePresetTimes() {
         startDatePicker.setValue(LocalDate.now());
         startTimePicker.setValue(LocalTime.now());
         endTimePicker.setValue(LocalTime.now());
-    }
+    }*/
 
+    /**
+     *
+     * asdfasdfasdn {@link SideViewCreate#resetForm() resetness} is good.
+     * @param event the triggered event.
+     *
+     * @see  SideViewCreate#resetForm()
+     */
     @FXML
-    private void handleActionButton(ActionEvent event) {
+    private void handleConfirmButton(ActionEvent event) {
         //Not 100% consistent. //needs a label to inform user to select other values.
         if (isFormFilled()) {
 
