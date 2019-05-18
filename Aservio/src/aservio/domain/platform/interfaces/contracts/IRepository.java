@@ -4,27 +4,41 @@ import java.util.Date;
 import java.util.UUID;
 
 public interface IRepository {
+    boolean addUser(String username, String password, UUID userID);
+    boolean addUserInfo(String mail, String firstname, String lastname, int phone, String picture, UUID userID, int institutionid, String role);
+    boolean addUserAddress(String roadname, String country, int postcode, String city, String housenumber, String level, UUID userid);
     String verifyUser(String username, String password);
     String getUser(String username, String password);
-    String[] getNotesFromUser(UUID userid);
-    String[] getNote(UUID noteid);
-    boolean addUserNote(UUID noteid, Long noteDate, String startTime, String endTime, String noteText);
-    boolean addNoteToUser(UUID userid, UUID noteid);
-    String[] getUserActivities(UUID userid);
-    String[] getUserInfo(UUID userid);
-    String[] getUsersFromActivity(UUID activityid);
-    String[] getUsersFromInsitution(int institution);
-    String[] getActivity(UUID activityid);
-    String[] getUserAddress(UUID userid);
-    String[] getInstitution(int institutionid);
-    boolean addUser(String username, String password, UUID userid);
-    boolean addUserInfo(String mail, String firstname, String lastname, int phone, String picture, UUID userid, int institutionid, String role);
-    boolean addUserAddress(String roadname, String country, int postcode, String city, String housenumber, String level, UUID userid);
+    String[] getUserInfo(UUID userID);
+    String[] getUserAddress(UUID userID);
+    String getUserRole(String userID);
+    String[] getCitizensFromCaretaker(String caretakerID);
+    /**
+     * Brilliaaaaaaaaant
+     * @param userID the userID of the user that no longer exists
+     * @return
+     */
+    boolean deleteUser(UUID userID);
+
+    boolean addNote(UUID noteID, Long noteDate, String startTime, String endTime, String noteText);
+    boolean addNoteToUser(UUID userID, UUID noteID);
+    String[] getNotesFromUser(UUID userID);
+    String[] getNote(UUID noteID);
+    boolean deleteNote(UUID noteID);
+
     boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid, String description);
-    boolean addUserToActivity(UUID activityid, UUID userid);
+    boolean addUserToActivity(UUID activityid, UUID userID);
+    String[] getActivity(UUID activityid);
+    String[] getUserActivities(UUID userID);
+    String[] getUsersFromActivity(UUID activityid);
     boolean deleteActivity(UUID activityid);
 
-    String getUserRole(String userid);
+    boolean addInstitution(String institutionName, int institutionid);
+    String[] getInstitution(int institutionid);
+    String[] getUsersFromInstitution(int institution);
+    boolean deleteInstitution(int institutionid);
 
-    String[] getCitizensFromCaretaker(String caretakerID);
+
+
+
 }
