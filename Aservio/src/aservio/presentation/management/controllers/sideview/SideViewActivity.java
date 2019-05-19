@@ -4,12 +4,17 @@ import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.management.activities.ActivityType;
 import aservio.domain.platform.user.User;
+import aservio.presentation.PopupType;
+import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.management.controllers.Management;
 import aservio.presentation.platform.interfaces.PermissionLimited;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -28,6 +33,9 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class SideViewActivity extends SideView implements Initializable, PermissionLimited {
 
@@ -187,11 +195,17 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
             //reset
             sideViewCreate.setEdit(false);
             sideViewCreate.initialize();
+
+
         } //Closed form
         else if (!sideViewCreate.isEdit() && !addActivityPane.isVisible()) {
             //reset
             addActivityPane.setVisible(true);
             sideViewCreate.initialize();
+
+            PresentationInterfaceManager.createPopupWindow(PopupType.SUCCESS, "Du kan nu tilføje en aktivitet");
+            PresentationInterfaceManager.createPopupWindow(PopupType.FAILURE, "Du kan ikke tilføje en aktivitet");
+
         } //Open form already adding
         else if (!sideViewCreate.isEdit() && addActivityPane.isVisible()) {
             //close

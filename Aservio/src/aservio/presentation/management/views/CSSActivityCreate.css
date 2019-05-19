@@ -30,13 +30,16 @@
 }
 
 .hbox_title{
-    -fx-padding: 0,-10,0,-10;
-    -fx-background-insets: -5, -5 ,-5, -5;
-
+    -fx-padding: 0 -10 0 -10;
+    -fx-background-insets: -5 -5 -5 -5;
+    -fx-background-radius: 10 10 0 0;
+    -fx-border-radius: 10 10 0 0;
     -fx-background-color: #33CCCC;
 }
 
 .label_title{
+    -fx-padding: 0 10 0 10;
+    -fx-background-insets: 5 5 5 5;
     -fx-text-fill: white;
 }
 

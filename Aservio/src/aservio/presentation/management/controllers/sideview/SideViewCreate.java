@@ -22,13 +22,20 @@ import java.util.ResourceBundle;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class SideViewCreate extends SideView implements Initializable {
 
@@ -186,6 +193,8 @@ public class SideViewCreate extends SideView implements Initializable {
     private void menuButtonOnSelect(ActionEvent event) {
 
     }
+
+
 
     private void fillForm(Activity activity) {
         System.out.println(activity);
