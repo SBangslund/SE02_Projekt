@@ -82,25 +82,29 @@ public class UserRetriever {
 
     public String[] getUsersFromActivity(UUID activityid) {
         try {
-            ResultSet result = createStatement().executeQuery("SELECT * FROM getusersfromActivity('" + activityid.toString() + "')");
-            String[] resultArr = new String[7];
-            int index = 0;
-            while (result.next()) {
-                resultArr[index] = result.getString(index + 1);
-                index++;
+            ResultSet result = createStatement().executeQuery("SELECT * FROM get_users_from_activity('" + activityid.toString() + "')");
+            String[] resultArr = null;
+            if (result.last()) {
+                int size = result.getRow();
+                resultArr = new String[size];
+                result.first();
+                for (int i = 0; i < size; i++) {
+                    resultArr[i] = result.getString(1);
+                    result.next();
+                }
             }
             return resultArr;
-        } catch (SQLException ex) {
-            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
 
     public String[] getUsersFromInstitution(int institutionid) {
         try {
-            ResultSet result = createStatement().executeQuery("SELECT getusersfrominstitution('" + institutionid +"')");
+            ResultSet result = createStatement().executeQuery("SELECT getusersfrominstitution('" + institutionid + "')");
             String[] resultArr = null;
-            if(result.last()) {
+            if (result.last()) {
                 int size = result.getRow();
                 resultArr = new String[size];
                 result.first();
@@ -166,13 +170,62 @@ public class UserRetriever {
         try {
             ResultSet result = createStatement().executeQuery("SELECT citizen_id from caretaker_has_citizen where caretaker_has_citizen.caretaker_id = '" + caretakerID + "'");
             String[] resultArr = null;
-            if(result.last()) {
+            if (result.last()) {
                 int size = result.getRow();
                 resultArr = new String[size];
                 result.first();
                 for (int i = 0; i < size; i++) {
                     resultArr[i] = result.getString(1);
                     result.next();
+                }
+            }
+            return resultArr;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public boolean addInstitution(String institutionName, int institutionID) {
+        try {
+            createStatement().executeUpdate("INSERT INTO institution VALUES('" + institutionName +"', '" + institutionID + "')");
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public boolean deleteInstitution(int institutionid) {
+        try {
+            createStatement().executeUpdate("DELETE FROM institution WHERE institutionid = " + institutionid + "");
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public boolean deleteUser(UUID userID) {
+        try {
+            createStatement().executeQuery("SELECT deleteuser('" + userID + "')");
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public String[] getInstitution(int institutionid) {
+        try {
+            ResultSet result = createStatement().executeQuery("SELECT * FROM institution WHERE institution.institutionid = " + institutionid + "");
+            String[] resultArr = null;
+            if (result.last()) {
+                int size = result.getRow();
+                resultArr = new String[size];
+                result.first();
+                for (int i = 0; i < size; i++) {
+                    resultArr[i] = result.getString(i+1);
                 }
             }
             return resultArr;

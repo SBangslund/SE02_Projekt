@@ -92,7 +92,7 @@ public class ActivityRetriever {
     public boolean deleteActivity(UUID activityid) {
         try {
             ResultSet result = createStatement().executeQuery("SELECT deleteActivity('" + activityid + "')");
-            return result.wasNull();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }

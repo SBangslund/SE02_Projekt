@@ -62,8 +62,13 @@ public class IRepositoryImp implements IRepository {
     }
 
     @Override
-    public String[] getUsersFromInsitution(int institution) {
+    public String[] getUsersFromInstitution(int institution) {
         return userRetriever.getUsersFromInstitution(institution);
+    }
+
+    @Override
+    public boolean deleteInstitution(int institutionid) {
+        return userRetriever.deleteInstitution(institutionid);
     }
 
     @Override
@@ -97,6 +102,11 @@ public class IRepositoryImp implements IRepository {
     }
 
     @Override
+    public boolean addInstitution(String institutionName, int institutionid ) {
+        return userRetriever.addInstitution(institutionName, institutionid);
+    }
+
+    @Override
     public String getUserRole(String userid) {
         return userRetriever.getUserRole(userid);
     }
@@ -104,6 +114,11 @@ public class IRepositoryImp implements IRepository {
     @Override
     public String[] getCitizensFromCaretaker(String caretakerID) {
         return userRetriever.getCitizensFromCaretaker(caretakerID);
+    }
+
+    @Override
+    public boolean deleteUser(UUID userID) {
+        return userRetriever.deleteUser(userID);
     }
 
     @Override
@@ -117,7 +132,7 @@ public class IRepositoryImp implements IRepository {
 
     @Override
     public String[] getInstitution(int institutionid) {
-        return new String[0];
+        return userRetriever.getInstitution(institutionid);
     }
 
     @Override
@@ -141,13 +156,18 @@ public class IRepositoryImp implements IRepository {
     }
 
     @Override
-    public boolean addUserNote(UUID noteid, Long noteDate, String startTime, String endTime, String noteText) {
+    public boolean addNote(UUID noteid, Long noteDate, String startTime, String endTime, String noteText) {
         return documentRetriever.addNote(noteid, noteDate, startTime, endTime, noteText);
     }
 
     @Override
     public String[] getNote(UUID noteid) {
         return documentRetriever.getNote(noteid);
+    }
+
+    @Override
+    public boolean deleteNote(UUID noteID) {
+        return false;
     }
 
     @Override

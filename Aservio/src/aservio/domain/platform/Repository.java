@@ -63,7 +63,7 @@ public class Repository {
     public boolean addUserNote(Note note) {
         addNoteToUser(note, note.getCitizenInfo().getId());
         addNoteToUser(note, User.getCurrentUser().getId());
-        return interFace.addUserNote(
+        return interFace.addNote(
                     note.getId(),
                     note.getDate().getTime(),
                     note.getStartTime(),
@@ -131,7 +131,7 @@ public class Repository {
     }
 
     public List<UserInfo> getUsersFromInstitution(int institutionID) {
-        String[] usersString = interFace.getUsersFromInsitution(institutionID);
+        String[] usersString = interFace.getUsersFromInstitution(institutionID);
         List<UserInfo> users = null;
         if (usersString != null) {
             users = new ArrayList<>();
