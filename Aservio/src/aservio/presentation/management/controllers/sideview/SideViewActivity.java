@@ -10,29 +10,30 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 
 public class SideViewActivity extends SideView implements Initializable, PermissionLimited {
 
     public HBox toolbarAddRemove;
     public AnchorPane mainPane;
+    public VBox vBoxTime;
     private Map<User, ActivityList> userActivities = new HashMap<>();
     public ToggleButton addButton;
     public ToggleButton modifyButton;
@@ -47,7 +48,7 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
     @FXML
     private Label activityName;
     @FXML
-    private Text activityDescription;
+    private Label activityDescription;
     @FXML
     private Label dateText;
 
@@ -65,6 +66,8 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
     @FXML
     private Label timeEndLabel;
 
+    ToggleGroup addRemoveButtonGroup;
+
     @Override
     protected void initialize() {
 
@@ -74,6 +77,11 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         modifyButton.getStyleClass().add("toggle-button_modify");
         removeButton.setText("Slet");
         removeButton.getStyleClass().add("toggle-button_remove");
+
+        addRemoveButtonGroup = new ToggleGroup();
+        addButton.setToggleGroup(addRemoveButtonGroup);
+        modifyButton.setToggleGroup(addRemoveButtonGroup);
+        removeButton.setToggleGroup(addRemoveButtonGroup);
 
         mainPane.getStyleClass().add("pane_main");
 
@@ -118,19 +126,39 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         activityName.setText(activity.getActivityName());
         activityBox.getChildren().add(createActivityLabel(activity.getActivityType()));
         activityDescription.setText(activity.getDescription());
+        activityDescription.setWrapText(true);
+        activityDescription.setTextAlignment(TextAlignment.JUSTIFY);
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String dateString = dateFormat.format(activity.getStartDate());
+        String pattern = "EEEEE, dd. MMMMM";
+        SimpleDateFormat simpleDateFormat =
+                new SimpleDateFormat(pattern, setWeekDaysToDanish());
+        String dateString = simpleDateFormat.format(activity.getStartDate());
         dateText.setText(dateString);
 
-        SimpleDateFormat timeStartFormat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat timeStartFormat = new SimpleDateFormat("HH:mm");
         String timeStartString = timeStartFormat.format(activity.getStartDate());
         timeStartText.setText(timeStartString);
-
-        SimpleDateFormat timeEndFormat = new SimpleDateFormat("HH:mm:ss");
+        timeStartText.getStyleClass().add("label_time");
+        SimpleDateFormat timeEndFormat = new SimpleDateFormat("HH:mm");
         String timeEndString = timeEndFormat.format(activity.getEndDate());
         timeEndText.setText(timeEndString);
+        timeEndText.getStyleClass().add("label_time");
+    }
 
+    public DateFormatSymbols setWeekDaysToDanish(){
+        Locale locale = new Locale("da", "DK");
+        DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
+        dateFormatSymbols.setWeekdays(new String[]{
+                "Unused",
+                "Søndag",
+                "Mandag",
+                "Tirsdag",
+                "Onsdag",
+                "Torsdag",
+                "Fredag",
+                "Lørdag",
+        });
+        return dateFormatSymbols;
     }
 
     private Pane createActivityLabel(ActivityType activityType) {

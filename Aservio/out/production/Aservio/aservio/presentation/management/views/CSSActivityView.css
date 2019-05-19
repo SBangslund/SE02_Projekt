@@ -1,14 +1,18 @@
 
-.button:hover {
+.toggle-button:hover {
     -fx-background-color: #1199CC;
     -fx-text-fill: white;
 }
 
-.toggle-button_add {
-    -fx-background-color: #33CCCC;
-    -fx-background-radius: 10;
-    -fx-border-radius: 10;
+.toggle-button:selected{
+    -fx-background-color: #00ccc0;
     -fx-text-fill: white;
+}
+.toggle-button_add {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-border-radius: 10;
+    -fx-text-fill: #33CCCC;
 
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
@@ -16,7 +20,6 @@
 
 .toggle-button_modify {
     -fx-background-color: white;
-    -fx-border-color: transparent;
     -fx-text-fill: #33CCCC;
     -fx-background-radius: 20;
     -fx-border-radius: 10;
@@ -40,6 +43,13 @@
     -fx-background-insets: 10, 10 ,10 ,10;
 }
 
+.vbox_time {
+    -fx-background-color: #33CCCC;
+    -fx-padding: 0,-10,0,-10;
+    -fx-background-insets: -5, -5 ,-5, -5;
+    -fx-text-fill: white;
+}
+
 .pane_main {
     -fx-background-color: gainsboro;
     -fx-text-fill: white;
@@ -47,10 +57,13 @@
     -fx-padding: 20,20,20,20;
 }
 
-.text {
-    -fx-text-fill: white;
-}
-
 .label {
     -fx-text-fill: darkslategray;
+}
+
+.label_time {
+    -fx-background-color: #ff8106;
+    -fx-padding: 5,5,5,5;
+    -fx-background-insets: 2, 2 ,2, 2;
+    -fx-text-fill: white;
 }

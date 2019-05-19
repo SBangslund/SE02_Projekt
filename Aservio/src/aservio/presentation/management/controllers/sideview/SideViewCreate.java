@@ -26,16 +26,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class SideViewCreate extends SideView implements Initializable {
 
+    public VBox vBoxContent;
+    public Label addActivityLabel;
+    public HBox titleHBox;
     ActivityType selectedActivityType;
     @FXML
     private TextField nameField;
@@ -69,6 +68,14 @@ public class SideViewCreate extends SideView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //CSS
+        activityConfirmButton.getStyleClass().add("button_confirm");
+        activityCancelButton.getStyleClass().add("button_cancel");
+        nameField.getStyleClass().add("text-field_name");
+        vBoxContent.getStyleClass().add("vbox_content");
+        titleHBox.getStyleClass().add("hbox_title");
+        addActivityLabel.getStyleClass().add("label_title");
+
 
         selectedActivityType = null;
         //Dropdown menu initialization.
@@ -105,6 +112,7 @@ public class SideViewCreate extends SideView implements Initializable {
     @Override
     protected void initialize() {
         if (isEdit()) {
+            addActivityLabel.setText("Rediger aktivitet");
             fillForm(activityToBeEditet);
         } else {
             resetForm();
@@ -118,7 +126,6 @@ public class SideViewCreate extends SideView implements Initializable {
         descriptionField.setText("");
         startDatePicker.setValue(LocalDate.now());
         startTimePicker.setValue(LocalTime.now());
-        endDatePicker.setValue(LocalDate.now());
     }
 
     /*public void updatePresetTimes() {
