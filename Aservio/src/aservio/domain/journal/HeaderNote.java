@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.domain.journal;
 
 import aservio.domain.platform.user.UserInfo;
@@ -49,7 +44,7 @@ public class HeaderNote {
 
     @Override
     public String toString() {
-        return String.format("Titel: %21s\nBorger navn: %15s\n", title, citizenFirstName + " " + citizenLastName);
+        return String.format("%s+%s+", title, citizenFirstName + citizenLastName);
 
     }
 

@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.presentation.journal.controllers.overview;
 
 import aservio.domain.journal.Note;
-import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.journal.controllers.Journal;
 import aservio.presentation.journal.interfaces.contracts.IJournalOverview;
 import aservio.presentation.platform.controllers.Profile;
-import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Parent;
 import javafx.fxml.Initializable;

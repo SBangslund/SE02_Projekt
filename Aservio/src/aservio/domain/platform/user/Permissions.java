@@ -9,10 +9,15 @@ public class Permissions implements Serializable {
     private boolean canAddUser;
     private boolean redigerPlanlægning;
     private boolean canEditActivities;
+    private boolean seeCreateNote;
+    private boolean seeModifyNote;
 
     public boolean canSeeUserList() {
         return seeUserList;
     }
+    
+    public boolean canCreateNote() {
+        return seeCreateNote;
 
     public boolean canAddUser() {
         return canAddUser;
@@ -21,7 +26,11 @@ public class Permissions implements Serializable {
     public boolean isRedigerPlanlægning() {
         return redigerPlanlægning;
     }
-
+    
+    public boolean canModifyNote(){
+        return seeModifyNote;
+    }
+    
     public void setSeeUserList(boolean seeUserList) {
         this.seeUserList = seeUserList;
     }
@@ -35,4 +44,14 @@ public class Permissions implements Serializable {
     public void setCanAddUser(boolean canAddUser) {
         this.canAddUser = canAddUser;
     }
+    
+
+    public void setSeeCreateNote(boolean seeCreateNote) {
+        this.seeCreateNote = seeCreateNote;
+    }
+    
+    public void setSeeModifyNote(boolean seeModifyNote){
+        this.seeModifyNote = seeModifyNote;
+    }
+    
 }

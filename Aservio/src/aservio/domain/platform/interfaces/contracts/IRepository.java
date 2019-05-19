@@ -20,10 +20,10 @@ public interface IRepository {
      */
     boolean deleteUser(UUID userID);
 
-    boolean addNote(UUID noteID, Long noteDate, String startTime, String endTime, String noteText);
-    boolean addNoteToUser(UUID userID, UUID noteID);
-    String[] getNotesFromUser(UUID userID);
-    String[] getNote(UUID noteID);
+    boolean addUserNote(String noteInfo, Long noteDate, UUID noteid);
+    boolean addNoteToUser(UUID userid, UUID noteid);
+    String[] getNotesFromUser(UUID userid);
+    String[] getNote(UUID noteid);
     boolean deleteNote(UUID noteID);
 
     boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid, String description);

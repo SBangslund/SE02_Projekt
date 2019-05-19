@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.domain.journal.interfaces.implementors;
 
 import aservio.domain.journal.Note;
@@ -23,8 +18,6 @@ public class IJournalOverviewImp implements IJournalOverview {
     public IJournalOverviewImp(Repository repository) {
         this.repository = repository;
     }
-
-
 
     @Override
     public void addNote(Note note) {

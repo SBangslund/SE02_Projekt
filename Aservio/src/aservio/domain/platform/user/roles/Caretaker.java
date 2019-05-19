@@ -16,6 +16,8 @@ public class Caretaker extends Role {
         permissions.setCanAddUser(false);
 
         permissions.setCanEditActivities(true);
+        permissions.setSeeCreateNote(true);
+        permissions.setSeeModifyNote(true);
         super.defaultPermissions = permissions;
     }
 

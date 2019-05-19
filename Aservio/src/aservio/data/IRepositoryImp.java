@@ -156,11 +156,6 @@ public class IRepositoryImp implements IRepository {
     }
 
     @Override
-    public boolean addNote(UUID noteid, Long noteDate, String startTime, String endTime, String noteText) {
-        return documentRetriever.addNote(noteid, noteDate, startTime, endTime, noteText);
-    }
-
-    @Override
     public String[] getNote(UUID noteid) {
         return documentRetriever.getNote(noteid);
     }
@@ -173,6 +168,11 @@ public class IRepositoryImp implements IRepository {
     @Override
     public boolean addNoteToUser(UUID userid, UUID noteid) {
         return documentRetriever.addNoteToUser(userid, noteid);
+    }
+
+    @Override
+    public boolean addUserNote(String noteInfo, Long noteDate, UUID noteid) {
+        return documentRetriever.addNote(noteInfo, noteDate, noteid);
     }
 
 }

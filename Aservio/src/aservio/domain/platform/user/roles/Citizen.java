@@ -17,6 +17,8 @@ public class Citizen extends Role {
         permissions.setCanEditActivities(false);
         permissions.setCanAddUser(false);
 
+        permissions.setSeeCreateNote(false);
+        permissions.setSeeModifyNote(false);
         super.defaultPermissions = permissions;
     }
 

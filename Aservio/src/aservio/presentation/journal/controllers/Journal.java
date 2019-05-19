@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.presentation.journal.controllers;
 
 import aservio.domain.journal.Note;
@@ -13,6 +8,7 @@ import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.journal.controllers.overview.JournalOverviewManager;
 import aservio.presentation.journal.interfaces.contracts.IJournal;
 import aservio.presentation.platform.controllers.Profile;
+import aservio.presentation.platform.interfaces.PermissionLimited;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -30,17 +26,23 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
  *
  * @author victo
  */
-public class Journal implements Initializable {
+public class Journal implements Initializable, PermissionLimited {
 
     private IJournal interFace = PresentationInterfaceManager.getIJournal();
+    @FXML
+    private ProgressIndicator progressIndicator;
+    private static Journal instance; //Singleton reference
+    @FXML
+    private Button newNoteButton;
+    private ObservableList<Note> observableList;
+    private TextArea text = new TextArea();
+    private Note selectedNote;
 
     @FXML
     private MenuButton viewMenu;
@@ -48,20 +50,11 @@ public class Journal implements Initializable {
     private Label leftStatus;
     @FXML
     private Label rightStatus;
-    @FXML
-    private ProgressIndicator progressIndicator;
-
-    private static Journal instance; //Singleton reference
     private JournalOverviewManager journalOverviewManager;
     @FXML
     private BorderPane borderPane;
     @FXML
     private ListView<Note> showListView;
-    @FXML
-    private Button newNoteButton;
-    private ObservableList<Note> observableList;
-    private TextArea text = new TextArea();
-    private Note selectedNote;
 
     /**
      * Initializes the controller class.
@@ -77,6 +70,9 @@ public class Journal implements Initializable {
         observableList = FXCollections.observableArrayList();
         showListView.setItems(observableList);
         profileChangeEvent();
+        applyPermissionLimitations();
+        newNoteButton.setVisible(false);
+
     }
 
     private void profileChangeEvent() {
@@ -98,6 +94,7 @@ public class Journal implements Initializable {
         if (!selectedUsers.isEmpty()) {
             NoteList noteList = interFace.getNoteList(selectedUsers.get(0));
             showNoteList(noteList);
+            applyPermissionLimitations();
         }
     }
 
@@ -109,6 +106,10 @@ public class Journal implements Initializable {
         }
     }
 
+    public JournalOverviewManager getJournalOverviewManager() {
+        return journalOverviewManager;
+    }
+
     public void setCenterView(Node node) {
         borderPane.setCenter(node);
     }
@@ -117,34 +118,8 @@ public class Journal implements Initializable {
         return borderPane.getCenter();
     }
 
-    @FXML
-    private void handleShowDiagnosing(ActionEvent event) {
-        journalOverviewManager.showDiagnosing();
-    }
-
-    @FXML
-    private void handleShowPrescription(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleShowService(ActionEvent event) {
-    }
-
     public static Journal getInstance() {
         return instance;
-    }
-
-    public JournalOverviewManager getJournalOverviewManager() {
-        return journalOverviewManager;
-    }
-
-    @FXML
-    private void newNoteButtonEvent(ActionEvent event) {
-        journalOverviewManager.showCreateNote();
-    }
-
-    private void viewMenuEvent(ActionEvent event) {
-        journalOverviewManager.showDiagnosing();
     }
 
     public ObservableList<Note> getObservableList() {
@@ -155,5 +130,45 @@ public class Journal implements Initializable {
         return selectedNote;
     }
 
-    
+    public ListView<Note> getShowListView() {
+        return showListView;
+    }
+
+    @Override
+    public void applyPermissionLimitations() {
+        newNoteButton.setVisible(DEFAULT_PERMISSIONS.canCreateNote());
+        if (!DEFAULT_PERMISSIONS.canSeeUserList()) {
+            showNoteList(interFace.getNoteList(User.getCurrentUser().getUserInfo()));
+        }
+    }
+
+    @FXML
+    private void handleShowDiagnosing(ActionEvent event) {
+        journalOverviewManager.showDiagnosing();
+    }
+
+    @FXML
+    private void handleShowPrescription(ActionEvent event) {
+        journalOverviewManager.showPrescription();
+    }
+
+    @FXML
+    private void handleShowService(ActionEvent event) {
+        journalOverviewManager.showService();
+    }
+
+    @FXML
+    private void handleShowNote(ActionEvent event) {
+        journalOverviewManager.showNote();
+    }
+
+    @FXML
+    private void newNoteButtonEvent(ActionEvent event) {
+        journalOverviewManager.showCreateNote();
+        showListView.setVisible(false);
+    }
+
+    private void viewMenuEvent(ActionEvent event) {
+        journalOverviewManager.showDiagnosing();
+    }
 }

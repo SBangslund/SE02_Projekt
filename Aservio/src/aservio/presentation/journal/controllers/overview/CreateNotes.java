@@ -1,22 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.presentation.journal.controllers.overview;
 
 import aservio.domain.journal.Note;
-import aservio.domain.journal.NoteList;
+import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.journal.controllers.Journal;
-import aservio.presentation.platform.OverviewType;
-import aservio.presentation.platform.controllers.Profile;
 import com.jfoenix.controls.JFXTimePicker;
 import java.net.URL;
-import java.time.ZoneId;
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
 import javafx.event.ActionEvent;
@@ -24,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -46,8 +37,6 @@ public class CreateNotes extends JournalOverview implements Initializable {
     @FXML
     private JFXTimePicker startTimePicker;
     @FXML
-    private JFXTimePicker endTimePicker;
-    @FXML
     private TextField titleField;
 
     /**
@@ -57,23 +46,44 @@ public class CreateNotes extends JournalOverview implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
     }
-
+    /**
+     * The cancelButton does that the user can cancel create note mode 
+     * and returns to the note overview 
+     * @param event 
+     */
     @FXML
     private void cancelButtonEvent(ActionEvent event) {
         Journal.getInstance().getJournalOverviewManager().showNote();
+        Journal.getInstance().getShowListView().setVisible(true);
     }
-
+    /**
+     * This event save the created note to the selected user
+     * To make the note, the user have to insert: 
+     * -Date, startTime, title and note text
+     * Then the save button has been pressed, the caretaker's name will be set on the note
+     * NB The singleton getInstance() is used to call the journalOverviewManager to showNote()
+     * @param event 
+     */
     @FXML
     private void saveButtonEvent(ActionEvent event) {
-        if (!selectedUsers.isEmpty()) {
+        if (!selectedUsers.isEmpty() && startTimePicker.getValue() != null) {
             UserInfo citizenInfo = selectedUsers.get(0);
-            String startTime = startTimePicker.getValue().toString();
-            String endTime = endTimePicker.getValue().toString();
-            Note note = new Note(UUID.randomUUID(), new Date(), startTime, endTime, noteTextArea.getText(), citizenInfo, titleField.getText());
+            UserInfo caretakerInfo = User.getCurrentUser().getUserInfo();
+            String editTime = datePicker.getValue() + " " + startTimePicker.getValue().toString();
+            Date editDate = new Date();
+            try {
+                editDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(editTime);
+            } catch (ParseException ex) {
+                System.err.println("The date was not defined correctly");
+            }
+            Note note = new Note(UUID.randomUUID(), editDate, noteTextArea.getText(), citizenInfo, titleField.getText(), caretakerInfo.getFirstName() + caretakerInfo.getLastName());
             note.createNoteText(noteTextArea.getText());
             interFace.addNote(note);
+        } else{
+            Journal.getInstance().getJournalOverviewManager().showNote();
         }            
         Journal.getInstance().getJournalOverviewManager().showNote();
+        Journal.getInstance().getShowListView().setVisible(true);
     }
 
     @Override

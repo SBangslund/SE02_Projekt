@@ -15,6 +15,8 @@ public class Admin extends Role {
         permissions.setCanEditActivities(true);
         permissions.setCanAddUser(true);
 
+        permissions.setSeeCreateNote(true);
+        permissions.setSeeModifyNote(true);
         super.defaultPermissions = permissions;
     }
 

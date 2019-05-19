@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aservio.presentation.journal.controllers.overview;
 
 import aservio.domain.journal.Note;
@@ -29,6 +24,14 @@ public class JournalOverviewManager {
 
     public void showDiagnosing() {
         updateCurrentJournalOverview(OverviewType.DIAGNOSING.getURL());
+    }
+    
+    public void showPrescription() {
+        updateCurrentJournalOverview(OverviewType.PRESCRIPTION.getURL());
+    }
+    
+    public void showService() {
+        updateCurrentJournalOverview(OverviewType.SERVICE.getURL());
     }
 
     public void updateSelectedNote(Note note) {
