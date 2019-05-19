@@ -20,6 +20,9 @@
                     <ToggleButton fx:id="modifyButton" onAction="#handleModify" text="Rediger" />
                     <ToggleButton fx:id="removeButton" onAction="#handleRemove" text="Slet" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
             </HBox>
             <HBox fx:id="activityBox" prefWidth="200.0" spacing="20.0">
                <children>

@@ -20,7 +20,7 @@
             <Pane prefHeight="165.0" prefWidth="250.0" />
             <HBox fx:id="titleHBox" alignment="BOTTOM_LEFT" prefHeight="33.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="addActivityLabel" text="Tilføj en ny aktivitet" textFill="WHITE">
+                  <Label fx:id="addActivityLabel" text="Tilføj en ny aktivitet">
                      <font>
                         <Font size="14.0" />
                      </font>

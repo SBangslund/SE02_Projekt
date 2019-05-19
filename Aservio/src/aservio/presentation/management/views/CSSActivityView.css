@@ -10,8 +10,8 @@
 }
 .toggle-button_add {
     -fx-background-color: white;
-    -fx-background-radius: 20;
-    -fx-border-radius: 10;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
     -fx-text-fill: #33CCCC;
 
     -fx-focus-color: transparent;
@@ -21,8 +21,8 @@
 .toggle-button_modify {
     -fx-background-color: white;
     -fx-text-fill: #33CCCC;
-    -fx-background-radius: 20;
-    -fx-border-radius: 10;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
 
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
@@ -31,8 +31,8 @@
 .toggle-button_remove {
     -fx-background-color: white;
     -fx-text-fill: #33CCCC;
-    -fx-background-radius: 20;
-    -fx-border-radius: 10;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
 
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
