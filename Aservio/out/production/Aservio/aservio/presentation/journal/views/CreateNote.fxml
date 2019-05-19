@@ -18,7 +18,6 @@
                <children>
                   <DatePicker fx:id="datePicker" promptText="Dato" />
                   <JFXTimePicker fx:id="startTimePicker" promptText="Start tidspunkt..." />
-                  <JFXTimePicker fx:id="endTimePicker" promptText="Slut tidspunkt..." />
                   <Pane VBox.vgrow="ALWAYS" />
                   <HBox alignment="BOTTOM_CENTER" spacing="15.0">
                      <children>

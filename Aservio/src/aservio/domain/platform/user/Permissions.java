@@ -18,6 +18,7 @@ public class Permissions implements Serializable {
     
     public boolean canCreateNote() {
         return seeCreateNote;
+    }
 
     public boolean canAddUser() {
         return canAddUser;

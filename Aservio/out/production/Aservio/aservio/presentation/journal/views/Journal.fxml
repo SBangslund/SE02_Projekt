@@ -20,7 +20,7 @@
                <children>
                   <Label text="Note oversigt:" underline="true" />
                   <ListView fx:id="showListView" VBox.vgrow="ALWAYS" />
-                  <Button fx:id="newNoteButton" mnemonicParsing="false" onAction="#newNoteButtonEvent" text="Ny note" VBox.vgrow="ALWAYS" />
+                  <Button fx:id="newNoteButton" mnemonicParsing="false" onAction="#newNoteButtonEvent" text="Ny note" visible="false" VBox.vgrow="ALWAYS" />
                </children>
                <BorderPane.margin>
                   <Insets top="5.0" />
@@ -38,6 +38,7 @@
                            <children>
                               <MenuButton fx:id="viewMenu" mnemonicParsing="false" text="Vis">
                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#handleShowNote" text="Note" />
                                   <MenuItem mnemonicParsing="false" onAction="#handleShowDiagnosing" text="Udredning" />
                                     <MenuItem mnemonicParsing="false" onAction="#handleShowPrescription" text="Recept" />
                                     <MenuItem mnemonicParsing="false" onAction="#handleShowService" text="Ydelse" />
