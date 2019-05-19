@@ -12,11 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -32,11 +31,12 @@ import javafx.scene.layout.VBox;
 
 public class SideViewActivity extends SideView implements Initializable, PermissionLimited {
 
-    public ToolBar toolbarAddRemove;
+    public HBox toolbarAddRemove;
+    public AnchorPane mainPane;
     private Map<User, ActivityList> userActivities = new HashMap<>();
-    public Button addButton;
-    public Button modifyButton;
-    public Button removeButton;
+    public ToggleButton addButton;
+    public ToggleButton modifyButton;
+    public ToggleButton removeButton;
     Pane addActivityPane;
     @FXML
     private HBox activityBox;
@@ -69,11 +69,13 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
     protected void initialize() {
 
         addButton.setText("Tilføj");
-        addButton.getStyleClass().add("button_add");
+        addButton.getStyleClass().add("toggle-button_add");
         modifyButton.setText("Rediger");
-        modifyButton.getStyleClass().add("button_modify");
+        modifyButton.getStyleClass().add("toggle-button_modify");
         removeButton.setText("Slet");
-        removeButton.getStyleClass().add("button_remove");
+        removeButton.getStyleClass().add("toggle-button_remove");
+
+        mainPane.getStyleClass().add("pane_main");
 
         //Add activity button
         try {
@@ -105,6 +107,8 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
 //        button.setGraphic(modifyImage);
 //        button.getStylesheets().add(style);
 //    }
+
+
     public void showActivity(Activity activity) {
         if (activityBox.getChildren().size() > 2) {
             activityBox.getChildren().remove(2);

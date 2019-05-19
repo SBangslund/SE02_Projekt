@@ -4,7 +4,7 @@
     -fx-text-fill: white;
 }
 
-.button_add {
+.toggle-button_add {
     -fx-background-color: #33CCCC;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
@@ -14,7 +14,7 @@
     -fx-faint-focus-color: transparent;
 }
 
-.button_modify {
+.toggle-button_modify {
     -fx-background-color: white;
     -fx-border-color: transparent;
     -fx-text-fill: #33CCCC;
@@ -25,7 +25,7 @@
     -fx-faint-focus-color: transparent;
 }
 
-.button_remove {
+.toggle-button_remove {
     -fx-background-color: white;
     -fx-text-fill: #33CCCC;
     -fx-background-radius: 20;
@@ -35,12 +35,12 @@
     -fx-faint-focus-color: transparent;
 }
 
-.tool-bar {
+.hbox {
     -fx-background-color: gainsboro;
     -fx-background-insets: 10, 10 ,10 ,10;
 }
 
-.pane {
+.pane_main {
     -fx-background-color: gainsboro;
     -fx-text-fill: white;
     -fx-background-insets: 10, 10 ,10 ,10;
