@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainPane" maxWidth="250.0" prefHeight="433.0" prefWidth="370.0" styleClass="pane" stylesheets="/aservio/presentation/management/views/CSSActivityView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.management.controllers.sideview.SideViewActivity">
+   <children>
+      <VBox fx:id="sideViewVbox" spacing="5.0" styleClass="vbox" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <HBox fx:id="toolbarAddRemove" prefHeight="36.0" prefWidth="250.0" spacing="5.0">
+               <children>
+                    <ToggleButton fx:id="addButton" onAction="#handleAdd" text="Tilføj" />
+                    <ToggleButton fx:id="modifyButton" onAction="#handleModify" text="Rediger" />
+                    <ToggleButton fx:id="removeButton" onAction="#handleRemove" text="Slet" />
+               </children>
+            </HBox>
+            <HBox fx:id="activityBox" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label fx:id="activityName" text="Name">
+                     <font>
+                        <Font name="Verdana" size="16.0" />
+                     </font>
+                  </Label>
+                  <Pane fx:id="activityLabel" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0" VBox.vgrow="ALWAYS" />
+            <HBox prefWidth="200.0">
+               <children>
+                  <Pane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="dateText" layoutY="1.0" text="Mandag d. 13. May ">
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font>
+                        </Label>
+                     </children></Pane>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox prefWidth="200.0">
+               <children>
+                  <Label fx:id="timeStartLabel" text="Start time:">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <Label fx:id="timeStartText" text="hh:mm:ss">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox prefWidth="200.0">
+               <children>
+                  <Label fx:id="timeEndLabel" text="End time:">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <Label fx:id="timeEndText" text="hh:mm:ss">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <Text fx:id="activityDescription" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="250.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
