@@ -64,8 +64,7 @@ public class Login implements Initializable {
     }
 
     /**
-     * Userinput 'enter' on login button equals pressing it.
-     *
+     * Userinput 'enter' on login button equals to pressing it.
      * @param event
      */
     @FXML

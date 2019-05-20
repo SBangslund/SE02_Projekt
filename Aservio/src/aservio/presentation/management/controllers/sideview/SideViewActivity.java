@@ -9,18 +9,12 @@ import aservio.presentation.PopupType;
 import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.management.controllers.Management;
 import aservio.presentation.platform.interfaces.PermissionLimited;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
-
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormatSymbols;
@@ -34,9 +28,6 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class SideViewActivity extends SideView implements Initializable, PermissionLimited {
 
@@ -78,6 +69,10 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
 
     ToggleGroup addRemoveButtonGroup;
 
+    /**
+     * Here the SideView child FXMLActivityCreate is loaded. Activity create
+     * edit and delete buttons are added to a toggle group.
+     */
     @Override
     protected void initialize() {
 
@@ -125,8 +120,12 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
 //        button.setGraphic(modifyImage);
 //        button.getStylesheets().add(style);
 //    }
-
-
+    /**
+     * When a given Activity is clicked, the values are used in this method, to
+     * set the UI up so the User can see what the Activity contains.
+     *
+     * @param activity
+     */
     public void showActivity(Activity activity) {
         if (activityBox.getChildren().size() > 2) {
             activityBox.getChildren().remove(2);
@@ -141,8 +140,8 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         activityDescription.setTextAlignment(TextAlignment.JUSTIFY);
 
         String pattern = "EEEEE, dd. MMMMM";
-        SimpleDateFormat simpleDateFormat =
-                new SimpleDateFormat(pattern, setWeekDaysToDanish());
+        SimpleDateFormat simpleDateFormat
+                = new SimpleDateFormat(pattern, setWeekDaysToDanish());
         String dateString = simpleDateFormat.format(activity.getStartDate());
         dateText.setText(dateString);
 
@@ -164,22 +163,33 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         }
     }
 
-    public DateFormatSymbols setWeekDaysToDanish(){
+    /**
+     * Sets Date to danish standards.
+     *
+     * @return
+     */
+    public DateFormatSymbols setWeekDaysToDanish() {
         Locale locale = new Locale("da", "DK");
         DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
         dateFormatSymbols.setWeekdays(new String[]{
-                "Unused",
-                "Søndag",
-                "Mandag",
-                "Tirsdag",
-                "Onsdag",
-                "Torsdag",
-                "Fredag",
-                "Lørdag",
-        });
+            "Unused",
+            "Søndag",
+            "Mandag",
+            "Tirsdag",
+            "Onsdag",
+            "Torsdag",
+            "Fredag",
+            "Lørdag",});
         return dateFormatSymbols;
     }
 
+    /**
+     * When an activity is created, a pane is created, taking the values of the
+     * ActivityType that the Activity has.
+     *
+     * @param activityType
+     * @return Pane
+     */
     private Pane createActivityLabel(ActivityType activityType) {
         HBox box = new HBox();
         Pane pane = new Pane();
@@ -199,40 +209,56 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         return box;
     }
 
+    /**
+     * When the add Activity Button is clicked, depending on the state (of 3
+     * states), sideview hides, appears, or changes. Details are within the
+     * method.
+     *
+     * @param actionEvent
+     */
     @FXML
     public void handleAdd(ActionEvent actionEvent) {
-        //Open form not adding (editing)
+        //Open form not in add. Enters add form.
         if (sideViewCreate.isEdit() && addActivityPane.isVisible()) {
             //reset
             sideViewCreate.setEdit(false);
             sideViewCreate.initialize();
 
-
-        } //Closed form
+        } //Closed form. Enters add form.
         else if (!sideViewCreate.isEdit() && !addActivityPane.isVisible()) {
             //reset
             addActivityPane.setVisible(true);
             sideViewCreate.initialize();
 
-        } //Open form already adding
+        } //Open form, is adding. Closes form.
         else if (!sideViewCreate.isEdit() && addActivityPane.isVisible()) {
             //close
             addActivityPane.setVisible(false);
         }
     }
 
+    /**
+     * When the modify Activity Button is clicked, depending on the state (of 3
+     * states), SideView hides, appears, or changes. Details are within the
+     * method.
+     *
+     * @param actionEvent
+     */
     @FXML
     public void handleModify(ActionEvent actionEvent
     ) {
         if (selectedActivity != null) {
-            if (!sideViewCreate.isEdit() && addActivityPane.isVisible()) { //goes into modify cause Addactivity form was visible, but not in modify
+            //open form, not in modify. Enters modify form.
+            if (!sideViewCreate.isEdit() && addActivityPane.isVisible()) {
                 sideViewCreate.setEdit(true);
                 sideViewCreate.setActivityToBeEditet(selectedActivity);
                 sideViewCreate.initialize();
-            } else if (sideViewCreate.isEdit() && addActivityPane.isVisible()) { //closes form cause already open (modifying)
+            } else if (sideViewCreate.isEdit() && addActivityPane.isVisible()) {
+                //open form, in modify. Closes form.
                 addActivityPane.setVisible(false);
                 sideViewCreate.setEdit(false);
-            } else if (!sideViewCreate.isEdit() && !addActivityPane.isVisible()) { //opens cause form is closed, not editing or adding.
+            } else if (!sideViewCreate.isEdit() && !addActivityPane.isVisible()) {
+                //closed form. Enters modify form.
                 addActivityPane.setVisible(true);
                 sideViewCreate.setEdit(true);
                 sideViewCreate.setActivityToBeEditet(selectedActivity);
@@ -241,6 +267,13 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         }
     }
 
+    /**
+     * When the remove Activity Button is clicked, if an Activity is selected,
+     * it will be deleted from the database, and updated in the view. A popup
+     * windows will appear to display that it has been deleted.
+     *
+     * @param actionEvent
+     */
     @FXML
     public void handleRemove(ActionEvent actionEvent
     ) {
@@ -252,6 +285,10 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         updateView();
     }
 
+    /**
+     * updateView is a reference that updates the calendar (planlægning) when
+     * called.
+     */
     private void updateView() {
         Management.getInstance().getOverviewManager().updateCurrentView();
     }
