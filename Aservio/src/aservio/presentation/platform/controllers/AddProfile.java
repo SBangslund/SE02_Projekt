@@ -5,6 +5,7 @@ import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
 import aservio.domain.platform.user.roles.*;
+import aservio.presentation.PopupType;
 import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.platform.interfaces.contracts.IAddProfile;
 import javafx.event.ActionEvent;
@@ -195,7 +196,7 @@ public class AddProfile implements Initializable {
     public void handleOnCreateUser(ActionEvent actionEvent) {
         if(isAllApproved()) {
             createUser();
-
+            PresentationInterfaceManager.createPopupWindow(PopupType.SUCCESS, "Brugeren er blevet oprettet.");
             AnchorPane profileView = ((AnchorPane) anchor.getParent());
             profileView.getChildren().clear();
             Profile.getInstance().showAllUsers();
@@ -204,6 +205,9 @@ public class AddProfile implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        else{
+            PresentationInterfaceManager.createPopupWindow(PopupType.FAILURE, "Brugeren er ikke blevet oprettet. Sørg venligst for at udfylde alle felterne korrekt.");
         }
     }
 
