@@ -11,4 +11,5 @@ public interface ISideView {
     List<UserInfo> getCitizensFromCaretaker(UUID userID);
     UserInfo getUserInfo(UUID userID);
     Activity getActivity(UUID activityID);
+    List<UserInfo> getUsersFromActivity(Activity activity);
 }

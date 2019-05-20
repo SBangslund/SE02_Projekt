@@ -187,7 +187,7 @@ public class SideViewCreate extends SideView implements Initializable {
                         interFace.deleteActivity(activityToBeEditet.getId());
                         PresentationInterfaceManager.createPopupWindow(PopupType.SUCCESS, "Aktiviteten er opdateret");
                     } else {
-                        PresentationInterfaceManager.createPopupWindow(PopupType.SUCCESS, "Aktiviteten er skabt");
+                        PresentationInterfaceManager.createPopupWindow(PopupType.SUCCESS, "Aktiviteten er blevet opresttet");
                     }
                 }
             }

@@ -55,6 +55,10 @@ public class OverviewDay extends Overview implements Initializable {
         this(new Date());
     }
 
+    /**
+     * Controller for the Overview of a specified day
+     * @param date The date, which shall be shown on the overview
+     */
     public OverviewDay(Date date) {
         this.currentDate = date;
         eventButtonList = new ArrayList<>();
@@ -70,7 +74,6 @@ public class OverviewDay extends Overview implements Initializable {
         resetVisualDay();
         this.activityList = activities;
         createVisualDay(activityList, currentDate);
-
     }
 
     @Override
@@ -95,6 +98,11 @@ public class OverviewDay extends Overview implements Initializable {
         createVisualDay(activityList, currentDate);
     }
 
+    /**
+     * Creating a visualization of the specified date with the corresponding activities
+     * @param activities
+     * @param date
+     */
     private void createVisualDay(ActivityList activities, Date date) {
         setBackgroundImage();
         DayOfWeekLabel.setText(String.format("%s", new SimpleDateFormat("EEEEE", setLocaleToDanish()).format(date.getTime())));

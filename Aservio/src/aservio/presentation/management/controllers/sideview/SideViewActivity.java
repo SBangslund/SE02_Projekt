@@ -4,6 +4,7 @@ import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.management.activities.ActivityType;
 import aservio.domain.platform.user.User;
+import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.PopupType;
 import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.management.controllers.Management;
@@ -42,6 +43,7 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
     public HBox toolbarAddRemove;
     public AnchorPane mainPane;
     public VBox vBoxTime;
+    public VBox activityUsersVBox;
     private Map<User, ActivityList> userActivities = new HashMap<>();
     public ToggleButton addButton;
     public ToggleButton modifyButton;
@@ -129,6 +131,7 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         if (activityBox.getChildren().size() > 2) {
             activityBox.getChildren().remove(2);
         }
+        activityUsersVBox.getChildren().clear();
 
         selectedActivity = activity;
         activityName.setText(activity.getActivityName());
@@ -151,6 +154,14 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         String timeEndString = timeEndFormat.format(activity.getEndDate());
         timeEndText.setText(timeEndString);
         timeEndText.getStyleClass().add("label_time");
+
+        Label title = new Label("Brugere: \n");
+        title.setStyle("-fx-font-size: 18; -fx-font-weight: BIG");
+        activityUsersVBox.getChildren().add(title);
+        for (UserInfo ui: interFace.getUsersFromActivity(activity)) {
+            Label name = new Label(ui.getFirstName() + " " + ui.getLastName());
+            activityUsersVBox.getChildren().add(name);
+        }
     }
 
     public DateFormatSymbols setWeekDaysToDanish(){
