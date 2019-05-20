@@ -171,7 +171,7 @@ public class SideViewCreate extends SideView implements Initializable {
                         Logger.getLogger(SideViewCreate.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-                    String endDateString = endDatePicker.getValue() + " " + endTimePicker.getValue().toString();
+                    String endDateString = startDatePicker.getValue() + " " + endTimePicker.getValue().toString();
                     Date endDate = new Date();
                     try {
                         endDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(endDateString);

@@ -156,7 +156,7 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         timeEndText.getStyleClass().add("label_time");
 
         Label title = new Label("Brugere: \n");
-        title.setStyle("-fx-font-size: 18; -fx-font-weight: BIG");
+        title.setStyle("-fx-font-size: 18;");
         activityUsersVBox.getChildren().add(title);
         for (UserInfo ui: interFace.getUsersFromActivity(activity)) {
             Label name = new Label(ui.getFirstName() + " " + ui.getLastName());
