@@ -11,14 +11,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="95.0" prefWidth="203.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.journal.controllers.Journal">
+<VBox prefHeight="95.0" prefWidth="203.0" stylesheets="/aservio/presentation/journal/CSS/CSSJournal.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.journal.controllers.Journal">
    <children>
       <BorderPane fx:id="borderPane" VBox.vgrow="ALWAYS">
          <left>
             <VBox spacing="5.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Note oversigt:" underline="true" />
+                  <HBox fx:id="noteOversigtHBoxTitle">
+                     <children>
+                        <Label text="Note oversigt">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                   <ListView fx:id="showListView" VBox.vgrow="ALWAYS" />
                   <Button fx:id="newNoteButton" mnemonicParsing="false" onAction="#newNoteButtonEvent" text="Ny note" visible="false" VBox.vgrow="ALWAYS" />
                </children>
@@ -36,7 +45,7 @@
                         <Pane HBox.hgrow="ALWAYS" />
                         <HBox>
                            <children>
-                              <MenuButton fx:id="viewMenu" mnemonicParsing="false" text="Vis">
+                              <MenuButton fx:id="viewMenu" mnemonicParsing="false" text="Vis" textFill="WHITE">
                                 <items>
                                     <MenuItem mnemonicParsing="false" onAction="#handleShowNote" text="Note" />
                                   <MenuItem mnemonicParsing="false" onAction="#handleShowDiagnosing" text="Udredning" />

@@ -20,6 +20,10 @@ import javafx.scene.layout.VBox;
  * @author victo
  */
 public class Notes extends JournalOverview implements Initializable, PermissionLimited {
+    public Label titleDescriptionLabel;
+    public Label dateDescriptionLabel;
+    public Label klientDescriptionLabel;
+    public Label authorDescriptionLabel;
     @FXML
     private TextArea noteTextArea;
     @FXML
@@ -45,6 +49,15 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         applyPermissionLimitations();
+        titleLabel.getStyleClass().add("label_content");
+        dateLabel.getStyleClass().add("label_content");
+        clientLabel.getStyleClass().add("label_content");
+        authorLabel.getStyleClass().add("label_content");
+
+        titleDescriptionLabel.getStyleClass().add("label_description");
+        dateDescriptionLabel.getStyleClass().add("label_description");
+        klientDescriptionLabel.getStyleClass().add("label_description");
+        authorDescriptionLabel.getStyleClass().add("label_description");
     }
 
     public void setNoteTitle(HeaderNote title) {
