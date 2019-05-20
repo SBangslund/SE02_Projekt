@@ -26,6 +26,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 
 /**
  * FXML Controller class
@@ -34,6 +35,7 @@ import javafx.scene.layout.BorderPane;
  */
 public class Journal implements Initializable, PermissionLimited {
 
+    public HBox noteOversigtHBoxTitle;
     private IJournal interFace = PresentationInterfaceManager.getIJournal();
     @FXML
     private ProgressIndicator progressIndicator;
@@ -62,6 +64,9 @@ public class Journal implements Initializable, PermissionLimited {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         instance = this;
+
+        //CSS
+        noteOversigtHBoxTitle.getStyleClass().add("hbox_title");
 
         journalOverviewManager = new JournalOverviewManager();
 

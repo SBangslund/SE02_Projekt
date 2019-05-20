@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.journal.controllers.overview.Notes">
+<VBox stylesheets="/aservio/presentation/journal/CSS/CSSNotes.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.journal.controllers.overview.Notes">
    <children>
-      <HBox spacing="15.0">
+      <HBox maxWidth="500.0" spacing="15.0">
          <children>
-            <VBox fx:id="noteInformationVBox" alignment="TOP_CENTER" spacing="10.0">
+            <VBox fx:id="noteInformationVBox">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -19,20 +19,32 @@
                   <Insets bottom="10.0" top="10.0" />
                </HBox.margin>
                <children>
-                  <Label text="Titel:" />
-                  <Label fx:id="titleLabel" text="TitelTekst" />
-                  <Label text="Dato:" />
+                  <Label fx:id="titleDescriptionLabel" text="Titel" />
+                  <Label fx:id="titleLabel" text="TitelTekst">
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="dateDescriptionLabel" text="Dato" />
                   <Label fx:id="dateLabel" text="DatoTekst" />
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </HBox.margin>
                <children>
-                  <Label text="Klient:" />
-                  <Label fx:id="clientLabel" text="KlientTekst" />
-                  <Label text="Oprettet af:" />
+                  <Label fx:id="klientDescriptionLabel" text="Klient" />
+                  <Label fx:id="clientLabel" text="KlientTekst">
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="authorDescriptionLabel" text="Oprettet af" />
                   <Label fx:id="authorLabel" text="Oprettet af tekst" />
                </children>
             </VBox>

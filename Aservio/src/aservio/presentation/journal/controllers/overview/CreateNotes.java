@@ -4,6 +4,7 @@ import aservio.domain.journal.Note;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.journal.controllers.Journal;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
 import java.net.URL;
 import java.text.ParseException;
@@ -27,7 +28,7 @@ import javafx.scene.control.TextField;
 public class CreateNotes extends JournalOverview implements Initializable {
 
     @FXML
-    private DatePicker datePicker;
+    private JFXDatePicker datePicker;
     @FXML
     private Button cancelButton;
     @FXML
@@ -44,7 +45,10 @@ public class CreateNotes extends JournalOverview implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        saveButton.getStyleClass().add("button_save");
+        cancelButton.getStyleClass().add("button_cancel");
+        titleField.getStyleClass().add("text-field_name");
+
     }
     /**
      * The cancelButton does that the user can cancel int the create note window 
@@ -84,6 +88,7 @@ public class CreateNotes extends JournalOverview implements Initializable {
         }            
         Journal.getInstance().getJournalOverviewManager().showNote();
         Journal.getInstance().getShowListView().setVisible(true);
+
     }
 
     @Override

@@ -1,0 +1,19 @@
+.label_content {
+    -fx-padding: 5 10 5 10;
+    -fx-background-radius: 0 10 10 10;
+    -fx-background-color: #33CCCC;
+    -fx-border-radius: 0 10 10 10;
+    -fx-border-color: transparent;
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+.label_description {
+    -fx-padding: 5 0 5 10;
+    -fx-background-radius: 10 10 0 0;
+    -fx-background-color:  transparent;
+    -fx-border-radius:  10 10 0 0;
+    -fx-border-color: transparent;
+    -fx-font-size: 12;
+    -fx-text-fill: black;
+}
