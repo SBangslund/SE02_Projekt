@@ -1,6 +1,5 @@
 package aservio.presentation.platform.controllers;
 
-import aservio.domain.platform.user.User;
 import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.platform.interfaces.contracts.ILogin;
 import java.io.File;

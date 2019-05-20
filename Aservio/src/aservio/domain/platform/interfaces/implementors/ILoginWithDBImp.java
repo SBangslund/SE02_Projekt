@@ -1,14 +1,12 @@
 package aservio.domain.platform.interfaces.implementors;
 
 import aservio.domain.platform.Aservio;
+import aservio.domain.platform.InputLimitations;
 import aservio.domain.platform.Repository;
-import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
-import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.platform.controllers.Login;
 import aservio.presentation.platform.interfaces.contracts.ILogin;
 import java.io.IOException;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
@@ -37,25 +35,13 @@ public class ILoginWithDBImp implements ILogin {
         if (username.isEmpty() || password.isEmpty()) {
             return "Write your username and password to log in.";
         }
-        //Is Input in username illegal?
-        for (char j : username.toCharArray()) {
-            boolean capitalLetterRange = j >= minCapLetter && j <= maxCapLetter;
-            boolean smallLetterRange = j >= minLetter && j <= maxLetter;
-            boolean numberRange = j >= minNumber && j <= maxNumber;
-            if (!(capitalLetterRange || smallLetterRange || numberRange || j == charUnderscore)) {
-                return "USERNAME contains special characters. Only 0-9, a-z and _ is permitted";
-            }
+        String s =  InputLimitations.userLogin(username) ? "inputOK" : "USERNAME contains special characters. Only 0-9, a-z and _ is permitted";
+        if (s.equals("inputOK")){
+            return InputLimitations.userLogin(password) ? "inputOK" : "PASSWORD contains special characters. Only 0-9, a-z and _ is permitted";
         }
-        //Is Input in username illegal?
-        for (char j : password.toCharArray()) {
-            boolean capitalLetterRange = j >= minCapLetter && j <= maxCapLetter;
-            boolean smallLetterRange = j >= minLetter && j <= maxLetter;
-            boolean numberRange = j >= minNumber && j <= maxNumber;
-            if (!(capitalLetterRange || smallLetterRange || numberRange || j == charUnderscore)) {
-                return "PASSWORD contains special characters. Only 0-9, a-z and _ is permitted";
-            }
+        else{
+            return s;
         }
-        return "inputOK";
     }
 
     @Override
