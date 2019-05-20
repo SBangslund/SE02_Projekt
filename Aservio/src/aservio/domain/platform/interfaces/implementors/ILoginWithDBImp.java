@@ -16,15 +16,6 @@ public class ILoginWithDBImp implements ILogin {
 
     private final Repository repository;
 
-    //Limits for keyboardinputs in username and password.
-    private final char minCapLetter = 'A'; //65; //A-Z
-    private final char maxCapLetter = 'Z'; //90;
-    private final char minLetter = 'a'; //97; //a-z
-    private final char maxLetter = 'z'; //122;
-    private final char charUnderscore = '_'; //95; //_
-    private final char minNumber = '0'; //48; //0-9
-    private final char maxNumber = '9'; //57;
-
     public ILoginWithDBImp(Repository repository) {
         this.repository = repository;
     }

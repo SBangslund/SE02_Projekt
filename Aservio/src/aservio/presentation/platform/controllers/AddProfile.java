@@ -1,5 +1,6 @@
 package aservio.presentation.platform.controllers;
 
+import aservio.domain.platform.InputLimitations;
 import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
@@ -181,12 +182,12 @@ public class AddProfile implements Initializable {
     }
 
     private void handleOnUsernameChange(String newText) {
-        approvedUsername = true; // TODO Set this..
+        approvedUsername = InputLimitations.userLogin(newText);
         setImage(iconUsername, approvedUsername);
     }
 
     private void handleOnPasswordChange(String newText) {
-        approvedPassword = true; // TODO Set this..
+        approvedPassword = InputLimitations.userLogin(newText);
         setImage(iconPassword, approvedPassword);
     }
 
