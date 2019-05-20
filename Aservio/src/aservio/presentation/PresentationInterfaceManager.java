@@ -2,7 +2,7 @@ package aservio.presentation;
 
 import aservio.presentation.journal.interfaces.contracts.IJournal;
 import aservio.presentation.journal.interfaces.contracts.IJournalOverview;
-import aservio.presentation.management.interfaces.contracts.IOverview;
+import aservio.presentation.management.interfaces.contracts.IOverviewManager;
 import aservio.presentation.management.interfaces.contracts.ISideView;
 import aservio.presentation.platform.interfaces.contracts.IAddProfile;
 import aservio.presentation.platform.interfaces.contracts.ILogin;
@@ -19,7 +19,7 @@ import javafx.stage.StageStyle;
 
 public class PresentationInterfaceManager {
 
-    private static IOverview iOverview;
+    private static IOverviewManager iOverviewManager;
     private static ILogin iLogin;
     private static IProfile iProfile;
     private static IJournalOverview iJournalOverview;
@@ -27,8 +27,8 @@ public class PresentationInterfaceManager {
     private static ISideView iSideView;
     private static IAddProfile iAddProfile;
 
-    public static IOverview getIOverview() {
-        return iOverview;
+    public static IOverviewManager getIOverviewManager() {
+        return iOverviewManager;
     }
 
     public static ILogin getILogin() {
@@ -43,8 +43,8 @@ public class PresentationInterfaceManager {
         return iSideView;
     }
 
-    public void setIOverview(IOverview implementation) {
-        iOverview = implementation;
+    public void setIOverviewManager(IOverviewManager implementation) {
+        iOverviewManager = implementation;
     }
 
     public static IJournalOverview getiJournalOverview() {

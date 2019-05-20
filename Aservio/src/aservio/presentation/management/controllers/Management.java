@@ -22,6 +22,9 @@ import javafx.scene.layout.*;
  * @author sbang
  */
 public class Management implements Initializable {
+
+    @FXML
+    private CheckBox showOwnActivities;
     @FXML
     private VBox wrapper;
     @FXML
@@ -115,5 +118,9 @@ public class Management implements Initializable {
 
     public ActivityManager getActivityManager() {
         return activityManager;
+    }
+
+    public void handleShowOwnActivites(ActionEvent actionEvent) {
+        overviewManager.setShowOwnActivites(showOwnActivities.isSelected());
     }
 }

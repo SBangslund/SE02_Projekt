@@ -28,6 +28,11 @@ public class Activity {
         this.description = description;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Activity && ((Activity) o).id == this.id;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
