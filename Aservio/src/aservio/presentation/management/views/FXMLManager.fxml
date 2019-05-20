@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="wrapper" prefHeight="95.0" prefWidth="203.0" stylesheets="@CSSManager.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.management.controllers.Management">
+<VBox fx:id="wrapper" prefHeight="95.0" prefWidth="203.0" stylesheets="@CSSManager.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.management.controllers.Management">
    <children>
       <BorderPane fx:id="borderPane" VBox.vgrow="ALWAYS">
          <VBox.margin>
@@ -34,6 +35,11 @@
                         </Pane>
                         <HBox fx:id="viewToolbar" alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" spacing="5.0">
                            <children>
+                              <CheckBox fx:id="showOwnActivities" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleShowOwnActivites" selected="true" text="Vis egne aktiviteter">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </CheckBox>
                               <MenuButton fx:id="viewMenu" mnemonicParsing="false" text="InitialView">
                                 <items>
                                   <MenuItem mnemonicParsing="false" onAction="#handleShowMonth" text="Month" />
