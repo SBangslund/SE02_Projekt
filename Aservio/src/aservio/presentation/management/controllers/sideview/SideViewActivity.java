@@ -203,9 +203,6 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
             addActivityPane.setVisible(true);
             sideViewCreate.initialize();
 
-            PresentationInterfaceManager.createPopupWindow(PopupType.SUCCESS, "Du kan nu tilføje en aktivitet");
-            PresentationInterfaceManager.createPopupWindow(PopupType.FAILURE, "Du kan ikke tilføje en aktivitet");
-
         } //Open form already adding
         else if (!sideViewCreate.isEdit() && addActivityPane.isVisible()) {
             //close
@@ -240,6 +237,7 @@ public class SideViewActivity extends SideView implements Initializable, Permiss
         activityName.setText(selectedActivity.getActivityType().getName() + " (Deleted)");
         //delete selected activity (repository)
         interFace.deleteActivity(selectedActivity.getId());
+        PresentationInterfaceManager.createPopupWindow(PopupType.SUCCESS, "Aktiviteten " + selectedActivity.getActivityName() + " blev slettet.");
         updateView();
     }
 

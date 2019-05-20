@@ -101,7 +101,7 @@ public class PresentationInterfaceManager {
         messageLabel.setWrapText(true);
         messageLabel.setTextAlignment(TextAlignment.JUSTIFY);
 
-        messageLabel.setStyle("-fx-text-fill: white; -fx-font-size: 17;-fx-label-padding: 10 10 10 10; -fx-font-weight: BOLD");
+        messageLabel.setStyle("-fx-text-fill: white; -fx-font-size: 14;-fx-label-padding: 10 10 10 10; -fx-font-weight: BOLD");
         popupContent.getChildren().add(messageLabel);
         Scene popupScene = new Scene(popupContent);
         popupStage.setScene(popupScene);

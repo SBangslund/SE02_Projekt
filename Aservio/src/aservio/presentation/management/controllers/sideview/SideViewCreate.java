@@ -4,6 +4,8 @@ import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityType;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
+import aservio.presentation.PopupType;
+import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.management.controllers.Management;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
@@ -42,6 +44,7 @@ public class SideViewCreate extends SideView implements Initializable {
     public VBox vBoxContent;
     public Label addActivityLabel;
     public HBox titleHBox;
+    public VBox addActivityMainVBox;
     ActivityType selectedActivityType;
     @FXML
     private TextField nameField;
@@ -118,6 +121,7 @@ public class SideViewCreate extends SideView implements Initializable {
 
     @Override
     protected void initialize() {
+        addActivityMainVBox.setVisible(true);
         if (isEdit()) {
             addActivityLabel.setText("Rediger aktivitet");
             fillForm(activityToBeEditet);
@@ -152,7 +156,6 @@ public class SideViewCreate extends SideView implements Initializable {
     private void handleConfirmButton(ActionEvent event) {
         //Not 100% consistent. //needs a label to inform user to select other values.
         if (isFormFilled()) {
-
             System.out.println("Selected activity type is : " + selectedActivityType);
             //For every selected user add the activity
             for (CheckBox cb : checkboxes) {
@@ -182,10 +185,15 @@ public class SideViewCreate extends SideView implements Initializable {
                     interFace.addActivity(activity, userInfo.getId());
                     if (isEdit()) {
                         interFace.deleteActivity(activityToBeEditet.getId());
+                        PresentationInterfaceManager.createPopupWindow(PopupType.SUCCESS, "Aktiviteten er opdateret");
+                    } else {
+                        PresentationInterfaceManager.createPopupWindow(PopupType.SUCCESS, "Aktiviteten er skabt");
                     }
                 }
             }
             Management.getInstance().getOverviewManager().updateCurrentView();
+        } else{
+            PresentationInterfaceManager.createPopupWindow(PopupType.FAILURE, "Alle felter skal være udfyldt");
         }
     }
 
@@ -242,4 +250,9 @@ public class SideViewCreate extends SideView implements Initializable {
                 && selectedActivityType != null);
     }
 
+    public void cancelButtonHandler(ActionEvent actionEvent) {
+        resetForm();
+        addActivityMainVBox.setVisible(false);
+
+    }
 }
