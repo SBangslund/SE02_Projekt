@@ -119,7 +119,7 @@ public class OverviewDay extends Overview implements Initializable {
         int timeShift = ((backgroundHeight / 24) / 2);
 
         int currentY = timeShift + (((hour * 60) + min) * (backgroundHeight)) / minPerDay;
-        Line line = new Line(30, currentY, 1200, currentY);
+        Line line = new Line(30, currentY, 1800, currentY);
         line.setStroke(Color.RED);
         line.setStrokeWidth(2);
         Circle c = new Circle(30, currentY, 5, Color.RED);
@@ -156,76 +156,78 @@ public class OverviewDay extends Overview implements Initializable {
     }
 
     private void showActivity(Activity activity) {
-        int standartButtonWidth = 170;
+        if(activity.getStartDate().compareTo(activity.getEndDate()) < 0 ) {
+            int standartButtonWidth = 170;
 
-        Button eventButton = createRightSizedButton(activity, standartButtonWidth);
-        HBox buttonContent = new HBox(10);
-        buttonContent.getStyleClass().add("hbox");
-        buttonContent.setPadding(new Insets(5, 0, 0, 5));
-        String color = String.format("#%02X%02X%02X",
-                (int) (activity.getActivityType().getColor().getRed() * 255),
-                (int) (activity.getActivityType().getColor().getGreen() * 255),
-                (int) (activity.getActivityType().getColor().getBlue() * 255));
+            Button eventButton = createRightSizedButton(activity, standartButtonWidth);
+            HBox buttonContent = new HBox(10);
+            buttonContent.getStyleClass().add("hbox");
+            buttonContent.setPadding(new Insets(5, 0, 0, 5));
+            String color = String.format("#%02X%02X%02X",
+                    (int) (activity.getActivityType().getColor().getRed() * 255),
+                    (int) (activity.getActivityType().getColor().getGreen() * 255),
+                    (int) (activity.getActivityType().getColor().getBlue() * 255));
 
-        buttonContent.setPrefWidth(standartButtonWidth);
+            buttonContent.setPrefWidth(standartButtonWidth);
 
-        Text buttonContentText = new Text(String.format("%s\n%s", activity.getActivityType().getName(), activity.getTimeSlotString()));
-        buttonContentText.getStyleClass().add("text_button");
-        buttonContent.getChildren().add(buttonContentText);
+            Text buttonContentText = new Text(String.format("%s\n%s", activity.getActivityType().getName(), activity.getTimeSlotString()));
+            buttonContentText.getStyleClass().add("text_button");
+            buttonContent.getChildren().add(buttonContentText);
 
-        ImageView imageView = new ImageView(activity.getActivityType().getIcon());
-        imageView.setFitWidth(50);
-        imageView.setPreserveRatio(true);
-        buttonContent.getChildren().add(imageView);
+            ImageView imageView = new ImageView(activity.getActivityType().getIcon());
+            imageView.setFitWidth(50);
+            imageView.setPreserveRatio(true);
+            buttonContent.getChildren().add(imageView);
 
-        eventButton.setGraphic(buttonContent);
-        eventButton.setUserData(activity);
-        eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px 10px, " + color + " 99%, white);");
-        AtomicInteger colorWidth = new AtomicInteger(10);
+            eventButton.setGraphic(buttonContent);
+            eventButton.setUserData(activity);
+            eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px 10px, " + color + " 99%, white);");
+            AtomicInteger colorWidth = new AtomicInteger(10);
 
-        eventButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                new AnimationTimer() {
-                    @Override
-                    public void handle(long now) {
+            eventButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    new AnimationTimer() {
+                        @Override
+                        public void handle(long now) {
 
-                        if (colorWidth.get() >= 0) {
-                            eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px" + colorWidth + "px, " + color + " 99%, white);");
-                            colorWidth.decrementAndGet();
-                        } else if (colorWidth.get() < 0) {
-                            this.stop();
+                            if (colorWidth.get() >= 0) {
+                                eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px" + colorWidth + "px, " + color + " 99%, white);");
+                                colorWidth.decrementAndGet();
+                            } else if (colorWidth.get() < 0) {
+                                this.stop();
+                            }
                         }
-                    }
-                }.start();
-            }
-        });
+                    }.start();
+                }
+            });
 
-        eventButton.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                new AnimationTimer() {
-                    @Override
-                    public void handle(long now) {
-                        if (colorWidth.get() <= 10) {
-                            eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px " + colorWidth + "px, " + color + " 99%, white);");
-                            colorWidth.addAndGet(1);
-                        } else {
-                            this.stop();
+            eventButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    new AnimationTimer() {
+                        @Override
+                        public void handle(long now) {
+                            if (colorWidth.get() <= 10) {
+                                eventButton.setStyle("-fx-background-color: linear-gradient(from 0px 0px to 10px " + colorWidth + "px, " + color + " 99%, white);");
+                                colorWidth.addAndGet(1);
+                            } else {
+                                this.stop();
+                            }
                         }
-                    }
-                }.start();
-            }
-        });
-        eventButton.setOnAction(
-                new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                OverviewDay.super.uponClick(activity);
-            }
-        });
-        eventButtonList.add(eventButton);
-        activityPane.getChildren().add(eventButton);
+                    }.start();
+                }
+            });
+            eventButton.setOnAction(
+                    new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            OverviewDay.super.uponClick(activity);
+                        }
+                    });
+            eventButtonList.add(eventButton);
+            activityPane.getChildren().add(eventButton);
+        }
     }
 
     private Button createRightSizedButton(Activity activity, int standartButtonWidth) {

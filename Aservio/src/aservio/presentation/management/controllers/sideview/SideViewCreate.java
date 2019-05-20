@@ -155,7 +155,7 @@ public class SideViewCreate extends SideView implements Initializable {
     @FXML
     private void handleConfirmButton(ActionEvent event) {
         //Not 100% consistent. //needs a label to inform user to select other values.
-        if (isFormFilled()) {
+        if (isFormFilled() && startTimePicker.getValue().compareTo(endTimePicker.getValue()) < 0 ) {
             System.out.println("Selected activity type is : " + selectedActivityType);
             //For every selected user add the activity
             for (CheckBox cb : checkboxes) {
@@ -192,8 +192,12 @@ public class SideViewCreate extends SideView implements Initializable {
                 }
             }
             Management.getInstance().getOverviewManager().updateCurrentView();
+        } else if(startTimePicker.getValue().compareTo(endTimePicker.getValue()) >= 0){
+
+            PresentationInterfaceManager.createPopupWindow(PopupType.FAILURE, "Der må ikke være negativ tid");
         } else{
             PresentationInterfaceManager.createPopupWindow(PopupType.FAILURE, "Alle felter skal være udfyldt");
+
         }
     }
 
@@ -244,7 +248,6 @@ public class SideViewCreate extends SideView implements Initializable {
                 !nameField.getText().isEmpty()
                 && !descriptionField.getText().isEmpty()
                 && startDatePicker.getValue() != null
-                && endDatePicker.getValue() != null
                 && startTimePicker.getValue() != null
                 && endTimePicker.getValue() != null
                 && selectedActivityType != null);
