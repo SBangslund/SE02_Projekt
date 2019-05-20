@@ -196,7 +196,7 @@ public class AddProfile implements Initializable {
     public void handleOnCreateUser(ActionEvent actionEvent) {
         if(isAllApproved()) {
             createUser();
-            PresentationInterfaceManager.createPopupWindow(PopupType.SUCCESS, "Brugeren er blevet oprettet.");
+            PresentationInterfaceManager.createPopupWindow(PopupType.SUCCESS, "En ny bruger er blevet oprettet.");
             AnchorPane profileView = ((AnchorPane) anchor.getParent());
             profileView.getChildren().clear();
             Profile.getInstance().showAllUsers();
@@ -207,7 +207,7 @@ public class AddProfile implements Initializable {
             }
         }
         else{
-            PresentationInterfaceManager.createPopupWindow(PopupType.FAILURE, "Brugeren er ikke blevet oprettet. Sørg venligst for at udfylde alle felterne korrekt.");
+            PresentationInterfaceManager.createPopupWindow(PopupType.FAILURE, "En ny bruger er ikke blevet oprettet. Sørg venligst for at udfylde alle felterne korrekt.");
         }
     }
 
