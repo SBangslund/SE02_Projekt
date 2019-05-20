@@ -114,11 +114,21 @@ public class OverviewDay extends Overview implements Initializable {
         scrollPane.setVvalue(0.4);
     }
 
+    /**
+     * Method to check if a specified activity is on a given day
+     * @param activity to be checked
+     * @param date corresponding date
+     * @return true if the activity is on the given day
+     */
     private boolean isActivityOnDay(Activity activity, Date date) {
         return new SimpleDateFormat("dd.MM.yyyy", setLocaleToDanish()).format(activity.getStartDate().getTime())
                 .equals(new SimpleDateFormat("dd.MM.yyyy", setLocaleToDanish()).format(date.getTime()));
     }
 
+    /**
+     * Creating a line on the current day at the current visual minute
+     * @param date the current or specified date
+     */
     private void showLineAtCurrentTime(Date date) {
         int hour = getCalendarWithSetTime(date).get(Calendar.HOUR_OF_DAY);
         int min = getCalendarWithSetTime(date).get(Calendar.MINUTE);
@@ -137,6 +147,10 @@ public class OverviewDay extends Overview implements Initializable {
         activityPane.setStyle("-fx-background-color: transparent;");
     }
 
+
+    /**
+     * creating a background, representing the entire day with lines defining the hours
+     */
     private void setBackgroundImage() {
         backgroundVbox.getChildren().clear();
         for (int i = 0; i < 24; i++) {
@@ -163,6 +177,11 @@ public class OverviewDay extends Overview implements Initializable {
 
     }
 
+    /**
+     * Creating a visual representation of an activity, using {@link #createRightSizedButton(Activity, int)} to set the right size and position
+     * Furthermore creation of events, when the button is pressed
+     * @param activity the activity to be shown
+     */
     private void showActivity(Activity activity) {
         if(activity.getStartDate().compareTo(activity.getEndDate()) < 0 ) {
             int standartButtonWidth = 170;
@@ -238,6 +257,13 @@ public class OverviewDay extends Overview implements Initializable {
         }
     }
 
+    /**
+     * Using the activity to create a button with the right size, corresponding to the time spent on the activity
+     * Furthermore setting the position of the button, corresponding to the starting time of the activity
+     * @param activity to be visualized
+     * @param standartButtonWidth the width defining the button with
+     * @return returning a rightsized and positioned button
+     */
     private Button createRightSizedButton(Activity activity, int standartButtonWidth) {
 
         int startHour = getCalendarWithSetTime(activity.getStartDate()).get(Calendar.HOUR_OF_DAY);
@@ -262,20 +288,13 @@ public class OverviewDay extends Overview implements Initializable {
         return eventButton;
     }
 
-    private Scene createActivityPopUp(Activity activity) {
-        HBox dialogVbox = new HBox(20);
-        ImageView imageView = new ImageView(activity.getActivityType().getIcon());
-        imageView.setFitWidth(50);
-        imageView.setPreserveRatio(true);
-
-        Text buttonContentText = new Text(String.format("%s\n%s", activity.getActivityType().getName(), activity.getTimeSlotString()));
-        buttonContentText.getStyleClass().add("text_button");
-        dialogVbox.getChildren().add(buttonContentText);
-        dialogVbox.getChildren().add(imageView);
-        Scene dialogScene = new Scene(dialogVbox, 300, 200);
-        return dialogScene;
-    }
-
+    /**
+     * Method to return the position of a imaginary column, that is not used
+     * Used when there are more avtivities for a specifik range of time
+     * @param yStart the start position of an activity
+     * @param yEnd the endposition of an activity
+     * @return returning an integer, corresponding to the number of the imaginary column
+     */
     private int getColumnNotUsed(double yStart, double yEnd) {
         int countActivitiesInTimeslot = 0;
         for (Button b : eventButtonList) {
@@ -286,6 +305,10 @@ public class OverviewDay extends Overview implements Initializable {
         return countActivitiesInTimeslot;
     }
 
+    /**
+     * Creating DateFormatSymbols, corresponding to the danish language with capital starting character
+     * @return DateFormatSymbols, corresponding to the danish language with capital starting character
+     */
     private DateFormatSymbols setLocaleToDanish() {
         Locale locale = new Locale("da", "DK");
         DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
@@ -293,11 +316,19 @@ public class OverviewDay extends Overview implements Initializable {
         return dateFormatSymbols;
     }
 
+    /**
+     * Resetting the day, clearing the activities
+     */
     private void resetVisualDay() {
         eventButtonList.clear();
         activityPane.getChildren().clear();
     }
 
+    /**
+     * method to create a calendar with a set time
+     * @param date to be converted to a {@link Calendar}
+     * @return
+     */
     private Calendar getCalendarWithSetTime(Date date) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
