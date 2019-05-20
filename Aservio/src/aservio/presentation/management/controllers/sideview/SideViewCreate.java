@@ -9,7 +9,6 @@ import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.management.controllers.Management;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
-
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,20 +23,13 @@ import java.util.ResourceBundle;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class SideViewCreate extends SideView implements Initializable {
 
@@ -72,10 +64,21 @@ public class SideViewCreate extends SideView implements Initializable {
 
     private boolean edit = false;
 
+    /**
+     * If an activity is being edited, edit is set to true.
+     * @param edit boolean
+     */
     public void setEdit(boolean edit) {
         this.edit = edit;
     }
 
+    /**
+     * Sets up a MenuButton(dropdown menu) and assigns eventhandlers to the buttons.
+     * The eventhandlers change the selectedActivityType variable when pressed (fx WALKING, RUNNING etc).
+     * Also sets up a list of checkboxes depending on the amount of users the caretaker has access to.
+     * @param location
+     * @param resources 
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //CSS
@@ -85,7 +88,6 @@ public class SideViewCreate extends SideView implements Initializable {
         vBoxContent.getStyleClass().add("vbox_content");
         titleHBox.getStyleClass().add("hbox_title");
         addActivityLabel.getStyleClass().add("label_title");
-
 
         selectedActivityType = null;
         //Dropdown menu initialization.
@@ -142,15 +144,13 @@ public class SideViewCreate extends SideView implements Initializable {
     /*public void updatePresetTimes() {
         startDatePicker.setValue(LocalDate.now());
         startTimePicker.setValue(LocalTime.now());
-        endTimePicker.setValue(LocalTime.now());
-    }*/
+        endTimePicker.setValue(LocalTime.now());*/
 
     /**
-     *
-     * asdfasdfasdn {@link SideViewCreate#resetForm() resetness} is good.
-     * @param event the triggered event.
-     *
-     * @see  SideViewCreate#resetForm()
+     * When clicking the confirm button, if all values are set, 
+     * the values will be turned into an activity object, which is then added to a specific User.
+     * The view is updated and a message is displayed to the user to reflect changes.
+     * @param event 
      */
     @FXML
     private void handleConfirmButton(ActionEvent event) {
@@ -178,8 +178,6 @@ public class SideViewCreate extends SideView implements Initializable {
                     } catch (ParseException ex) {
                         Logger.getLogger(SideViewCreate.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    //System.out.println("Startdate: " + startDate.toString());
-                    //System.out.println("Enddate: " + endDate.toString());
 
                     Activity activity = new Activity(nameField.getText(), selectedActivityType, startDate, endDate, UUID.randomUUID(), descriptionField.getText());
                     interFace.addActivity(activity, userInfo.getId());
@@ -192,7 +190,7 @@ public class SideViewCreate extends SideView implements Initializable {
                 }
             }
             Management.getInstance().getOverviewManager().updateCurrentView();
-        } else{
+        } else {
             PresentationInterfaceManager.createPopupWindow(PopupType.FAILURE, "Alle felter skal være udfyldt");
         }
     }
@@ -202,8 +200,11 @@ public class SideViewCreate extends SideView implements Initializable {
 
     }
 
-
-
+    /**
+     * fillForm is called when the user clicks on edit activity. 
+     * The filForm fills the values from the activity that will be edited. 
+     * @param activity 
+     */
     private void fillForm(Activity activity) {
         System.out.println(activity);
         this.nameField.setText(activity.getActivityName());
@@ -240,8 +241,7 @@ public class SideViewCreate extends SideView implements Initializable {
     }
 
     private boolean isFormFilled() {
-        return (
-                !nameField.getText().isEmpty()
+        return (!nameField.getText().isEmpty()
                 && !descriptionField.getText().isEmpty()
                 && startDatePicker.getValue() != null
                 && endDatePicker.getValue() != null

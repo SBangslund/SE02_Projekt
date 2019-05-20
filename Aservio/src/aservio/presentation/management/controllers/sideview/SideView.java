@@ -8,6 +8,9 @@ import javafx.scene.Parent;
 public abstract class SideView {
     
     private Parent view;
+    /**
+     * 
+     */
     protected ISideView interFace = PresentationInterfaceManager.getISideView();
 
     protected abstract void initialize();
