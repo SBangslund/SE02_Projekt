@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="wrapper" prefHeight="95.0" prefWidth="203.0" stylesheets="@CSSManager.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.management.controllers.Management">
+<VBox fx:id="wrapper" prefHeight="95.0" prefWidth="203.0" stylesheets="@CSSManager.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.management.controllers.Management">
    <children>
       <BorderPane fx:id="borderPane" VBox.vgrow="ALWAYS">
          <VBox.margin>
@@ -40,11 +40,11 @@
                                     <Insets />
                                  </HBox.margin>
                               </CheckBox>
-                              <MenuButton fx:id="viewMenu" mnemonicParsing="false" text="InitialView">
+                              <MenuButton fx:id="viewMenu" mnemonicParsing="false" text="Vis">
                                 <items>
-                                  <MenuItem mnemonicParsing="false" onAction="#handleShowMonth" text="Month" />
-                                  <MenuItem mnemonicParsing="false" onAction="#handleShowWeek" text="Week" />
-                                    <MenuItem mnemonicParsing="false" onAction="#handleShowDay" text="Day" />
+                                  <MenuItem mnemonicParsing="false" onAction="#handleShowMonth" text="Måned" />
+                                  <MenuItem mnemonicParsing="false" onAction="#handleShowWeek" text="Uge" />
+                                    <MenuItem mnemonicParsing="false" onAction="#handleShowDay" text="Dag" />
                                 </items>
                               </MenuButton>
                             <Button mnemonicParsing="false" onAction="#handlePrevious" styleClass="button_back_forward" text="&lt;" />
