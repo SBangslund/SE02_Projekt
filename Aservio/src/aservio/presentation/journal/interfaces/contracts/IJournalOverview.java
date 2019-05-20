@@ -11,10 +11,17 @@ import java.util.List;
  */
 public interface IJournalOverview {
 
-    NoteList getNoteList(UserInfo userInfo);
-
+    /**
+     * Ensures that classes who implements IJournalOverview must handel how to add notes
+     * @param note 
+     */
     void addNote(Note note);
-
+    
+    /**
+     * Fetches a user from a given institutionid
+     * @param institutionid
+     * @return 
+     */
     List<UserInfo> getUsersFromInstitution(int institutionid);
 
 }

@@ -27,6 +27,10 @@ public class Note {
         this.caretakerName = caretakerName;
     }
 
+    /**
+     * Creates a notetext so it can be displayed
+     * @param noteText 
+     */
     public void createNoteText(String noteText) {
         FooterNote footerNote = new FooterNote(User.getCurrentUser().getUserInfo());
         HeaderNote headerNote = new HeaderNote(citizenInfo, title);

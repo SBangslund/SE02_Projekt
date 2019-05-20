@@ -23,15 +23,10 @@ public class IJournalOverviewImp implements IJournalOverview {
     public void addNote(Note note) {
         repository.addUserNote(note);
     }
-
+    
     @Override
     public List<UserInfo> getUsersFromInstitution(int institutionid) {
-        return repository.getUsersFromInstitution(institutionid);
-    }
-
-    @Override
-    public NoteList getNoteList(UserInfo userInfo) {
-        return repository.getNoteList(userInfo.getId());
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

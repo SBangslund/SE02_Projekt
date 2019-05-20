@@ -19,11 +19,37 @@ public interface IRepository {
      * @return
      */
     boolean deleteUser(UUID userID);
-
+    /**
+     * Adds a note based on noteinfo, noteDate and a noteid
+     * @param noteInfo
+     * @param noteDate
+     * @param noteid
+     * @return 
+     */
     boolean addUserNote(String noteInfo, Long noteDate, UUID noteid);
+    
+    /**
+     * adds a note to a user so they are connected
+     * @param userid
+     * @param noteid
+     * @return 
+     */
     boolean addNoteToUser(UUID userid, UUID noteid);
+    
+    /**
+     * Fetches the note from a use by the user id
+     * @param userid
+     * @return 
+     */
     String[] getNotesFromUser(UUID userid);
+    
+    /**
+     * Gets a note by the noteid
+     * @param noteid
+     * @return 
+     */
     String[] getNote(UUID noteid);
+    
     boolean deleteNote(UUID noteID);
 
     boolean addActivity(String name, String type, Date starttime, Date endtime, UUID activityid, String description);

@@ -11,7 +11,7 @@ public class FooterNote {
     private String personaleFirstName;
     private String personaleLastName;
     private int residence;
-
+    
     public FooterNote(UserInfo personaleInfo) {
         this.personaleFirstName = personaleInfo.getFirstName();
         this.personaleLastName = personaleInfo.getLastName();
