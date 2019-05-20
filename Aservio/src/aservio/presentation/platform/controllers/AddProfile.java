@@ -1,9 +1,11 @@
 package aservio.presentation.platform.controllers;
 
+import aservio.domain.platform.InputLimitations;
 import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
 import aservio.domain.platform.user.UserInfo;
 import aservio.domain.platform.user.roles.*;
+import aservio.presentation.PopupType;
 import aservio.presentation.PresentationInterfaceManager;
 import aservio.presentation.platform.interfaces.contracts.IAddProfile;
 import javafx.event.ActionEvent;
@@ -181,12 +183,12 @@ public class AddProfile implements Initializable {
     }
 
     private void handleOnUsernameChange(String newText) {
-        approvedUsername = true; // TODO Set this..
+        approvedUsername = InputLimitations.userLogin(newText);
         setImage(iconUsername, approvedUsername);
     }
 
     private void handleOnPasswordChange(String newText) {
-        approvedPassword = true; // TODO Set this..
+        approvedPassword = InputLimitations.userLogin(newText);
         setImage(iconPassword, approvedPassword);
     }
 
@@ -194,7 +196,7 @@ public class AddProfile implements Initializable {
     public void handleOnCreateUser(ActionEvent actionEvent) {
         if(isAllApproved()) {
             createUser();
-
+            PresentationInterfaceManager.createPopupWindow(PopupType.SUCCESS, "En ny bruger er blevet oprettet.");
             AnchorPane profileView = ((AnchorPane) anchor.getParent());
             profileView.getChildren().clear();
             Profile.getInstance().showAllUsers();
@@ -203,6 +205,9 @@ public class AddProfile implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        else{
+            PresentationInterfaceManager.createPopupWindow(PopupType.FAILURE, "En ny bruger er ikke blevet oprettet. Sørg venligst for at udfylde alle felterne korrekt.");
         }
     }
 
