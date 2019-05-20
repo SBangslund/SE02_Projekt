@@ -43,7 +43,7 @@ public class Aservio extends Application {
         PresentationInterfaceManager presentation = new PresentationInterfaceManager();
 
         Repository repository = new Repository();
-        presentation.setIOverview(new IOverviewImp(repository));
+        presentation.setIOverviewManager(new IOverviewImp(repository));
         presentation.setILogin(new ILoginWithDBImp(repository));
         presentation.setIProfile(new IProfileImp(repository));
         presentation.setISideView(new ISideViewImp(repository));

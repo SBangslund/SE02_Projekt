@@ -74,9 +74,9 @@ public class Profile implements Initializable, PermissionLimited {
         userList.getSelectionModel().getSelectedItems().addListener((ListChangeListener<UserInfo>) c -> {
             c.next();
             selectedUsers.clear();
-            selectedUsers.addAll(c.getAddedSubList());
-            if (c.getAddedSubList().size() > 0)
-                SeeProfile.getInstance().setUserInfo(c.getAddedSubList().get(0));
+            selectedUsers.addAll(c.getList());
+            if (c.getList().size() > 0)
+                SeeProfile.getInstance().setUserInfo(c.getList().get(0));
 
             SelectedUsersChangedEvent changedEvent = new SelectedUsersChangedEvent();
             profileAnchorPane.fireEvent(changedEvent);

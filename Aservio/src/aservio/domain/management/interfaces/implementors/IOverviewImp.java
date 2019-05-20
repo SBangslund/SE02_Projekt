@@ -4,12 +4,12 @@ import aservio.domain.management.activities.Activity;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.platform.Repository;
 import aservio.domain.platform.user.User;
-import aservio.presentation.management.interfaces.contracts.IOverview;
+import aservio.presentation.management.interfaces.contracts.IOverviewManager;
 
 import java.util.List;
 import java.util.UUID;
 
-public class IOverviewImp implements IOverview {
+public class IOverviewImp implements IOverviewManager {
 
     private Repository repository;
 

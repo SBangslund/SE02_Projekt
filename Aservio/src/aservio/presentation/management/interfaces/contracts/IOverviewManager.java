@@ -7,7 +7,7 @@ import aservio.domain.platform.user.User;
 import java.util.List;
 import java.util.UUID;
 
-public interface IOverview {
+public interface IOverviewManager {
     ActivityList getActivities(UUID userid);
     List<User> getUsers(Activity activity);
 }

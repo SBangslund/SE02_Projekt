@@ -1,15 +1,41 @@
 package aservio.presentation.management.controllers.overview;
 
+import aservio.domain.platform.user.UserInfo;
+import aservio.presentation.PresentationInterfaceManager;
+import aservio.presentation.management.interfaces.contracts.IOverviewManager;
 import aservio.presentation.platform.OverviewType;
 import aservio.domain.management.activities.ActivityList;
 import aservio.domain.platform.user.User;
+import aservio.presentation.platform.controllers.Profile;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
+
 import java.io.IOException;
+import java.util.List;
 
 public class OverviewManager {
 
+    private IOverviewManager interFace = PresentationInterfaceManager.getIOverviewManager();
     private Overview currentOverview;
+    private ActivityList currentActivities = new ActivityList();
+
+    public OverviewManager() {
+        Profile.eventManager.addEventHandler(Profile.SELECTED_USERS_CHANGED, event -> {
+            handleSelectedUsersChanged(event.getSelectedUsers());
+        });
+    }
+
+    private void handleSelectedUsersChanged(List<UserInfo> userInfoList) {
+        ActivityList activities = new ActivityList();
+        for (UserInfo ui : userInfoList) {
+            ActivityList usersActivities = interFace.getActivities(ui.getId());
+            if (usersActivities != null) {
+                activities.getActivities().addAll(usersActivities.getActivities());
+            }
+        }
+        currentActivities = activities;
+        updateActivities();
+    }
 
     public void showMonth() {
         setCurrentOverview(OverviewType.MONTH.getURL());
@@ -32,9 +58,11 @@ public class OverviewManager {
         currentOverview.previous();
         updateActivities();
     }
-    public void updateCurrentView(){
+
+    public void updateCurrentView() {
         updateActivities();
     }
+
     private void setCurrentOverview(String url) {
         FXMLLoader loader = new FXMLLoader();
         try {
@@ -49,27 +77,10 @@ public class OverviewManager {
     }
 
     private void updateActivities() {
-        ActivityList list = currentOverview.interFace.getActivities(User.getCurrentUser().getId());
-
-
-        //selected user
-        //last user
-        
-        /*list.add(new Activity(ActivityType.TENNIS, new Date()));
-        list.add(new Activity(ActivityType.EAT, new Date()));
-        list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 3, 4, 8, 20).getTime()));
-        list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 3, 5, 8, 20).getTime()));
-        list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 3, 6, 8, 20).getTime()));
-        list.add(new Activity(ActivityType.RUN, new GregorianCalendar(2019, 3, 7, 10, 20).getTime()));
-        list.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 3, 8, 9, 20).getTime()));
-        list.add(new Activity(ActivityType.WALK, new GregorianCalendar(2019, 4, 8, 9, 20).getTime()));
-        for (int i = 0; i < 100; i++) {
-            Activity activity = new Activity(ActivityType.RUN, new GregorianCalendar(2019, (int)(Math.random() * 12), (int)(Math.random() * 25), 9, 20).getTime());
-            activity.setDescription("Der skal løbes så svedet drypper og fødderne bløder!");
-            list.add(activity);
-        }
-        list.add(new Activity(ActivityType.TENNIS, new Date()));*/
-        currentOverview.showActivities(list);
+        ActivityList currentUserActivities = interFace.getActivities(User.getCurrentUser().getId());
+        currentUserActivities.getActivities().forEach(currentActivities::remove);
+        currentActivities.getActivities().addAll(currentUserActivities.getActivities());
+        currentOverview.showActivities(currentActivities);
     }
 
     public Overview getCurrentOverview() {
