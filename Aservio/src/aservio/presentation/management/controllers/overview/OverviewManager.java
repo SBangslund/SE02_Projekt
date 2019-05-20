@@ -66,8 +66,7 @@ public class OverviewManager {
      */
     private void handleSelectedUsersChanged(List<UserInfo> userInfoList) {
         currentSelectedUsers = userInfoList;
-
-        if(showOwnActivites) {
+        if (showOwnActivites && !currentSelectedUsers.contains(User.getCurrentUser().getUserInfo())) {
             currentSelectedUsers.add(User.getCurrentUser().getUserInfo());
         } else {
             currentSelectedUsers.remove(User.getCurrentUser().getUserInfo());
@@ -88,6 +87,7 @@ public class OverviewManager {
      */
     public void showMonth() {
         setCurrentOverview(OverviewType.MONTH.getURL());
+        updateActivities();
     }
 
     /**
@@ -95,6 +95,7 @@ public class OverviewManager {
      */
     public void showWeek() {
         setCurrentOverview(OverviewType.WEEK.getURL());
+        updateActivities();
     }
 
     /**
@@ -102,6 +103,7 @@ public class OverviewManager {
      */
     public void showDay() {
         setCurrentOverview(OverviewType.DAY.getURL());
+        updateActivities();
     }
 
     /**

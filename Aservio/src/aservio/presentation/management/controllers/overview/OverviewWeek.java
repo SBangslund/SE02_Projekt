@@ -94,6 +94,7 @@ public class OverviewWeek extends Overview implements Pageable, ShowableActivity
     @Override
     public void showActivities(ActivityList activities) {
         activityList = activities;
+        resetVisualWeek();
         createVisualWeek(activityList, currentDate);
     }
     // Panes for every day at the time 00 to 23
