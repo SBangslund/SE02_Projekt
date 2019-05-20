@@ -65,11 +65,15 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     public Note getSelectedNote() {
         return selectedNote;
     }
-
+    
+    /**
+     * The updateSelectedNote sets the note view, then an user click on a note in the noteList.
+     * The note will only be set if the note is not empty
+     * @param note 
+     */
     @Override
     protected void updateSelectedNote(Note note) {
-
-        if (note != null) {
+         if (note != null) {
             dateLabel.setText(note.getDate().toString());
             clientLabel.setText(note.getCitizenInfo().getFirstName() + " " + note.getCitizenInfo().getLastName());
             authorLabel.setText(note.getCaretakerInfo());
@@ -87,7 +91,7 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
 
     @FXML
     private void modifyButton(ActionEvent event) {
-        //Todo
+        //TODO
     }
 
 }

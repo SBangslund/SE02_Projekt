@@ -38,6 +38,12 @@ public class JournalOverviewManager {
         currentJournalOverview.updateSelectedNote(note);
     }
     
+    /**
+     * The updateCurrentJournalOverview sets a new scene.
+     * The currentJournalOverview loads the controller, set and show the view.
+     * CurrentJournalOverview has coupling to {@link JournalOverview}.
+     * @param url 
+     */
     private void updateCurrentJournalOverview(String url) {
         FXMLLoader loader = new FXMLLoader();
         try {
