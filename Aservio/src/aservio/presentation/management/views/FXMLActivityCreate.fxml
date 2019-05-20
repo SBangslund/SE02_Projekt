@@ -59,6 +59,7 @@
                   <Button fx:id="activityCancelButton" mnemonicParsing="false" onAction="#cancelButtonHandler" text="Afbryd" />
                </children>
             </HBox>
+            <VBox fx:id="VBoxUsersFromActivity" prefHeight="200.0" prefWidth="100.0" />
             <VBox fx:id="vboxList" prefHeight="200.0" prefWidth="100.0" />
          </children>
       </VBox>

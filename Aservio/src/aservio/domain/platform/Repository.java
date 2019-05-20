@@ -14,6 +14,7 @@ import aservio.domain.platform.user.roles.Admin;
 import aservio.domain.platform.user.roles.Caretaker;
 import aservio.domain.platform.user.roles.Citizen;
 import aservio.domain.platform.user.roles.Role;
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -142,8 +143,12 @@ public class Repository {
 
     public List<UserInfo> getUsersFromActivity(Activity activity) {
         String[] usersString = interFace.getUsersFromActivity(activity.getId());
+        List<UserInfo> userinformations = new ArrayList<>();
+        for (String userID : usersString) {
+            userinformations.add(getUserInfo(UUID.fromString(userID)));
+        }
         //TODO convert String[] to list of users.
-        return null;
+        return userinformations;
     }
 
     public ActivityList getUserActivities(UUID userId) {
@@ -193,7 +198,7 @@ public class Repository {
             java.util.Date startDate = new java.util.Date(startTime);
             java.util.Date endDate = new java.util.Date(endTime);
             String description = userActivity[5];
-            
+
             activity = new Activity(name, ActivityType.valueOf(type), startDate, endDate, activityid, description);
         }
         return activity;
