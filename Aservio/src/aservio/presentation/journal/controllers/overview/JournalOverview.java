@@ -20,19 +20,27 @@ public abstract class JournalOverview implements Initializable {
     private Parent view;
     protected IJournalOverview interFace = PresentationInterfaceManager.getiJournalOverview();
     protected static List<UserInfo> selectedUsers = new ArrayList<>();
-    
+
     protected JournalOverview() {
         Profile.eventManager.addEventHandler(Profile.SELECTED_USERS_CHANGED, event -> {
             selectedUsers = event.getSelectedUsers();
         });
     }
-    
+
     protected abstract void updateSelectedNote(Note note);
-    
+
+    /**
+     * Show overview. (Is hard linked to a
+     * {@link javafx.scene.layout.BorderPane}).
+     */
     public void show() {
         Journal.getInstance().setCenterView(view);
     }
 
+    /**
+     * Set the view for the{@link JournalOverview} to visualize
+     * @param view
+     */
     public void setView(Parent view) {
         this.view = view;
     }

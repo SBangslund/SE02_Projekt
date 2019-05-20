@@ -1,5 +1,9 @@
 package aservio.presentation.platform;
 
+/**
+ * The enum class ensure that we can fetch the right path
+ * @author Rene_
+ */
 public enum OverviewType {
     MONTH(0, "/aservio/presentation/management/views/FXMLOverviewMonth.fxml"),
     WEEK(1, "/aservio/presentation/management/views/FXMLOverviewWeek.fxml"),

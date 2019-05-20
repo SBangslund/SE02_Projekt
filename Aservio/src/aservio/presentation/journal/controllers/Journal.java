@@ -75,6 +75,10 @@ public class Journal implements Initializable, PermissionLimited {
 
     }
 
+    /**
+     * When a user clicks on an citizen in the citizenList, the notes will be
+     * fetch according to the selected citizen.
+     */
     private void profileChangeEvent() {
         Profile.eventManager.addEventHandler(Profile.SELECTED_USERS_CHANGED, event -> {
             handleSelectedUsersChanged(event.getSelectedUsers());
@@ -88,6 +92,13 @@ public class Journal implements Initializable, PermissionLimited {
         });
     }
 
+    /**
+     * handleSelectedUsersChanged ensure that a new noteList is showed, then the
+     * user click on a another citizen in the citizenList. Everytime a change
+     * occur, the method clear the list and sets the new list.
+     *
+     * @param selectedUsers
+     */
     private void handleSelectedUsersChanged(List<UserInfo> selectedUsers) {
         observableList.clear();
         journalOverviewManager.updateSelectedNote(null);
@@ -98,6 +109,12 @@ public class Journal implements Initializable, PermissionLimited {
         }
     }
 
+    /**
+     * showNoteList ensure that the noteList been shown if there is something in
+     * the list. The noteList contains {@link Note}
+     *
+     * @param noteList
+     */
     private void showNoteList(NoteList noteList) {
         if (noteList != null && !noteList.getNotes().isEmpty()) {
             showListView.getItems().clear();

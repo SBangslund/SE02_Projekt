@@ -47,7 +47,7 @@ public class CreateNotes extends JournalOverview implements Initializable {
         
     }
     /**
-     * The cancelButton does that the user can cancel create note mode 
+     * The cancelButton does that the user can cancel int the create note window 
      * and returns to the note overview 
      * @param event 
      */

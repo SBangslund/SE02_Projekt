@@ -60,7 +60,13 @@ public class Repository {
                 address.getUserId()
         );
     }
-
+    
+    /**
+     * Gathers all the information which is needed to create a note. 
+     * If everything is as it should be it will return true
+     * @param note
+     * @return 
+     */
     public boolean addUserNote(Note note) {
         addNoteToUser(note, note.getCitizenInfo().getId());
         addNoteToUser(note, User.getCurrentUser().getId());
@@ -70,11 +76,16 @@ public class Repository {
                 note.getId()
         );
     }
-
+    /**
+     * Connects the note to the user
+     * @param note
+     * @param userid
+     * @return true if connection is successfull
+     */
     public boolean addNoteToUser(Note note, UUID userid) {
         return interFace.addNoteToUser(userid, note.getId());
     }
-
+    
     public UserInfo getUserInfo(UUID userId) {
         String[] userInfoStrings = interFace.getUserInfo(userId);
         UserInfo userInfo = null;
@@ -233,7 +244,13 @@ public class Repository {
         }
         return name;
     }
-
+    
+    /**
+     * Fetches the notes and adds it to a NoteList
+     * so the notelist can be shown in the presentation layer. 
+     * @param userID
+     * @return 
+     */
     public NoteList getNoteList(UUID userID) {
         String[] userNotesStrings = interFace.getNotesFromUser(userID);
         NoteList noteList = null;
@@ -249,6 +266,13 @@ public class Repository {
         return noteList;
     }
 
+    /**
+     * Fetches a note from the database by noteid and splits the notetext
+     * So it fits the requirements to create a note object
+     * @param noteid
+     * @param citizenInfo
+     * @return 
+     */
     private Note getNote(UUID noteid, UserInfo citizenInfo) {
 
         String[] userNotes = interFace.getNote(noteid);
