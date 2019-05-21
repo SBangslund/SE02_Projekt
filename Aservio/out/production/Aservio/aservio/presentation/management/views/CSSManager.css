@@ -10,11 +10,28 @@
 }
 
 .menu-button {
-    -fx-background-color: white;
+    -fx-background-color: #33CCCC;
+    -fx-background-radius: 10 10 10 10 ;
+    -fx-padding: 5 10 5 10;
+    -fx-background-insets: 5 5 5 5 ;
+
+}
+
+.menu-button .label{
+    -fx-text-fill: white;
+}
+
+.menu-item .label {
+    -fx-text-fill: black;
 }
 
 .menu-item:focused {
     -fx-background-color: #33CCCC;
+    -fx-text-fill: white;
+}
+
+.menu-item:focused .label{
+    -fx-text-fill: white;
 }
 
 .context-menu {

@@ -21,8 +21,17 @@
     -fx-text-fill: white;
 }
 
+.menu-item .label {
+    -fx-text-fill: black;
+}
+
 .menu-item:focused {
     -fx-background-color: #33CCCC;
+    -fx-text-fill: white;
+}
+
+.menu-item:focused .label{
+    -fx-text-fill: white;
 }
 
 .context-menu {
