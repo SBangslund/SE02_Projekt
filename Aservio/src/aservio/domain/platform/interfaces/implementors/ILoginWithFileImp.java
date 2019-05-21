@@ -1,10 +1,7 @@
 package aservio.domain.platform.interfaces.implementors;
 
 import aservio.domain.platform.Aservio;
-import aservio.domain.platform.user.Address;
 import aservio.domain.platform.user.User;
-import aservio.domain.platform.user.UserInfo;
-import aservio.domain.platform.user.roles.Caretaker;
 import aservio.presentation.platform.controllers.Login;
 import aservio.presentation.platform.interfaces.contracts.ILogin;
 import java.io.EOFException;
@@ -42,9 +39,9 @@ public class ILoginWithFileImp implements ILogin {
      * Tests login input for errors like illegal characters, spaces, and correct
      * account identification. WIP
      *
-     * @param username
-     * @param password
-     * @return
+     * @param username String from the textfield usernameField.
+     * @param password String from the textfield passwordField.
+     * @return String containing an error message or a String confirming access.
      */
     @Override
     public String checkForNoIllegalInput(String username, String password) {
@@ -79,11 +76,12 @@ public class ILoginWithFileImp implements ILogin {
     }
 
     /**
-     * WIP
-     *
-     * @param username
-     * @param password
-     * @return
+     * findUserInFile utilizes fileobjectstreams to search through a file, 
+     * looking for a specific object resembling the user with the given username and password.
+     * Returns true if user is found.
+     * @param username String from the textfield usernameField.
+     * @param password String from the textfield passwordField.
+     * @return boolean if the user was found.
      */
     private boolean findUserInFile(String username, String password) {
         boolean cont = true;
@@ -129,11 +127,10 @@ public class ILoginWithFileImp implements ILogin {
     }
 
     /**
-     * WIP
-     *
-     * @param username
-     * @param password
-     * @return
+     * Database method, not used in this class.
+     * @param username String from the textfield usernameField.
+     * @param password String from the textfield passwordField.
+     * @return Nothing.
      */
     @Override
     public String verifyUser(String username, String password) {
@@ -141,9 +138,9 @@ public class ILoginWithFileImp implements ILogin {
     }
 
     /**
-     * WIP
+     * Sets a reference for the file containing users. If none exists, a new is created.
      *
-     * @param fileName
+     * @param fileName.
      */
 
     public void setFile(String fileName) {
@@ -151,9 +148,9 @@ public class ILoginWithFileImp implements ILogin {
     }
 
     /**
-     * WIP
+     * If the file containing users has been deleted, moved or is empty. 
+     * A new file is created and filled with fake users for testing purposes.
      */
-
     @Override
     public void tempUserSetupByFile() {
         file = new File("users.txt");
@@ -182,6 +179,11 @@ public class ILoginWithFileImp implements ILogin {
         System.out.println("File set: " + file);
     }
 
+    /**
+     * Objectoutputstream that is used to write to the file containing users. Is run if the file is empty on program start.
+     * This method is only used the first time since it adds a header to the file.
+     * @param u User reference that will be written to the file.
+     */
     private void writeToFile(User u) {
         try (
                 FileOutputStream fos = new FileOutputStream(file, true);
@@ -196,6 +198,10 @@ public class ILoginWithFileImp implements ILogin {
         }
     }
 
+    /**
+     * This method adds additional users to the file if it already has been written to before.
+     * @param s 
+     */
     private void appendWriteTOFile(User s) {
         try (
                 FileOutputStream fos = new FileOutputStream(file, true);
@@ -210,6 +216,9 @@ public class ILoginWithFileImp implements ILogin {
         }
     }
 
+    /**
+     * This method loads the next scene if the userinput is correct.
+     */
     @Override
     public void loadScene() {
         try {
@@ -222,16 +231,30 @@ public class ILoginWithFileImp implements ILogin {
         }
     }
 
+    /**
+     * Database method, unsupported in this class.
+     * @param username
+     * @param password
+     * @return Nothing.
+     */
     @Override
     public User getUser(String username, String password) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Unsupported. 
+     * @param username
+     * @param password 
+     */
     @Override
     public void setUser(String username, String password) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Anonymous class, removes the automated header creation for filestreams when writing to documents.
+     */
     private class AppendingObjectOutputStream extends ObjectOutputStream {
 
         public AppendingObjectOutputStream(OutputStream out) throws IOException {
