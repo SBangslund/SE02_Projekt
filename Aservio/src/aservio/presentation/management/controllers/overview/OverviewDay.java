@@ -100,8 +100,8 @@ public class OverviewDay extends Overview implements Initializable {
 
     /**
      * Creating a visualization of the specified date with the corresponding activities
-     * @param activities
-     * @param date
+     * @param activities Activities from one to many users
+     * @param date the shown date
      */
     private void createVisualDay(ActivityList activities, Date date) {
         setBackgroundImage();
@@ -114,27 +114,39 @@ public class OverviewDay extends Overview implements Initializable {
         scrollPane.setVvalue(0.4);
     }
 
+    /**
+     * Checking if the chosen activity is on a specified day
+     * @param activity activity to be checked
+     * @param date corresponding date
+     * @return true if the activity is on the specified date
+     */
     private boolean isActivityOnDay(Activity activity, Date date) {
         return new SimpleDateFormat("dd.MM.yyyy", setLocaleToDanish()).format(activity.getStartDate().getTime())
                 .equals(new SimpleDateFormat("dd.MM.yyyy", setLocaleToDanish()).format(date.getTime()));
     }
 
+    /**
+     * visualization of the current time, creating a line at the current minute of the current day
+     * @param date creating a line on the specified date
+     */
     private void showLineAtCurrentTime(Date date) {
-        int hour = getCalendarWithSetTime(date).get(Calendar.HOUR_OF_DAY);
-        int min = getCalendarWithSetTime(date).get(Calendar.MINUTE);
-        int minPerDay = 1440;
+        if(getCalendarWithSetTime(date).get(Calendar.DAY_OF_YEAR) == getCalendarWithSetTime(new Date()).get(Calendar.DAY_OF_YEAR)) {
+            int hour = getCalendarWithSetTime(date).get(Calendar.HOUR_OF_DAY);
+            int min = getCalendarWithSetTime(date).get(Calendar.MINUTE);
+            int minPerDay = 1440;
 
-        int timeShift = ((backgroundHeight / 24) / 2);
+            int timeShift = ((backgroundHeight / 24) / 2);
 
-        int currentY = timeShift + (((hour * 60) + min) * (backgroundHeight)) / minPerDay;
-        Line line = new Line(30, currentY, 1800, currentY);
-        line.setStroke(Color.RED);
-        line.setStrokeWidth(2);
-        Circle c = new Circle(30, currentY, 5, Color.RED);
+            int currentY = timeShift + (((hour * 60) + min) * (backgroundHeight)) / minPerDay;
+            Line line = new Line(30, currentY, 1800, currentY);
+            line.setStroke(Color.RED);
+            line.setStrokeWidth(2);
+            Circle c = new Circle(30, currentY, 5, Color.RED);
 
-        activityPane.getChildren().add(line);
-        activityPane.getChildren().add(c);
-        activityPane.setStyle("-fx-background-color: transparent;");
+            activityPane.getChildren().add(line);
+            activityPane.getChildren().add(c);
+            activityPane.setStyle("-fx-background-color: transparent;");
+        }
     }
 
     private void setBackgroundImage() {
