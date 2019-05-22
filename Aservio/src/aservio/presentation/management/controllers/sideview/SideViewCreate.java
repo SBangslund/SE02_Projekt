@@ -232,14 +232,30 @@ public class SideViewCreate extends SideView implements Initializable {
         //autoset værdier baseret på source
     }
 
+    /**
+     * This value is to the activity that is being edited. 
+     * Then when the activity is done being edited, a new is created to take it's place,
+     * and this reference can delete the old version.
+     * @param activity 
+     */
     public void setActivityToBeEditet(Activity activity) {
         this.activityToBeEditet = activity;
     }
 
+    /**
+     * Checks the value of edit.
+     * 
+     * @return 
+     */
     public boolean isEdit() {
         return edit;
     }
 
+    /**
+     * isFormFilled returns true if alle values have been entered.
+     * The method isn't very restrictive, so errors can currently happen.
+     * @return 
+     */
     private boolean isFormFilled() {
         return (!nameField.getText().isEmpty()
                 && !descriptionField.getText().isEmpty()
@@ -250,6 +266,10 @@ public class SideViewCreate extends SideView implements Initializable {
                 && selectedActivityType != null);
     }
 
+    /**
+     * Handler for the cancel button, when pressed, the form is reset and the window closed.
+     * @param actionEvent 
+     */
     public void cancelButtonHandler(ActionEvent actionEvent) {
         resetForm();
         addActivityMainVBox.setVisible(false);

@@ -9,12 +9,15 @@ public abstract class SideView {
     
     private Parent view;
     /**
-     * 
+     * The interFace is a reference to the interface that connects the presentation layer to the domain layer.
      */
     protected ISideView interFace = PresentationInterfaceManager.getISideView();
 
     protected abstract void initialize();
 
+    /**
+     * when called, shows this view to the user.
+     */
     public void show() {
         Management.getInstance().setLeftView(view);
         initialize();
