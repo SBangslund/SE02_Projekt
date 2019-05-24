@@ -10,8 +10,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Used as a module in {@link IRepositoryImp} to organize and as an implementation to get access to everything related to documents
+ * Similar to {@link UserRetriever} and {@link ActivityRetriever}
  *
- * @author victo
  */
 public class DocumentRetriever {
 

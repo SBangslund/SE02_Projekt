@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Representing a specialized list, that is able to store and handle {@link Activity}'s
+ */
 public class ActivityList implements Serializable {
     private List<Activity> activities;
 

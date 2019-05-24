@@ -7,7 +7,6 @@ import java.util.UUID;
 
 /**
  *
- * @author Rene_
  */
 public class Note {
 

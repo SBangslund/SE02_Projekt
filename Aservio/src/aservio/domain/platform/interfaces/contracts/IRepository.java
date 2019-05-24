@@ -3,6 +3,10 @@ package aservio.domain.platform.interfaces.contracts;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * An interface designed to create the connection between the domain layer and the data layer, currently
+ * using {@link aservio.data.IRepositoryImp} as the implementation
+ */
 public interface IRepository {
     boolean addUser(String username, String password, UUID userID);
     boolean addUserInfo(String mail, String firstname, String lastname, int phone, String picture, UUID userID, int institutionid, String role);
@@ -14,7 +18,7 @@ public interface IRepository {
     String getUserRole(String userID);
     String[] getCitizensFromCaretaker(String caretakerID);
     /**
-     * Brilliaaaaaaaaant
+     *
      * @param userID the userID of the user that no longer exists
      * @return
      */

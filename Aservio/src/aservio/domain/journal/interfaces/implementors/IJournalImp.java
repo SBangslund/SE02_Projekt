@@ -6,8 +6,7 @@ import aservio.domain.platform.user.UserInfo;
 import aservio.presentation.journal.interfaces.contracts.IJournal;
 
 /**
- *
- * @author Rene_
+ * Implementation of {@link IJournal}, used to get access to the datalayer and information related to the Journal module
  */
 public class IJournalImp implements IJournal {
 

@@ -5,6 +5,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * Representing an activity with information related to the name, type of activity, see {@link ActivityType},
+ * start and enddate, a specified UUID and a description
+ */
 public class Activity {
     private String description;
     private ActivityType activityType;

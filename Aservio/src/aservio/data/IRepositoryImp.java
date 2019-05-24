@@ -6,6 +6,10 @@ import java.sql.*;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * Implementation of the interface {@link IRepository}, used in connection with the repository pattern
+ * Using {@link ActivityRetriever}, {@link UserRetriever} and {@link DocumentRetriever} as modules to retrieve and encapsulate retrieval of information
+ */
 public class IRepositoryImp implements IRepository {
 
     private Connection connection;

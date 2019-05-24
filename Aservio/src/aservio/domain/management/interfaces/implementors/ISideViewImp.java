@@ -12,6 +12,10 @@ import aservio.presentation.management.interfaces.contracts.ISideView;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Implementation of {@link ISideView}, representing the logic behind the {@link aservio.presentation.management.controllers.sideview.SideView}
+ * Used to add and remove activities.
+ */
 public class ISideViewImp implements ISideView {
 
     private final Repository repository;

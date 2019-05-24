@@ -3,8 +3,7 @@ package aservio.domain.journal;
 import aservio.domain.platform.user.UserInfo;
 
 /**
- *
- * @author Rene_
+ * Specifying and organising the data, that will be shown in the header of a note, primarily used in {@link Note}
  */
 public class HeaderNote {
 

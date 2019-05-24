@@ -9,6 +9,10 @@ import aservio.presentation.management.interfaces.contracts.IOverviewManager;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Implementation of {@link IOverviewManager}, used to handle the logic behind viewing  {@link User} {@link Activity}
+ * Representing access to {@link Repository} and thereby the database
+ */
 public class IOverviewImp implements IOverviewManager {
 
     private Repository repository;

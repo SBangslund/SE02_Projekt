@@ -8,6 +8,10 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Used as a module in {@link IRepositoryImp} to organize and as an implementation to get access to everything related to activities
+ * Similar to {@link UserRetriever} and {@link DocumentRetriever}
+ */
 public class ActivityRetriever {
 
     private final Connection connection;

@@ -8,8 +8,7 @@ import aservio.presentation.journal.interfaces.contracts.IJournalOverview;
 import java.util.List;
 
 /**
- *
- * @author victo
+ * Related to {@link IJournalImp}, used to access {@link Repository} and thereby the Database
  */
 public class IJournalOverviewImp implements IJournalOverview {
 

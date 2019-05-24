@@ -7,7 +7,7 @@ public class Permissions implements Serializable {
 
     private boolean seeUserList;
     private boolean canAddUser;
-    private boolean redigerPlanlægning;
+    private boolean redigerPlanlaegning;
     private boolean canEditActivities;
     private boolean seeCreateNote;
     private boolean seeModifyNote;
@@ -24,8 +24,8 @@ public class Permissions implements Serializable {
         return canAddUser;
     }
 
-    public boolean isRedigerPlanlægning() {
-        return redigerPlanlægning;
+    public boolean isRedigerPlanlaegning() {
+        return redigerPlanlaegning;
     }
     
     public boolean canModifyNote(){

@@ -8,6 +8,10 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Representing a class used to manage the adding and removal of activities, while simultaneously showing the {@link aservio.presentation.management.controllers.sideview.SideView} and
+ * the {@link Activity}, the {@link User} has chosen from the {@link aservio.presentation.management.controllers.overview.Overview}
+ */
 public class ActivityManager {
 
     private SideViewActivity currentSideView;
