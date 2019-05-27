@@ -42,6 +42,16 @@ public class DocumentRetriever {
         return false;
     }
 
+    public boolean deleteNote(UUID noteID){
+        try {
+            createStatement().executeUpdate("DELETE FROM notes WHERE notes.noteid = '" + noteID + "'");
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(IRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
     public boolean addNoteToUser(UUID userid, UUID noteid) {
         try {
             createStatement().executeQuery("SELECT addNoteToUser('" + userid.toString() + "', '" + noteid.toString() + "')");

@@ -16,6 +16,8 @@ public interface IJournalOverview {
      * @param note 
      */
     void addNote(Note note);
+
+    void deleteNote(Note note);
     
     /**
      * Fetches a user from a given institutionid

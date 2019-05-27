@@ -22,7 +22,12 @@ public class IJournalOverviewImp implements IJournalOverview {
     public void addNote(Note note) {
         repository.addUserNote(note);
     }
-    
+
+    @Override
+    public void deleteNote(Note note) {
+        repository.deleteNote(note);
+    }
+
     @Override
     public List<UserInfo> getUsersFromInstitution(int institutionid) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

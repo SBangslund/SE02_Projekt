@@ -28,6 +28,10 @@ public class Repository {
         return interFace.verifyUser(username, password);
     }
 
+    public boolean deleteNote(Note note){
+        return interFace.deleteNote(note.getId());
+    }
+
     public boolean addUser(User user) {
         return interFace.addUser(
                 user.getUsername(),

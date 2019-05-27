@@ -53,6 +53,7 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
         dateLabel.getStyleClass().add("label_content");
         clientLabel.getStyleClass().add("label_content");
         authorLabel.getStyleClass().add("label_content");
+        noteTextArea.setWrapText(true);
 
         titleDescriptionLabel.getStyleClass().add("label_description");
         dateDescriptionLabel.getStyleClass().add("label_description");
@@ -87,6 +88,7 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     @Override
     protected void updateSelectedNote(Note note) {
          if (note != null) {
+             selectedNote = note;
             dateLabel.setText(note.getDate().toString());
             clientLabel.setText(note.getCitizenInfo().getFirstName() + " " + note.getCitizenInfo().getLastName());
             authorLabel.setText(note.getCaretakerInfo());
@@ -105,6 +107,13 @@ public class Notes extends JournalOverview implements Initializable, PermissionL
     @FXML
     private void modifyButton(ActionEvent event) {
         //TODO
+
+
     }
 
+    public void deleteButtonAction(ActionEvent actionEvent) {
+        if(selectedNote != null){
+            interFace.deleteNote(selectedNote) ;
+        }
+    }
 }

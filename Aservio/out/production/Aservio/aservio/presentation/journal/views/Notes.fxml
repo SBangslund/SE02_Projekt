@@ -57,7 +57,7 @@
       <HBox alignment="TOP_RIGHT" spacing="10.0">
          <children>
             <Button fx:id="modifyButton" mnemonicParsing="false" onAction="#modifyButton" text="Rediger" />
-            <Button fx:id="deleteButton" mnemonicParsing="false" text="Slet" />
+            <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteButtonAction" text="Slet" />
          </children>
          <VBox.margin>
             <Insets top="5.0" />

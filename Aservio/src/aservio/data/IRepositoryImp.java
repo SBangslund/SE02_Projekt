@@ -166,7 +166,7 @@ public class IRepositoryImp implements IRepository {
 
     @Override
     public boolean deleteNote(UUID noteID) {
-        return false;
+        return documentRetriever.deleteNote(noteID);
     }
 
     @Override
