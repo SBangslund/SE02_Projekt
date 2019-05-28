@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="anchor" prefWidth="290.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aservio.presentation.platform.controllers.AddProfile">
+   <children>
+      <VBox layoutX="20.0" layoutY="20.0" spacing="5.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <HBox>
+               <children>
+                  <VBox minWidth="125.0" spacing="10.0">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label text="Fornavn:" />
+                              <Pane HBox.hgrow="ALWAYS" />
+                              <TextField fx:id="fieldFirstname" onAction="#handleOnFocus" prefHeight="25.0" prefWidth="110.0" promptText="Fornavn...">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label text="Efternavn:" />
+                              <Pane HBox.hgrow="ALWAYS" />
+                              <TextField fx:id="fieldLastname" prefHeight="25.0" prefWidth="110.0" promptText="Efternavn..." />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleOnAddImage" prefHeight="90.0" prefWidth="90.0" text="Vedhæft billede..." textAlignment="CENTER" wrapText="true" />
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox>
+               <children>
+                  <Label text="Adresse:" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconAddress" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="fieldAddressName" promptText="Vej..." />
+               </children>
+            </HBox>
+            <HBox spacing="25.0">
+               <children>
+                  <Pane minWidth="50.0" HBox.hgrow="ALWAYS" />
+                  <HBox spacing="5.0">
+                     <children>
+                        <Label text="Nr.:" />
+                        <TextField fx:id="fieldAddressNumber" prefWidth="30.0" promptText="..." />
+                     </children>
+                  </HBox>
+                  <HBox spacing="5.0">
+                     <children>
+                        <Label text="Etage:" />
+                        <TextField fx:id="fieldAddressLevel" prefWidth="30.0" promptText="..." />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="By:" />
+                  <Pane minWidth="50.0" HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconCity" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="fieldCity" promptText="By..." />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Postnummer:" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconPostal" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="fieldPostalCode" promptText="Postnummer..." />
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox>
+               <children>
+                  <Label text="Telefon nr:" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconPhone" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="fieldPhone" promptText="Telefon nummer..." />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Mail:" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconMail" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="fieldMail" promptText="Mail..." />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Institution:" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconInstitution" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="fieldInstitution" promptText="Institutions id..." />
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox>
+               <children>
+                  <Label prefWidth="90.0" text="Brugernavn:" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconUsername" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="fieldUsername" promptText="Brugernavn..." />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label prefHeight="17.0" prefWidth="90.0" text="Kodeord:" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ImageView fx:id="iconPassword" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="fieldPassword" promptText="Adgangskode..." />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Rolle:" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <SplitMenuButton fx:id="menuRoles" mnemonicParsing="false" text="Rolle">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#handleOnCitizen" text="Borger" />
+                      <MenuItem mnemonicParsing="false" onAction="#handleOnCaretaker" text="Personale" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleOnRelative" text="Pårørende" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleOnAdmin" text="SysAdmin" />
+                    </items>
+                  </SplitMenuButton>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <Button mnemonicParsing="false" onAction="#handleOnCreateUser" text="Opret bruger" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
